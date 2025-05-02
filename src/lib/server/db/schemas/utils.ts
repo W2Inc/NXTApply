@@ -1,11 +1,11 @@
 import { int } from 'drizzle-orm/sqlite-core';
-import { DateTime } from 'luxon';
+import { now, getLocalTimeZone } from "@internationalized/date";
 
 export const timestamps = {
-	updatedAt: int({ mode: 'timestamp_ms' })
-		.default(DateTime.now().toJSDate()),
-	createdAt: int({ mode: 'timestamp_ms' })
-		.default(DateTime.now().toJSDate())
-		.$onUpdate(() => DateTime.now().toJSDate())
+	updatedAt: int({ mode: 'timestamp' })
+		.default(now(getLocalTimeZone()).toDate()),
+	createdAt: int({ mode: 'timestamp' })
+		.default(now(getLocalTimeZone()).toDate())
+		.$onUpdate(() => now(getLocalTimeZone()).toDate())
 		.notNull()
 };

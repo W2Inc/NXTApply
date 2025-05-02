@@ -5,7 +5,7 @@
 
 import { drizzle } from 'drizzle-orm/bun-sqlite';
 import Database from 'bun:sqlite';
-import * as schema from './schema';
+import * as schema from './schemas/index';
 import { env } from '$env/dynamic/private';
 
 // ============================================================================
