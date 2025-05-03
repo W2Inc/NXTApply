@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "c57eb25f-3561-4923-a8a0-0154d1cf957e",
+  "id": "ee04b8cb-0eb0-44b9-a1d9-849775f47cbf",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "users": {
@@ -43,21 +43,61 @@
           "notNull": false,
           "autoincrement": false
         },
-        "updatedAt": {
-          "name": "updatedAt",
+        "dob": {
+          "name": "dob",
           "type": "integer",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false,
-          "default": "'\"2025-05-02T08:32:23.222Z\"'"
+          "autoincrement": false
         },
-        "createdAt": {
-          "name": "createdAt",
+        "gender": {
+          "name": "gender",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "country": {
+          "name": "country",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "first_name": {
+          "name": "first_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "last_name": {
+          "name": "last_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "phone": {
+          "name": "phone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
           "type": "integer",
           "primaryKey": false,
           "notNull": true,
-          "autoincrement": false,
-          "default": "'\"2025-05-02T08:32:23.266Z\"'"
+          "autoincrement": false
         }
       },
       "indexes": {},

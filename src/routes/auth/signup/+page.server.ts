@@ -53,13 +53,12 @@ export const actions: Actions = {
 		}
 
 		const user = await db.transaction(async (tx) => {
-			const id = "generateIdFromEntropySize(16)";
 			const hash = await Bun.password.hash(password, 'argon2id');
 			const user = await tx
 				.insert(users)
 				.values({
 					email,
-					id,
+					id: Bun.randomUUIDv7(),
 					hash,
 					tfa: null
 				})
@@ -79,6 +78,6 @@ export const actions: Actions = {
 			sameSite: 'strict'
 		});
 
-		redirect(302, '/auth/otp/setup');
+		redirect(302, '/auth/2fa/setup');
 	}
 };

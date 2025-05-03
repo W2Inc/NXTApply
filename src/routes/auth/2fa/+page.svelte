@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Input from "$lib/components/input.svelte";
-	import { Separator } from "bits-ui";
+	import { Button, Separator } from "bits-ui";
 import Phone from "lucide-svelte/icons/smartphone";
 </script>
 

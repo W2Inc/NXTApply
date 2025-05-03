@@ -5,10 +5,8 @@
 
 import type { Actions, PageServerLoad } from './$types';
 import { error, redirect } from '@sveltejs/kit';
-// import { Toasty, validate } from '@/utils';
 import { eq } from 'drizzle-orm';
 import { dev } from '$app/environment';
-import { env } from '$env/dynamic/private';
 import { db } from '$lib/server/db';
 import { users } from '$lib/server/db/schemas';
 import { Toasty } from '$lib';
@@ -61,8 +59,8 @@ export const actions: Actions = {
 		});
 
 		if (user.tfa === null) {
-			return redirect(303, '/auth/otp/setup');
+			return redirect(303, '/auth/2fa/setup');
 		}
-		return redirect(302, '/auth/otp');
+		return redirect(302, '/auth/2fa');
 	}
 };

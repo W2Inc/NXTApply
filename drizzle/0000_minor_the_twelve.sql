@@ -4,8 +4,14 @@ CREATE TABLE `users` (
 	`verified` integer DEFAULT false,
 	`hash` text,
 	`tfa` text,
-	`updatedAt` integer DEFAULT '"2025-05-02T08:32:23.222Z"',
-	`createdAt` integer DEFAULT '"2025-05-02T08:32:23.266Z"' NOT NULL
+	`dob` integer,
+	`gender` integer,
+	`country` text,
+	`first_name` text,
+	`last_name` text,
+	`phone` text,
+	`updated_at` integer,
+	`created_at` integer NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE `reset_tokens` (

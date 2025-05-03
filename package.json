@@ -43,6 +43,7 @@
 	},
 	"dependencies": {
 		"@internationalized/date": "^3.8.0",
+		"@oslojs/otp": "^1.1.0",
 		"bits-ui": "^1.4.2",
 		"clsx": "^2.1.1",
 		"drizzle-orm": "^0.40.0",
