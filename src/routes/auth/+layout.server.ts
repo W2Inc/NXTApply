@@ -2,6 +2,5 @@ import { redirect } from "@sveltejs/kit";
 import type { LayoutServerLoad } from "./$types";
 
 export const load: LayoutServerLoad = async ({ }) => {
-	console.log("wh")
 	// redirect(308, "/auth/signin");
 };
