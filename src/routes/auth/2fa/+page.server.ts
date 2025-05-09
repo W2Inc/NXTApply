@@ -16,11 +16,11 @@ import { Toasty } from "$lib";
 // ============================================================================
 
 export const load: PageServerLoad = async ({ locals, cookies }) => {
+	if (locals.session) {
+		return redirect(307, "/");
+	}
 	if (!cookies.get(IDENTITY_COOKIE)) {
 		return error(401, "Unauthorized");
-	}
-	if (locals.user && locals.session) {
-		return redirect(303, "/");
 	}
 	return {};
 };
@@ -50,7 +50,7 @@ export const actions: Actions = {
 			error(401);
 		}
 		if (!user.tfa) {
-			redirect(303, "/auth/2fa/setup");
+			redirect(307, "/auth/2fa/setup");
 		}
 
 		cookies.delete(IDENTITY_COOKIE, { path: "/" });
@@ -69,6 +69,6 @@ export const actions: Actions = {
 		const token = Auth.generateToken();
 		await Auth.createSession(token, userId);
 		Auth.setCookie(cookies, token);
-		redirect(303, "/");
+		redirect(302, "/");
 	},
 };

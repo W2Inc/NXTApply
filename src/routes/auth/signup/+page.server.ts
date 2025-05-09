@@ -58,9 +58,7 @@ export const actions: Actions = {
 				.insert(users)
 				.values({
 					email,
-					id: Bun.randomUUIDv7(),
 					hash,
-					tfa: null
 				})
 				.returning();
 			const createdUser = user.at(0);

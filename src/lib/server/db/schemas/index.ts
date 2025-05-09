@@ -4,14 +4,16 @@
 // ============================================================================
 
 import type { InferSelectModel } from 'drizzle-orm';
-import { timestamps } from './utils';
+import { id, timestamps } from './utils';
 import { sqliteTable, text, int } from 'drizzle-orm/sqlite-core';
+import { relations } from 'drizzle-orm';
+import { db } from '..';
 export * from "./auth";
 
 // ============================================================================
 
 export const users = sqliteTable("users", {
-	id: text("id").primaryKey(),
+	...id,
 	email: text("email").notNull(),
 	verified: int("verified", { mode: "boolean" }).default(false),
 	hash: text("hash"),
@@ -26,3 +28,27 @@ export const users = sqliteTable("users", {
 });
 
 export type User = InferSelectModel<typeof users>;
+
+// Stages
+// ============================================================================
+
+export const stages = sqliteTable("stages", {
+	...id,
+	userId: text("user_id").notNull().references(() => users.id),
+	type: text("type").notNull(),
+	level: int("level").notNull().default(0),
+	...timestamps
+});
+
+export const stagesRelations = relations(stages, ({ one }) => ({
+	user: one(users, {
+		fields: [stages.userId],
+		references: [users.id],
+	}),
+}));
+
+export const usersRelations = relations(users, ({ many }) => ({
+	stages: many(stages),
+}));
+
+export type Stage = InferSelectModel<typeof stages>;

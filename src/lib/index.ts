@@ -5,12 +5,16 @@
 
 import { twMerge } from 'tailwind-merge';
 import clsx, { type ClassValue } from 'clsx';
-import { fail as kitFail } from "@sveltejs/kit";
+import { fail as kitFail } from '@sveltejs/kit';
 
 // ============================================================================
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
+}
+
+export function areNull<T>(obj: T, props: (keyof T)[]): boolean {
+	return props.some((prop) => obj[prop] === null);
 }
 
 /**

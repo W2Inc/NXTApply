@@ -46,15 +46,12 @@ export namespace Auth {
 	 */
 	export const SESSION_COOKIE = 'session';
 	/** Cryptographic hasher used to convert plain text tokens to secure hashes.*/
-	const hasher = new Bun.CryptoHasher('sha256');
 
 	/**
 	 * Defines the possible return types from session validation.
 	 * Either returns valid session and user data, or null values if validation fails.
 	 */
-	export type SessionValidationResult =
-		| { session: Sessions; user: User }
-		| { session: null; user: null };
+	export type SessionValidationResult = Sessions | null;
 
 	/**
 	 * Generates a cryptographically secure random token with the specified length.
@@ -91,6 +88,7 @@ export namespace Auth {
 	 * @returns A Promise resolving to the created Sessions object.
 	 */
 	export async function createSession(token: string, userId: string): Promise<Sessions> {
+		const hasher = new Bun.CryptoHasher('sha256');
 		const session: Sessions = {
 			userId,
 			id: hasher.update(token).digest().toString('base64url'),
@@ -110,42 +108,37 @@ export namespace Auth {
 	 *          or null values for both if the session is invalid or expired.
 	 */
 	export async function validateSessionToken(token: string): Promise<SessionValidationResult> {
+		const hasher = new Bun.CryptoHasher('sha256');
 		const sessionId = hasher.update(token).digest().toString('base64url');
-		const result = await db
-			.select({ user: users, session: sessions })
-			.from(sessions)
-			.innerJoin(users, eq(sessions.userId, users.id))
-			.where(eq(sessions.id, sessionId));
+		const session = await db.query.sessions.findFirst({
+			where: eq(sessions.id, sessionId)
+		});
 
-		if (result.length < 1) {
-			return { session: null, user: null };
-		}
+		if (!session)
+			return null;
 
-		const { user, session } = result[0];
+		// Now let's check expiration
 		const now = dateNow(getLocalTimeZone());
 		const expirationDate = fromDate(session.expiresAt, getLocalTimeZone());
-
-		// Check if session has expired
 		if (now.compare(expirationDate) >= 0) {
 			await db.delete(sessions).where(eq(sessions.id, session.id));
-			return { session: null, user: null };
+			return null;
 		}
 
 		// Automatic session renewal: if the session is within 15 days of expiration,
 		// extend it for another 30 days from the current time
 		const fifteenDaysBeforeExpiry = expirationDate.subtract({ days: 15 });
 		if (now.compare(fifteenDaysBeforeExpiry) >= 0) {
-			const newExpiryDate = now.add({ days: 30 }).toDate();
-			session.expiresAt = newExpiryDate;
+			const expiry = session.expiresAt = now.add({ days: 30 }).toDate();
 			await db
 				.update(sessions)
 				.set({
-					expiresAt: newExpiryDate
+					expiresAt: expiry
 				})
 				.where(eq(sessions.id, session.id));
 		}
 
-		return { session, user };
+		return session;
 	}
 
 	/**

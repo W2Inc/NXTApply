@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Input from "$lib/components/input.svelte";
+	import Input from "$lib/components/ui/input.svelte";
 	import { Button, Separator } from "bits-ui";
 import Phone from "lucide-svelte/icons/smartphone";
 </script>
 
 <form method="post" class="max-w-sm">
-	<div class="flex flex-col justify-center gap-2 p-4 border bg- rounded-md">
+	<div class="flex flex-col justify-center gap-2 p-4">
 		<div class="grid place-items-center gap-2">
 			<Phone />
 			<h1>Authentication code</h1>
@@ -25,7 +25,7 @@ import Phone from "lucide-svelte/icons/smartphone";
 			placeholder="XXXXXX"
 		/>
 		<Separator.Root />
-		<Button.Root type="submit">Verify</Button.Root>
+		<Button.Root type="submit" class="btn">Verify</Button.Root>
 		<p>
 			Open your two-factor authenticator (TOTP) app or browser extension to view your authentication
 			code.

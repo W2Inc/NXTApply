@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Input from '$lib/components/input.svelte';
+	import Input from '$lib/components/ui/input.svelte';
 	import { Button, Label } from 'bits-ui';
 
 	let { data } = $props();
@@ -30,7 +30,7 @@
 			required
 		/>
 	</div>
-	<Button.Root type="submit" formaction="/auth/forgot?/request" class="mt-2 w-full">Send request</Button.Root>
+	<Button.Root type="submit" formaction="/auth/forgot?/request" class="mt-2 btn w-full">Send request</Button.Root>
 {/snippet}
 
 <div class="mx-auto grid w-[350px] gap-6">

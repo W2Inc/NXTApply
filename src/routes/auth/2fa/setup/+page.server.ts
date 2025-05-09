@@ -26,7 +26,7 @@ function cleanupCookies(cookies: Cookies) {
 // ============================================================================
 
 export const load: PageServerLoad = async ({ locals, cookies }) => {
-	if (locals.user) {
+	if (locals.session) {
 		redirect(302, "/");
 	}
 
@@ -67,7 +67,7 @@ export const load: PageServerLoad = async ({ locals, cookies }) => {
 
 	return {
 		secret: uri,
-		qr: renderSVG(uri, { border: 1, ecc: "M" }),
+		qr: renderSVG(uri, { border: 2, ecc: "L" }),
 	};
 };
 
