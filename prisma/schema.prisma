@@ -1,0 +1,72 @@
+// ============================================================================
+// W2Inc, Amsterdam 2024, All Rights Reserved.
+// See README in the root project for more information.
+// ============================================================================
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL_PRISMA")
+}
+
+// General Purpose Models
+// ============================================================================
+
+model User {
+    id                String             @id @default(uuid())
+    email             String
+    verified          Boolean            @default(false)
+    hash              String?
+    tfa               String?
+    dob               DateTime?
+    gender            Int?
+    country           String?
+    flags             Int                @default(0)
+    firstName         String?
+    lastName          String?
+    phone             String?
+    providerId        String?
+    provider          String?
+    createdAt         DateTime           @default(now())
+    updatedAt         DateTime           @default(now()) @updatedAt
+    sessions          Session[]
+    resetTokens       ResetToken[]
+    verificationToken VerificationToken?
+
+    @@map("user")
+}
+
+// Auth
+// ============================================================================
+
+model Session {
+    id        String   @id
+    userId    String
+    expiresAt DateTime
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map("session")
+}
+
+model ResetToken {
+    id        String   @id
+    userId    String
+    expiresAt DateTime
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map("reset_token")
+}
+
+model VerificationToken {
+    id        Int      @id @default(autoincrement())
+    code      String // Secure
+    email     String
+    userId    String   @unique
+    expiresAt DateTime
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map("verification_token")
+}

@@ -1,0 +1,412 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-16T12:06:17.937Z\n"
+"PO-Revision-Date: 2025-07-16T14:17:36.854Z\n"
+"Last-Translator: \n"
+"Language: Spanish\n"
+"Language-Team: \n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"MIME-Version: 1.0\n"
+
+#: src/routes/[locale]/[user]/boarding/+layout.svelte
+#: src/routes/[locale]/admin/+layout.svelte
+msgid "Logo"
+msgstr "Logotipo"
+
+#: src/routes/[locale]/[user]/boarding/+layout.svelte
+#: src/routes/[locale]/admin/+page.svelte
+#: src/routes/[locale]/admin/+layout.svelte
+msgid "Settings"
+msgstr "Ajustes"
+
+#: src/routes/[locale]/[user]/boarding/+layout.svelte
+#: src/routes/[locale]/admin/+layout.svelte
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: src/lib/ui/form.svelte
+msgid "Loading..."
+msgstr "Cargando..."
+
+#: src/lib/ui/form.svelte
+msgid "User is already taken"
+msgstr "El usuario ya está en uso"
+
+#: src/lib/ui/form.svelte
+msgid "Password does not match"
+msgstr "Las contraseñas no coinciden"
+
+#: src/lib/ui/form-entry.svelte
+msgid "Invalid format"
+msgstr "Formato inválido"
+
+#: src/lib/ui/form-entry.svelte
+msgid "Invalid value"
+msgstr "Valor inválido"
+
+#: src/routes/[locale]/+page.svelte
+msgid "Welcome to SvelteKit"
+msgstr "Bienvenido a SvelteKit"
+
+#: src/routes/[locale]/+page.svelte
+msgid "Visit <0>svelte.dev/docs/kit</0> to read the documentation"
+msgstr "Visita <0>svelte.dev/docs/kit</0> para leer la documentación"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "Dashboard"
+msgstr "Panel de control"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "Welcome back, W2Wizard! Here's what's happening."
+msgstr "¡Bienvenido de nuevo, W2Wizard! Esto es lo que está sucediendo."
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "since last month"
+msgstr "desde el mes pasado"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "Recent Activity"
+msgstr "Actividad reciente"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "View all activity"
+msgstr "Ver toda la actividad"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "Upcoming Events"
+msgstr "Próximos eventos"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "View calendar"
+msgstr "Ver calendario"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "Quick Actions"
+msgstr "Acciones rápidas"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "Add User"
+msgstr "Añadir usuario"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "New Report"
+msgstr "Nuevo informe"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "Analytics"
+msgstr "Analítica"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "Calendar"
+msgstr "Calendario"
+
+#: src/routes/[locale]/admin/+page.svelte
+msgid "Inventory"
+msgstr "Inventario"
+
+#: src/routes/[locale]/admin/+layout.svelte
+msgid "Profile"
+msgstr "Perfil"
+
+#: src/routes/[locale]/admin/+layout.svelte
+msgid "Main Navigation"
+msgstr "Navegación principal"
+
+#: src/routes/[locale]/admin/+layout.svelte
+msgid "System"
+msgstr "Sistema"
+
+#: src/routes/[locale]/auth/+layout.svelte
+msgid "NXTApply"
+msgstr "NXTApply"
+
+#: src/routes/[locale]/auth/+layout.svelte
+msgid "© {0} NXTApply. All rights reserved."
+msgstr "© {0} NXTApply. Todos los derechos reservados."
+
+#: src/routes/[locale]/auth/+layout.svelte
+msgid "Start your journey with NXTApply"
+msgstr "Comienza tu viaje con NXTApply"
+
+#: src/routes/[locale]/auth/+layout.svelte
+msgid "Streamline your application process and discover opportunities tailored for you."
+msgstr "Optimiza tu proceso de solicitud y descubre oportunidades hechas a tu medida."
+
+#: src/lib/ui/theme.svelte
+msgid "<0/> Light"
+msgstr "<0/> Claro"
+
+#: src/lib/ui/theme.svelte
+msgid "<0/> Dark"
+msgstr "<0/> Oscuro"
+
+#: src/lib/ui/theme.svelte
+msgid "<0/> System"
+msgstr "<0/> Sistema"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Welcome Aboard!"
+msgstr "¡Bienvenido a bordo!"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Please fill in your personal information to get started."
+msgstr "Por favor, completa tu información personal para comenzar."
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/[locale]/auth/sign-up/+page.svelte
+msgid "First Name"
+msgstr "Nombre"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Enter your first name"
+msgstr "Ingresa tu nombre"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Last Name"
+msgstr "Apellido"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Enter your last name"
+msgstr "Ingresa tu apellido"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Gender"
+msgstr "Género"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Male"
+msgstr "Masculino"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Female"
+msgstr "Femenino"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Other"
+msgstr "Otro"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Date of Birth"
+msgstr "Fecha de nacimiento"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Phone Number"
+msgstr "Número de teléfono"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Enter your phone number"
+msgstr "Ingresa tu número de teléfono"
+
+#: src/routes/[locale]/[user]/boarding/+page.svelte
+msgid "Continue"
+msgstr "Continuar"
+
+#: src/routes/[locale]/auth/oauth.svelte
+msgid "or"
+msgstr "o"
+
+#: src/routes/[locale]/auth/oauth.svelte
+msgid "Sign in with <0/>"
+msgstr "Iniciar sesión con <0/>"
+
+#: src/routes/[locale]/auth/2fa/+page.svelte
+msgid "Authentication code"
+msgstr "Código de autenticación"
+
+#: src/routes/[locale]/auth/2fa/+page.svelte
+msgid "XXXXXX"
+msgstr "XXXXXX"
+
+#: src/routes/[locale]/auth/2fa/+page.svelte
+msgid "Verify"
+msgstr "Verificar"
+
+#: src/routes/[locale]/auth/2fa/+page.svelte
+msgid ""
+"Open your two-factor authenticator (TOTP) app or browser extension to view your authentication\n"
+"\t\t\tcode."
+msgstr "Abre tu aplicación de autenticación de dos factores (TOTP) o la extensión del navegador para ver tu código de autenticación."
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Enter your email to sign in to your account"
+msgstr "Ingresa tu correo electrónico para iniciar sesión en tu cuenta"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/sign-up/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Email"
+msgstr "Correo electrónico"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Please give a valid Email"
+msgstr "Por favor, introduce un correo electrónico válido"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/sign-up/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Password"
+msgstr "Contraseña"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Please give a valid Password"
+msgstr "Por favor, introduce una contraseña válida"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Sign In"
+msgstr "Iniciar sesión"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Don't have an account? <0>Sign up</0>"
+msgstr "¿No tienes una cuenta? <0>Regístrate</0>"
+
+#: src/routes/[locale]/auth/sign-up/+page.svelte
+msgid "Sign Up"
+msgstr "Regístrate"
+
+#: src/routes/[locale]/auth/sign-up/+page.svelte
+msgid "Enter your information to create an account"
+msgstr "Ingresa tu información para crear una cuenta"
+
+#: src/routes/[locale]/auth/sign-up/+page.svelte
+msgid "Max"
+msgstr "Max"
+
+#: src/routes/[locale]/auth/sign-up/+page.svelte
+msgid "Robinson"
+msgstr "Robinson"
+
+#: src/routes/[locale]/auth/sign-up/+page.svelte
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Confirm Password"
+msgstr "Confirmar contraseña"
+
+#: src/routes/[locale]/auth/sign-up/+page.svelte
+msgid "Apply Now"
+msgstr "Aplicar ahora"
+
+#: src/routes/[locale]/auth/sign-up/+page.svelte
+msgid "Already have an account? <0>Sign in</0>"
+msgstr "¿Ya tienes una cuenta? <0>Inicia sesión</0>"
+
+#: src/routes/[locale]/auth/2fa/setup/+page.svelte
+msgid "Two-Factor Authentication"
+msgstr "Autenticación de dos factores"
+
+#: src/routes/[locale]/auth/2fa/setup/+page.svelte
+msgid "Scan the QR code with your authenticator app to set up 2FA"
+msgstr "Escanea el código QR con tu aplicación de autenticación para configurar 2FA"
+
+#: src/routes/[locale]/auth/2fa/setup/+page.svelte
+msgid "POST"
+msgstr "POST"
+
+#: src/routes/[locale]/auth/2fa/setup/+page.svelte
+msgid "View secret key instead"
+msgstr "Ver la clave secreta en su lugar"
+
+#: src/routes/[locale]/auth/2fa/setup/+page.svelte
+msgid ""
+"Open your two-factor authenticator (TOTP) app or browser extension to scan the QR code or\n"
+"\t\t\t\tenter the secret key manually."
+msgstr ""
+"Abre tu aplicación de autenticación de dos factores (TOTP) o la extensión del navegador para escanear el código QR o\n"
+"\t\t\t\tingresa la clave secreta manualmente."
+
+#: src/routes/[locale]/auth/2fa/setup/+page.svelte
+msgid "Verification Code"
+msgstr "Código de verificación"
+
+#: src/routes/[locale]/auth/2fa/setup/+page.svelte
+msgid "Enter 6-digit code"
+msgstr "Ingresa el código de 6 dígitos"
+
+#: src/routes/[locale]/auth/2fa/setup/+page.svelte
+msgid "Verify and Enable 2FA"
+msgstr "Verificar y habilitar 2FA"
+
+#: src/routes/[locale]/auth/2fa/setup/+page.svelte
+msgid "2FA is mandatory"
+msgstr "2FA es obligatorio"
+
+#: src/routes/[locale]/auth/2fa/setup/+page.svelte
+msgid ""
+"Two-factor authentication is required for your account security. You must complete\n"
+"\t\t\t\t\t\t\tthis step to continue."
+msgstr ""
+"Se requiere la autenticación de dos factores para la seguridad de tu cuenta. Debes completar\n"
+"\t\t\t\t\t\t\teste paso para continuar.```"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Reset Password"
+msgstr "Restablecer la contraseña"
+
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Enter your email to receive a password reset link"
+msgstr "Introduce tu correo electrónico para recibir un enlace de restablecimiento de contraseña"
+
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Send Reset Link"
+msgstr "Enviar enlace de restablecimiento"
+
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Remember your password? <0>Back to login</0>"
+msgstr "¿Recuerdas tu contraseña? <0>Volver a iniciar sesión</0>"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Set New Password"
+msgstr "Establecer nueva contraseña"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Enter your new password to complete the reset process"
+msgstr "Ingresa tu nueva contraseña para completar el proceso de restablecimiento"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "New Password"
+msgstr "Nueva contraseña"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Please enter your new password"
+msgstr "Por favor, introduce tu nueva contraseña"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Please confirm your new password"
+msgstr "Por favor, confirma tu nueva contraseña"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Set Password"
+msgstr "Establecer contraseña"
+
+#: src/routes/[locale]/auth/sign-in/+page.svelte
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Remember your password? <0>Sign in</0>"
+msgstr "¿Recuerdas tu contraseña? <0>Inicia sesión</0>```"
+
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Enter your email address and we'll send you a link to reset your password"
+msgstr "Introduce tu dirección de correo electrónico y te enviaremos un enlace para restablecer tu contraseña"
+
+#: src/routes/[locale]/auth/reset/+page.svelte
+msgid "Please enter your email address"
+msgstr "Por favor, introduce tu dirección de correo electrónico"
