@@ -90,15 +90,23 @@ const authorize: Handle = async ({ event, resolve }) => {
 // ============================================================================
 
 export const base: Handle = async ({ event, resolve }) => {
-	console.log("YUP", event.url.pathname)
 	event.setHeaders({
 		'x-app': env.PUBLIC_APP_NAME,
 		'x-powered-by': `Bun ${Bun.version}`
 	});
 
 	event.locals.db = db;
-	const locale = event.params.locale ?? 'en';
+	const locale = event.params.locale ?? event.cookies.get('lang') ?? 'en';
 	const validLocale = locales.find((l) => l === locale) ? locale : 'en';
+
+	// Redirect to locale-prefixed URL if accessing root-level path
+	if (!event.route.id?.startsWith('/[locale]/auth/') && !event.route.id?.startsWith('/oauth/')) {
+		console.log(event.url.pathname)
+		if (!event.url.pathname.startsWith(`/${validLocale}`)) {
+			redirect(302, `/${validLocale}${event.url.pathname}${event.url.search}`);
+		}
+	}
+
 	const catalog = await import(`./locales/${validLocale}.svelte.js`);
 	return await runWithCatalog(catalog, () =>
 		resolve(event, {

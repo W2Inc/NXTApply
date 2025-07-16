@@ -6,7 +6,6 @@ import type { RequestEvent } from '@sveltejs/kit';
 
 export async function GET(event: RequestEvent) {
 	const provider = event.params.provider;
-	console.log("huh")
 	if (!provider) return error(404);
 	switch (provider) {
 		case 'github':

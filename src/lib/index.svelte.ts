@@ -14,7 +14,6 @@ export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
 }
 
-
 /**
  * ENSURE that the promise is resolved safely and return the appropriate result.
  * @param promise The promise to ensure / await.
