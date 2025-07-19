@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-16T12:06:17.937Z\n"
-"PO-Revision-Date: 2025-07-16T14:17:36.854Z\n"
+"PO-Revision-Date: 2025-07-18T14:54:04.684Z\n"
 "Last-Translator: \n"
 "Language: Spanish\n"
 "Language-Team: \n"
@@ -14,21 +14,32 @@ msgstr ""
 
 #: src/routes/[locale]/[user]/boarding/+layout.svelte
 #: src/routes/[locale]/admin/+layout.svelte
+#: src/routes/(app)/[user]/boarding/+layout.svelte
+#: src/routes/(app)/+layout.svelte
+#: src/routes/admin/+layout.svelte
 msgid "Logo"
 msgstr "Logotipo"
 
 #: src/routes/[locale]/[user]/boarding/+layout.svelte
 #: src/routes/[locale]/admin/+page.svelte
 #: src/routes/[locale]/admin/+layout.svelte
+#: src/routes/(app)/[user]/boarding/+layout.svelte
+#: src/routes/(app)/+layout.svelte
+#: src/routes/admin/+layout.svelte
+#: src/routes/admin/+page.svelte
 msgid "Settings"
 msgstr "Ajustes"
 
 #: src/routes/[locale]/[user]/boarding/+layout.svelte
 #: src/routes/[locale]/admin/+layout.svelte
+#: src/routes/(app)/[user]/boarding/+layout.svelte
+#: src/routes/(app)/+layout.svelte
+#: src/routes/admin/+layout.svelte
 msgid "Logout"
 msgstr "Cerrar sesión"
 
 #: src/lib/ui/form.svelte
+#: src/routes/admin/track/+page.svelte
 msgid "Loading..."
 msgstr "Cargando..."
 
@@ -57,82 +68,105 @@ msgid "Visit <0>svelte.dev/docs/kit</0> to read the documentation"
 msgstr "Visita <0>svelte.dev/docs/kit</0> para leer la documentación"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "Dashboard"
 msgstr "Panel de control"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "Welcome back, W2Wizard! Here's what's happening."
 msgstr "¡Bienvenido de nuevo, W2Wizard! Esto es lo que está sucediendo."
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "since last month"
 msgstr "desde el mes pasado"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "Recent Activity"
 msgstr "Actividad reciente"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "View all activity"
 msgstr "Ver toda la actividad"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/(app)/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "Upcoming Events"
 msgstr "Próximos eventos"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "View calendar"
 msgstr "Ver calendario"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/(app)/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "Quick Actions"
 msgstr "Acciones rápidas"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "Add User"
 msgstr "Añadir usuario"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "New Report"
 msgstr "Nuevo informe"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "Analytics"
 msgstr "Analítica"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "Calendar"
 msgstr "Calendario"
 
 #: src/routes/[locale]/admin/+page.svelte
+#: src/routes/admin/+page.svelte
 msgid "Inventory"
 msgstr "Inventario"
 
 #: src/routes/[locale]/admin/+layout.svelte
+#: src/routes/(app)/+layout.svelte
+#: src/routes/admin/+layout.svelte
 msgid "Profile"
 msgstr "Perfil"
 
 #: src/routes/[locale]/admin/+layout.svelte
+#: src/routes/admin/+layout.svelte
 msgid "Main Navigation"
 msgstr "Navegación principal"
 
 #: src/routes/[locale]/admin/+layout.svelte
+#: src/routes/admin/+layout.svelte
 msgid "System"
 msgstr "Sistema"
 
 #: src/routes/[locale]/auth/+layout.svelte
+#: src/routes/auth/+layout.svelte
 msgid "NXTApply"
 msgstr "NXTApply"
 
 #: src/routes/[locale]/auth/+layout.svelte
+#: src/routes/auth/+layout.svelte
 msgid "© {0} NXTApply. All rights reserved."
 msgstr "© {0} NXTApply. Todos los derechos reservados."
 
 #: src/routes/[locale]/auth/+layout.svelte
+#: src/routes/auth/+layout.svelte
 msgid "Start your journey with NXTApply"
 msgstr "Comienza tu viaje con NXTApply"
 
 #: src/routes/[locale]/auth/+layout.svelte
+#: src/routes/auth/+layout.svelte
 msgid "Streamline your application process and discover opportunities tailored for you."
 msgstr "Optimiza tu proceso de solicitud y descubre oportunidades hechas a tu medida."
 
@@ -149,83 +183,107 @@ msgid "<0/> System"
 msgstr "<0/> Sistema"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
 msgid "Welcome Aboard!"
 msgstr "¡Bienvenido a bordo!"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
 msgid "Please fill in your personal information to get started."
 msgstr "Por favor, completa tu información personal para comenzar."
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
 #: src/routes/[locale]/auth/sign-up/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/admin/users/+page.svelte
 msgid "First Name"
 msgstr "Nombre"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
 msgid "Enter your first name"
 msgstr "Ingresa tu nombre"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
+#: src/routes/admin/users/+page.svelte
 msgid "Last Name"
 msgstr "Apellido"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
 msgid "Enter your last name"
 msgstr "Ingresa tu apellido"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
 msgid "Gender"
 msgstr "Género"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
 msgid "Male"
 msgstr "Masculino"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
 msgid "Female"
 msgstr "Femenino"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
 msgid "Other"
 msgstr "Otro"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
+#: src/routes/admin/users/+page.svelte
 msgid "Date of Birth"
 msgstr "Fecha de nacimiento"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
 msgid "Phone Number"
 msgstr "Número de teléfono"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
 msgid "Enter your phone number"
 msgstr "Ingresa tu número de teléfono"
 
 #: src/routes/[locale]/[user]/boarding/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
 msgid "Continue"
 msgstr "Continuar"
 
 #: src/routes/[locale]/auth/oauth.svelte
+#: src/routes/auth/oauth.svelte
 msgid "or"
 msgstr "o"
 
 #: src/routes/[locale]/auth/oauth.svelte
+#: src/routes/auth/oauth.svelte
 msgid "Sign in with <0/>"
 msgstr "Iniciar sesión con <0/>"
 
 #: src/routes/[locale]/auth/2fa/+page.svelte
+#: src/routes/auth/2fa/+page.svelte
 msgid "Authentication code"
 msgstr "Código de autenticación"
 
 #: src/routes/[locale]/auth/2fa/+page.svelte
+#: src/routes/auth/2fa/+page.svelte
 msgid "XXXXXX"
 msgstr "XXXXXX"
 
 #: src/routes/[locale]/auth/2fa/+page.svelte
+#: src/routes/auth/2fa/+page.svelte
 msgid "Verify"
 msgstr "Verificar"
 
 #: src/routes/[locale]/auth/2fa/+page.svelte
+#: src/routes/auth/2fa/+page.svelte
 msgid ""
 "Open your two-factor authenticator (TOTP) app or browser extension to view your authentication\n"
 "\t\t\tcode."
@@ -233,73 +291,91 @@ msgstr "Abre tu aplicación de autenticación de dos factores (TOTP) o la extens
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
 msgid "Login"
 msgstr "Iniciar sesión"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
 msgid "Enter your email to sign in to your account"
 msgstr "Ingresa tu correo electrónico para iniciar sesión en tu cuenta"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/sign-up/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/admin/users/+page.svelte
 msgid "Email"
 msgstr "Correo electrónico"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
 msgid "Please give a valid Email"
 msgstr "Por favor, introduce un correo electrónico válido"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/sign-up/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
 msgid "Password"
 msgstr "Contraseña"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
 msgid "Please give a valid Password"
 msgstr "Por favor, introduce una contraseña válida"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
 msgid "Sign In"
 msgstr "Iniciar sesión"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
 msgid "Don't have an account? <0>Sign up</0>"
 msgstr "¿No tienes una cuenta? <0>Regístrate</0>"
 
 #: src/routes/[locale]/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
 msgid "Sign Up"
 msgstr "Regístrate"
 
 #: src/routes/[locale]/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
 msgid "Enter your information to create an account"
 msgstr "Ingresa tu información para crear una cuenta"
 
 #: src/routes/[locale]/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
 msgid "Max"
 msgstr "Max"
 
 #: src/routes/[locale]/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
 msgid "Robinson"
 msgstr "Robinson"
 
 #: src/routes/[locale]/auth/sign-up/+page.svelte
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
 msgid "Confirm Password"
 msgstr "Confirmar contraseña"
 
 #: src/routes/[locale]/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
 msgid "Apply Now"
 msgstr "Aplicar ahora"
 
 #: src/routes/[locale]/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
 msgid "Already have an account? <0>Sign in</0>"
 msgstr "¿Ya tienes una cuenta? <0>Inicia sesión</0>"
 
@@ -312,6 +388,8 @@ msgid "Scan the QR code with your authenticator app to set up 2FA"
 msgstr "Escanea el código QR con tu aplicación de autenticación para configurar 2FA"
 
 #: src/routes/[locale]/auth/2fa/setup/+page.svelte
+#: src/routes/admin/+layout.svelte
+#: src/routes/(app)/[user]/break/+page.svelte
 msgid "POST"
 msgstr "POST"
 
@@ -349,10 +427,11 @@ msgid ""
 "\t\t\t\t\t\t\tthis step to continue."
 msgstr ""
 "Se requiere la autenticación de dos factores para la seguridad de tu cuenta. Debes completar\n"
-"\t\t\t\t\t\t\teste paso para continuar.```"
+"\t\t\t\t\t\t\teste paso para continuar."
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
 msgid "Reset Password"
 msgstr "Restablecer la contraseña"
 
@@ -401,7 +480,7 @@ msgstr "Establecer contraseña"
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
 msgid "Remember your password? <0>Sign in</0>"
-msgstr "¿Recuerdas tu contraseña? <0>Inicia sesión</0>```"
+msgstr "¿Recuerdas tu contraseña? <0>Inicia sesión</0>"
 
 #: src/routes/[locale]/auth/reset/+page.svelte
 msgid "Enter your email address and we'll send you a link to reset your password"
@@ -410,3 +489,406 @@ msgstr "Introduce tu dirección de correo electrónico y te enviaremos un enlace
 #: src/routes/[locale]/auth/reset/+page.svelte
 msgid "Please enter your email address"
 msgstr "Por favor, introduce tu dirección de correo electrónico"
+
+#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/+layout.svelte
+#: src/routes/admin/track/+page.svelte
+msgid "Hello!"
+msgstr "¡Hola!"
+
+#: src/routes/+error.svelte
+msgid "Error {0}"
+msgstr "Error {0}"
+
+#: src/routes/+error.svelte
+msgid "Something went wrong"
+msgstr "Algo salió mal"
+
+#: src/routes/+error.svelte
+msgid "HTTP Cat "
+msgstr "Gato HTTP"
+
+#: src/routes/+error.svelte
+msgid "Go Back"
+msgstr "Regresar"
+
+#: src/routes/+error.svelte
+msgid "Home Page"
+msgstr "Página de inicio"
+
+#: src/routes/+error.svelte
+msgid ""
+"The page you're looking for doesn't seem to exist. Perhaps the URL was mistyped or the page\n"
+"\t\t\t\thas been moved."
+msgstr ""
+"La página que estás buscando no parece existir. Quizás la URL fue mal escrita o la página\n"
+"\t\t\t\tha sido movida."
+
+#: src/routes/+error.svelte
+msgid ""
+"Looks like our server is having some trouble. Please try again later or contact support if\n"
+"\t\t\t\tthe issue persists."
+msgstr ""
+"Parece que nuestro servidor está teniendo algunos problemas. Por favor, inténtalo de nuevo más tarde o contacta con el soporte técnico si\n"
+"\t\t\t\tel problema persiste."
+
+#: src/routes/+error.svelte
+msgid "Error "
+msgstr "Error"
+
+#: src/routes/+error.svelte
+msgid "Houston, we have a problem"
+msgstr "Houston, tenemos un problema"
+
+#: src/routes/+error.svelte
+msgid "<0>Silly cats!</0> Rest assured this issue has been logged & reported."
+msgstr "<0>¡Gatos tontos!</0> Ten la seguridad de que este problema ha sido registrado e informado."
+
+#: src/routes/+error.svelte
+msgid "Oops! Something wasn't quite right with that request."
+msgstr "¡Ups! Algo no salió del todo bien con esa solicitud."
+
+#: src/routes/+error.svelte
+msgid "<0/> Back to safety"
+msgstr "<0/> Volver a la seguridad"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Hello!"
+msgstr "<0/> ¡Hola!"
+
+#: src/routes/(app)/+layout.svelte
+msgid "Logout <0/>"
+msgstr "Cerrar sesión <0/>"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Logout"
+msgstr "<0/> Cerrar sesión"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Assistance"
+msgstr "<0/> Asistencia"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> GDPR"
+msgstr "<0/> RGPD"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Data Privacy"
+msgstr "<0/> Privacidad de Datos"
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Yeah so no"
+msgstr "Sí, pues no."
+
+#: src/lib/ui/alert.svelte
+msgid "Close alert"
+msgstr "Cerrar alerta"
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "About your data"
+msgstr "Acerca de tus datos"
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "We will do our best not to leak it lol"
+msgstr "Haremos lo posible para no filtrarlos, lol"
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "DADDY"
+msgstr "PAPI"
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "About data privacy"
+msgstr "Acerca de la privacidad de los datos"
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Your personal information is collected and processed in accordance with GDPR and other applicable data protection laws. We use your data solely for onboarding and account creation purposes. Your information will not be shared with third parties without your consent, and you have the right to access, correct, or delete your data at any time."
+msgstr "Su información personal se recopila y procesa de acuerdo con el RGPD y otras leyes de protección de datos aplicables. Utilizamos sus datos únicamente para fines de incorporación y creación de cuentas. Su información no se compartirá con terceros sin su consentimiento, y usted tiene derecho a acceder, corregir o eliminar sus datos en cualquier momento."
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "You can read more about it <0>here</0>"
+msgstr "Puedes leer más sobre esto <0>aquí</0>"
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Data Privacy"
+msgstr "Privacidad de Datos"
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Your personal information is securely stored and handled in accordance with our privacy policy. You can read more about it <0>here</0>"
+msgstr "Su información personal se almacena y se gestiona de forma segura de acuerdo con nuestra política de privacidad. Puede leer más al respecto <0>aquí</0>."
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid ""
+"Your personal information is securely stored and handled in accordance with our privacy policy.\n"
+"\t\tYou can read more about it <0>here</0>"
+msgstr ""
+"Tu información personal se almacena y se maneja de forma segura de acuerdo con nuestra política de privacidad.\n"
+"\t\tPuedes leer más al respecto <0>aquí</0>"
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid ""
+"Your personal information is securely stored and handled in accordance with our privacy policy.\n"
+"\t\tYou can read more about it <0>here</0>."
+msgstr ""
+"Tu información personal se almacena y se gestiona de forma segura de acuerdo con nuestra política de privacidad.\n"
+"\t\tPuedes leer más al respecto <0>aquí</0>."
+
+#: src/routes/(app)/+page.svelte
+msgid "Welcome to NXTApply!"
+msgstr "¡Bienvenido a NXTApply!"
+
+#: src/routes/(app)/+page.svelte
+msgid "Your student application journey starts here. Follow the steps below to complete your application."
+msgstr "Tu viaje de solicitud de estudiante comienza aquí. Sigue los pasos a continuación para completar tu solicitud."
+
+#: src/routes/(app)/+page.svelte
+msgid "Your Next Steps"
+msgstr "Tus Próximos Pasos"
+
+#: src/routes/(app)/+page.svelte
+msgid "Completed"
+msgstr "Completado"
+
+#: src/routes/(app)/+page.svelte
+msgid "Pending"
+msgstr "Pendiente"
+
+#: src/routes/(app)/+page.svelte
+msgid "Upcoming"
+msgstr "Próximo"
+
+#: src/routes/(app)/+page.svelte
+msgid "Upload Documents"
+msgstr "Subir Documentos"
+
+#: src/routes/(app)/+page.svelte
+msgid "Contact Support"
+msgstr "Contactar a Soporte"
+
+#: src/routes/(app)/+page.svelte
+msgid "View Progress"
+msgstr "Ver Progreso"
+
+#: src/routes/(app)/+page.svelte
+msgid "Event Calendar"
+msgstr "Calendario de Eventos"
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid ""
+"Please fill in your personal information to get started.\n"
+"\n"
+"\t\t\tiqwdiuqwdiuqwiuqwdui"
+msgstr ""
+"Por favor, complete su información personal para comenzar.\n"
+"\n"
+"\t\t\tiqwdiuqwdiuqwiuqwdui"
+
+#: src/routes/admin/track/+page.svelte
+#: src/routes/admin/analytics/+page.svelte
+#: src/routes/admin/tracks/+page.svelte
+#: src/routes/admin/emails/+page.svelte
+#: src/routes/admin/users/+page.svelte
+msgid "Application Tracks"
+msgstr "Seguimientos de la Aplicación"
+
+#: src/routes/admin/track/+page.svelte
+#: src/routes/admin/analytics/+page.svelte
+#: src/routes/admin/tracks/+page.svelte
+#: src/routes/admin/emails/+page.svelte
+#: src/routes/admin/users/+page.svelte
+msgid "Edit"
+msgstr "Editar"
+
+#: src/routes/admin/track/+page.svelte
+#: src/routes/admin/analytics/+page.svelte
+#: src/routes/admin/tracks/+page.svelte
+#: src/routes/admin/emails/+page.svelte
+msgid "No description."
+msgstr "Sin descripción."
+
+#: src/routes/admin/track/+page.svelte
+#: src/routes/admin/analytics/+page.svelte
+#: src/routes/admin/tracks/+page.svelte
+#: src/routes/admin/emails/+page.svelte
+msgid "Created: {0}"
+msgstr "Creado: {0}"
+
+#: src/routes/admin/track/+page.svelte
+#: src/routes/admin/analytics/+page.svelte
+#: src/routes/admin/tracks/+page.svelte
+#: src/routes/admin/emails/+page.svelte
+#: src/routes/admin/users/+page.svelte
+msgid "Add New Track"
+msgstr "Añadir Nuevo Seguimiento"
+
+#: src/routes/(app)/[user]/break/+page.svelte
+msgid "Take a short break! You've earned it."
+msgstr "¡Tómate un breve descanso! Te lo has ganado."
+
+#: src/routes/(app)/[user]/break/+page.svelte
+msgid "Rest your mind before continuing to the next stage of your application."
+msgstr "Descansa tu mente antes de continuar con la siguiente etapa de tu solicitud."
+
+#: src/routes/(app)/[user]/break/+page.svelte
+msgid "Continue to Next Stage <0/>"
+msgstr "Continuar a la Siguiente Etapa <0/>"
+
+#: src/routes/admin/users/+page.svelte
+msgid "Joined: {0}"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "More"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Users"
+msgstr "Usuarios"
+
+#: src/routes/admin/users/+page.svelte
+msgid "Search users…"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "<0>+</0> Add User"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Add New User"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Search by email, name, or country..."
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "ID"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Name"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Verified"
+msgstr "Verificado"
+
+#: src/routes/admin/users/+page.svelte
+msgid "Country"
+msgstr "País"
+
+#: src/routes/admin/users/+page.svelte
+msgid "DOB"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Created"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Updated"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+#: src/lib/ui/table.svelte
+#: src/lib/ui/table/table.svelte
+msgid "Yes"
+msgstr "Sí"
+
+#: src/routes/admin/users/+page.svelte
+#: src/lib/ui/table.svelte
+#: src/lib/ui/table/table.svelte
+msgid "No"
+msgstr "No"
+
+#: src/routes/admin/users/+page.svelte
+msgid "Export to CSV"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "<0/> Export to CSV"
+msgstr "<0/> Exportar a CSV"
+
+#: src/routes/admin/users/+page.svelte
+msgid "Unknown"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "N/A"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Search by email, ..."
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Search by email, name, ..."
+msgstr "Buscar por correo electrónico, nombre, ..."
+
+#: src/routes/admin/users/+page.svelte
+msgid "<0/> Search"
+msgstr "<0/> Buscar"
+
+#: src/routes/admin/users/+page.svelte
+msgid "Nothing"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "<0/> No users found."
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "<0/> Previous"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Page {0} of {1}"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Next <0/>"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Id"
+msgstr "Id"
+
+#: src/routes/admin/users/+page.svelte
+msgid "Created at"
+msgstr "Creado en"
+
+#: src/lib/ui/table.svelte
+msgid "lel <0/>"
+msgstr ""
+
+#: src/routes/admin/users/+page.svelte
+msgid "Updated at"
+msgstr "Actualizado en"
+
+#: src/lib/ui/table.svelte
+#: src/lib/ui/table/table.svelte
+msgid "Actions"
+msgstr "Acciones"
+
+#: src/routes/admin/users/+page.svelte
+msgid "Yeah ?"
+msgstr "¿Sí?"
+
+#: src/routes/admin/users/+page.svelte
+msgid "Are you sure you want to delete this user?"
+msgstr "¿Estás seguro de que quieres eliminar a este usuario?"
+
+#: src/lib/ui/table/table.svelte
+msgid ""
+"( {0} {1} ago\n"
+"\t\t\t)"
+msgstr ""
+"( Hace {0} {1}\n"
+"\t\t\t)```"
+
+#: src/routes/admin/users/+page.svelte
+msgid "<0/> Export Page to CSV"
+msgstr "<0/> Exportar página a CSV"
+
+#: src/routes/admin/users/+page.svelte
+msgid "<0/> Export All to CSV"
+msgstr "<0/> Exportar todo a CSV"

@@ -3,13 +3,11 @@
 // See README in the root project for more information.
 // ============================================================================
 
-import type { Actions, PageServerLoad } from './$types';
-import { error, fail, redirect } from '@sveltejs/kit';
+import type { Actions } from './$types';
+import { redirect } from '@sveltejs/kit';
 import { dev } from '$app/environment';
-import { env } from '$env/dynamic/private';
 import { Toasty } from '$lib/index.svelte';
 import z from 'zod/v4';
-import { Database, type SQLQueryBindings } from 'bun:sqlite';
 import type { User } from '@prisma/client';
 
 // ============================================================================

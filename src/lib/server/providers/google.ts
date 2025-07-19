@@ -26,7 +26,7 @@ export interface GoogleUser {
 export const google = new Google(
 	GOOGLE_CLIENT_ID,
 	GOOGLE_CLIENT_SECRET,
-	"http://localhost:5174/oauth/google/callback"
+	"http://localhost:5174/auth/provider/google/callback"
 );
 
 /**

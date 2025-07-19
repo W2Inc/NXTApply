@@ -26,7 +26,7 @@
 	>
 		{@render trigger(open)}
 	</summary>
-	<div class="bg-popover absolute right-0 z-30 min-w-[128px] rounded-md border py-2 shadow-md">
+	<div class="bg-popover absolute right-0 z-30 rounded-md border shadow-md">
 		{@render children?.()}
 	</div>
 </details>

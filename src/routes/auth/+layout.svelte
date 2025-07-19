@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { env } from '$env/dynamic/public';
+	import Language from '$lib/ui/language.svelte';
+	import Theme from '$lib/ui/theme.svelte';
 
 	const { children } = $props();
 </script>
@@ -15,6 +17,11 @@
 		</div>
 
 		<div class="mx-auto w-full max-w-md rounded border">
+			<!-- Top right utility -->
+			<div class="w-min ml-auto border-l border-b rounded-bl flex">
+				<Language />
+				<Theme />
+			</div>
 			{@render children()}
 		</div>
 

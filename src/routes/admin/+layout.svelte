@@ -13,13 +13,27 @@
 		Moon,
 		Sun,
 		Menu,
-		X
+		X,
+
+		Route,
+
+		ChartLine,
+
+		Mail,
+
+		WavesLadder
+
+
+
+
 	} from '@lucide/svelte';
 	import { onMount } from 'svelte';
 	import type { LayoutProps } from './$types';
 	import Theme from '$lib/ui/theme.svelte';
 	import Dropdown from '$lib/ui/dropdown.svelte';
 	import Language from '$lib/ui/language.svelte';
+	import { PUBLIC_APP_NAME } from '$env/static/public';
+	import { page } from '$app/state';
 
 	// User information
 	const userName = 'W2Wizard';
@@ -30,54 +44,18 @@
 
 	// Navigation items
 	const navItems = [
-		{ name: 'Dashboard', icon: Home, href: '/', active: true },
-		{ name: 'Users', icon: Users, href: '/users', active: false },
-		{ name: 'Reports', icon: FileText, href: '/reports', active: false },
-		{ name: 'Analytics', icon: BarChart3, href: '/analytics', active: false },
-		{ name: 'Calendar', icon: Calendar, href: '/calendar', active: false },
-		{ name: 'Settings', icon: Settings, href: '/settings', active: false }
+		{ name: 'Dashboard', icon: Home, href: '/admin'},
+		{ name: 'Users', icon: Users, href: '/admin/users' },
+		{ name: 'Tracks', icon: Route, href: '/admin/tracks' },
+		{ name: 'Analytics', icon: ChartLine, href: '/admin/analytics' },
+		{ name: 'Emails', icon: Mail, href: '/admin/emails' },
+		{ name: 'Piscine', icon: WavesLadder, href: '/admin/piscine' }
 	];
 
-	// App info
-	const appName = 'Admin Portal';
-	const logoUrl = '/favicon.svg';
 
-	// State management
-	let darkMode = $state(false);
 	let sidebarOpen = $state(false);
-	let userMenuOpen = $state(false);
 
-	// Toggle dark mode
-	function toggleDarkMode() {
-		darkMode = !darkMode;
-		if (darkMode) {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
-	}
 
-	// Close menus when clicking outside
-	function handleClickOutside(event) {
-		const userMenu = document.getElementById('user-menu');
-		if (userMenu && !userMenu.contains(event.target)) {
-			userMenuOpen = false;
-		}
-	}
-
-	onMount(() => {
-		document.addEventListener('click', handleClickOutside);
-
-		// Check system preference for dark mode
-		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			darkMode = true;
-			document.documentElement.classList.add('dark');
-		}
-
-		return () => {
-			document.removeEventListener('click', handleClickOutside);
-		};
-	});
 
 	const { children }: LayoutProps = $props();
 </script>
@@ -97,17 +75,12 @@
 				</button>
 
 				<div class="flex items-center space-x-3">
-					<img src={logoUrl} alt="Logo" class="h-8 w-8" />
-					<span class="hidden text-lg font-semibold tracking-tight sm:inline-block">{appName}</span>
+					<img src="/favicon.svg" alt="Logo" class="h-8 w-8" />
+					<span class="hidden text-lg font-semibold tracking-tight sm:inline-block">{PUBLIC_APP_NAME}</span>
 				</div>
 			</div>
 
-			<div class="flex items-center space-x-4">
-				<button class="hover:bg-muted relative rounded-full p-1">
-					<Bell size={18} />
-					<span class="bg-primary absolute top-0 right-0 h-2 w-2 rounded-full"></span>
-				</button>
-
+			<div class="flex items-center">
 				<Theme />
 				<Language />
 				<Dropdown>
@@ -118,19 +91,13 @@
 							<span class="text-sm font-medium">{userName.charAt(0)}</span>
 						</div>
 						<div class="hidden text-left md:block">
-							<div class="text-sm font-medium">{userName}</div>
-							<div class="text-muted-foreground text-xs">{userRole}</div>
+							<p class="text-sm font-medium">{userName}</p>
+							<p class="text-muted-foreground text-xs">{userRole}</p>
 						</div>
-						<ChevronDown
-							size={16}
-							class="text-muted-foreground hidden transition-transform sm:block {userMenuOpen
-								? 'rotate-180'
-								: ''}"
-						/>
 					{/snippet}
 					<div class="border-b px-4 py-2">
-						<div class="text-sm font-medium">{userName}</div>
-						<div class="text-muted-foreground text-xs">{userRole}</div>
+						<p class="text-sm font-medium">{userName}</p>
+						<p class="text-muted-foreground text-xs">{userRole}</p>
 					</div>
 					<a
 						href="/profile"
@@ -139,20 +106,15 @@
 						<User size={16} class="mr-2" />
 						<span>Profile</span>
 					</a>
-					<a
-						href="/settings"
-						class="hover:bg-accent hover:text-accent-foreground flex items-center px-4 py-2 text-sm transition-colors"
-					>
-						<Settings size={16} class="mr-2" />
-						<span>Settings</span>
-					</a>
-					<div class="my-1 border border-t"></div>
-					<button
-						class="hover:bg-accent hover:text-accent-foreground flex w-full items-center px-4 py-2 text-sm transition-colors"
-					>
-						<LogOut size={16} class="mr-2" />
-						<span>Logout</span>
-					</button>
+					<hr />
+					<form method="POST" action="/auth/sign-out">
+						<button
+							class="hover:bg-accent hover:text-accent-foreground flex w-full items-center px-4 py-2 text-sm transition-colors"
+						>
+							<LogOut size={16} class="mr-2" />
+							<span>Logout</span>
+						</button>
+					</form>
 				</Dropdown>
 			</div>
 		</div>
@@ -174,36 +136,20 @@
 
 				<nav class="space-y-1">
 					{#each navItems as item}
+						{@const active = page.url.pathname.endsWith(item.href)}
 						<a
 							href={item.href}
-							class="flex items-center rounded-md px-3 py-2 {item.active
-								? 'bg-sidebar-accent text-sidebar-accent-foreground'
-								: 'hover:bg-sidebar-primary/10'} transition-colors"
+							class="flex items-center rounded-md px-3 py-2 hover:bg-sidebar-primary/10 transition-colors"
 						>
 							<svelte:component this={item.icon} size={18} class="mr-3" />
 							<span>{item.name}</span>
-							{#if item.active}
+							{#if active}
 								<span class="bg-sidebar-primary ml-auto h-1.5 w-1.5 rounded-full"></span>
 							{/if}
 						</a>
 					{/each}
 				</nav>
 
-				<div
-					class="text-sidebar-foreground/60 mt-8 mb-4 text-xs font-medium tracking-wider uppercase"
-				>
-					System
-				</div>
-
-				<nav class="space-y-1">
-					<a
-						href="/settings"
-						class="hover:bg-sidebar-primary/10 flex items-center rounded-md px-3 py-2 transition-colors"
-					>
-						<Settings size={18} class="mr-3" />
-						<span>Settings</span>
-					</a>
-				</nav>
 
 				<!-- Spacer to push user info to bottom -->
 				<div class="flex-grow"></div>
