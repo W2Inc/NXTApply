@@ -48,7 +48,7 @@
 					<th class="px-4 py-3 text-left text-xs font-semibold">{column.label}</th>
 				{/each}
 				{#if action}
-					<th class="px-4 py-3 text-left text-xs font-semibold">Actions</th>
+					<th class="px-4 py-3 text-right text-xs font-semibold">Actions</th>
 				{/if}
 			</tr>
 		</thead>
@@ -73,7 +73,7 @@
 						</td>
 					{/each}
 					{#if action}
-						<td class="px-4 py-3">
+						<td class="px-4 py-3 text-end">
 							{@render action(item)}
 						</td>
 					{/if}
@@ -81,7 +81,7 @@
 			{/each}
 			{#if data.length === 0}
 				<tr>
-					<td colspan={columns.length} class="text-muted-foreground px-4 py-6 text-center">
+					<td colspan={columns.length + (action ? 1 : 0)} class="text-muted-foreground px-4 py-6 text-center">
 						<span class="inline-flex items-center gap-2 text-sm">
 							{emptyMessage}
 						</span>

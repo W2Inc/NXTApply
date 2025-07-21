@@ -9,6 +9,7 @@ import { dev } from '$app/environment';
 import { Toasty } from '$lib/index.svelte';
 import z from 'zod/v4';
 import type { User } from '@prisma/client';
+import type { FormErrorObject, FormOutputObject } from '$lib/utils';
 
 // ============================================================================
 
@@ -17,7 +18,7 @@ const schema = z.object({
 	password: z.string().min(4).max(256),
 });
 
-export type FormEntries = z.infer<typeof schema>;
+export type FormOutput = FormOutputObject<typeof schema>;
 
 // ============================================================================
 

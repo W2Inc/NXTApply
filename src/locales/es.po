@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-16T12:06:17.937Z\n"
-"PO-Revision-Date: 2025-07-18T14:54:04.684Z\n"
+"PO-Revision-Date: 2025-07-21T14:49:53.027Z\n"
 "Last-Translator: \n"
 "Language: Spanish\n"
 "Language-Team: \n"
@@ -40,6 +40,7 @@ msgstr "Cerrar sesión"
 
 #: src/lib/ui/form.svelte
 #: src/routes/admin/track/+page.svelte
+#: src/lib/ui/form/form.svelte
 msgid "Loading..."
 msgstr "Cargando..."
 
@@ -52,10 +53,12 @@ msgid "Password does not match"
 msgstr "Las contraseñas no coinciden"
 
 #: src/lib/ui/form-entry.svelte
+#: src/lib/ui/form/entry.svelte
 msgid "Invalid format"
 msgstr "Formato inválido"
 
 #: src/lib/ui/form-entry.svelte
+#: src/lib/ui/form/entry.svelte
 msgid "Invalid value"
 msgstr "Valor inválido"
 
@@ -695,6 +698,7 @@ msgstr "Seguimientos de la Aplicación"
 #: src/routes/admin/tracks/+page.svelte
 #: src/routes/admin/emails/+page.svelte
 #: src/routes/admin/users/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
 msgid "Edit"
 msgstr "Editar"
 
@@ -702,6 +706,7 @@ msgstr "Editar"
 #: src/routes/admin/analytics/+page.svelte
 #: src/routes/admin/tracks/+page.svelte
 #: src/routes/admin/emails/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
 msgid "No description."
 msgstr "Sin descripción."
 
@@ -709,6 +714,7 @@ msgstr "Sin descripción."
 #: src/routes/admin/analytics/+page.svelte
 #: src/routes/admin/tracks/+page.svelte
 #: src/routes/admin/emails/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
 msgid "Created: {0}"
 msgstr "Creado: {0}"
 
@@ -741,6 +747,9 @@ msgid "More"
 msgstr ""
 
 #: src/routes/admin/users/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
+#: src/routes/admin/resources/users/+page.svelte
+#: src/routes/admin/resources/+layout.svelte
 msgid "Users"
 msgstr "Usuarios"
 
@@ -821,10 +830,18 @@ msgid "Search by email, ..."
 msgstr ""
 
 #: src/routes/admin/users/+page.svelte
+#: src/routes/admin/tracks/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
+#: src/routes/admin/resources/users/+page.svelte
+#: src/routes/admin/resources/+layout.svelte
 msgid "Search by email, name, ..."
 msgstr "Buscar por correo electrónico, nombre, ..."
 
 #: src/routes/admin/users/+page.svelte
+#: src/routes/admin/tracks/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
+#: src/routes/admin/resources/users/+page.svelte
+#: src/routes/admin/resources/+layout.svelte
 msgid "<0/> Search"
 msgstr "<0/> Buscar"
 
@@ -890,5 +907,79 @@ msgid "<0/> Export Page to CSV"
 msgstr "<0/> Exportar página a CSV"
 
 #: src/routes/admin/users/+page.svelte
+#: src/routes/admin/tracks/+page.svelte
+#: src/routes/admin/resources/users/+page.svelte
+#: src/routes/admin/resources/+layout.svelte
 msgid "<0/> Export All to CSV"
 msgstr "<0/> Exportar todo a CSV"
+
+#: src/routes/admin/users/+page.svelte
+msgid "GET"
+msgstr "GET"
+
+#: src/routes/admin/users/+page.svelte
+msgid "<0/> Add"
+msgstr "<0/> Añadir"
+
+#: src/routes/admin/users/+page.svelte
+msgid "<0/> Create User"
+msgstr "<0/> Crear usuario"
+
+#: src/lib/ui/form/form.svelte
+msgid "Success!"
+msgstr "¡Éxito!"
+
+#: src/lib/ui/form/form.svelte
+msgid "Something went wrong!"
+msgstr "¡Algo salió mal!"
+
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Balls!"
+msgstr "¡Pelotas!```"
+
+#: src/routes/admin/users/+page.svelte
+#: src/routes/admin/resources/users/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
+msgid "Are you sure you want to continue ?"
+msgstr "¿Estás seguro de que quieres continuar?"
+
+#: src/lib/ui/dialog.svelte
+msgid "Greetings, one and all!"
+msgstr "¡Saludos a todos y cada uno!"
+
+#: src/lib/ui/dialog.svelte
+msgid "OK"
+msgstr "Aceptar"
+
+#: src/lib/ui/dialog.svelte
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/lib/ui/dialog.svelte
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: src/routes/admin/tracks/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
+msgid "<0/> Create new Track"
+msgstr "<0/> Crear nueva pista```"
+
+#: src/routes/admin/+layout.svelte
+msgid "A"
+msgstr "A"
+
+#: src/routes/admin/+layout.svelte
+msgid "Administrator"
+msgstr "Administrador"
+
+#: src/routes/admin/resources/+layout.svelte
+msgid "Search"
+msgstr "Buscar```"
+
+#: src/routes/admin/resources/tracks/+page.svelte
+msgid "Set as Active"
+msgstr "Establecer como Activo"
+
+#: src/routes/admin/resources/tracks/+page.svelte
+msgid "Delete"
+msgstr "Borrar"

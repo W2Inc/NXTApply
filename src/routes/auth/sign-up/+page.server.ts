@@ -11,9 +11,11 @@ import { Toasty } from '$lib/index.svelte';
 import z from 'zod/v4';
 import { Database, type SQLQueryBindings } from 'bun:sqlite';
 import type { User } from '@prisma/client';
+import type { FormErrorObject, FormOutputObject } from '$lib/utils';
 
 // ============================================================================
 
+export type FormOutput = FormOutputObject<typeof schema>;
 const schema = z.object({
 	email: z.email(),
 	password: z.string().min(4).max(256),
@@ -30,7 +32,6 @@ const schema = z.object({
 		.regex(/^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$/)
 });
 
-export type FormEntries = z.infer<typeof schema>;
 
 // ============================================================================
 

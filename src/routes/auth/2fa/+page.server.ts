@@ -10,6 +10,7 @@ import { Auth } from '$lib/auth.svelte';
 import { z } from 'zod/v4';
 import type { User } from '@prisma/client';
 import { Toasty } from '$lib/index.svelte';
+import type { FormOutputObject } from '$lib/utils';
 
 // ============================================================================
 
@@ -29,7 +30,7 @@ const schema = z.object({
 	otp: z.string()
 });
 
-export type FormEntries = z.infer<typeof schema>;
+export type FormOutput = FormOutputObject<typeof schema>;
 
 // ============================================================================
 

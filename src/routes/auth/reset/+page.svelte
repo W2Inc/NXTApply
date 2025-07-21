@@ -1,12 +1,12 @@
 <script lang="ts">
 	import Button from '$lib/ui/button.svelte';
-	import FormEntry from '$lib/ui/form-entry.svelte';
 	import Input from '$lib/ui/input.svelte';
 	import { Key, LogIn, Mail, Save } from '@lucide/svelte';
 	import OAuth from '../oauth.svelte';
-	import Form from '$lib/ui/form.svelte';
 	import type { PageProps } from './$types';
-	import type { FormUpdatePassword, FormResetPassword } from './+page.server';
+	import Form from '$lib/ui/form/form.svelte';
+	import Entry from '$lib/ui/form/entry.svelte';
+	import type { FormReset, FormUpdate } from './+page.server';
 
 	const { data }: PageProps = $props();
 </script>
@@ -20,9 +20,10 @@
 		</div>
 
 		<div class="space-y-2">
-			<Form class="space-y-2" type={{} as FormUpdatePassword}>
-				{#snippet child({ errors })}
-					<FormEntry name="password" label="New Password">
+			<Form class="space-y-2">
+				{#snippet fields(out)}
+					{@const form = out as FormUpdate}
+					<Entry name="password" label="New Password" errors={form.errors.password}>
 						{#snippet child(props)}
 							<Input
 								icon={Key}
@@ -33,9 +34,9 @@
 								{...props}
 							/>
 						{/snippet}
-					</FormEntry>
+					</Entry>
 
-					<FormEntry name="confirmPassword" label="Confirm Password">
+					<Entry name="confirmPassword" label="Confirm Password" errors={form.errors.confirm}>
 						{#snippet child(props)}
 							<Input
 								icon={Key}
@@ -46,7 +47,7 @@
 								{...props}
 							/>
 						{/snippet}
-					</FormEntry>
+					</Entry>
 
 					<div class="space-y-3">
 						<Button type="submit" icon={Save} variant="outline" class="w-full">Set Password</Button>
@@ -67,9 +68,10 @@
 		</div>
 
 		<div class="space-y-2">
-			<Form class="space-y-2" type={{} as FormResetPassword}>
-				{#snippet child({ errors })}
-					<FormEntry name="email" label="Email">
+			<Form class="space-y-2">
+				{#snippet fields(out)}
+					{@const form = out as FormReset}
+					<Entry name="email" label="Email" errors={form.errors.email}>
 						{#snippet child(props)}
 							<Input
 								icon={Mail}
@@ -80,7 +82,7 @@
 								{...props}
 							/>
 						{/snippet}
-					</FormEntry>
+					</Entry>
 
 					<div class="space-y-3">
 						<Button type="submit" icon={Mail} variant="outline" class="w-full">Send Reset Link</Button>

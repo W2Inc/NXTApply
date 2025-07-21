@@ -2,6 +2,7 @@ node_modules
 *.db
 *.db-wal
 *.db-shm
+*.nope.*
 
 src/locales/*.js
 

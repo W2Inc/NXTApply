@@ -1,3 +1,8 @@
+// ============================================================================
+// W2Inc, Amsterdam 2023, All Rights Reserved.
+// See README in the root project for more information.
+// ============================================================================
+
 import { error, redirect, type Cookies } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 import { Auth } from '$lib/auth.svelte';
@@ -8,11 +13,23 @@ import { createTOTPKeyURI, verifyTOTPWithGracePeriod } from '@oslojs/otp';
 import * as QR from 'uqr';
 import z from 'zod/v4';
 import { Toasty } from '$lib/index.svelte';
+import type { FormOutputObject } from '$lib/utils';
+
+// ============================================================================
+
+export type FormOutput = FormOutputObject<typeof schema>;
+const schema = z.object({
+	otp: z.string()
+});
+
+// ============================================================================
 
 function cleanupCookies(cookies: Cookies) {
 	cookies.delete(Auth.IDENTITY_COOKIE, { path: '/' });
 	cookies.delete(Auth.OTP_KEY_COOKIE, { path: '/' });
 }
+
+// ============================================================================
 
 export const load: PageServerLoad = async ({ locals, cookies }) => {
 	if (locals.session) {
@@ -58,11 +75,7 @@ export const load: PageServerLoad = async ({ locals, cookies }) => {
 	};
 };
 
-const schema = z.object({
-	otp: z.string()
-});
-
-export type FormEntries = z.infer<typeof schema>;
+// ============================================================================
 
 export const actions: Actions = {
 	default: async ({ locals, cookies, request }) => {

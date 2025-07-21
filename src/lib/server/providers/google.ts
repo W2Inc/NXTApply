@@ -8,7 +8,7 @@ import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '$env/static/private';
 import { error, redirect, type RequestEvent } from '@sveltejs/kit';
 import type { User } from '@prisma/client';
 import { Auth } from '$lib/auth.svelte';
-import { UserFlag } from '$lib/types';
+import { UserFlag } from '$lib/utils';
 
 // ============================================================================
 

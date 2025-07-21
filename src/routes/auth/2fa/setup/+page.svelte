@@ -1,11 +1,11 @@
 <script lang="ts">
 	import Button from '$lib/ui/button.svelte';
-	import Form from '$lib/ui/form.svelte';
-	import FormEntry from '$lib/ui/form-entry.svelte';
 	import { ShieldCheck, LockKeyhole } from '@lucide/svelte';
 	import type { PageData, PageProps } from './$types';
 	import Input from '$lib/ui/input.svelte';
-	import type { FormEntries } from './+page.server';
+	import type { FormOutput } from './+page.server';
+	import Form from '$lib/ui/form/form.svelte';
+	import Entry from '$lib/ui/form/entry.svelte';
 
 	const { data }: PageProps = $props();
 
@@ -22,8 +22,9 @@
 		</p>
 	</div>
 
-	<Form class="space-y-4" method="POST" type={{} as FormEntries}>
-		{#snippet child({ errors })}
+	<Form class="space-y-4">
+		{#snippet fields(out)}
+			{@const form = out as FormOutput}
 			<div class="bg-muted flex min-h-[128px] items-center justify-center rounded p-4">
 				{#if checked}
 					<p class="p-4 font-mono text-sm break-words break-all">
@@ -44,7 +45,7 @@
 				enter the secret key manually.
 			</p>
 
-			<FormEntry name="otp" label="Verification Code" errors={[]}>
+			<Entry name="otp" label="Verification Code" errors={form.errors.otp}>
 				{#snippet child(props)}
 					<Input
 						icon={LockKeyhole}
@@ -55,13 +56,20 @@
 						autocomplete="off"
 						autofocus
 						required
+						disabled={form.loading}
 						{...props}
 					/>
 				{/snippet}
-			</FormEntry>
+			</Entry>
 
 			<div class="space-y-3">
-				<Button type="submit" icon={ShieldCheck} variant="outline" class="w-full" {disabled}>
+				<Button
+					type="submit"
+					icon={ShieldCheck}
+					variant="outline"
+					class="w-full"
+					disabled={disabled || form.loading}
+				>
 					Verify and Enable 2FA
 				</Button>
 			</div>

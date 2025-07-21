@@ -1,10 +1,10 @@
 <script lang="ts">
 	import Phone from '@lucide/svelte/icons/smartphone';
 	import Input from '$lib/ui/input.svelte';
-	import Form from '$lib/ui/form.svelte';
-	import FormEntry from '$lib/ui/form-entry.svelte';
-	import type { FormEntries } from './+page.server';
+	import type { FormOutput } from './+page.server';
 	import Button from '$lib/ui/button.svelte';
+	import Entry from '$lib/ui/form/entry.svelte';
+	import Form from '$lib/ui/form/form.svelte';
 </script>
 
 <form method="post" class="max-w-sm">
@@ -13,9 +13,10 @@
 			<Phone />
 			<h1>Authentication code</h1>
 		</div>
-		<Form type={{} as FormEntries}>
-			{#snippet child({ errors })}
-				<FormEntry name="otp" errors={errors.otp}>
+		<Form>
+			{#snippet fields(out)}
+				{@const form = out as FormOutput}
+				<Entry name="otp" errors={form.errors.otp}>
 					{#snippet child(props)}
 						<Input
 							type="text"
@@ -31,7 +32,7 @@
 							{...props}
 						/>
 					{/snippet}
-				</FormEntry>
+				</Entry>
 			{/snippet}
 		</Form>
 

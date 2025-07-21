@@ -14,20 +14,11 @@
 		Sun,
 		Menu,
 		X,
-
 		Route,
-
 		ChartLine,
-
 		Mail,
-
 		WavesLadder
-
-
-
-
 	} from '@lucide/svelte';
-	import { onMount } from 'svelte';
 	import type { LayoutProps } from './$types';
 	import Theme from '$lib/ui/theme.svelte';
 	import Dropdown from '$lib/ui/dropdown.svelte';
@@ -35,29 +26,18 @@
 	import { PUBLIC_APP_NAME } from '$env/static/public';
 	import { page } from '$app/state';
 
-	// User information
-	const userName = 'W2Wizard';
-	const userRole = 'Administrator';
-
-	// Current date and time
-	const currentDate = '2025-07-15 19:24:35';
-
 	// Navigation items
 	const navItems = [
-		{ name: 'Dashboard', icon: Home, href: '/admin'},
-		{ name: 'Users', icon: Users, href: '/admin/users' },
-		{ name: 'Tracks', icon: Route, href: '/admin/tracks' },
+		{ name: 'Dashboard', icon: Home, href: '/admin' },
+		{ name: 'Users', icon: Users, href: '/admin/resources/users' },
+		{ name: 'Tracks', icon: Route, href: '/admin/resources/tracks' },
 		{ name: 'Analytics', icon: ChartLine, href: '/admin/analytics' },
 		{ name: 'Emails', icon: Mail, href: '/admin/emails' },
 		{ name: 'Piscine', icon: WavesLadder, href: '/admin/piscine' }
 	];
 
-
 	let sidebarOpen = $state(false);
-
-
-
-	const { children }: LayoutProps = $props();
+	const { data, children }: LayoutProps = $props();
 </script>
 
 <div class="bg-background flex min-h-screen flex-col">
@@ -76,7 +56,9 @@
 
 				<div class="flex items-center space-x-3">
 					<img src="/favicon.svg" alt="Logo" class="h-8 w-8" />
-					<span class="hidden text-lg font-semibold tracking-tight sm:inline-block">{PUBLIC_APP_NAME}</span>
+					<span class="hidden text-lg font-semibold tracking-tight sm:inline-block">
+						{PUBLIC_APP_NAME}
+					</span>
 				</div>
 			</div>
 
@@ -88,17 +70,12 @@
 						<div
 							class="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center rounded-full"
 						>
-							<span class="text-sm font-medium">{userName.charAt(0)}</span>
+							<span class="text-sm font-medium">A</span>
 						</div>
 						<div class="hidden text-left md:block">
-							<p class="text-sm font-medium">{userName}</p>
-							<p class="text-muted-foreground text-xs">{userRole}</p>
+							<p class="text-sm font-medium">Administrator</p>
 						</div>
 					{/snippet}
-					<div class="border-b px-4 py-2">
-						<p class="text-sm font-medium">{userName}</p>
-						<p class="text-muted-foreground text-xs">{userRole}</p>
-					</div>
 					<a
 						href="/profile"
 						class="hover:bg-accent hover:text-accent-foreground flex items-center px-4 py-2 text-sm transition-colors"
@@ -139,7 +116,7 @@
 						{@const active = page.url.pathname.endsWith(item.href)}
 						<a
 							href={item.href}
-							class="flex items-center rounded-md px-3 py-2 hover:bg-sidebar-primary/10 transition-colors"
+							class="hover:bg-sidebar-primary/10 flex items-center rounded-md px-3 py-2 transition-colors"
 						>
 							<svelte:component this={item.icon} size={18} class="mr-3" />
 							<span>{item.name}</span>
@@ -150,24 +127,8 @@
 					{/each}
 				</nav>
 
-
 				<!-- Spacer to push user info to bottom -->
 				<div class="flex-grow"></div>
-
-				<!-- Current User Information (Mobile Only) -->
-				<div class="border-sidebar-border mt-auto border-t p-4 md:hidden">
-					<div class="flex items-center space-x-3">
-						<div
-							class="bg-primary text-primary-foreground flex h-8 w-8 items-center justify-center rounded-full"
-						>
-							<span class="text-sm font-medium">{userName.charAt(0)}</span>
-						</div>
-						<div>
-							<div class="text-sm font-medium">{userName}</div>
-							<div class="text-muted-foreground text-xs">{userRole}</div>
-						</div>
-					</div>
-				</div>
 			</div>
 		</aside>
 

@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Button from '$lib/ui/button.svelte';
-	import FormEntry from '$lib/ui/form-entry.svelte';
 	import Input from '$lib/ui/input.svelte';
 	import { Key, LogIn, Mail } from '@lucide/svelte';
 	import OAuth from '../oauth.svelte';
-	import Form from '$lib/ui/form.svelte';
+	import Entry from '$lib/ui/form/entry.svelte';
+	import Form from '$lib/ui/form/form.svelte';
+	import type { FormOutput } from './proxy+page.server';
 </script>
 
 <div class="space-y-6 p-8">
@@ -14,9 +15,10 @@
 	</div>
 
 	<div class="space-y-2">
-		<Form class="space-y-2" type={{} as FormEntry}>
-			{#snippet child({ errors })}
-				<FormEntry name="email" label="Email">
+		<Form class="space-y-2">
+			{#snippet fields(f)}
+				{@const form = f as FormOutput}
+				<Entry name="email" label="Email" errors={form.errors.email} description="Balls!">
 					{#snippet child(props)}
 						<Input
 							icon={Mail}
@@ -27,9 +29,9 @@
 							{...props}
 						/>
 					{/snippet}
-				</FormEntry>
+				</Entry>
 
-				<FormEntry name="password" label="Password">
+				<Entry name="password" label="Password" errors={form.errors.password}>
 					{#snippet child(props)}
 						<div class="tracking-tight">
 							<Input
@@ -40,12 +42,10 @@
 								title="Please give a valid Password"
 								{...props}
 							/>
-							<a href="./reset" class="text-primary text-xs hover:underline">
-								Reset Password
-							</a>
+							<a href="./reset" class="text-primary text-xs hover:underline"> Reset Password </a>
 						</div>
 					{/snippet}
-				</FormEntry>
+				</Entry>
 
 				<div class="space-y-3">
 					<Button type="submit" icon={LogIn} variant="outline" class="w-full">Sign In</Button>

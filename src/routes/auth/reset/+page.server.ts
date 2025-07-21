@@ -7,11 +7,11 @@ import type { Actions, PageServerLoad } from './$types';
 import { Toasty } from '$lib/index.svelte';
 import z from 'zod/v4';
 import type { User } from '@prisma/client';
+import type { FormErrorObject, FormOutputObject } from '$lib/utils';
 
 // ============================================================================
 
 export const load: PageServerLoad = async ({ url }) => {
-
 	return {
 		newPassword: url.searchParams.has("token")
 	}
@@ -19,18 +19,18 @@ export const load: PageServerLoad = async ({ url }) => {
 
 // ============================================================================
 
-/** Schema to update a password */
+export type FormUpdate = FormOutputObject<typeof updateSchema>;
 const updateSchema = z.object({
 	password: z.string().min(4).max(256),
 	confirm: z.string().min(4).max(256),
 });
-export type FormUpdatePassword = z.infer<typeof updateSchema>;
 
-/** Schema to request a password reset */
+
+export type FormReset = FormOutputObject<typeof resetSchema>;
 const resetSchema = z.object({
 	email: z.email(),
 });
-export type FormResetPassword = z.infer<typeof resetSchema>;
+
 
 // ============================================================================
 

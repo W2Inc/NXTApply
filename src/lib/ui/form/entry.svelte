@@ -1,15 +1,16 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
-	import type { HTMLInputAttributes } from 'svelte/elements';
 
-	interface Props extends HTMLInputAttributes {
-		label?: string;
+	interface Props {
 		name: string;
+		label?: string;
+		description?: string;
 		errors?: string[];
 		child?: Snippet<[{ name: string }]>;
 	}
 
-	const { name, errors, label = 'Hello!', child, ...rest }: Props = $props();
+
+	let { name, errors, label = 'Hello!', description, child }: Props = $props();
 </script>
 
 <div>
@@ -19,12 +20,16 @@
 		</label>
 	{/if}
 	<div class="flex flex-col gap-2">
-		{@render child?.({ name })}
+		{@render child?.({name})}
 	</div>
-	{#if errors}
+	{#if !errors || errors.length === 0}
+		{#if description}
+			<span class="text-xs text-muted-foreground py-1">{description}</span>
+		{/if}
+	{:else}
 		{#each errors as error}
 			<span class="text-destructive animate-pulse text-xs italic">
-				{#if error === "invalid_format"}
+				{#if error === 'invalid_format'}
 					Invalid format
 				{:else}
 					Invalid value
