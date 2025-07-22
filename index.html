@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Guessing Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f8ff;
+            padding: 20px;
+        }
+
+        #game-container {
+            display: none;
+            text-align: center;
+        }
+
+        #word-display {
+            font-size: 2.5em;
+            letter-spacing: 0.2em;
+            margin: 20px 0;
+            font-family: monospace;
+        }
+
+        #guess-input {
+            font-size: 1.2em;
+            width: 40px;
+            text-align: center;
+            margin: 10px;
+            text-transform: lowercase;
+        }
+
+        #message {
+            margin: 20px;
+            font-size: 1.2em;
+            min-height: 1.2em;
+        }
+
+        .stats {
+            margin: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .waiting {
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="waiting" class="waiting">
+        Waiting for game to start...
+    </div>
+
+    <div id="game-container">
+        <h2>Guess the Word</h2>
+        <div class="stats">
+            Attempts left: <span id="attempts">6</span> |
+            Letters tried: <span id="tried-letters"></span>
+        </div>
+        <div id="word-display"></div>
+        <input type="text" id="guess-input" maxlength="1" placeholder="?" />
+        <div id="message"></div>
+    </div>
+
+    <script>
+        class WordGuessingGame {
+            constructor() {
+                this.words = ['javascript', 'programming', 'computer', 'algorithm', 'database'];
+                this.token = null;
+                this.isRunning = false;
+                this.startTime = 0;
+
+                // Game state
+                this.word = '';
+                this.guessedLetters = new Set();
+                this.attemptsLeft = 6;
+                this.gameWon = false;
+
+                // DOM elements
+                this.wordDisplay = document.getElementById('word-display');
+                this.guessInput = document.getElementById('guess-input');
+                this.message = document.getElementById('message');
+                this.attemptsSpan = document.getElementById('attempts');
+                this.triedLetters = document.getElementById('tried-letters');
+                this.waiting = document.getElementById('waiting');
+                this.gameContainer = document.getElementById('game-container');
+
+                // Setup listeners
+                window.addEventListener('message', this.handleMessage.bind(this));
+                this.guessInput.addEventListener('input', (event) => {
+										this.handleGuess(event);
+								});
+
+                // Anti-cheat
+                this.setupAntiCheat();
+
+								this.token = crypto.randomUUID();
+                        this.isRunning = true;
+                        this.startTime = Date.now();
+                        this.init();
+            }
+
+            init() {
+                this.word = this.words[Math.floor(Math.random() * this.words.length)];
+                this.guessedLetters.clear();
+                this.attemptsLeft = 6;
+                this.gameWon = false;
+                this.updateDisplay();
+
+                this.waiting.style.display = 'none';
+                this.gameContainer.style.display = 'block';
+                this.guessInput.focus();
+            }
+
+            updateDisplay() {
+                // Update word display
+                this.wordDisplay.textContent = this.word
+                    .split('')
+                    .map(letter => this.guessedLetters.has(letter) ? letter : '_')
+                    .join(' ');
+
+                // Update attempts
+                this.attemptsSpan.textContent = this.attemptsLeft;
+
+                // Update tried letters
+                this.triedLetters.textContent = Array.from(this.guessedLetters).join(', ');
+            }
+
+            handleGuess(event) {
+                if (!this.isRunning) return;
+
+                const guess = event.target.value.toLowerCase();
+                if (guess.length === 0) return;
+
+                // Clear input
+                this.guessInput.value = '';
+
+                // Check if letter was already guessed
+                if (this.guessedLetters.has(guess)) {
+                    this.message.textContent = 'You already tried that letter!';
+                    return;
+                }
+
+                // Add to guessed letters
+                this.guessedLetters.add(guess);
+
+                // Check if guess is correct
+                if (this.word.includes(guess)) {
+                    this.message.textContent = 'Good guess!';
+
+                    // Check if word is complete
+                    if (this.word.split('').every(letter => this.guessedLetters.has(letter))) {
+                        this.gameWon = true;
+                        this.complete();
+                    }
+                } else {
+                    this.attemptsLeft--;
+                    this.message.textContent = 'Wrong guess!';
+
+                    if (this.attemptsLeft === 0) {
+                        this.fail();
+                    }
+                }
+
+                this.updateDisplay();
+
+                // Send state update
+                this.sendMessage('STATE_UPDATE', {
+                    attemptsLeft: this.attemptsLeft,
+                    guessedLetters: Array.from(this.guessedLetters),
+                    currentDisplay: this.wordDisplay.textContent
+                });
+            }
+
+            sendMessage(type, payload = {}) {
+                window.parent.postMessage({
+                    type,
+                    payload,
+                    timestamp: new Date().toISOString(),
+                    token: this.token
+                }, '*');
+            }
+
+            handleMessage(event) {
+                const message = event.data;
+
+                switch (message.type) {
+                    case 'GAME_START':
+
+                        break;
+
+                    case 'GAME_STOP':
+                        this.isRunning = false;
+                        this.waiting.style.display = 'block';
+                        this.gameContainer.style.display = 'none';
+                        break;
+                }
+            }
+
+            complete() {
+                this.isRunning = false;
+                this.message.textContent = 'Congratulations! You won!';
+                this.sendMessage('GAME_COMPLETE', {
+                    success: true,
+                    timeSpent: Date.now() - this.startTime,
+                    attemptsLeft: this.attemptsLeft,
+                    word: this.word
+                });
+            }
+
+            fail() {
+                this.isRunning = false;
+                this.message.textContent = `Game Over! The word was: ${this.word}`;
+                this.sendMessage('GAME_FAILED', {
+                    timeSpent: Date.now() - this.startTime,
+                    guessedLetters: Array.from(this.guessedLetters),
+                    word: this.word
+                });
+            }
+
+            setupAntiCheat() {
+                // Detect DevTools
+                const devToolsCheck = () => {
+                    const widthThreshold = window.outerWidth - window.innerWidth > 160;
+                    const heightThreshold = window.outerHeight - window.innerHeight > 160;
+
+                    if (widthThreshold || heightThreshold) {
+                        this.sendMessage('CHEAT_DETECTED', { reason: 'devtools_opened' });
+                        this.isRunning = false;
+                    }
+                };
+
+                setInterval(devToolsCheck, 1000);
+
+                // Prevent right-click
+                window.addEventListener('contextmenu', (e) => e.preventDefault());
+
+                // Disable keyboard shortcuts
+                window.addEventListener('keydown', (e) => {
+                    if ((e.ctrlKey && e.shiftKey && e.key === 'I') ||
+                        (e.ctrlKey && e.shiftKey && e.key === 'J') ||
+                        (e.ctrlKey && e.key === 'U')) {
+                        e.preventDefault();
+                        this.sendMessage('CHEAT_DETECTED', { reason: 'keyboard_shortcut' });
+                    }
+                });
+            }
+        }
+
+        // Initialize game
+        new WordGuessingGame();
+    </script>
+</body>
+</html>

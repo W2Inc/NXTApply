@@ -9,8 +9,8 @@ import { verifyTOTPWithGracePeriod } from '@oslojs/otp';
 import { Auth } from '$lib/auth.svelte';
 import { z } from 'zod/v4';
 import type { User } from '@prisma/client';
-import { Toasty } from '$lib/index.svelte';
-import type { FormOutputObject } from '$lib/utils';
+import { Formy } from '$lib/index.svelte';
+import Form from '$lib/ui/form/form.svelte';
 
 // ============================================================================
 
@@ -26,11 +26,10 @@ export const load: PageServerLoad = async ({ locals, cookies }) => {
 
 // ============================================================================
 
+export type FormOutput = Formy.Output<typeof schema>;
 const schema = z.object({
 	otp: z.string()
 });
-
-export type FormOutput = FormOutputObject<typeof schema>;
 
 // ============================================================================
 
@@ -41,9 +40,12 @@ export const actions: Actions = {
 			error(401);
 		}
 
-		const formData = await request.formData();
-		const otp = formData.get('otp')?.toString();
-		if (!otp) {
+		const result = await Formy.parse(request, schema);
+		if (result.error) {
+			return Formy.fail(400, result);
+		}
+
+		if (!result.data.otp) {
 			cookies.delete(Auth.IDENTITY_COOKIE, { path: '/' });
 			error(401);
 		}
@@ -62,12 +64,12 @@ export const actions: Actions = {
 			Buffer.from(user.tfa, 'hex'),
 			Auth.OTP_INTERVAL_SECONDS,
 			Auth.OTP_DIGIT_LENGTH,
-			otp,
+			result.data.otp,
 			30
 		);
 
 		if (!valid) {
-			return Toasty.fail(400, 'error');
+			return Formy.fail(400, Formy.Issues.InvalidOTP);
 		}
 
 		const token = Auth.generateToken();

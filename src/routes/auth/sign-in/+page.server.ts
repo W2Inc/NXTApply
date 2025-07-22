@@ -6,10 +6,9 @@
 import type { Actions } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { dev } from '$app/environment';
-import { Toasty } from '$lib/index.svelte';
+import { Formy } from '$lib/index.svelte';
 import z from 'zod/v4';
 import type { User } from '@prisma/client';
-import type { FormErrorObject, FormOutputObject } from '$lib/utils';
 
 // ============================================================================
 
@@ -18,7 +17,7 @@ const schema = z.object({
 	password: z.string().min(4).max(256),
 });
 
-export type FormOutput = FormOutputObject<typeof schema>;
+export type FormOutput = Formy.Output<typeof schema>;
 
 // ============================================================================
 
@@ -32,7 +31,7 @@ export const actions: Actions = {
 		const form = await request.formData();
 		const result = await schema.safeParseAsync(Object.fromEntries(form.entries()));
 		if (result.error) {
-			return Toasty.fail(400, result);
+			return Formy.fail(400, result);
 		}
 
 		const formData = result.data;
@@ -41,12 +40,12 @@ export const actions: Actions = {
 			.get(formData.email);
 
 		if (!user || !user.hash) {
-			return Toasty.fail(404, 'error');
+			return Formy.fail(404, Formy.Issues.NotFound);
 		}
 
 		const match = await Bun.password.verify(formData.password, user.hash);
 		if (!match) {
-			return Toasty.fail(422, 'error');
+			return Formy.fail(422, Formy.Issues.InvalidCredentials);
 		}
 
 		cookies.set('identity', user.id, {

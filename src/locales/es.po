@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-16T12:06:17.937Z\n"
-"PO-Revision-Date: 2025-07-21T14:49:53.027Z\n"
+"PO-Revision-Date: 2025-07-22T00:07:40.992Z\n"
 "Last-Translator: \n"
 "Language: Spanish\n"
 "Language-Team: \n"
@@ -310,6 +310,7 @@ msgstr "Ingresa tu correo electrónico para iniciar sesión en tu cuenta"
 #: src/routes/auth/sign-in/+page.svelte
 #: src/routes/auth/sign-up/+page.svelte
 #: src/routes/admin/users/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Email"
 msgstr "Correo electrónico"
 
@@ -369,6 +370,7 @@ msgstr "Robinson"
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
 #: src/routes/auth/sign-up/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Confirm Password"
 msgstr "Confirmar contraseña"
 
@@ -383,10 +385,12 @@ msgid "Already have an account? <0>Sign in</0>"
 msgstr "¿Ya tienes una cuenta? <0>Inicia sesión</0>"
 
 #: src/routes/[locale]/auth/2fa/setup/+page.svelte
+#: src/routes/auth/2fa/setup/+page.svelte
 msgid "Two-Factor Authentication"
 msgstr "Autenticación de dos factores"
 
 #: src/routes/[locale]/auth/2fa/setup/+page.svelte
+#: src/routes/auth/2fa/setup/+page.svelte
 msgid "Scan the QR code with your authenticator app to set up 2FA"
 msgstr "Escanea el código QR con tu aplicación de autenticación para configurar 2FA"
 
@@ -397,10 +401,12 @@ msgid "POST"
 msgstr "POST"
 
 #: src/routes/[locale]/auth/2fa/setup/+page.svelte
+#: src/routes/auth/2fa/setup/+page.svelte
 msgid "View secret key instead"
 msgstr "Ver la clave secreta en su lugar"
 
 #: src/routes/[locale]/auth/2fa/setup/+page.svelte
+#: src/routes/auth/2fa/setup/+page.svelte
 msgid ""
 "Open your two-factor authenticator (TOTP) app or browser extension to scan the QR code or\n"
 "\t\t\t\tenter the secret key manually."
@@ -409,22 +415,27 @@ msgstr ""
 "\t\t\t\tingresa la clave secreta manualmente."
 
 #: src/routes/[locale]/auth/2fa/setup/+page.svelte
+#: src/routes/auth/2fa/setup/+page.svelte
 msgid "Verification Code"
 msgstr "Código de verificación"
 
 #: src/routes/[locale]/auth/2fa/setup/+page.svelte
+#: src/routes/auth/2fa/setup/+page.svelte
 msgid "Enter 6-digit code"
 msgstr "Ingresa el código de 6 dígitos"
 
 #: src/routes/[locale]/auth/2fa/setup/+page.svelte
+#: src/routes/auth/2fa/setup/+page.svelte
 msgid "Verify and Enable 2FA"
 msgstr "Verificar y habilitar 2FA"
 
 #: src/routes/[locale]/auth/2fa/setup/+page.svelte
+#: src/routes/auth/2fa/setup/+page.svelte
 msgid "2FA is mandatory"
 msgstr "2FA es obligatorio"
 
 #: src/routes/[locale]/auth/2fa/setup/+page.svelte
+#: src/routes/auth/2fa/setup/+page.svelte
 msgid ""
 "Two-factor authentication is required for your account security. You must complete\n"
 "\t\t\t\t\t\t\tthis step to continue."
@@ -435,6 +446,7 @@ msgstr ""
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
 #: src/routes/auth/sign-in/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Reset Password"
 msgstr "Restablecer la contraseña"
 
@@ -443,6 +455,7 @@ msgid "Enter your email to receive a password reset link"
 msgstr "Introduce tu correo electrónico para recibir un enlace de restablecimiento de contraseña"
 
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Send Reset Link"
 msgstr "Enviar enlace de restablecimiento"
 
@@ -452,44 +465,53 @@ msgstr "¿Recuerdas tu contraseña? <0>Volver a iniciar sesión</0>"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Set New Password"
 msgstr "Establecer nueva contraseña"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Enter your new password to complete the reset process"
 msgstr "Ingresa tu nueva contraseña para completar el proceso de restablecimiento"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "New Password"
 msgstr "Nueva contraseña"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Please enter your new password"
 msgstr "Por favor, introduce tu nueva contraseña"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Please confirm your new password"
 msgstr "Por favor, confirma tu nueva contraseña"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Set Password"
 msgstr "Establecer contraseña"
 
 #: src/routes/[locale]/auth/sign-in/+page.svelte
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Remember your password? <0>Sign in</0>"
 msgstr "¿Recuerdas tu contraseña? <0>Inicia sesión</0>"
 
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Enter your email address and we'll send you a link to reset your password"
 msgstr "Introduce tu dirección de correo electrónico y te enviaremos un enlace para restablecer tu contraseña"
 
 #: src/routes/[locale]/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Please enter your email address"
 msgstr "Por favor, introduce tu dirección de correo electrónico"
 
@@ -983,3 +1005,75 @@ msgstr "Establecer como Activo"
 #: src/routes/admin/resources/tracks/+page.svelte
 msgid "Delete"
 msgstr "Borrar"
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Render the stage"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Host: Sent \"ping\""
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Host: Received \"pong\""
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "SEND"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Waiting for messages..."
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "<0/> kew <1><0>Waiting for messages...</0></1>"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Step: {0}"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Current step in the application process."
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Current stage: {0}"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Stage ID: {0}"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Hello World!"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Hello from parent! Time: "
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Send"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Hello from parent!"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Start Challenge"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Stop Challenge"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Challenge completed! 🎉"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Nice try buddy! 😉"
+msgstr ""

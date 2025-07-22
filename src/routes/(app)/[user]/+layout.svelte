@@ -1,62 +1,80 @@
 <script lang="ts">
 	import {
-		User,
-		LogOut,
-		ChevronDown,
 		FileText,
 		GraduationCap,
-		Home,
 		BookOpen,
 		CheckCircle,
 		CreditCard,
-		Menu,
-		Settings,
-		CircleQuestionMark,
-		ShieldUser
+		Icon,
+
+		UserPen,
+
+		Coffee,
+
+		Gamepad,
+
+		Timer
+
+
+
+
 	} from '@lucide/svelte';
 	import type { LayoutProps } from './$types';
 	import teleport from '$lib/teleport.svelte';
+	import { ApplicationStepType } from '$lib/index.svelte';
 
-	// Define application stages
-	const stages = [
-		{ id: 'personal', name: 'Personal Info', icon: User, href: '/personal' },
-		{ id: 'education', name: 'Education', icon: GraduationCap, href: '/education' },
-		{ id: 'documents', name: 'Documents', icon: FileText, href: '/documents' },
-		{ id: 'courses', name: 'Course Selection', icon: BookOpen, href: '/courses' },
-		{ id: 'payment', name: 'Payment', icon: CreditCard, href: '/payment' },
-		{ id: 'complete', name: 'Complete', icon: CheckCircle, href: '/complete' }
-	];
+
+	const stepsRecord: Record<number, { icon: typeof Icon; label: string }> = {
+		[ApplicationStepType.Boarding]: { icon: UserPen, label: 'Boarding' },
+		[ApplicationStepType.Intermission]: { icon: Coffee, label: 'Break' },
+		[ApplicationStepType.Challenge]: { icon: Gamepad, label: 'Challange' },
+		[ApplicationStepType.Waiting]: { icon: Timer, label: 'Waiting' },
+		[ApplicationStepType.Success]: {
+			icon: CheckCircle,
+			label: 'Complete'
+		}
+	};
+
+	const { children, data }: LayoutProps = $props();
+
+	const steps = $derived.by(() => {
+		return data.track.map((step) => {
+			const stepData = stepsRecord[step.type];
+			return {
+				id: step.id,
+				name: stepData.label,
+				icon: stepData.icon
+			};
+		});
+	});
 
 	// Current active stage (this would come from your route or store)
-	let activeStage = 'personal';
-	const { children }: LayoutProps = $props();
 </script>
 
 <!-- Secondary Bar - Application Progress -->
-<div class="bg-muted sticky top-0 z-10 border-t" {@attach teleport("subheader")}>
+<div class="bg-muted sticky top-0 z-10 border-t" {@attach teleport('subheader')}>
 	<div class="container mx-auto px-4 py-2">
 		<nav class=" flex items-center justify-between">
-			{#each stages as stage, i}
+			{#each steps as stage, i}
 				{#if i > 0}
 					<hr class="flex-1" />
 				{/if}
-				<a
-					href={stage.href}
-					class="flex items-center px-3 py-2 whitespace-nowrap {activeStage === stage.id
+				<span
+					class="flex items-center px-3 py-2 whitespace-nowrap {data.step.id === stage.id
 						? 'text-primary font-medium'
 						: 'text-muted-foreground hover:text-foreground'} transition-colors"
 				>
 					<stage.icon
 						size={16}
-						class={activeStage === stage.id ? 'text-primary' : 'text-muted-foreground'}
+						class={data.step.id === stage.id ? 'text-primary' : 'text-muted-foreground'}
 					/>
 
 					<span class="ml-2 hidden text-sm md:inline">{stage.name}</span>
 
-					{#if activeStage === stage.id}
+					{#if data.step.id === stage.id}
 						<span class="bg-primary ml-1 h-1.5 w-1.5 animate-pulse rounded-full"></span>
 					{/if}
-				</a>
+				</span>
 			{/each}
 		</nav>
 	</div>

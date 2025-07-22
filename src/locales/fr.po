@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-16T12:06:36.608Z\n"
-"PO-Revision-Date: 2025-07-21T14:49:54.335Z\n"
+"PO-Revision-Date: 2025-07-22T00:07:41.016Z\n"
 "Last-Translator: \n"
 "Language: French\n"
 "Language-Team: \n"
@@ -1000,3 +1000,75 @@ msgstr "Définir comme Actif"
 #: src/routes/admin/resources/tracks/+page.svelte
 msgid "Delete"
 msgstr "Supprimer"
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Render the stage"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Host: Sent \"ping\""
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Host: Received \"pong\""
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "SEND"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Waiting for messages..."
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "<0/> kew <1><0>Waiting for messages...</0></1>"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Step: {0}"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Current step in the application process."
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Current stage: {0}"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Stage ID: {0}"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Hello World!"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Hello from parent! Time: "
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Send"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Hello from parent!"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Start Challenge"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Stop Challenge"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Challenge completed! 🎉"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Nice try buddy! 😉"
+msgstr ""

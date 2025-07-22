@@ -7,15 +7,14 @@ import type { Actions, PageServerLoad } from './$types';
 import { error, fail, redirect } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 import { env } from '$env/dynamic/private';
-import { Toasty } from '$lib/index.svelte';
 import z from 'zod/v4';
 import { Database, type SQLQueryBindings } from 'bun:sqlite';
 import type { User } from '@prisma/client';
-import type { FormErrorObject, FormOutputObject } from '$lib/utils';
+import { Formy } from '$lib/index.svelte';
 
 // ============================================================================
 
-export type FormOutput = FormOutputObject<typeof schema>;
+export type FormOutput = Formy.Output<typeof schema>;
 const schema = z.object({
 	email: z.email(),
 	password: z.string().min(4).max(256),
@@ -45,9 +44,9 @@ export const actions: Actions = {
 		const form = await request.formData();
 		const result = await schema.safeParseAsync(Object.fromEntries(form.entries()));
 		if (result.error) {
-			return Toasty.fail(400, result);
+			return Formy.fail(400, result);
 		}
-		if (result.data.password !== result.data.confirm) return Toasty.fail(422, 'mismatch');
+		if (result.data.password !== result.data.confirm) return Formy.fail(422, Formy.Issues.PasswordMismatch);
 
 		const formData = result.data;
 		const existingUser = locals.db
@@ -55,7 +54,7 @@ export const actions: Actions = {
 			.get(formData.email);
 
 		if (existingUser) {
-			return Toasty.fail(409, 'taken');
+			return Formy.fail(409, Formy.Issues.UnknownError);
 		}
 
 		const id = Bun.randomUUIDv7("base64url");

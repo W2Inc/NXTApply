@@ -1,8 +1,7 @@
 import type { ApplicationTrack } from '@prisma/client';
 import type { Actions, PageServerLoad } from './$types';
-import type { FormOutputObject } from '$lib/utils';
 import z from 'zod/v4';
-import { Toasty } from '$lib/index.svelte';
+import { Formy } from '$lib/index.svelte';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	return {
@@ -25,7 +24,7 @@ export const actions: Actions = {
 		const form = await request.formData();
 		const result = await actionSchema.safeParseAsync(Object.fromEntries(form.entries()));
 		if (result.error) {
-			return Toasty.fail(400, result);
+			return Formy.fail(400, result);
 		}
 
 		locals.db.run<[string]>(
@@ -33,6 +32,6 @@ export const actions: Actions = {
 			[result.data.id]
 		);
 
-		return Toasty.success("Activated!")
+		return Formy.success("Activated!")
 	}
 };

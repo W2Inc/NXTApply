@@ -18,8 +18,8 @@ import { DATABASE_URL } from '$env/static/private';
 import { sequence } from '@sveltejs/kit/hooks';
 import { Auth } from '$lib/auth.svelte';
 import type { Session, User } from '@prisma/client';
-import { UserFlag } from '$lib/utils';
 import TTLCache from '@isaacs/ttlcache';
+import { UserFlag } from '$lib/index.svelte';
 
 // ============================================================================
 

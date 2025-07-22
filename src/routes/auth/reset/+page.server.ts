@@ -4,10 +4,9 @@
 // ============================================================================
 
 import type { Actions, PageServerLoad } from './$types';
-import { Toasty } from '$lib/index.svelte';
 import z from 'zod/v4';
 import type { User } from '@prisma/client';
-import type { FormErrorObject, FormOutputObject } from '$lib/utils';
+import { Formy } from '$lib/index.svelte';
 
 // ============================================================================
 
@@ -19,14 +18,14 @@ export const load: PageServerLoad = async ({ url }) => {
 
 // ============================================================================
 
-export type FormUpdate = FormOutputObject<typeof updateSchema>;
+export type FormUpdate = Formy.Output<typeof updateSchema>;
 const updateSchema = z.object({
 	password: z.string().min(4).max(256),
 	confirm: z.string().min(4).max(256),
 });
 
 
-export type FormReset = FormOutputObject<typeof resetSchema>;
+export type FormReset = Formy.Output<typeof resetSchema>;
 const resetSchema = z.object({
 	email: z.email(),
 });
@@ -39,7 +38,7 @@ export const actions: Actions = {
 		const form = await request.formData();
 		const result = await resetSchema.safeParseAsync(Object.fromEntries(form.entries()));
 		if (result.error) {
-			return Toasty.fail(400, result);
+			return Formy.fail(400, result);
 		}
 
 		const formData = result.data;
@@ -48,10 +47,10 @@ export const actions: Actions = {
 			.get(formData.email);
 
 		if (!user) {
-			return Toasty.fail(404, 'error');
+			return Formy.fail(404, Formy.Issues.NotFound);
 		}
 		if (user.provider || user.providerId) {
-			return Toasty.fail(422, 'error');
+			return Formy.fail(422, Formy.Issues.InvalidCredentials);
 		}
 
 		// const formData = await request.formData();

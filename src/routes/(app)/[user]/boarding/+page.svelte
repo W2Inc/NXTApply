@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Button from '$lib/ui/button.svelte';
-	import FormEntry from '$lib/ui/form-entry.svelte';
 	import Input from '$lib/ui/input.svelte';
 	import { User, Users, Phone, Calendar } from '@lucide/svelte';
-	import Form from '$lib/ui/form.svelte';
 	import Alert from '$lib/ui/alert.svelte';
+	import Form from '$lib/ui/form/form.svelte';
+	import Entry from '$lib/ui/form/entry.svelte';
+	import type { FormOutput } from './+page.server';
 </script>
 
 <div class="mx-auto max-w-[40rem] p-8">
@@ -15,21 +16,22 @@
 		</p>
 	</div>
 
-	<Form class="space-y-2" type={{} as FormEntry} method="post" enctype="multipart/form-data">
-		{#snippet child({ errors })}
-			<FormEntry name="firstName" label="First Name">
+	<Form class="space-y-2">
+		{#snippet fields(out)}
+			{@const form = out as FormOutput}
+			<Entry name="firstName" label="First Name">
 				{#snippet child(props)}
 					<Input icon={User} required placeholder="Enter your first name" type="text" {...props} />
 				{/snippet}
-			</FormEntry>
+			</Entry>
 
-			<FormEntry name="lastName" label="Last Name">
+			<Entry name="lastName" label="Last Name">
 				{#snippet child(props)}
 					<Input icon={Users} required placeholder="Enter your last name" type="text" {...props} />
 				{/snippet}
-			</FormEntry>
+			</Entry>
 
-			<FormEntry name="gender" label="Gender">
+			<Entry name="gender" label="Gender">
 				{#snippet child(props)}
 					<div class="flex space-x-4">
 						<div class="flex items-center">
@@ -65,15 +67,15 @@
 						</div>
 					</div>
 				{/snippet}
-			</FormEntry>
+			</Entry>
 
-			<FormEntry name="dateOfBirth" label="Date of Birth">
+			<Entry name="dateOfBirth" label="Date of Birth">
 				{#snippet child(props)}
 					<Input icon={Calendar} required type="date" {...props} />
 				{/snippet}
-			</FormEntry>
+			</Entry>
 
-			<FormEntry name="phoneNumber" label="Phone Number">
+			<Entry name="phoneNumber" label="Phone Number">
 				{#snippet child(props)}
 					<Input
 						icon={Phone}
@@ -83,7 +85,7 @@
 						{...props}
 					/>
 				{/snippet}
-			</FormEntry>
+			</Entry>
 
 			<div class="space-y-3">
 				<Button type="submit" variant="outline" class="w-full">Continue</Button>

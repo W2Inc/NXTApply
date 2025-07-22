@@ -1,6 +1,6 @@
 <script lang="ts" generics="T">
 	import { applyAction, enhance } from '$app/forms';
-	import { Toasty } from '$lib/index.svelte';
+	import { Formy } from '$lib/index.svelte';
 	import type { ActionResult, SubmitFunction } from '@sveltejs/kit';
 	import type { Snippet } from 'svelte';
 	import { toast } from 'svelte-sonner';
@@ -40,7 +40,7 @@
 			if (result.type === 'success' && result.data) {
 				toast.success(result.data['message'] || 'Success!');
 			} else if (result.type === 'failure' && result.data) {
-				const { errors: e, code } = result.data as Toasty.FormResult<T>;
+				const { errors: e, code } = result.data as Formy.FormResult<T>;
 				if (e) {
 					errors = e;
 				}

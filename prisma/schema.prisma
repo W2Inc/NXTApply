@@ -35,7 +35,7 @@ model User {
     sessions          Session[]
     resetTokens       ResetToken[]
     verificationToken VerificationToken?
-    trackCompletion   TrackCompletion?
+    trackCompletion   UserTrack?
 
     @@map("user")
 }
@@ -88,79 +88,104 @@ model Event {
     @@map("event")
 }
 
+// Tracks
+// ============================================================================
+
 // Track to define the steps to take
 model ApplicationTrack {
-    id          String                   @id
+    id          String            @id
     name        String
     description String?
-    isActive    Boolean                  @default(true)
+    isActive    Boolean           @default(true)
     steps       ApplicationStep[]
-    completions TrackCompletion[] // Added relation to track completions
-    metrics     TrackCompletionMetrics[] // Added relation to metrics
-    createdAt   DateTime                 @default(now())
-    updatedAt   DateTime                 @default(now()) @updatedAt
+    completions UserTrack[] // Added relation to track completions
+    createdAt   DateTime          @default(now())
+    updatedAt   DateTime          @default(now()) @updatedAt
 
     @@map("application_track")
 }
 
 // A step in application process
 model ApplicationStep {
-    id        String           @id
-    trackId   String
-    track     ApplicationTrack @relation(fields: [trackId], references: [id], onDelete: Cascade)
-    type      Int // 1=BOARDING, 2=INTERMISSION, 3=CHALLENGE, 4=WAITING, 5=SUCCESS, 6=FAILURE
-    order     Int
-    content   String? // HTML content for challenges (iframe and spec compliant)
-    createdAt DateTime         @default(now())
-    updatedAt DateTime         @default(now()) @updatedAt
+    id          String           @id
+    trackId     String
+    track       ApplicationTrack @relation(fields: [trackId], references: [id], onDelete: Cascade)
+    type        Int // 1=BOARDING, 2=INTERMISSION, 3=CHALLENGE, 4=WAITING, 5=SUCCESS, 6=FAILURE
+    order       Int
+    content     String? // HTML content for challenges (iframe and spec compliant)
+    completions UserStep[] // Relation to track which users completed this step
+    createdAt   DateTime         @default(now())
+    updatedAt   DateTime         @default(now()) @updatedAt
 
     @@index([trackId, order])
     @@map("application_step")
 }
 
-// Track individual user completions
-model TrackCompletion {
-    id          String           @id @default(uuid())
-    userId      String           @unique
-    user        User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-    trackId     String
-    track       ApplicationTrack @relation(fields: [trackId], references: [id], onDelete: Cascade)
-    completedAt DateTime
-    createdAt   DateTime         @default(now())
+// Track individual user completions of a track
+model UserTrack {
+    id String @id
+
+    userId String @unique
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    trackId String
+    track   ApplicationTrack @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+    completedAt DateTime? // Nullable to allow for in-progress states
+    createdAt   DateTime  @default(now())
+
+    steps UserStep[] // Relation to completed steps
 
     @@index([userId, trackId])
     @@index([completedAt])
-    @@map("track_completion")
+    @@map("user_track")
 }
 
-// Monthly user metrics
-model UserMetrics {
-    id                 String   @id @default(uuid())
-    year               Int
-    month              Int
-    newUserCount       Int
-    prevMonthUserCount Int?
-    percentageChange   Float? // Can be calculated on query or stored
-    createdAt          DateTime @default(now())
-    updatedAt          DateTime @default(now()) @updatedAt
+// Track completion of individual steps by users
+model UserStep {
+    id          String @id @default(uuid())
+    userTrackId String
 
-    @@unique([year, month])
-    @@map("user_metrics")
+    userTrack UserTrack @relation(fields: [userTrackId], references: [id], onDelete: Cascade)
+    stepId    String
+
+    step        ApplicationStep @relation(fields: [stepId], references: [id], onDelete: Cascade)
+    completedAt DateTime? // Nullable to allow for in-progress states
+
+    @@unique([userTrackId, stepId])
+    @@map("user_step")
 }
 
-// Monthly track completion metrics
-model TrackCompletionMetrics {
-    id               String           @id @default(uuid())
-    year             Int
-    month            Int
-    trackId          String
-    track            ApplicationTrack @relation(fields: [trackId], references: [id], onDelete: Cascade)
-    completionCount  Int
-    prevMonthCount   Int?
-    percentageChange Float? // Can be calculated on query or stored
-    createdAt        DateTime         @default(now())
-    updatedAt        DateTime         @default(now()) @updatedAt
+// ============================================================================
 
-    @@unique([year, month, trackId])
-    @@map("track_completion_metrics")
-}
+// // Monthly user metrics
+// model UserMetrics {
+//     id                 String   @id @default(uuid())
+//     year               Int
+//     month              Int
+//     newUserCount       Int
+//     prevMonthUserCount Int?
+//     percentageChange   Float? // Can be calculated on query or stored
+//     createdAt          DateTime @default(now())
+//     updatedAt          DateTime @default(now()) @updatedAt
+
+//     @@unique([year, month])
+//     @@map("user_metrics")
+// }
+
+// // Monthly track completion metrics
+// model TrackCompletionMetrics {
+//     id               String           @id @default(uuid())
+//     year             Int
+//     month            Int
+//     trackId          String
+//     track            ApplicationTrack @relation(fields: [trackId], references: [id], onDelete: Cascade)
+//     completionCount  Int
+//     prevMonthCount   Int?
+//     percentageChange Float? // Can be calculated on query or stored
+//     createdAt        DateTime         @default(now())
+//     updatedAt        DateTime         @default(now()) @updatedAt
+
+//     @@unique([year, month, trackId])
+//     @@map("track_completion_metrics")
+// }

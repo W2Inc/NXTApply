@@ -12,12 +12,12 @@ import { PUBLIC_APP_NAME } from '$env/static/public';
 import { createTOTPKeyURI, verifyTOTPWithGracePeriod } from '@oslojs/otp';
 import * as QR from 'uqr';
 import z from 'zod/v4';
-import { Toasty } from '$lib/index.svelte';
-import type { FormOutputObject } from '$lib/utils';
+import { Formy } from '$lib/index.svelte';
+
 
 // ============================================================================
 
-export type FormOutput = FormOutputObject<typeof schema>;
+export type FormOutput = Formy.Output<typeof schema>;
 const schema = z.object({
 	otp: z.string()
 });
@@ -89,7 +89,7 @@ export const actions: Actions = {
 		const form = await request.formData();
 		const result = await schema.safeParseAsync(Object.fromEntries(form.entries()));
 		if (result.error) {
-			return Toasty.fail(422, 'error');
+			return Formy.fail(422, result);
 		}
 
 		const formData = result.data;
@@ -103,7 +103,7 @@ export const actions: Actions = {
 
 		if (!valid) {
 			cleanupCookies(cookies);
-			return Toasty.fail(400, 'error');
+			return Formy.fail(400, Formy.Issues.InvalidOTP);
 		}
 
 		cleanupCookies(cookies);

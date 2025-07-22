@@ -6,12 +6,11 @@
 import type { User } from '@prisma/client';
 import type { Actions, PageServerLoad } from './$types';
 import { z } from 'zod/v4';
-import { Toasty } from '$lib/index.svelte';
-import { UserFlag, type FormOutputObject } from '$lib/utils';
+import { Formy, UserFlag } from '$lib/index.svelte';
 
 // ============================================================================
 
-export type FormUserAction = FormOutputObject<typeof actionSchema>;
+export type FormUserAction = Formy.Output<typeof actionSchema>;
 const actionSchema = z.object({
 	id: z.base64url()
 });
@@ -19,7 +18,7 @@ const actionSchema = z.object({
 
 // ============================================================================
 
-export type FormUserExport = FormOutputObject<typeof exportSchema>;
+export type FormUserExport = Formy.Output<typeof exportSchema>;
 const exportSchema = z.object({
 	page: z.number().min(0)
 });
@@ -53,23 +52,20 @@ export const load: PageServerLoad = async ({ locals, depends, url }) => {
 
 export const actions: Actions = {
 	remove: async ({ locals, request }) => {
-		const form = await request.formData();
-		const result = await actionSchema.safeParseAsync(Object.fromEntries(form.entries()));
+		const result = await Formy.parse(request, actionSchema);
 		if (result.error) {
-			console.log(result.error);
-			return Toasty.fail(400, 'error');
+			return Formy.fail(400, result);
 		}
-
 
 		const { id } = result.data;
 		if (!locals.user || (locals.user.flags & UserFlag.IsAdmin) === 0) {
-			return Toasty.fail(403, 'error');
+			return Formy.fail(403, Formy.Issues.UnknownError);
 		}
 		if (id === locals.user.id) {
-			return Toasty.fail(400, 'error');
+			return Formy.fail(400, Formy.Issues.UnknownError);
 		}
 
 		locals.db.query('DELETE FROM user WHERE id = ?').run(id);
-		return Toasty.success('Deleted');
+		return Formy.success('Deleted');
 	}
 };

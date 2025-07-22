@@ -18,7 +18,7 @@
 		<Form class="space-y-2">
 			{#snippet fields(f)}
 				{@const form = f as FormOutput}
-				<Entry name="email" label="Email" errors={form.errors.email} description="Balls!">
+				<Entry name="email" label="Email" errors={form.errors.email}>
 					{#snippet child(props)}
 						<Input
 							icon={Mail}
