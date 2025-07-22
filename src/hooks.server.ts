@@ -20,6 +20,8 @@ import { Auth } from '$lib/auth.svelte';
 import type { Session, User } from '@prisma/client';
 import TTLCache from '@isaacs/ttlcache';
 import { UserFlag } from '$lib/index.svelte';
+import { CronJob } from 'cron';
+import { worker } from './jobs';
 
 // ============================================================================
 
@@ -34,15 +36,27 @@ function resetLocale(event: RequestEvent) {
 
 // ============================================================================
 
+const jobs = [
+	new CronJob('* * * * *', () => { // Montly
+		worker('metric');
+	})
+];
+
+// ============================================================================
+
 // NOTE(w2wizard): https://bun.sh/docs/api/sqlite#wal-mode
 export const init: ServerInit = async () => {
 	db.run('PRAGMA journal_mode = WAL;');
+	// jobs.forEach(job => job.start());
+	worker('metric');
+
 };
 
 // ============================================================================
 
 /** Handle to modify the response html to populate the plausible analytics */
 const analytics: Handle = async ({ event, resolve }) => {
+
 	const domain = env.PUBLIC_PLAUSIBLE_DOMAIN;
 	const script = env.PUBLIC_PLAUSIBLE_URL;
 	const analyticsTag =

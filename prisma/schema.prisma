@@ -158,20 +158,19 @@ model UserStep {
 
 // ============================================================================
 
-// // Monthly user metrics
-// model UserMetrics {
-//     id                 String   @id @default(uuid())
-//     year               Int
-//     month              Int
-//     newUserCount       Int
-//     prevMonthUserCount Int?
-//     percentageChange   Float? // Can be calculated on query or stored
-//     createdAt          DateTime @default(now())
-//     updatedAt          DateTime @default(now()) @updatedAt
+// Monthly user metrics
+model UserMetrics {
+    year      Int
+    month     Int
+    userCount Int
+    completedTracks Int
 
-//     @@unique([year, month])
-//     @@map("user_metrics")
-// }
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt
+
+    @@id([year, month])
+    @@map("user_metrics")
+}
 
 // // Monthly track completion metrics
 // model TrackCompletionMetrics {

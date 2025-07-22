@@ -22,6 +22,7 @@
 
 
   } from '@lucide/svelte';
+	import type { PageProps } from './$types';
 
   // Sample dashboard data
   const stats = [
@@ -132,9 +133,12 @@
     pending: AlertCircle,
     error: XCircle
   };
+
+	const {data}: PageProps = $props();
 </script>
 
 <div class="space-y-6">
+	{JSON.stringify(data, null, 2)}
   <!-- Page Header -->
   <div>
     <h1 class="text-2xl font-semibold tracking-tight">Dashboard</h1>

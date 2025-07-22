@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-16T12:06:00.935Z\n"
-"PO-Revision-Date: 2025-07-21T23:11:54.682Z\n"
+"PO-Revision-Date: 2025-07-22T10:30:07.125Z\n"
 "Last-Translator: \n"
 "Language: English\n"
 "Language-Team: \n"
@@ -1042,3 +1042,7 @@ msgstr "Challenge completed! 🎉"
 #: src/routes/(app)/[user]/step/[stage]/+page.svelte
 msgid "Nice try buddy! 😉"
 msgstr "Nice try buddy! 😉"
+
+#: src/routes/(app)/[user]/break/+page.svelte
+msgid "Did you know? 42 is the answer to life, the universe, and everything!"
+msgstr "Did you know? 42 is the answer to life, the universe, and everything!"
