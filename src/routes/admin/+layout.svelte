@@ -104,7 +104,7 @@
 				? 'translate-x-0'
 				: '-translate-x-full md:translate-x-0'}"
 		>
-			<div class="flex h-full flex-col p-4">
+			<div class="flex h-full flex-col p-4 sticky top-0">
 				<div
 					class="text-sidebar-foreground/60 mt-2 mb-4 text-xs font-medium tracking-wider uppercase"
 				>

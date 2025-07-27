@@ -1,5 +1,5 @@
 // ============================================================================
-// W2Inc, Amsterdam 2023, All Rights Reserved.
+// W2Inc, Amsterdam 2023-2025, All Rights Reserved.
 // See README in the root project for more information.
 // ============================================================================
 
@@ -20,15 +20,15 @@ import { Auth } from '$lib/auth.svelte';
 import type { Session, User } from '@prisma/client';
 import TTLCache from '@isaacs/ttlcache';
 import { UserFlag } from '$lib/index.svelte';
-import { CronJob } from 'cron';
-import { worker } from './jobs';
+import Jobs, { current } from './jobs';
+import { logger } from '$lib/logger';
+import { dev } from '$app/environment';
 
 // ============================================================================
 
 const locales = ['en', 'es', 'fr'];
 const runWithCatalog = await initRegistry();
 const db: Database = new Database(DATABASE_URL, { strict: true });
-
 function resetLocale(event: RequestEvent) {
 	event.cookies.set('lang', 'en', { path: '/' });
 	return 'en';
@@ -36,19 +36,18 @@ function resetLocale(event: RequestEvent) {
 
 // ============================================================================
 
-const jobs = [
-	new CronJob('* * * * *', () => { // Montly
-		worker('metric');
-	})
-];
-
-// ============================================================================
-
 // NOTE(w2wizard): https://bun.sh/docs/api/sqlite#wal-mode
 export const init: ServerInit = async () => {
 	db.run('PRAGMA journal_mode = WAL;');
-	// jobs.forEach(job => job.start());
-	worker('metric');
+
+	logger.info('Starting...');
+	Jobs.create('session-cleanup'); // Find any stale sessions, yeet.
+
+	if (!dev) {
+		for (const job of current) {
+			job.start();
+		}
+	}
 
 };
 
@@ -56,7 +55,6 @@ export const init: ServerInit = async () => {
 
 /** Handle to modify the response html to populate the plausible analytics */
 const analytics: Handle = async ({ event, resolve }) => {
-
 	const domain = env.PUBLIC_PLAUSIBLE_DOMAIN;
 	const script = env.PUBLIC_PLAUSIBLE_URL;
 	const analyticsTag =
@@ -95,6 +93,8 @@ const authenticate: Handle = async ({ event, resolve }) => {
 	return resolve(event);
 };
 
+// ============================================================================
+
 const authorize: Handle = async ({ event, resolve }) => {
 	if (event.locals.session?.userId) {
 		const user = event.locals.db
@@ -106,8 +106,9 @@ const authorize: Handle = async ({ event, resolve }) => {
 
 	const user = event.locals.user;
 	if (user && event.route.id?.startsWith('/admin')) {
-		if ((user.flags & UserFlag.IsAdmin) !== UserFlag.IsAdmin)
+		if ((user.flags & UserFlag.IsAdmin) !== UserFlag.IsAdmin) {
 			return new Response(null, { status: 404 });
+		}
 	}
 
 	return resolve(event);
@@ -127,12 +128,12 @@ export const base: Handle = async ({ event, resolve }) => {
 
 	if (setLang) {
 		event.cookies.delete('set-lang', { path: '/' });
-		locale = locales.find(l => l === setLang) ?
-			(event.cookies.set('lang', setLang, { path: '/' }), setLang) :
-			resetLocale(event);
+		locale = locales.find((l) => l === setLang)
+			? (event.cookies.set('lang', setLang, { path: '/' }), setLang)
+			: resetLocale(event);
 	} else {
 		locale = event.cookies.get('lang') || resetLocale(event);
-		locale = locales.find(l => l === locale) ? locale : resetLocale(event);
+		locale = locales.find((l) => l === locale) ? locale : resetLocale(event);
 	}
 
 	const catalog = await import(`./locales/${locale}.svelte.js`);

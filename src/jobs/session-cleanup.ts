@@ -9,17 +9,6 @@ using db: Database = new Database(Bun.env.DATABASE_URL, {
 });
 
 self.postMessage({ message: 'Worker Job Started' });
-
-db.run(
-	`INSERT INTO user_metrics (year, month, userCount, completedTracks)
-	 SELECT ?, ?,
-		(SELECT COUNT(*) FROM user),
-		(SELECT COUNT(*) FROM user_track WHERE completedAt IS NOT NULL)
-	 WHERE NOT EXISTS (
-		SELECT 1 FROM user_metrics WHERE year = ? AND month = ?
-	 )`,
-	[date.year, date.month, date.year, date.month]
-);
-
+db.run(`DELETE FROM session WHERE expiresAt < ?`, [date.toDate().getTime()]);
 self.postMessage({ message: 'Worker Job Completed' });
 process.exit(0);

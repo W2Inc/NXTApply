@@ -1,28 +1,45 @@
 <script lang="ts">
+	import { cn } from '$lib/index.svelte';
 	import type { Icon } from '@lucide/svelte';
-	import type { HTMLInputAttributes } from 'svelte/elements';
+	import type { HTMLInputAttributes, HTMLInputTypeAttribute } from 'svelte/elements';
 
 	interface Props extends HTMLInputAttributes {
 		icon?: typeof Icon;
+		iconSize?: number | string;
 	}
 
-	let { id, type = 'text', icon: IconComponent = undefined, value = $bindable(), ...rest }: Props = $props();
+	let {
+		type,
+		value = $bindable(),
+		checked = $bindable(),
+		class: className,
+		icon: IconComponent,
+		iconSize = 16,
+		...restProps
+	}: Props = $props();
+	const classes =
+		'w-full border-input bg-input text-foreground placeholder:text-muted-foreground focus:ring-primary/40 resize-y rounded-lg border px-2 py-1 font-sans text-base transition focus:ring-2 focus:outline-none';
 </script>
 
-<div
-	class="bg-card has-[input:focus-within]:border-primary has-[input:focus-within]:ring-ring flex items-center rounded border pl-3 transition-colors has-[input:focus-within]:ring-1"
->
-	{#if IconComponent}
-		<div class="text-muted-foreground shrink-0 select-none pr-1">
-			<IconComponent size={16} />
-		</div>
-	{/if}
-	<input
-		{id}
-		{type}
-		bind:value
-		class:pl-1={IconComponent}
-		class="text-foreground placeholder:text-muted-foreground block grow bg-transparent py-1.5 pr-3 text-sm focus:outline-none"
-		{...rest}
-	/>
-</div>
+{#if type === 'radio' || type === 'range' || type === 'color'}
+	<input bind:value {type} class={cn(className)} {...restProps} />
+{:else if type === 'checkbox'}
+	<input bind:checked type="checkbox" class={cn(className)} {...restProps} />
+{:else if IconComponent}
+	<div class={cn('relative w-full', className)}>
+		{#if IconComponent}
+			<span class="pointer-events-none absolute top-1/2 left-2 flex -translate-y-1/2 items-center">
+				<IconComponent size={iconSize} />
+			</span>
+		{/if}
+		<input
+			{type}
+			bind:value
+			class:pl-7={IconComponent}
+			class={cn(classes, className)}
+			{...restProps}
+		/>
+	</div>
+{:else}
+	<input {type} bind:value class={cn(classes, className)} {...restProps} />
+{/if}

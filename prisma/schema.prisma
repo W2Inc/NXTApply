@@ -107,15 +107,16 @@ model ApplicationTrack {
 
 // A step in application process
 model ApplicationStep {
-    id          String           @id
-    trackId     String
-    track       ApplicationTrack @relation(fields: [trackId], references: [id], onDelete: Cascade)
-    type        Int // 1=BOARDING, 2=INTERMISSION, 3=CHALLENGE, 4=WAITING, 5=SUCCESS, 6=FAILURE
-    order       Int
-    content     String? // HTML content for challenges (iframe and spec compliant)
-    completions UserStep[] // Relation to track which users completed this step
-    createdAt   DateTime         @default(now())
-    updatedAt   DateTime         @default(now()) @updatedAt
+    id           String           @id
+    trackId      String
+    track        ApplicationTrack @relation(fields: [trackId], references: [id], onDelete: Cascade)
+    type         Int // 0=BOARDING, 1=INTERMISSION, 2=CHALLENGE, 3=WAITING, 4=RESULT
+    order        Int
+    content      String? // HTML content for challenges (iframe and spec compliant)
+    conditionals Json? // JSON object to store conditional logic and parameters
+    completions  UserStep[] // Relation to track which users completed this step
+    createdAt    DateTime         @default(now())
+    updatedAt    DateTime         @default(now()) @updatedAt
 
     @@index([trackId, order])
     @@map("application_step")
@@ -160,9 +161,9 @@ model UserStep {
 
 // Monthly user metrics
 model UserMetrics {
-    year      Int
-    month     Int
-    userCount Int
+    year            Int
+    month           Int
+    userCount       Int
     completedTracks Int
 
     createdAt DateTime @default(now())

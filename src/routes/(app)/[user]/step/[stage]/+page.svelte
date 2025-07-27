@@ -64,14 +64,12 @@
       timestamp: new Date().toISOString()
     }, '*');
   }
+
+	onMount()
+	before
 </script>
 
 <div style="height: calc(100dvh - 9rem);">
-  <div class="controls">
-    <button onclick={startGame}>Start Challenge</button>
-    <button onclick={stopGame}>Stop Challenge</button>
-  </div>
-
   <iframe
     bind:this={iframe}
     title="challenge"

@@ -17,12 +17,11 @@ export const UserFlag = {
 } as const;
 
 export const ApplicationStepType = {
-	Boarding: 1,
-	Intermission: 2,
-	Challenge: 3,
-	Waiting: 4,
-	Success: 5,
-	Failure: 6,
+	Boarding: 0,
+	Intermission: 1,
+	Challenge: 2,
+	Waiting: 3,
+	Result: 4,
 } as const;
 
 // ============================================================================

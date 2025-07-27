@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-07-16T12:06:17.937Z\n"
-"PO-Revision-Date: 2025-07-22T11:38:54.963Z\n"
+"PO-Revision-Date: 2025-07-25T15:28:27.213Z\n"
 "Last-Translator: \n"
 "Language: Spanish\n"
 "Language-Team: \n"
@@ -358,6 +358,8 @@ msgstr "Ingresa tu información para crear una cuenta"
 
 #: src/routes/[locale]/auth/sign-up/+page.svelte
 #: src/routes/auth/sign-up/+page.svelte
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/boarding.svelte
 msgid "Max"
 msgstr "Max"
 
@@ -1080,4 +1082,870 @@ msgstr ""
 
 #: src/routes/(app)/[user]/break/+page.svelte
 msgid "Did you know? 42 is the answer to life, the universe, and everything!"
+msgstr ""
+
+#: src/routes/admin/resources/tracks/manage/+page.svelte
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Application Process Designer"
+msgstr "Diseñador de Procesos de Aplicación"
+
+#: src/routes/admin/resources/tracks/manage/+page.svelte
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Step {0}"
+msgstr "Paso {0}"
+
+#: src/routes/admin/resources/tracks/manage/+page.svelte
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+#: src/lib/ui/track/step.svelte
+msgid "Remove step"
+msgstr "Eliminar paso"
+
+#: src/routes/admin/resources/tracks/manage/+page.svelte
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Step name"
+msgstr "Nombre del paso"
+
+#: src/routes/admin/resources/tracks/manage/+page.svelte
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Step description"
+msgstr "Descripción del paso"
+
+#: src/routes/admin/resources/tracks/manage/+page.svelte
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "+ Add Step"
+msgstr "+ Añadir Paso"
+
+#: src/routes/admin/resources/tracks/manage/+page.svelte
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Save Track"
+msgstr "Guardar Track"
+
+#: src/routes/admin/resources/tracks/manage/+page.svelte
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid ""
+"Track saved!\n"
+""
+msgstr ""
+"¡Track guardado!\n"
+"```"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Required Points:"
+msgstr "Puntos Requeridos:"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Condition:"
+msgstr "Condición:"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "If point total"
+msgstr "Si el total de puntos"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "then {0} else {1}"
+msgstr "entonces {0} si no {1}```"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "then success else fail"
+msgstr "entonces éxito sino fallo"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/boarding.svelte
+msgid "Boarding"
+msgstr "Embarque"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Intermission"
+msgstr "Intermedio"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Challenge"
+msgstr "Desafío"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "HTML Content:"
+msgstr "Contenido HTML:"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Paste HTML game here"
+msgstr "Pega el juego HTML aquí"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Min Points to Pass:"
+msgstr "Puntos Mínimos para Pasar:"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/lib/ui/track/step.svelte
+msgid "Waiting"
+msgstr "Esperando"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Wait Hours:"
+msgstr "Horas de Espera:"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Gender Option:"
+msgstr "Opción de Género:"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+#: src/lib/ui/track/conditionals/boarding.svelte
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "None"
+msgstr "Ninguno"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Female Priority"
+msgstr "Prioridad Femenina"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Male Priority"
+msgstr "Prioridad Masculina"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Other Priority"
+msgstr "Otra Prioridad"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "(Positive discrimination)"
+msgstr "(Discriminación positiva)"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/result.svelte
+msgid "Result"
+msgstr "Resultado```"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Result Type:"
+msgstr "Tipo de resultado:"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Conditional (points)"
+msgstr "Condicional (puntos)"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Always Succeed"
+msgstr "Siempre con éxito"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Always Fail"
+msgstr "Siempre falla"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "All users succeed"
+msgstr "Todos los usuarios tienen éxito"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "All users fail"
+msgstr "Todos los usuarios fallan"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+#: src/lib/ui/track/step.svelte
+msgid "HTML Content"
+msgstr "Contenido HTML"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Min Points to Pass"
+msgstr "Puntos Mínimos para Aprobar"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Wait Hours"
+msgstr "Horas de Espera"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Gender Option"
+msgstr "Opción de Género"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Result Type"
+msgstr "Tipo de Resultado"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "HTML Content <0>Game</0>"
+msgstr "Contenido HTML <0>Juego</0>"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "Min Points <0>Threshold</0>"
+msgstr "Puntos Mínimos <0>Umbral</0>"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Wait <0>Hours</0>"
+msgstr "Espera <0>Horas</0>"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Gender <0>Option</0>"
+msgstr "Género <0>Opción</0>"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Type <0>Result</0>"
+msgstr "Tipo <0>Resultado</0>"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "If <0>Points</0>"
+msgstr "Si <0>Puntos</0>"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "then <0>Success</0> else <1>Fail</1>"
+msgstr "entonces <0>Éxito</0> si no <1>Fallo</1>"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "<0>All</0> succeed"
+msgstr "<0>Todos</0> tienen éxito"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "<0>All</0> fail"
+msgstr "<0>Todos</0> fallan"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+#: src/lib/ui/track/step.svelte
+msgid "Step <0/>"
+msgstr "Paso <0/>"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+msgid "<0>+</0> Add Step"
+msgstr "<0>+</0> Añadir Paso"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "<0>Save</0> Track"
+msgstr "<0>Guardar</0> Pista```"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Add Step"
+msgstr "Añadir Paso"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+#: src/lib/ui/track/step.svelte
+msgid "Point Threshold"
+msgstr "Umbral de Puntos"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Wait Type"
+msgstr "Tipo de Espera"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Select..."
+msgstr "Seleccionar..."
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Gender Priority"
+msgstr "Prioridad de Género"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/challenge.svelte
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Hours"
+msgstr "Horas"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/challenge.svelte
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Minutes"
+msgstr "Minutos"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Wait <0>Minutes</0>"
+msgstr "Esperar <0>Minutos</0>```"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Age Priority"
+msgstr "Prioridad de Edad"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Age <0>Priority</0>"
+msgstr "Edad <0>Prioridad</0>"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Youngest First"
+msgstr "Más jóvenes primero"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Oldest First"
+msgstr "Más antiguos primero"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "(Age-based priority)"
+msgstr "(Prioridad basada en la edad)```"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Age Restriction"
+msgstr "Restricción de edad"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+#: src/lib/ui/track/conditionals/boarding.svelte
+msgid "Minimum Age"
+msgstr "Edad mínima"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+#: src/lib/ui/track/conditionals/boarding.svelte
+msgid "Maximum Age"
+msgstr "Edad máxima"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Range"
+msgstr "Rango"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Min Age"
+msgstr "Edad mínima"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Students must be older than this age"
+msgstr "Los estudiantes deben ser mayores de esta edad"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Max Age"
+msgstr "Edad máxima"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Students must be younger than this age"
+msgstr "Los estudiantes deben ser menores de esta edad"
+
+#: src/routes/admin/resources/tracks/manage/+page@admin.svelte
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page@admin.svelte
+msgid "Students must be older than min and younger than max"
+msgstr "Los estudiantes deben ser mayores que la edad mínima y menores que la edad máxima```"
+
+#: src/lib/ui/track/step.svelte
+msgid "Type"
+msgstr "Tipo```"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/boarding.svelte
+msgid "Min Age:"
+msgstr "Edad Mínima:"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/boarding.svelte
+msgid "Min"
+msgstr "Mínimo"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/boarding.svelte
+msgid "Max Age:"
+msgstr "Edad Máxima:"
+
+#: src/lib/ui/track/step.svelte
+msgid "Wait Time:"
+msgstr "Tiempo de Espera:"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "End of Month"
+msgstr "Fin de Mes"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/result.svelte
+#: src/lib/ui/track/conditionals/challenge.svelte
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Value"
+msgstr "Valor```"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Finish Points:"
+msgstr "Puntos al Finalizar:"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/result.svelte
+#: src/lib/ui/track/conditionals/challenge.svelte
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Points"
+msgstr "Puntos"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Duration:"
+msgstr "Duración:"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/result.svelte
+msgid "Mode:"
+msgstr "Modo:"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/result.svelte
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "All Pass"
+msgstr "Todos Pasan"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/result.svelte
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "All Fail"
+msgstr "Todos Fallan"
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/result.svelte
+msgid "Operator:"
+msgstr "Operador:"
+
+#: src/lib/ui/track/step.svelte
+msgid "The HTML content will be displayed to the user during this challenge step."
+msgstr "El contenido HTML se mostrará al usuario durante este paso del desafío."
+
+#: src/lib/ui/track/step.svelte
+msgid "Finish points indicate how many points the user must earn to beat this challenge. Optional."
+msgstr "Los puntos de finalización indican cuántos puntos debe ganar el usuario para superar este desafío. Opcional."
+
+#: src/lib/ui/track/step.svelte
+msgid "Duration is optional and specifies how long the challenge lasts."
+msgstr "La duración es opcional y especifica cuánto dura el desafío."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Duration unit"
+msgstr "Unidad de duración"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Instructions"
+msgstr "Instrucciones"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Describe the challenge..."
+msgstr "Describe el desafío..."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Finish Points"
+msgstr "Puntos de finalización"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Duration"
+msgstr "Duración"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "HTML"
+msgstr "HTML"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Challenge Description"
+msgstr "Descripción del Desafío"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Max Points"
+msgstr "Puntos Máximos"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Maximum Points"
+msgstr "Puntos Máximos"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Provide the HTML Code for the challenge."
+msgstr "Proporciona el código HTML para el desafío."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "No Limit"
+msgstr "Sin límite"
+
+#: src/lib/ui/track/conditionals/boarding.svelte
+msgid "These values are optional if left empty no restrictions are made."
+msgstr "Estos valores son opcionales; si se dejan vacíos, no se aplican restricciones."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"A challenge is essentially just that, it challenges the user towards some puzzle. Your HTML Game\n"
+"\t\tmust comply with the documented specification otherwise it will not work."
+msgstr ""
+"Un desafío es esencialmente eso, desafía al usuario a resolver un acertijo. Tu juego HTML\n"
+"\t\tdebe cumplir con la especificación documentada, de lo contrario, no funcionará.```"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"A challenge is essentially just that, it challenges the user towards some puzzle. Your HTML Game\n"
+"\tmust comply with the documented specification otherwise it will not work."
+msgstr ""
+"Un desafío es esencialmente eso, desafía al usuario a resolver un enigma. Tu juego HTML\n"
+"\tdebe cumplir con la especificación documentada, de lo contrario, no funcionará."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"You can optionally set a max points value which means that if the applicant gains this many points\n"
+"\tin this challenge they automatically win and go to the next stage."
+msgstr ""
+"Opcionalmente, puedes establecer un valor máximo de puntos, lo que significa que si el solicitante obtiene esta cantidad de puntos\n"
+"\ten este desafío, ganará automáticamente y pasará a la siguiente etapa.```"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"A challenge is essentially just that, it challenges the user towards some puzzle.\n"
+"\tYour HTML Game <0>must comply</0> with the documented specification otherwise it will not work."
+msgstr ""
+"Un desafío es esencialmente solo eso, desafía al usuario a resolver un enigma.\n"
+"\tTu juego HTML <0>debe cumplir</0> con la especificación documentada; de lo contrario, no funcionará."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "A challenge is essentially just that, it challenges the user towards some puzzle. Your HTML Game <0>must comply</0> with the documented specification otherwise it will not work."
+msgstr "Un desafío es esencialmente eso, desafía al usuario a resolver un rompecabezas. Tu juego HTML <0>debe cumplir</0> con la especificación documentada, de lo contrario, no funcionará."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"You can optionally set a max points value which means that if the applicant gains this many points\n"
+"\tin this challenge they automatically win and go to the next stage. If left empty then there is no\n"
+"\tlimit."
+msgstr "Opcionalmente, puedes establecer un valor máximo de puntos, lo que significa que si el solicitante obtiene esta cantidad de puntos en este desafío, automáticamente gana y pasa a la siguiente etapa. Si se deja vacío, no hay límite."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"An Optional timer can also be set to limit the amount of time on this challenge. If left empty\n"
+"\tthere is no timer applied."
+msgstr "También se puede establecer un temporizador opcional para limitar la cantidad de tiempo en este desafío. Si se deja vacío, no se aplica ningún temporizador.```"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "No Max Pooints"
+msgstr "Sin Puntos Máximos"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Text: <0/>"
+msgstr "Texto: <0/>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Number: <0/>"
+msgstr "Número: <0/>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Password: <0/>"
+msgstr "Contraseña: <0/>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Email: <0/>"
+msgstr "Correo electrónico: <0/>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Checkbox: <0/>"
+msgstr "Casilla de verificación: <0/>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Radio 1 <0/>"
+msgstr "Radio 1 <0/>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Radio 2 <0/>"
+msgstr "Radio 2 <0/>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Select: <0><0>Choose...</0> <1>Option 1</1> <2>Option 2</2></0>"
+msgstr "Seleccionar: <0><0>Elegir...</0> <1>Opción 1</1> <2>Opción 2</2></0>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Textarea: <0/>"
+msgstr "Área de texto: <0/>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Date: <0/>"
+msgstr "Fecha: <0/>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Color: <0/>"
+msgstr "Color: <0/>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "Range: <0/>"
+msgstr "Rango: <0/>"
+
+#: src/routes/demo/+page.svelte
+#: src/routes/(app)/demo/+page.svelte
+msgid "File: <0/>"
+msgstr "Archivo: <0/>```"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Details"
+msgstr "Detalles"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"You can optionally set a max points value which means that if the applicant gains this many points\n"
+"\t\tin this challenge they automatically win and go to the next stage. If left empty then there is no\n"
+"\t\tlimit."
+msgstr ""
+"Opcionalmente, puedes establecer un valor máximo de puntos, lo que significa que si el solicitante obtiene esta cantidad de puntos\n"
+"\t\ten este desafío, automáticamente gana y pasa a la siguiente etapa. Si se deja vacío, no hay\n"
+"\t\tlímite."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"An Optional timer can also be set to limit the amount of time on this challenge. If left empty\n"
+"\t\tthere is no timer applied."
+msgstr ""
+"También se puede establecer un temporizador opcional para limitar la cantidad de tiempo en este desafío. Si se deja vacío,\n"
+"\t\tno se aplica ningún temporizador.```"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+#: src/lib/ui/track/documentation.svelte
+msgid "About Challenges"
+msgstr "Acerca de los desafíos"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "A challenge is essentially just that: it challenges the user with a puzzle. Your HTML Game <0>must comply</0> with the documented specification, otherwise it will not work."
+msgstr "Un desafío es esencialmente justo eso: desafía al usuario con un rompecabezas. Tu juego HTML <0>debe cumplir</0> con la especificación documentada, de lo contrario no funcionará."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "You can optionally set a <0>max points</0> value. If the applicant gains this many points in this challenge, they automatically win and go to the next stage. If left empty, there is no limit."
+msgstr "Opcionalmente, puedes establecer un valor de <0>puntos máximos</0>. Si el solicitante obtiene esta cantidad de puntos en este desafío, ganará automáticamente y pasará a la siguiente etapa. Si se deja vacío, no hay límite."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "An optional <0>timer</0> can also be set to limit the amount of time on this challenge. If left empty, there is no timer applied."
+msgstr "También se puede establecer un <0>temporizador</0> opcional para limitar la cantidad de tiempo en este desafío. Si se deja vacío, no se aplicará ningún temporizador.```"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"You can optionally set a <0>max points</0> value. If the\n"
+"\t\t\tapplicant gains this many points in this challenge, they automatically win and go to the next stage.\n"
+"\t\t\tIf left empty, there is no limit."
+msgstr ""
+"Opcionalmente, puede establecer un valor de <0>puntos máximos</0>. Si el\n"
+"\t\t\tsolicitante obtiene esta cantidad de puntos en este desafío, gana automáticamente y pasa a la siguiente etapa.\n"
+"\t\t\tSi se deja vacío, no hay límite."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"An optional <0>timer</0> can also be set to limit the amount\n"
+"\t\t\tof time on this challenge. If left empty, there is no timer applied."
+msgstr ""
+"También se puede establecer un <0>temporizador</0> opcional para limitar la cantidad\n"
+"\t\t\tde tiempo en este desafío. Si se deja vacío, no se aplica ningún temporizador.```"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"You can optionally set a <0>max points</0> value. If the applicant\n"
+"\t\tgains this many points in this challenge, they automatically win and go to the next stage. If left\n"
+"\t\tempty, there is no limit."
+msgstr ""
+"Opcionalmente, puede establecer un valor de <0>puntos máximos</0>. Si el solicitante\n"
+"\t\tgana esta cantidad de puntos en este desafío, automáticamente gana y pasa a la siguiente etapa. Si se deja\n"
+"\t\tvacío, no hay límite."
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid ""
+"An optional <0>timer</0> can also be set to limit the amount\n"
+"\t\tof time on this challenge. If left empty, there is no timer applied."
+msgstr ""
+"También se puede establecer un <0>temporizador</0> opcional para limitar la cantidad\n"
+"\t\tde tiempo en este desafío. Si se deja vacío, no se aplica ningún temporizador.```"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "No Max Points"
+msgstr "Sin Puntos Máximos"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "Timer"
+msgstr "Temporizador"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "HTML Code"
+msgstr "Código HTML"
+
+#: src/lib/ui/track/conditionals/challenge.svelte
+msgid "HTML Code..."
+msgstr "Código HTML..."
+
+#: src/lib/ui/track/documentation.svelte
+msgid "Read More <0/>"
+msgstr ""
+
+#: src/lib/ui/track/documentation.svelte
+msgid "<0/> Read More"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/boarding.svelte
+msgid ""
+"If the min or max age fields are left empty, no age-based restrictions will be enforced.\n"
+"\t\tWhen values are provided, users who do not meet the age criteria (too young or too old) will be blocked from proceeding further in the process."
+msgstr ""
+
+#: src/lib/ui/track/conditionals/boarding.svelte
+#: src/lib/ui/track/conditionals/result.svelte
+msgid ""
+"\"Boarding\" refers to onboarding users by collecting their basic information (e.g., date of\n"
+"\t\tbirth, name). Optionally, set min/max age to restrict who can proceed."
+msgstr ""
+
+#: src/lib/ui/track/conditionals/result.svelte
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Result Condition"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/result.svelte
+msgid ""
+"Lets you configure the final result after the applicant went through all stages. You can for\n"
+"\t\texample check if user has x amount of points collected from all challenges."
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "User's can be asked to wait a certain time until they are allowed to continue."
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Waiting Condition"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid ""
+"User's can be asked to wait a certain time until they are allowed to continue.\n"
+"\t\tLeave it empty if you wish to not wait."
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid ""
+"User's can be asked to wait a certain time until they are allowed to continue.\n"
+"\t\tLeave it empty if you wish to not wait. In that case this block will do nothing."
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Expires at: {0} 00:00"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Would end at: {0} 00:00"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid ""
+"User's can be asked to wait a certain time until they are allowed to continue. Leave it empty if\n"
+"\t\tyou wish to not wait. In that case this block will do nothing."
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Would end at: {0}"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Example: {0}"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Gender Composition (Optional)"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "<0/> Include all genders in final week"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Male %"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Female %"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Other %"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Specify the percentage for each gender (0-100). Leave blank if not applicable."
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Mode"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Time Based"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Gender Based"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "<0/> Include everyone 1 Week Before"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "Gender Composition"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "There can be different modes of waiting (Time based, Gender Based, etc...)"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "The mode to use to determine the wait time"
+msgstr ""
+
+#: src/lib/ui/track/conditionals/waiting.svelte
+msgid "The mode to use to determine the wait time."
+msgstr ""
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/boarding.svelte
+#: src/lib/ui/track/conditionals/result.svelte
+msgid "Invalid Configuration"
+msgstr ""
+
+#: src/lib/ui/track/step.svelte
+#: src/lib/ui/track/conditionals/boarding.svelte
+#: src/lib/ui/track/conditionals/result.svelte
+msgid "The step is currently invalid, try to move step into a different order or change it's configuration."
+msgstr ""
+
+#: src/lib/ui/track/step.svelte
+msgid "Debug"
+msgstr ""
+
+#: src/lib/ui/track/step.svelte
+msgid "Debug JSON"
+msgstr ""
+
+#: src/lib/ui/track/step.svelte
+msgid "Last Modified: {0}"
 msgstr ""
