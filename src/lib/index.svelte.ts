@@ -17,8 +17,8 @@ export const dateFormatOptions: Intl.DateTimeFormatOptions = {
 	day: 'numeric',
 	hour: '2-digit',
 	minute: '2-digit',
-	timeZoneName: 'short',
-	localeMatcher: 'lookup'
+	hour12: false, // 24-hour format
+	// timeZoneName: 'short',
 };
 
 // ============================================================================
@@ -224,7 +224,7 @@ export namespace Formy {
 	} as const;
 
 	export type FormResult<T> = {
-		code?: number;
+		code?: string;
 		errors?: Record<keyof T, string[]>;
 	};
 
@@ -237,9 +237,22 @@ export namespace Formy {
 	 * @returns A promise that resolves to the result of `schema.safeParseAsync`, containing either the parsed data or validation errors.
 	 */
 	export async function parse<T>(request: Request, schema: z.ZodType<T>) {
-		const formData = await request.formData();
-		const data = Object.fromEntries(formData.entries());
-		return schema.safeParseAsync(data);
+		const rawFormData = await request.formData();
+		const formData: Record<string, FormDataEntryValue | FormDataEntryValue[]> = {};
+		for (const [key, value] of rawFormData.entries()) {
+			const processedValue = value === "" ? undefined : value;
+			if (formData.hasOwnProperty(key)) {
+				const prev = formData[key];
+				const newArray = Array.isArray(prev)
+					? [...prev, processedValue]
+					: [prev, processedValue];
+				formData[key] = newArray.filter((v): v is FormDataEntryValue => v !== undefined);
+			} else {
+				formData[key] = processedValue === undefined ? '' : processedValue;
+			}
+		}
+		console.log('Form data:', formData);
+		return schema.safeParseAsync(formData);
 	}
 
 	/**
@@ -256,10 +269,10 @@ export namespace Formy {
 	 */
 	export function fail<T, U>(
 		status: number,
-		payload: number | z.ZodSafeParseResult<U>,
+		payload: string | z.ZodSafeParseResult<U>,
 		rest: T = undefined as T
 	) {
-		if (typeof payload === 'number') {
+		if (typeof payload === 'string') {
 			return kitFail(status, {
 				code: payload,
 				...rest

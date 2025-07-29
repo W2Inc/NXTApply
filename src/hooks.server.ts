@@ -26,9 +26,8 @@ const db: Database = new Database(DATABASE_URL, { strict: true });
 
 // NOTE(w2wizard): https://bun.sh/docs/api/sqlite#wal-mode
 export const init: ServerInit = async () => {
-	db.run('PRAGMA journal_mode = WAL');
-
-	logger.info('Starting...');
+	db.run(/** @wc-ignore */ 'PRAGMA journal_mode = WAL');
+	logger.info(/** @wc-ignore */ 'Starting...');
 	Jobs.create('session-cleanup');
 
 	if (!dev) {
@@ -85,7 +84,7 @@ const authenticate: Handle = async ({ event, resolve }) => {
 const authorize: Handle = async ({ event, resolve }) => {
 	if (event.locals.session?.userId) {
 		const user = event.locals.db
-			.query<User, string>('SELECT * FROM user WHERE id = ?')
+			.query<User, string>(/** @wc-ignore */ 'SELECT * FROM user WHERE id = ?')
 			.get(event.locals.session.userId);
 
 		event.locals.user = user;
@@ -107,7 +106,6 @@ export const base: Handle = async ({ event, resolve }) => {
 	event.locals.db = db;
 	event.setHeaders({
 		'x-app': env.PUBLIC_APP_NAME,
-		'x-powered-by': `Bun ${Bun.version}`
 	});
 
 	let desiredLocale = event.cookies.get('set-lang');

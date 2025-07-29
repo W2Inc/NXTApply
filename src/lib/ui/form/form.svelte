@@ -43,9 +43,11 @@
 				const { errors: e, code } = result.data as Formy.FormResult<T>;
 				if (e) {
 					errors = e;
+				} else if (code) {
+					toast.error(code);
+				} else {
+					toast.error('Something went wrong!');
 				}
-
-				toast.error('Something went wrong!');
 			} else {
 				toast.error('Something went wrong!');
 			}

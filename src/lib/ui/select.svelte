@@ -9,8 +9,8 @@
 <select
 	bind:value
 	class={cn(
-		'border-input focus:ring-primary/40 rounded-lg border px-2 font-sans text-base transition focus:ring-2 focus:outline-none',
-		klass
+		klass,
+		'border-input bg-input focus:ring-primary/40 rounded-lg border px-2 font-sans text-base transition focus:ring-2 focus:outline-none overflow-y-auto',
 	)}
 	{...rest}
 >

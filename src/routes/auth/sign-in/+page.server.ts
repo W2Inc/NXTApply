@@ -36,16 +36,16 @@ export const actions: Actions = {
 
 		const formData = result.data;
 		const user = locals.db
-			.query<User, [string]>('SELECT * FROM user WHERE email = ?')
+			.query<User, [string]>(/** @wc-ignore */ 'SELECT * FROM user WHERE email = ?')
 			.get(formData.email);
 
 		if (!user || !user.hash) {
-			return Formy.fail(404, Formy.Issues.NotFound);
+			return Formy.fail(404, "Invalid credentials");
 		}
 
 		const match = await Bun.password.verify(formData.password, user.hash);
 		if (!match) {
-			return Formy.fail(422, Formy.Issues.InvalidCredentials);
+			return Formy.fail(422, "Invalid credentials");
 		}
 
 		cookies.set('identity', user.id, {
@@ -54,6 +54,6 @@ export const actions: Actions = {
 			sameSite: 'strict'
 		});
 
-		redirect(302, `/${locals.locale}/auth/2fa/setup`);
+		redirect(302, `/auth/2fa/setup`);
 	}
 };

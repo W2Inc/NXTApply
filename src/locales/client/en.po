@@ -1,12 +1,16 @@
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-28T19:45:00.265Z\n"
+"PO-Revision-Date: 2025-07-29T17:24:48.228Z\n"
+"Last-Translator: \n"
 "Language: English\n"
-"MIME-Version: 1.0\n"
+"Language-Team: \n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2025-07-28T19:45:00.265Z\n"
-"POT-Creation-Date: 2025-07-28T19:45:00.265Z\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"MIME-Version: 1.0\n"
 
 #: src/routes/+error.svelte
 msgid "Houston, we have a problem"
@@ -192,8 +196,8 @@ msgstr "Administrator"
 msgid "Profile"
 msgstr "Profile"
 
-#: src/routes/admin/+layout.svelte
 #: src/routes/(app)/[user]/break/+page.svelte
+#: src/routes/admin/+layout.svelte
 msgid "POST"
 msgstr "POST"
 
@@ -265,9 +269,9 @@ msgstr "Login"
 msgid "Enter your email to sign in to your account"
 msgstr "Enter your email to sign in to your account"
 
-#: src/routes/auth/sign-in/+page.svelte
 #: src/routes/auth/sign-up/+page.svelte
 #: src/routes/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
 msgid "Email"
 msgstr "Email"
 
@@ -275,8 +279,8 @@ msgstr "Email"
 msgid "Please give a valid Email"
 msgstr "Please give a valid Email"
 
-#: src/routes/auth/sign-in/+page.svelte
 #: src/routes/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
 msgid "Password"
 msgstr "Password"
 
@@ -284,8 +288,8 @@ msgstr "Password"
 msgid "Please give a valid Password"
 msgstr "Please give a valid Password"
 
-#: src/routes/auth/sign-in/+page.svelte
 #: src/routes/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
 msgid "Reset Password"
 msgstr "Reset Password"
 
@@ -352,10 +356,15 @@ msgstr "Apply Now"
 msgid "Already have an account? <0>Sign in</0>"
 msgstr "Already have an account? <0>Sign in</0>"
 
+#: src/routes/admin/resources/events/+page@admin.svelte
+#: src/routes/admin/resources/events/+page@admin.svelte
+#: src/routes/admin/resources/events/manage/+page.svelte
+#: src/routes/admin/resources/events/manage/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
 #: src/routes/admin/analytics/+page.svelte
 #: src/routes/admin/emails/+page.svelte
 #: src/routes/admin/resources/events/+page.svelte
-#: src/routes/admin/resources/tracks/+page.svelte
+#: src/routes/admin/resources/events/+page.svelte
 msgid "Edit"
 msgstr "Edit"
 
@@ -420,11 +429,11 @@ msgstr "Please enter your email address"
 msgid "Send Reset Link"
 msgstr "Send Reset Link"
 
-#: src/routes/admin/resources/+layout.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
 msgid "Search"
 msgstr "Search"
 
-#: src/routes/admin/resources/+layout.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
 msgid "<0/> Search"
 msgstr "<0/> Search"
 
@@ -512,8 +521,14 @@ msgstr "Did you know? 42 is the answer to life, the universe, and everything!"
 msgid "Challenge completed! 🎉"
 msgstr "Challenge completed! 🎉"
 
-#: src/routes/admin/resources/events/+page.svelte
+#: src/routes/admin/resources/events/+page@admin.svelte
+#: src/routes/admin/resources/events/+page@admin.svelte
+#: src/routes/admin/resources/events/manage/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/manage/+page.svelte
+#: src/routes/admin/resources/events/manage/+page.svelte
 #: src/routes/admin/resources/tracks/+page.svelte
+#: src/routes/admin/resources/events/+page.svelte
+#: src/routes/admin/resources/events/+page.svelte
 msgid "Delete"
 msgstr "Delete"
 
@@ -550,6 +565,7 @@ msgid "Verification Code"
 msgstr "Verification Code"
 
 #: src/routes/auth/2fa/setup/+page.svelte
+#: src/routes/admin/resources/events/manage/[[id]]/+page.svelte
 msgid "Enter 6-digit code"
 msgstr "Enter 6-digit code"
 
@@ -568,3 +584,268 @@ msgid ""
 msgstr ""
 "Two-factor authentication is required for your account security. You must complete\n"
 "\t\t\t\t\t\t\tthis step to continue."
+
+#: src/routes/admin/resources/events/+page.svelte
+msgid "Events"
+msgstr "Events"
+
+#~ msgid ""
+#~ "Events are used to track significant occurrences in the application, such as\n"
+#~ "\t\tthe creation of an application or a change in its status."
+#~ msgstr ""
+#~ "Events are used to track significant occurrences in the application, such as\n"
+#~ "\t\tthe creation of an application or a change in its status."
+
+#~ msgid ""
+#~ "You can manage events by editing or deleting them using the buttons provided\n"
+#~ "\t\tin the table."
+#~ msgstr ""
+#~ "You can manage events by editing or deleting them using the buttons provided\n"
+#~ "\t\tin the table."
+
+#: src/routes/admin/resources/events/+page@admin.svelte
+#: src/routes/admin/resources/events/manage/+page.svelte
+#: src/routes/admin/resources/events/+page.svelte
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "Event Types"
+msgstr "Event Types"
+
+#: src/routes/admin/resources/events/+page@admin.svelte
+msgid ""
+"Event types are used to categorize and manage different types of events within the application.\n"
+"\tThey can be used to filter and organize events based on their nature, such as conferences,\n"
+"\tworkshops, or webinars."
+msgstr ""
+"Event types are used to categorize and manage different types of events within the application.\n"
+"\tThey can be used to filter and organize events based on their nature, such as conferences,\n"
+"\tworkshops, or webinars."
+
+#: src/routes/admin/resources/events/manage/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
+#: src/routes/admin/resources/events/+page.svelte
+#: src/routes/admin/resources/events/+page.svelte
+msgid "<0/> Create"
+msgstr "<0/> Create"
+
+#: src/routes/admin/resources/events/manage/+page.svelte
+#: src/routes/admin/resources/events/+page.svelte
+msgid "Events vs Event Types"
+msgstr "Events vs Event Types"
+
+#: src/routes/admin/resources/events/manage/+page.svelte
+#: src/routes/admin/resources/events/+page.svelte
+msgid ""
+"<0>Event Types</0> define the <1>category or template</1> for\n"
+"\t\tevents. For example, \"Interview\", \"Workshop\", or \"Onboarding Session\". Each type has a name and description,\n"
+"\t\tand can be reused for multiple events."
+msgstr ""
+"<0>Event Types</0> define the <1>category or template</1> for\n"
+"\t\tevents. For example, \"Interview\", \"Workshop\", or \"Onboarding Session\". Each type has a name and description,\n"
+"\t\tand can be reused for multiple events."
+
+#: src/routes/admin/resources/events/manage/+page.svelte
+#: src/routes/admin/resources/events/+page.svelte
+msgid ""
+"<0>Events</0> are <1>specific scheduled instances</1> of an event\n"
+"\t\ttype. For example, \"Onboarding Session on July 10th, 2024\". Events reference an event type, have\n"
+"\t\ta start date, and may have additional details like address or registration deadline."
+msgstr ""
+"<0>Events</0> are <1>specific scheduled instances</1> of an event\n"
+"\t\ttype. For example, \"Onboarding Session on July 10th, 2024\". Events reference an event type, have\n"
+"\t\ta start date, and may have additional details like address or registration deadline."
+
+#~ msgid "Search events..."
+#~ msgstr "Search events..."
+
+#~ msgid "<0/> Create Event"
+#~ msgstr "<0/> Create Event"
+
+#~ msgid "Search event types..."
+#~ msgstr "Search event types..."
+
+#~ msgid "<0/> Create Event Type"
+#~ msgstr "<0/> Create Event Type"
+
+#~ msgid "Next Page"
+#~ msgstr "Next Page"
+
+#~ msgid "Prev Page"
+#~ msgstr "Prev Page"
+
+#: src/routes/admin/resources/events/edit/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.svelte
+msgid "Name"
+msgstr "Name"
+
+#: src/routes/admin/resources/events/manage/[[id]]/+page.svelte
+msgid "Event Name"
+msgstr "Event Name"
+
+#: src/routes/admin/resources/events/manage/[[id]]/+page.svelte
+msgid "Open Day, ..."
+msgstr "Open Day, ..."
+
+#: src/routes/admin/resources/events/manage/[[id]]/+page.svelte
+msgid "Event Description"
+msgstr "Event Description"
+
+#: src/routes/admin/resources/events/manage/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "Save"
+msgstr "Save"
+
+#: src/routes/admin/resources/events/manage/[[id]]/+page.svelte
+msgid "Delete <0/>"
+msgstr "Delete <0/>"
+
+#: src/routes/admin/resources/events/manage/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/[[id]]/+page.svelte
+msgid "Save <0/>"
+msgstr "Save <0/>"
+
+#: src/routes/admin/resources/events/edit/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.svelte
+msgid "Description"
+msgstr "Description"
+
+#: src/routes/admin/resources/events/edit/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.svelte
+msgid "Enter event name"
+msgstr "Enter event name"
+
+#: src/routes/admin/resources/events/edit/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.svelte
+msgid "Enter event description"
+msgstr "Enter event description"
+
+#~ msgid "<0/> Save"
+#~ msgstr "<0/> Save"
+
+#: src/routes/admin/resources/events/edit/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "Cancel"
+msgstr "Cancel"
+
+#~ msgid "Edit Event Type"
+#~ msgstr "Edit Event Type"
+
+#: src/routes/admin/resources/events/edit/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.svelte
+msgid "The name of the event. This will be visible to users."
+msgstr "The name of the event. This will be visible to users."
+
+#: src/routes/admin/resources/events/edit/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.svelte
+msgid "Optional description of the event type."
+msgstr "Optional description of the event type."
+
+#: src/routes/admin/resources/events/edit/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.svelte
+msgid "{0} Event Type"
+msgstr "{0} Event Type"
+
+#~ msgid ""
+#~ "}>\n"
+#~ "\t\t\t\t\tCancel"
+#~ msgstr ""
+#~ "}>\n"
+#~ "\t\t\t\t\tCancel"
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "{0} Application Event"
+msgstr "{0} Application Event"
+
+#~ msgid "Address"
+#~ msgstr "Address"
+
+#~ msgid "Optional: The location/address of the event."
+#~ msgstr "Optional: The location/address of the event."
+
+#~ msgid "Enter event address"
+#~ msgstr "Enter event address"
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "Event type"
+msgstr "Event type"
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "Select the type of event."
+msgstr "Select the type of event."
+
+#~ msgid "Select type..."
+#~ msgstr "Select type..."
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "Prerequisite Event Types"
+msgstr "Prerequisite Event Types"
+
+#~ msgid "User must have completed these event types to register for this event."
+#~ msgstr "User must have completed these event types to register for this event."
+
+#~ msgid "Hold Ctrl/Cmd to select multiple types."
+#~ msgstr "Hold Ctrl/Cmd to select multiple types."
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "Start Date & Time"
+msgstr "Start Date & Time"
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "When does this event start?"
+msgstr "When does this event start?"
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "Register Until"
+msgstr "Register Until"
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "Cutoff for registration. Leave blank for no limit."
+msgstr "Cutoff for registration. Leave blank for no limit."
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "None"
+msgstr "None"
+
+#~ msgid "Prerequisite Event Type"
+#~ msgstr "Prerequisite Event Type"
+
+#~ msgid "User must have completed this event type to register for this event."
+#~ msgstr "User must have completed this event type to register for this event."
+
+#~ msgid "d <0><0>{0} Application Event</0> <1/> <2><0>Cancel</0> <1>Save <0/></1></2></0>"
+#~ msgstr "d <0><0>{0} Application Event</0> <1/> <2><0>Cancel</0> <1>Save <0/></1></2></0>"
+
+#~ msgid "B"
+#~ msgstr "B"
+
+#~ msgid "None<0/>"
+#~ msgstr "None<0/>"
+
+#~ msgid "User must have completed one or more of these event types to register. Hold Ctrl/Cmd to select multiple."
+#~ msgstr "User must have completed one or more of these event types to register. Hold Ctrl/Cmd to select multiple."
+
+#~ msgid "Enable registration cutoff"
+#~ msgstr "Enable registration cutoff"
+
+#~ msgid "Reset"
+#~ msgstr "Reset"
+
+#~ msgid "<0/> Reset"
+#~ msgstr "<0/> Reset"
+
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.svelte
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "Reset <0/>"
+msgstr "Reset <0/>"
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "<0/> Enable registration cutoff"
+msgstr "<0/> Enable registration cutoff"
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.svelte
+msgid "User must have completed a given event type before this one."
+msgstr "User must have completed a given event type before this one."
+
+#~ msgid "Hi"
+#~ msgstr "Hi"

@@ -1,0 +1,9 @@
+{
+    "svelte-llm": {
+        "command": "bunx",
+        "args": [
+            "mcp-remote",
+            "https://svelte-llm.stanislav.garden/mcp/mcp"
+        ]
+    }
+}

@@ -4,10 +4,10 @@
 
 	interface Props extends HTMLDetailsAttributes {}
 
-	const { children }: Props = $props();
+	const { children, ...rest }: Props = $props();
 </script>
 
-<details class="border-muted bg-muted/40 cursor-help rounded-lg border">
+<details data-docs class="cursor-help" {...rest}>
 	<summary
 		class="text-primary flex items-center gap-1 underline focus:ring-primary/30 rounded font-semibold hover:underline focus:ring-2 focus:outline-none"
 	>

@@ -21,7 +21,15 @@
 	import Dropdown from '$lib/ui/dropdown.svelte';
 	import Form from '$lib/ui/form/form.svelte';
 
+
+	let search = $state('');
 	const { data }: PageProps = $props();
+
+	let users = $derived.by(() => {
+		const urlPage = Number(page.url.searchParams.get('page'));
+		return isNaN(urlPage) || urlPage < 1 ? 1 : urlPage;
+	});
+
 	const columns: ColumnDef<User>[] = [
 		{ key: 'id', label: 'Id' },
 		{ key: 'email', label: 'Email' },
@@ -33,9 +41,29 @@
 		{ key: 'createdAt', label: 'Created at', type: 'date' },
 		{ key: 'updatedAt', label: 'Updated at', type: 'date' }
 	];
+
+	function setUrl(key: string, value: number | string) {
+		const url = new URL(page.url);
+		url.searchParams.set(key, value.toString());
+		goto(url.toString(), { invalidateAll: true });
+	}
 </script>
 
-<Table data={data.users} {columns}>
+<!-- <div class="flex items-center gap-2">
+	<Input type="text" icon={Search} bind:value={search} placeholder="Search" />
+	<Button class="gap-2" onclick={() => setUrl('q', search)}>
+		<Search size={16} />
+		Search
+	</Button>
+	<hr class="flex-1 border-l" />
+</div>
+<hr class="my-2" /> -->
+<Table
+	data={data.users}
+	{columns}
+	onnext={() => setUrl('page', users + 1)}
+	onprev={() => setUrl('page', users - 1)}
+>
 	{#snippet action(user)}
 		<Form
 			before={() => confirm('Are you sure you want to continue ?')}

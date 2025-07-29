@@ -138,7 +138,6 @@
 </script>
 
 <div class="space-y-6">
-	{JSON.stringify(data, null, 2)}
   <!-- Page Header -->
   <div>
     <h1 class="text-2xl font-semibold tracking-tight">Dashboard</h1>

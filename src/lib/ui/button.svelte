@@ -5,7 +5,7 @@
 	import type { ClassValue, HTMLButtonAttributes } from 'svelte/elements';
 
 	const baseClasses =
-		'inline-flex items-center justify-center rounded text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring cursor-pointer';
+		'inline-flex items-center justify-center rounded text-sm font-medium transition-colors focus:ring-primary/40 focus:ring-2 focus:outline-none cursor-pointer';
 
 	const variantClasses = {
 		default: 'bg-primary text-primary-foreground hover:bg-primary/90',

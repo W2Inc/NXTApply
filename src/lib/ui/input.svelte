@@ -18,7 +18,7 @@
 		...restProps
 	}: Props = $props();
 	const classes =
-		'w-full border-input bg-input text-foreground placeholder:text-muted-foreground focus:ring-primary/40 resize-y rounded-lg border px-2 py-1 font-sans text-base transition focus:ring-2 focus:outline-none';
+		'w-full border-input bg-input text-foreground placeholder:text-muted-foreground resize-y rounded-lg border px-2 py-1 font-sans text-base transition focus:ring-primary/40 focus:ring-2 focus:outline-none';
 </script>
 
 {#if type === 'radio' || type === 'range' || type === 'color'}

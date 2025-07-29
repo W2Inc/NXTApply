@@ -1,33 +1,196 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-07-28T18:41:24.059Z\n"
-"PO-Revision-Date: 2025-07-28T19:19:44.502Z\n"
-"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Language: Francais\n"
-"Language-Team: \n"
+"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
-"MIME-Version: 1.0\n"
+"PO-Revision-Date: 2025-07-29T17:43:34.761Z\n"
+"POT-Creation-Date: 2025-07-29T17:43:34.761Z\n"
 
-#: src/routes/[locale]/+page.server.ts
-msgid "Hello from the server!"
+#: src/routes/admin/emails/+page.server.ts
+#: src/routes/admin/analytics/+page.server.ts
+#: src/routes/admin/resources/tracks/+page.server.ts
+msgid "SELECT * FROM application_track"
+msgstr ""
+
+#: src/routes/admin/emails/+page.server.ts
+#: src/routes/admin/analytics/+page.server.ts
+#: src/routes/admin/resources/tracks/+page.server.ts
+msgid "INSERT INTO "
+msgstr ""
+
+#: src/routes/admin/resources/events/edit/types copy/[[id]]/+page.server.ts
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.server.ts
+msgid "SELECT * FROM event_type WHERE id = ?"
+msgstr ""
+
+#: src/routes/admin/resources/events/edit/types copy/[[id]]/+page.server.ts
+#: src/routes/admin/resources/events/edit/types/[[id]]/+page.server.ts
+msgid "Event type not found"
+msgstr ""
+
+#: src/routes/auth/reset/+page.server.ts
+#: src/routes/auth/sign-in/+page.server.ts
+#: src/routes/auth/sign-up/+page.server.ts
+msgid "SELECT * FROM user WHERE email = ?"
+msgstr ""
+
+#: src/routes/auth/2fa/+page.server.ts
+#: src/routes/(app)/[user]/boarding/+page.server.ts
+#: src/routes/auth/2fa/setup/+page.server.ts
+msgid "Unauthorized"
+msgstr ""
+
+#: src/routes/auth/2fa/+page.server.ts
+#: src/routes/auth/2fa/setup/+page.server.ts
+#: src/hooks.server.ts
+msgid "SELECT * FROM user WHERE id = ?"
+msgstr ""
+
+#: src/routes/auth/sign-out/+page.server.ts
+msgid "DELETE FROM session WHERE id = ?"
+msgstr ""
+
+#: src/routes/auth/sign-in/+page.server.ts
+#: src/routes/auth/sign-in/+page.server.ts
+msgid "Invalid credentials"
+msgstr ""
+
+#: src/routes/auth/sign-up/+page.server.ts
+msgid "INSERT INTO user (id, hash, email, firstName, lastName) VALUES (?, ?, ?, ?, ?) RETURNING *"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.server.ts
+msgid ""
+"UPDATE users SET\n"
+"\t\t\t\tfirstName = ?,\n"
+"\t\t\t\tlastName = ?\n"
+"\t\t\t\tWHERE id = ?"
+msgstr ""
+
+#: src/routes/(app)/+layout.server.ts
+msgid ""
+"\n"
+"\t\t\tSELECT\n"
+"\t\t\t\te.*,\n"
+"\t\t\t\tet.name AS name,\n"
+"\t\t\t\tet.description AS description,\n"
+"\t\t\t\tue.completedAt,\n"
+"\t\t\t\t(\n"
+"\t\t\t\t\tSELECT GROUP_CONCAT(rt.name)\n"
+"\t\t\t\t\tFROM event_type_dependency ed\n"
+"\t\t\t\t\tJOIN event_type rt ON ed.requiredTypeId = rt.id\n"
+"\t\t\t\t\tWHERE ed.eventId = e.id\n"
+"\t\t\t\t\t\tAND NOT EXISTS (\n"
+"\t\t\t\t\t\t\tSELECT 1\n"
+"\t\t\t\t\t\t\tFROM user_event ue2\n"
+"\t\t\t\t\t\t\tJOIN event e2 ON ue2.eventId = e2.id\n"
+"\t\t\t\t\t\t\tWHERE ue2.userId = ?\n"
+"\t\t\t\t\t\t\t\tAND e2.eventTypeId = ed.requiredTypeId\n"
+"\t\t\t\t\t\t\t\tAND ue2.completedAt IS NOT NULL\n"
+"\t\t\t\t\t\t)\n"
+"\t\t\t\t) AS requires\n"
+"\t\t\tFROM event e\n"
+"\t\t\tJOIN event_type et ON e.eventTypeId = et.id\n"
+"\t\t\tLEFT JOIN user_event ue ON e.id = ue.eventId AND ue.userId = ?;\n"
+"\t\t\t"
+msgstr ""
+
+#: src/routes/admin/resources/tracks/+page.server.ts
+msgid "UPDATE application_track SET isActive = CASE WHEN id = ? THEN 1 ELSE 0 END"
+msgstr ""
+
+#: src/routes/admin/resources/tracks/+page.server.ts
+msgid "Activated!"
+msgstr ""
+
+#: src/routes/admin/resources/users/+page.server.ts
+msgid "DELETE FROM user WHERE id = ?"
+msgstr ""
+
+#: src/routes/admin/resources/users/+page.server.ts
+msgid "Deleted"
+msgstr ""
+
+#: src/routes/auth/2fa/setup/+page.server.ts
+msgid "L"
+msgstr ""
+
+#: src/routes/auth/2fa/setup/+page.server.ts
+msgid "UPDATE user SET tfa = ? WHERE id = ? RETURNING *"
+msgstr ""
+
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page.server.ts
+msgid "SELECT * FROM application_track WHERE id = ?"
+msgstr ""
+
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page.server.ts
+msgid "SELECT * FROM application_step WHERE trackId = ? ORDER BY \"order\""
+msgstr ""
+
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page.server.ts
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page.server.ts
+#: src/routes/admin/resources/tracks/manage/[[id]]/+page.server.ts
+msgid "Yay!"
+msgstr ""
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.server.ts
+msgid "SELECT * FROM event_type ORDER BY name ASC"
+msgstr ""
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.server.ts
+msgid "SELECT * FROM event WHERE id = ?"
+msgstr ""
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.server.ts
+msgid "Event not found"
+msgstr ""
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.server.ts
+msgid "SELECT requiredTypeId FROM event_type_dependency WHERE eventId = ?"
+msgstr ""
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.server.ts
+msgid "Registration cutoff must be after the event start."
+msgstr ""
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.server.ts
+msgid ""
+"\n"
+"\t\t\t\t\tINSERT INTO event (id, eventTypeId, startsAt, registerUntil, createdAt, updatedAt)\n"
+"\t\t\t\t\tVALUES ($id, $eventTypeId, $startsAt, $registerUntil, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)\n"
+"\t\t\t\t"
+msgstr ""
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.server.ts
+msgid ""
+"\n"
+"\t\t\t\t\tUPDATE event\n"
+"\t\t\t\t\tSET eventTypeId = $eventTypeId,\n"
+"\t\t\t\t\t\tstartsAt = $startsAt,\n"
+"\t\t\t\t\t\tregisterUntil = $registerUntil,\n"
+"\t\t\t\t\t\tupdatedAt = CURRENT_TIMESTAMP\n"
+"\t\t\t\t\tWHERE id = $id\n"
+"\t\t\t\t"
+msgstr ""
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.server.ts
+msgid "DELETE FROM event_type_dependency WHERE eventId = $id"
+msgstr ""
+
+#: src/routes/admin/resources/events/edit/base/[[id]]/+page.server.ts
+msgid ""
+"\n"
+"\t\t\t\t\tINSERT INTO event_type_dependency (eventId, requiredTypeId)\n"
+"\t\t\t\t\tVALUES ($eventId, $requiredTypeId)\n"
+"\t\t\t\t"
 msgstr ""
 
 #: src/hooks.server.ts
 msgid "PRAGMA journal_mode = WAL"
-msgstr "PRAGMA journal_mode = WAL"
+msgstr ""
 
 #: src/hooks.server.ts
 msgid "Starting..."
-msgstr "Démarrage..."
-
-#: src/hooks.server.ts
-msgid "SELECT * FROM user WHERE id = ?"
-msgstr "SELECT * FROM user WHERE id = ?"
-
-#: src/hooks.server.ts
-msgid "Bun {0}"
-msgstr "Bun {0}"
+msgstr ""

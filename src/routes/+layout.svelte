@@ -14,7 +14,9 @@
 		const isDetailsClick = !!target.closest('details');
 		if (!isDetailsClick) {
 			document.querySelectorAll<HTMLDetailsElement>('details[open]').forEach((details) => {
-				details.open = false;
+				if (!details.hasAttribute('data-docs')) {
+					details.open = false;
+				}
 			});
 		}
 	}}

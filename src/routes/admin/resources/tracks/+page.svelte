@@ -11,6 +11,7 @@
 	import Dropdown from '$lib/ui/dropdown.svelte';
 	import Table, { type ColumnDef } from '$lib/ui/table';
 
+	let search = $state('');
 	const { data }: PageProps = $props();
 	const columns: ColumnDef<ApplicationTrack>[] = [
 		{ key: 'id', label: 'Id' },
@@ -21,18 +22,28 @@
 	];
 </script>
 
+<div class="flex items-center gap-1">
+	<Input type="text" icon={Search} bind:value={search} placeholder="Search" />
+	<Button class="gap-2" href="?q={search}">
+		<Search size={16} />
+		Search
+	</Button>
+	<Button class="gap-2" href="tracks/manage" variant="outline">
+		<Plus size={16} />
+		Create
+	</Button>
+</div>
+<hr class="my-2" />
 <Table data={data.tracks} {columns}>
 	{#snippet action(track)}
 		<Form class="flex justify-end" after={() => invalidateAll()}>
 			{#snippet fields(out)}
-				{JSON.stringify(out)}
 				<input type="hidden" name="id" value={track.id} />
 				<Button
 					disabled={out.loading}
 					title="Edit"
-					type="submit"
 					variant="icon"
-					formaction="?/activate"
+					href="tracks/manage/{track.id}"
 				>
 					<Pen size={16} />
 				</Button>
