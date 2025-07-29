@@ -3,12 +3,14 @@
 // See README in the root project for more information.
 // ============================================================================
 
+import { getLocalTimeZone } from "@internationalized/date";
 import type { LayoutServerLoad } from "./$types";
 
 // ============================================================================
 
 export const load: LayoutServerLoad = async ({ cookies }) => {
 	return {
+		tz: getLocalTimeZone(),
 		locale: cookies.get("lang"),
 	}
 };

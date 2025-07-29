@@ -66,7 +66,7 @@
 			baseClasses,
 			variantClasses[variant],
 			variant === 'icon' ? iconSizeClasses[size] : sizeClasses[size],
-			'disabled:pointer-events-none disabled:opacity-50',
+			'disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed',
 			klass
 		)}
 		aria-disabled={disabled ? true : undefined}
@@ -83,7 +83,7 @@
 			baseClasses,
 			variantClasses[variant],
 			variant === 'icon' ? iconSizeClasses[size] : sizeClasses[size],
-			'disabled:pointer-events-none disabled:opacity-50',
+			'disabled:pointer-events-none disabled:opacity-50 disabled:cursor-not-allowed',
 			klass
 		)}
 		{...rest}

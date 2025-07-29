@@ -1,37 +1,19 @@
 <script lang="ts">
-	import {
-		FileText,
-		GraduationCap,
-		BookOpen,
-		CheckCircle,
-		CreditCard,
-		Icon,
-
-		UserPen,
-
-		Coffee,
-
-		Gamepad,
-
-		Timer
-
-
-
-
-	} from '@lucide/svelte';
+	import { CheckCircle, Icon, UserPen, Coffee, Gamepad, Timer } from '@lucide/svelte';
 	import type { LayoutProps } from './$types';
 	import teleport from '$lib/teleport.svelte';
 	import { ApplicationStepType } from '$lib/index.svelte';
-
+	import { onMount } from 'svelte';
+	import { track } from '$lib/ui/track/track.svelte';
 
 	const stepsRecord: Record<number, { icon: typeof Icon; label: string }> = {
 		[ApplicationStepType.Boarding]: { icon: UserPen, label: 'Boarding' },
 		[ApplicationStepType.Intermission]: { icon: Coffee, label: 'Break' },
 		[ApplicationStepType.Challenge]: { icon: Gamepad, label: 'Challange' },
 		[ApplicationStepType.Waiting]: { icon: Timer, label: 'Waiting' },
-		[ApplicationStepType.Success]: {
+		[ApplicationStepType.Result]: {
 			icon: CheckCircle,
-			label: 'Complete'
+			label: 'Completed'
 		}
 	};
 
@@ -47,11 +29,8 @@
 			};
 		});
 	});
-
-	// Current active stage (this would come from your route or store)
 </script>
 
-<!-- Secondary Bar - Application Progress -->
 <div class="bg-muted sticky top-0 z-10 border-t" {@attach teleport('subheader')}>
 	<div class="container mx-auto px-4 py-2">
 		<nav class=" flex items-center justify-between">

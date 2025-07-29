@@ -3,12 +3,20 @@
 // See README in the root project for more information.
 // ============================================================================
 
-import { setCatalog } from '@wuchale/svelte/runtime.svelte.js';
-import type { LayoutLoad } from './$types';
+import type { LayoutLoad } from './$types'
+import { locales } from 'virtual:wuchale/locales'
+import { loadCatalogs } from 'wuchale/run-client'
+import { loadIDs, loadCatalog } from '../locales/client/loader.svelte.js'
 
 // ============================================================================
 
 export const load: LayoutLoad = async ({ data }) => {
-	setCatalog(await import(`../locales/${data.locale}.svelte.js`));
-	return { };
+	// if (!(locale in locales)) {
+	// 	return;
+	// }
+	return {
+		locale: data.locale,
+		tz: data.tz,
+		catalogs: await loadCatalogs(data.locale, loadIDs, loadCatalog)
+	};
 };

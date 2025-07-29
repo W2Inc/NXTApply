@@ -1,0 +1,566 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-28T19:45:00.269Z\n"
+"PO-Revision-Date: 2025-07-28T19:45:32.357Z\n"
+"Last-Translator: \n"
+"Language: Español\n"
+"Language-Team: \n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"MIME-Version: 1.0\n"
+
+#: src/routes/auth/+layout.svelte
+#: src/routes/auth/+layout.svelte
+msgid "NXTApply"
+msgstr ""
+
+#: src/routes/auth/+layout.svelte
+msgid "© {0} NXTApply. All rights reserved."
+msgstr ""
+
+#: src/routes/auth/+layout.svelte
+msgid "Start your journey with NXTApply"
+msgstr ""
+
+#: src/routes/auth/+layout.svelte
+msgid "Streamline your application process and discover opportunities tailored for you."
+msgstr ""
+
+#: src/routes/admin/+layout.svelte
+#: src/routes/(app)/+layout.svelte
+msgid "Logo"
+msgstr "Logo"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Assistance"
+msgstr "<0/> Asistencia"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Data Privacy"
+msgstr "<0/> Privacidad de Datos"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Logout"
+msgstr "<0/> Cerrar Sesión"
+
+#: src/routes/+error.svelte
+msgid "Houston, we have a problem"
+msgstr "Houston, tenemos un problema"
+
+#: src/routes/+error.svelte
+msgid "<0>Silly cats!</0> Rest assured this issue has been logged & reported."
+msgstr "<0>¡Gatos tontos!</0> Tenga la seguridad de que este problema ha sido registrado e informado."
+
+#: src/routes/+error.svelte
+msgid "Oops! Something wasn't quite right with that request."
+msgstr "¡Ups! Algo no salió del todo bien con esa solicitud."
+
+#: src/routes/+error.svelte
+msgid "<0/> Back to safety"
+msgstr "<0/> Volver a la seguridad"
+
+#: src/routes/(app)/+page.svelte
+msgid "Welcome to NXTApply!"
+msgstr "¡Bienvenido a NXTApply!"
+
+#: src/routes/(app)/+page.svelte
+msgid "Your student application journey starts here.<0/> <1>Follow the steps below to complete your application.</1>"
+msgstr "Tu viaje de solicitud de estudiante comienza aquí.<0/> <1>Sigue los pasos a continuación para completar tu solicitud.</1>"
+
+#: src/routes/admin/+page.svelte
+#: src/routes/(app)/+page.svelte
+msgid "Upcoming Events"
+msgstr "Próximos Eventos"
+
+#: src/routes/(app)/+page.svelte
+msgid "Save to calendar"
+msgstr "Guardar en el calendario"
+
+#: src/routes/(app)/+page.svelte
+msgid "<0/> You must have completed the following events first: <1/>"
+msgstr "<0/> Primero debes haber completado los siguientes eventos: <1/>"
+
+#: src/routes/(app)/+page.svelte
+msgid "Join"
+msgstr "Unirse"
+
+#: src/routes/(app)/+page.svelte
+msgid "No upcoming events."
+msgstr "No hay próximos eventos."
+
+#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/+page.svelte
+msgid "Z"
+msgstr "Z"
+
+#: src/routes/(app)/+page.svelte
+msgid ""
+"\n"
+"\t\t\tBEGIN:VCALENDAR\n"
+"\t\t\tVERSION:2.0\n"
+"\t\t\tBEGIN:VEVENT\n"
+"\t\t\tSUMMARY:{0}\n"
+"\t\t\tDTSTART:{1}\n"
+"\t\t\tDTEND:{2}\n"
+"\t\t\t{3}\n"
+"\t\t\tDESCRIPTION:{4}\n"
+"\t\t\tEND:VEVENT\n"
+"\t\t\tEND:VCALENDAR\n"
+"\t\t"
+msgstr ""
+"\n"
+"\t\t\tBEGIN:VCALENDAR\n"
+"\t\t\tVERSION:2.0\n"
+"\t\t\tBEGIN:VEVENT\n"
+"\t\t\tSUMMARY:{0}\n"
+"\t\t\tDTSTART:{1}\n"
+"\t\t\tDTEND:{2}\n"
+"\t\t\t{3}\n"
+"\t\t\tDESCRIPTION:{4}\n"
+"\t\t\tEND:VEVENT\n"
+"\t\t\tEND:VCALENDAR\n"
+"\t\t```"
+
+#: src/routes/admin/+layout.svelte
+msgid "A"
+msgstr ""
+
+#: src/routes/admin/+layout.svelte
+msgid "Administrator"
+msgstr ""
+
+#: src/routes/admin/+layout.svelte
+msgid "Profile"
+msgstr ""
+
+#: src/routes/admin/+layout.svelte
+#: src/routes/(app)/[user]/break/+page.svelte
+msgid "POST"
+msgstr ""
+
+#: src/routes/admin/+layout.svelte
+msgid "Logout"
+msgstr ""
+
+#: src/routes/admin/+layout.svelte
+msgid "Main Navigation"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Text: <0/>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Number: <0/>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Password: <0/>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Email: <0/>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Checkbox: <0/>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Radio 1 <0/>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Radio 2 <0/>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Select: <0><0>Choose...</0> <1>Option 1</1> <2>Option 2</2></0>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Textarea: <0/>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Date: <0/>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Color: <0/>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "Range: <0/>"
+msgstr ""
+
+#: src/routes/(app)/demo/+page.svelte
+msgid "File: <0/>"
+msgstr ""
+
+#: src/routes/auth/oauth.svelte
+msgid "or"
+msgstr ""
+
+#: src/routes/auth/oauth.svelte
+msgid "Sign in with <0/>"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "Dashboard"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "Welcome back, W2Wizard! Here's what's happening."
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "since last month"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "Recent Activity"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "View all activity"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "View calendar"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "Quick Actions"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "Add User"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "New Report"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "Analytics"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "Settings"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "Calendar"
+msgstr ""
+
+#: src/routes/admin/+page.svelte
+msgid "Inventory"
+msgstr ""
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Sign Up"
+msgstr ""
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Enter your information to create an account"
+msgstr ""
+
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "First Name"
+msgstr ""
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Max"
+msgstr ""
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Robinson"
+msgstr ""
+
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
+#: src/routes/auth/reset/+page.svelte
+msgid "Email"
+msgstr ""
+
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Password"
+msgstr ""
+
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/auth/reset/+page.svelte
+msgid "Confirm Password"
+msgstr ""
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Apply Now"
+msgstr ""
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Already have an account? <0>Sign in</0>"
+msgstr ""
+
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Login"
+msgstr ""
+
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Enter your email to sign in to your account"
+msgstr ""
+
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Please give a valid Email"
+msgstr ""
+
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Please give a valid Password"
+msgstr ""
+
+#: src/routes/auth/sign-in/+page.svelte
+#: src/routes/auth/reset/+page.svelte
+msgid "Reset Password"
+msgstr ""
+
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Sign In"
+msgstr ""
+
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Don't have an account? <0>Sign up</0>"
+msgstr ""
+
+#: src/routes/admin/analytics/+page.svelte
+#: src/routes/admin/emails/+page.svelte
+#: src/routes/admin/resources/events/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
+msgid "Edit"
+msgstr ""
+
+#: src/routes/admin/analytics/+page.svelte
+#: src/routes/admin/emails/+page.svelte
+msgid "No description."
+msgstr ""
+
+#: src/routes/admin/analytics/+page.svelte
+#: src/routes/admin/emails/+page.svelte
+msgid "Created: {0}"
+msgstr ""
+
+#: src/routes/admin/analytics/+page.svelte
+#: src/routes/admin/emails/+page.svelte
+msgid "Application Tracks"
+msgstr ""
+
+#: src/routes/admin/analytics/+page.svelte
+#: src/routes/admin/emails/+page.svelte
+msgid "Add New Track"
+msgstr ""
+
+#: src/routes/auth/2fa/+page.svelte
+msgid "Authentication code"
+msgstr ""
+
+#: src/routes/auth/2fa/+page.svelte
+msgid "XXXXXX"
+msgstr ""
+
+#: src/routes/auth/2fa/+page.svelte
+msgid "Verify"
+msgstr ""
+
+#: src/routes/auth/2fa/+page.svelte
+msgid ""
+"Open your two-factor authenticator (TOTP) app or browser extension to view your authentication\n"
+"\t\t\tcode."
+msgstr ""
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Set New Password"
+msgstr ""
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Enter your new password to complete the reset process"
+msgstr ""
+
+#: src/routes/auth/reset/+page.svelte
+msgid "New Password"
+msgstr ""
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Please enter your new password"
+msgstr ""
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Please confirm your new password"
+msgstr ""
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Set Password"
+msgstr ""
+
+#: src/routes/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
+msgid "Remember your password? <0>Sign in</0>"
+msgstr ""
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Enter your email address and we'll send you a link to reset your password"
+msgstr ""
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Please enter your email address"
+msgstr ""
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Send Reset Link"
+msgstr ""
+
+#: src/routes/admin/resources/+layout.svelte
+msgid "Search"
+msgstr ""
+
+#: src/routes/admin/resources/+layout.svelte
+msgid "<0/> Search"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Welcome Aboard!"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Please fill in your personal information to get started."
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Enter your first name"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Last Name"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Enter your last name"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Gender"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Male"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Female"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Other"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Date of Birth"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Phone Number"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Enter your phone number"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Continue"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid "Data Privacy"
+msgstr ""
+
+#: src/routes/(app)/[user]/boarding/+page.svelte
+msgid ""
+"Your personal information is securely stored and handled in accordance with our privacy policy.\n"
+"\t\tYou can read more about it <0>here</0>."
+msgstr ""
+
+#: src/routes/(app)/[user]/break/+page.svelte
+msgid "Take a short break! You've earned it."
+msgstr ""
+
+#: src/routes/(app)/[user]/break/+page.svelte
+msgid "Rest your mind before continuing to the next stage of your application."
+msgstr ""
+
+#: src/routes/(app)/[user]/break/+page.svelte
+msgid "Continue to Next Stage <0/>"
+msgstr ""
+
+#: src/routes/(app)/[user]/break/+page.svelte
+msgid "Did you know? 42 is the answer to life, the universe, and everything!"
+msgstr ""
+
+#: src/routes/(app)/[user]/step/[stage]/+page.svelte
+msgid "Challenge completed! 🎉"
+msgstr ""
+
+#: src/routes/admin/resources/events/+page.svelte
+#: src/routes/admin/resources/tracks/+page.svelte
+msgid "Delete"
+msgstr ""
+
+#: src/routes/admin/resources/tracks/+page.svelte
+msgid "Set as Active"
+msgstr ""
+
+#: src/routes/admin/resources/users/+page.svelte
+msgid "Are you sure you want to continue ?"
+msgstr ""
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "Two-Factor Authentication"
+msgstr ""
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "Scan the QR code with your authenticator app to set up 2FA"
+msgstr ""
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "View secret key instead"
+msgstr ""
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid ""
+"Open your two-factor authenticator (TOTP) app or browser extension to scan the QR code or\n"
+"\t\t\t\tenter the secret key manually."
+msgstr ""
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "Verification Code"
+msgstr ""
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "Enter 6-digit code"
+msgstr ""
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "Verify and Enable 2FA"
+msgstr ""
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "2FA is mandatory"
+msgstr ""
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid ""
+"Two-factor authentication is required for your account security. You must complete\n"
+"\t\t\t\t\t\t\tthis step to continue."
+msgstr ""

@@ -33,7 +33,7 @@
 		{ name: 'Tracks', icon: Route, href: '/admin/resources/tracks' },
 		{ name: 'Analytics', icon: ChartLine, href: '/admin/analytics' },
 		{ name: 'Emails', icon: Mail, href: '/admin/emails' },
-		{ name: 'Piscine', icon: WavesLadder, href: '/admin/piscine' }
+		{ name: 'Events', icon: WavesLadder, href: '/admin/resources/events' }
 	];
 
 	let sidebarOpen = $state(false);

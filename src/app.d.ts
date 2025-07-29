@@ -5,11 +5,15 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			locale: string;
-			db: import("bun:sqlite").Database;
+			tz: string;
+			db: import('bun:sqlite').Database;
 			session: import('@prisma/client').Session | null;
 			user: import('@prisma/client').User | null;
 		}
-		// interface PageData {}
+		interface PageData {
+			locale: string;
+			tz: string;
+		}
 		// interface PageState {}
 		// interface Platform {}
 	}

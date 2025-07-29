@@ -4,51 +4,38 @@
 // ============================================================================
 
 import { Database } from 'bun:sqlite';
-import { initRegistry } from 'wuchale/runtime';
-import {
-	redirect,
-	type Cookies,
-	type Handle,
-	type RequestEvent,
-	type ResolveOptions,
-	type ServerInit
-} from '@sveltejs/kit';
+import { runWithLocale } from 'wuchale/run-server';
+import { redirect, type Handle, type RequestEvent, type ServerInit } from '@sveltejs/kit';
 import { env } from '$env/dynamic/public';
 import { DATABASE_URL } from '$env/static/private';
 import { sequence } from '@sveltejs/kit/hooks';
 import { Auth } from '$lib/auth.svelte';
 import type { Session, User } from '@prisma/client';
-import TTLCache from '@isaacs/ttlcache';
 import { UserFlag } from '$lib/index.svelte';
 import Jobs, { current } from './jobs';
 import { logger } from '$lib/logger';
 import { dev } from '$app/environment';
+import { locales } from 'virtual:wuchale/locales';
 
 // ============================================================================
 
-const locales = ['en', 'es', 'fr'];
-const runWithCatalog = await initRegistry();
+const defaultLocale = Object.keys(locales)[0];
 const db: Database = new Database(DATABASE_URL, { strict: true });
-function resetLocale(event: RequestEvent) {
-	event.cookies.set('lang', 'en', { path: '/' });
-	return 'en';
-}
 
 // ============================================================================
 
 // NOTE(w2wizard): https://bun.sh/docs/api/sqlite#wal-mode
 export const init: ServerInit = async () => {
-	db.run('PRAGMA journal_mode = WAL;');
+	db.run('PRAGMA journal_mode = WAL');
 
 	logger.info('Starting...');
-	Jobs.create('session-cleanup'); // Find any stale sessions, yeet.
+	Jobs.create('session-cleanup');
 
 	if (!dev) {
 		for (const job of current) {
 			job.start();
 		}
 	}
-
 };
 
 // ============================================================================
@@ -123,23 +110,21 @@ export const base: Handle = async ({ event, resolve }) => {
 		'x-powered-by': `Bun ${Bun.version}`
 	});
 
-	const setLang = event.cookies.get('set-lang');
-	let locale: string;
-
-	if (setLang) {
-		event.cookies.delete('set-lang', { path: '/' });
-		locale = locales.find((l) => l === setLang)
-			? (event.cookies.set('lang', setLang, { path: '/' }), setLang)
-			: resetLocale(event);
-	} else {
-		locale = event.cookies.get('lang') || resetLocale(event);
-		locale = locales.find((l) => l === locale) ? locale : resetLocale(event);
+	let desiredLocale = event.cookies.get('set-lang');
+	let userLocale = desiredLocale ?? event.cookies.get('lang');
+	if (!userLocale || !(userLocale in locales)) {
+		userLocale = defaultLocale;
 	}
 
-	const catalog = await import(`./locales/${locale}.svelte.js`);
-	return await runWithCatalog(catalog, () =>
+	event.cookies.set('lang', userLocale, { path: '/' });
+	event.locals.locale = userLocale;
+	if (desiredLocale) {
+		event.cookies.delete('set-lang', { path: '/' });
+	}
+
+	return await runWithLocale(userLocale, () =>
 		resolve(event, {
-			transformPageChunk: ({ html }) => html.replace('%sveltekit.lang%', locale)
+			transformPageChunk: ({ html }) => html.replace('%sveltekit.lang%', userLocale)
 		})
 	);
 };

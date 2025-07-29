@@ -7,13 +7,25 @@ import { twMerge } from 'tailwind-merge';
 import clsx, { type ClassValue } from 'clsx';
 import { error, fail as kitFail, redirect } from '@sveltejs/kit';
 import type z from 'zod/v4';
-import type { ApplicationStep, User, UserTrack } from '@prisma/client';
+import type { ApplicationStep, ApplicationTrack, ApplicationUserTrack, User } from '@prisma/client';
+
+// ============================================================================
+
+export const dateFormatOptions: Intl.DateTimeFormatOptions = {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+	hour: '2-digit',
+	minute: '2-digit',
+	timeZoneName: 'short',
+	localeMatcher: 'lookup'
+};
 
 // ============================================================================
 
 export const UserFlag = {
 	IsAdmin: 1 << 2,
-	CompletedBoarding: 1 << 3,
+	CompletedBoarding: 1 << 3
 } as const;
 
 export const ApplicationStepType = {
@@ -21,7 +33,7 @@ export const ApplicationStepType = {
 	Intermission: 1,
 	Challenge: 2,
 	Waiting: 3,
-	Result: 4,
+	Result: 4
 } as const;
 
 // ============================================================================
@@ -54,6 +66,26 @@ export async function ensure<T, E = Error>(promise: Promise<T>): Promise<[T, nul
  * redirects them accordingly.
  */
 export class Switchboard {
+	/**
+	 * Validate the step, checking the conditionals
+	 * @param locals
+	 * @param step
+	 * @returns
+	 */
+	private static validateStep<T extends ApplicationStep & { completedAt: Date | null }>(
+		locals: App.Locals,
+		steps: T[]
+	) {
+		// Get the current step the user is on.
+		// Check the conditionals on that step,
+
+		let current =
+			steps.find((s) => !s.completedAt) ?? // Last active step
+			steps.find((s) => s.type === ApplicationStepType.Result) ?? //
+			error(500, 'Step is configured incorrectly, please contact staff.');
+
+		return step.at(0)!;
+	}
 
 	/**
 	 * Connect the user to next stage or let them continue.
@@ -64,65 +96,118 @@ export class Switchboard {
 	 * @returns void
 	 */
 	public static resolve(locals: App.Locals, userOrId: User | string, url: URL) {
-		const user = typeof userOrId === 'string'
-			? locals.db.query<User, [string]>(`SELECT * FROM user WHERE id = ?`).get(userOrId)
-			: userOrId;
+		const user = typeof userOrId === 'string' ? this.getUser(locals, userOrId) : userOrId;
+		if (!user) error(404);
 
-		if (!user)
-			error(404);
+		const userTrack = this.getUserTrack(locals, user.id) ?? redirect(303, '/');
 
-		/**
-		 * Find the current active step for the user.
-		 * Returns the ApplicationStep that is not completed yet.
-		 */
-		const currentStep = locals.db.query<ApplicationStep, [string]>(`
-			SELECT s.*
-			FROM user_track ut
-			JOIN application_step s ON s.trackId = ut.trackId
-			LEFT JOIN user_step sc ON sc.userTrackId = ut.id AND sc.stepId = s.id
-			WHERE ut.userId = ?
-			AND (sc.completedAt IS NULL)
-			ORDER BY s."order"
-			LIMIT 1
-		`).get(user.id);
+		// User hasn't even started yet!
+		const steps =
+			this.getSteps(locals, userTrack.id, userTrack.trackId) ??
+			error(501, 'Track is configured incorrectly, please contact staff.');
 
-		const step = currentStep ?? error(404);
-		const baseUrl = `/${user.id}`;
-		let href: string | null = null;
+		// let current = this.validateStep(locals, steps);
 
-		const stepTypeToPath: Record<number, string> = {
-			[ApplicationStepType.Boarding]: `${baseUrl}/boarding`,
-			[ApplicationStepType.Intermission]: `${baseUrl}/break`
+		return {
+			track: null,
+			steps: [],
+			step: steps[0],
+			href: null
 		};
 
-		href = stepTypeToPath[step.type] ?? `${baseUrl}/step/${step.id}`;
-		if (url.pathname === href) {
-			href = null;
-		}
+		// TODO: Indicates that the user hasn't even started yet. Redirect to /
+		// const userTrack = this.getUserTrack(locals, user.id);
+		// if (!userTrack && url.pathname !== '/') redirect(303, '/');
 
-		// Only query applicationTrack if no redirect is needed
-		type TrackStep = { id: string, type: number; order: number; };
-		let track: TrackStep[] = [];
-		if (!href) {
-			track = locals.db.query<TrackStep, [string]>(`
-				SELECT s.id, s.type, s."order"
+		// const steps = this.getSteps(locals, userTrack.id, userTrack.trackId);
+
+		// if (!steps.length) error(404);
+
+		// // Find the current step index (first not completed)
+		// const currentIndex = steps.findIndex((step) => !step.completedAt);
+
+		// // If all steps are completed, set currentIndex to last
+		// const currentStepIndex = currentIndex === -1 ? steps.length - 1 : currentIndex;
+
+		// const currentStep = steps[currentStepIndex];
+
+		// const baseUrl = `/${user.id}`;
+		// const specialSteps: Record<number, string> = {
+		// 	[ApplicationStepType.Boarding]: `${baseUrl}/boarding`,
+		// 	[ApplicationStepType.Intermission]: `${baseUrl}/break`
+		// };
+
+		// let href: string | null = null;
+		// if (currentStep) {
+		// 	const special = specialSteps[currentStep.type];
+		// 	href = special ?? `${baseUrl}/step/${currentStep.id}`;
+		// 	if (url.pathname === href) {
+		// 		href = null;
+		// 	}
+		// }
+
+		// const track = this.getTrack(locals, userTrack.trackId);
+
+		// return {
+		// 	steps,
+		// 	current: currentStepIndex,
+		// 	track,
+		// 	href
+		// };
+	}
+
+	private static getUser(locals: App.Locals, userId: string): User | null {
+		return locals.db.query<User, [string]>(`SELECT * FROM user WHERE id = ?`).get(userId);
+	}
+
+	private static getUserTrack(locals: App.Locals, userId: string) {
+		return locals.db
+			.query<ApplicationUserTrack, [string]>(
+				`
+				SELECT ut.*, ut.trackId
 				FROM user_track ut
-				JOIN application_step s ON s.trackId = ut.trackId
 				WHERE ut.userId = ?
-				ORDER BY s."order"
-			`).all(user.id);
-		}
+				LIMIT 1
+			`
+			)
+			.get(userId);
+	}
 
-		return { step, href, track };
+	private static getSteps(locals: App.Locals, userTrackId: string, trackId: string) {
+		type ApplicationUserStep = ApplicationStep & { completedAt: string | null };
+
+		return locals.db
+			.query<ApplicationUserStep, [string, string]>(
+				`
+				SELECT s.*, us.completedAt
+				FROM application_step s
+				LEFT JOIN user_step us ON us.stepId = s.id AND us.userTrackId = ?
+				WHERE s.trackId = ?
+				ORDER BY s."order"
+			`
+			)
+			.all(userTrackId, trackId);
+	}
+
+	private static getTrack(locals: App.Locals, trackId: string): ApplicationTrack | null {
+		return locals.db
+			.query<ApplicationTrack, [string]>(
+				`
+				SELECT *
+				FROM application_track
+				WHERE id = ?
+				LIMIT 1
+			`
+			)
+			.get(trackId);
 	}
 }
 
 // ============================================================================
 
-
 export namespace Formy {
-	export type Error<S extends z.ZodObject> = Record<keyof z.infer<S>, string[]>
-	export type Output<S extends z.ZodObject> = { errors: Error<S>, loading: boolean }
+	export type Error<S extends z.ZodObject> = Record<keyof z.infer<S>, string[]>;
+	export type Output<S extends z.ZodObject> = { errors: Error<S>; loading: boolean };
 
 	export const Issues = {
 		PasswordMismatch: 0x01,
@@ -169,7 +254,11 @@ export namespace Formy {
 	 *
 	 * @throws If the payload is a Zod result without error issues, throws a 500 error.
 	 */
-	export function fail<T, U>(status: number, payload: number | z.ZodSafeParseResult<U>, rest: T = undefined as T) {
+	export function fail<T, U>(
+		status: number,
+		payload: number | z.ZodSafeParseResult<U>,
+		rest: T = undefined as T
+	) {
 		if (typeof payload === 'number') {
 			return kitFail(status, {
 				code: payload,

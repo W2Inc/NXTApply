@@ -5,7 +5,9 @@
 	import Fieldset from '../fieldset.svelte';
 	import Select from '$lib/ui/select.svelte';
 	import Documentation from '../documentation.svelte';
-	import * as Date from '@internationalized/date';
+	import { DateFormatter, endOfMonth, now} from '@internationalized/date';
+	import { page } from '$app/state';
+	import { dateFormatOptions } from '$lib/index.svelte';
 
 	interface Props {
 		step: ApplicationStep;
@@ -15,16 +17,10 @@
 
 	let unit = $state<'minutes' | 'hours' | 'endOfMonth'>('minutes');
 	let duration = $state<number | undefined>(undefined);
-	const formatter = new Intl.DateTimeFormat('en-US', {
-		year: 'numeric',
-		month: 'long',
-		day: 'numeric',
-		hour: '2-digit',
-		minute: '2-digit'
-	});
+	const formatter = new DateFormatter(page.data.locale, dateFormatOptions);
 
 	let month = $derived.by(() => {
-		const end = Date.endOfMonth(Date.now(Date.getLocalTimeZone()));
+		const end = endOfMonth(now(page.data.tz));
 		const atMidnight = end.set({
 			hour: 0,
 			minute: 0,
@@ -79,7 +75,7 @@
 			<Input type="number" min="0" bind:value={duration} placeholder="None" class="h-6 text-xs" />
 		{:else}
 			<p class="text-muted-foreground self-center text-xs">
-				Example: {month.toString()}
+				Example: {month}
 			</p>
 		{/if}
 	</Fieldset>

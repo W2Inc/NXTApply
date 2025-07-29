@@ -1,0 +1,33 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-28T18:41:24.059Z\n"
+"PO-Revision-Date: 2025-07-28T19:19:44.502Z\n"
+"Last-Translator: \n"
+"Language: Francais\n"
+"Language-Team: \n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"MIME-Version: 1.0\n"
+
+#: src/routes/[locale]/+page.server.ts
+msgid "Hello from the server!"
+msgstr ""
+
+#: src/hooks.server.ts
+msgid "PRAGMA journal_mode = WAL"
+msgstr "PRAGMA journal_mode = WAL"
+
+#: src/hooks.server.ts
+msgid "Starting..."
+msgstr "Démarrage..."
+
+#: src/hooks.server.ts
+msgid "SELECT * FROM user WHERE id = ?"
+msgstr "SELECT * FROM user WHERE id = ?"
+
+#: src/hooks.server.ts
+msgid "Bun {0}"
+msgstr "Bun {0}"

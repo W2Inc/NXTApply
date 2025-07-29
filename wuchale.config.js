@@ -1,14 +1,27 @@
 // @ts-check
 import { defineConfig } from 'wuchale';
-import { adapter } from '@wuchale/svelte';
+import { adapter as svelte } from '@wuchale/svelte';
+import { adapter as vanilla } from 'wuchale/adapter-vanilla';
 
 export default defineConfig({
 	locales: {
 		// English included by default
-		es: { name: 'Spanish' },
-		fr: { name: 'French' }
+		es: { name: 'Español' },
+		fr: { name: 'Francais' }
 	},
 	adapters: {
-		main: adapter()
+		single: svelte({
+			files: ['./src/routes/**/*.svelte', './src/routes/**/*.svelte.{js,ts}'],
+			catalog: './src/locales/client/{locale}'
+		}),
+		// server: vanilla({
+		// 	files: './src/**/*.server.{js,ts}',
+		// 	catalog: './src/locales/server/{locale}',
+		// 	writeFiles: {
+		// 		compiled: true,
+		// 		proxy: true
+		// 	},
+		// 	initInsideFunc: true
+		// })
 	}
 });
