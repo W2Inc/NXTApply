@@ -15,55 +15,48 @@
 	import Textarea from '$lib/ui/textarea.svelte';
 	import type { PageProps } from './$types';
 	import Card from '$lib/ui/card.svelte';
+	import FormEntry from '$lib/ui/form/form-entry.svelte';
+	import Fieldset from '$lib/ui/track/fieldset.svelte';
 
 	let search = $state();
 
 	const { data }: PageProps = $props();
 </script>
 
-<Card class="mx-auto max-w-xl">
-	<h2 class="text-primary mb-6 text-2xl font-bold">{data.type ? 'Edit' : 'Create'} Event Type</h2>
+<div class="mx-auto max-w-xl">
+	<h2 class="text-primary mb-2 text-xl font-bold">{data.type ? 'Edit' : 'Create'} Event Type</h2>
 	<Form class="space-y-4">
 		{#snippet fields(out)}
 			{@const form = out as FormOutput}
-			<Entry
-				name="name"
-				label="Name"
-				errors={form.errors.name}
-				description="The name of the event. This will be visible to users."
-			>
-				{#snippet child(props)}
-					<Input
-						required
-						placeholder="Enter event name"
-						type="text"
-						value={data.type?.name ?? ''}
-						{...props}
-					/>
-				{/snippet}
-			</Entry>
+			<Fieldset title="Settings">
+				<FormEntry
+					required
+					type="text"
+					name="name"
+					placeholder="Open day, Piscine, ..."
+					description="The event type name used to display the name"
+					label="Name"
+					value={data.type?.name}
+					errors={form.errors.name}
+				/>
 
-			<Entry
-				name="description"
-				label="Description"
-				errors={form.errors.description}
-				description="Optional description of the event type."
-			>
-				{#snippet child(props)}
-					<Textarea
-						rows={10}
-						placeholder="Enter event description"
-						value={data.type?.description ?? ''}
-						{...props}
-					/>
-				{/snippet}
-			</Entry>
+				<FormEntry
+					type="textarea"
+					name="description"
+					label="Description"
+					description="A optional description to note what this type is for"
+					value={data.type?.description}
+					errors={form.errors.description}
+				/>
+			</Fieldset>
+
+			<hr />
 			<div class="flex items-center gap-4">
 				<Button type="reset" variant="outline" class="gap-1">
 					Reset
 					<RefreshCcw size={18} />
 				</Button>
-				<hr class="flex-1" />
+				<hr class="flex-1 border-0" />
 				<Button type="button" variant="outline" onclick={() => history.back()}>Cancel</Button>
 				<Button type="submit" class="gap-1">
 					<span>Save</span>
@@ -72,4 +65,4 @@
 			</div>
 		{/snippet}
 	</Form>
-</Card>
+</div>

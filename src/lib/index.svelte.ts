@@ -7,7 +7,12 @@ import { twMerge } from 'tailwind-merge';
 import clsx, { type ClassValue } from 'clsx';
 import { error, fail as kitFail, redirect } from '@sveltejs/kit';
 import type z from 'zod/v4';
+import * as zLocales from 'zod/locales';
 import type { ApplicationStep, ApplicationTrack, ApplicationUserTrack, User } from '@prisma/client';
+import { en, fr } from 'zod/v4/locales';
+import { page } from '$app/state';
+import { browser } from '$app/environment';
+import { fromDate } from '@internationalized/date';
 
 // ============================================================================
 
@@ -17,9 +22,18 @@ export const dateFormatOptions: Intl.DateTimeFormatOptions = {
 	day: 'numeric',
 	hour: '2-digit',
 	minute: '2-digit',
-	hour12: false, // 24-hour format
+	hour12: false // 24-hour format
 	// timeZoneName: 'short',
 };
+
+export function fromDateToInput(tz: string, date?: Date | number) {
+	if (!date) return "";
+
+	const zonedDate = fromDate(new Date(date ?? 0), tz);
+	// Pad month, day, hour, and minute to 2 digits
+	const pad = (n: number) => n.toString().padStart(2, '0');
+	return `${zonedDate.year}-${pad(zonedDate.month)}-${pad(zonedDate.day)}T${pad(zonedDate.hour)}:${pad(zonedDate.minute)}`;
+}
 
 // ============================================================================
 
@@ -236,23 +250,14 @@ export namespace Formy {
 	 * @param schema - A Zod schema used to validate and parse the form data.
 	 * @returns A promise that resolves to the result of `schema.safeParseAsync`, containing either the parsed data or validation errors.
 	 */
-	export async function parse<T>(request: Request, schema: z.ZodType<T>) {
-		const rawFormData = await request.formData();
-		const formData: Record<string, FormDataEntryValue | FormDataEntryValue[]> = {};
-		for (const [key, value] of rawFormData.entries()) {
-			const processedValue = value === "" ? undefined : value;
-			if (formData.hasOwnProperty(key)) {
-				const prev = formData[key];
-				const newArray = Array.isArray(prev)
-					? [...prev, processedValue]
-					: [prev, processedValue];
-				formData[key] = newArray.filter((v): v is FormDataEntryValue => v !== undefined);
-			} else {
-				formData[key] = processedValue === undefined ? '' : processedValue;
-			}
-		}
-		console.log('Form data:', formData);
-		return schema.safeParseAsync(formData);
+	export async function parse<T>(request: Request, schema: z.ZodType<T>, locale: string = 'en') {
+		const rawForm = await request.formData();
+
+		/** @ts-ignore We know, no worries if it isn't there we just go back to english*/
+		const zodLocale = zLocales[locale] ?? zLocales['en'];
+		return schema.safeParseAsync(Object.fromEntries(rawForm.entries()), {
+			error: zodLocale().localeError
+		});
 	}
 
 	/**
@@ -308,7 +313,7 @@ export namespace Formy {
 				if (!acc[path]) {
 					acc[path] = [];
 				}
-				acc[path].push(issue.code);
+				acc[path].push(issue.message);
 				return acc;
 			},
 			{} as Record<string, string[]>

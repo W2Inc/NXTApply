@@ -27,7 +27,7 @@
 </script>
 
 <div
-	class="bg-card text-card-foreground flex gap-2 rounded-xl border p-3 ps-1 text-sm shadow-md"
+	class="bg-card text-card-foreground flex gap-2 rounded-xl border p-3 ps-1 text-sm"
 	style="--callout-color: {variantStyles[variant].color};"
 	role="alert"
 >

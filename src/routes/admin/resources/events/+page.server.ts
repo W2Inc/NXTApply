@@ -24,7 +24,7 @@ const actionSchema = z.object({
 
 export const actions: Actions = {
 	remove: async ({ request, locals }) => {
-		const result = await Formy.parse(request, actionSchema);
+		const result = await Formy.parse(request, actionSchema, locals.locale);
 		if (result.error) {
 			return Formy.fail(400, result);
 		}

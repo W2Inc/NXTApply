@@ -37,7 +37,10 @@
 			toast.dismiss();
 
 			after?.(result);
-			if (result.type === 'success' && result.data) {
+
+			if (result.type == "redirect")
+				toast.success('Success!');
+			else if (result.type === 'success' && result.data) {
 				toast.success(result.data['message'] || 'Success!');
 			} else if (result.type === 'failure' && result.data) {
 				const { errors: e, code } = result.data as Formy.FormResult<T>;

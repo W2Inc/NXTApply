@@ -13,10 +13,7 @@ import { fromDate } from "@internationalized/date";
 export type FormOutput = Formy.Output<typeof schema>;
 const schema = z.object({
 	eventTypeId: z.string().min(1, "Event type is required"),
-	dependencies: z.preprocess(
-		(val) => (Array.isArray(val) ? val.filter(Boolean) : val === "" ? undefined : val),
-		z.array(z.string()).optional()
-	),
+	dependencies: z.string().optional(),
 	startsAt: z.coerce.date(),
 	registerUntil: z.preprocess(
 		(val) => (val === "" ? undefined : val),
@@ -60,10 +57,13 @@ export const load: PageServerLoad = async ({ locals, params }) => {
 
 export const actions: Actions = {
 	default: async ({ request, locals, params }) => {
-		const result = await Formy.parse(request, schema);
+		const result = await Formy.parse(request, schema, locals.locale);
 		if (result.error) {
 			return Formy.fail(400, result);
 		}
+
+		console.log(result.data)
+
 		const { eventTypeId, dependencies, startsAt, registerUntil } = result.data;
 
 		// Check that registerUntil is after startsAt (if present)
@@ -126,6 +126,6 @@ export const actions: Actions = {
 			}
 		})();
 
-		throw redirect(303, `/admin/resources/events/`);
+		redirect(303, `/admin/resources/events/edit/base/${eventId}`);
 	}
 };

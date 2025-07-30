@@ -84,7 +84,7 @@
 		onprev={() => setPage('p1', eventsPage - 1)}
 	>
 		{#snippet action(event)}
-			<Form class="flex justify-end" after={() => invalidateAll()}>
+			<Form class="flex justify-end" before={() => confirm("Are you sure you?")} after={() => invalidateAll()}>
 				{#snippet fields(out)}
 					<input type="hidden" name="id" value={event.id} />
 					<Button
@@ -134,7 +134,7 @@
 		onprev={() => setPage('p2', typesPage - 1)}
 	>
 		{#snippet action(track)}
-			<Form class="flex justify-end" after={() => invalidateAll()}>
+			<Form class="flex justify-end" after={() => invalidateAll()} before={() => confirm("Are you sure you?")}>
 				{#snippet fields(out)}
 					<input type="hidden" name="id" value={track.id} />
 					<Button

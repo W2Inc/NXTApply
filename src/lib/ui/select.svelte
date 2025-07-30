@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { cn } from '$lib/index.svelte';
-	import type { HTMLSelectAttributes } from 'svelte/elements';
+	import type { HTMLInputTypeAttribute, HTMLSelectAttributes } from 'svelte/elements';
 
-	interface Props extends HTMLSelectAttributes {}
+	interface Props extends HTMLSelectAttributes {
+		kek: HTMLInputTypeAttribute
+	}
 	let { value = $bindable(), class: klass, children, ...rest }: Props = $props();
 </script>
 
@@ -10,7 +12,7 @@
 	bind:value
 	class={cn(
 		klass,
-		'border-input bg-input focus:ring-primary/40 rounded-lg border px-2 font-sans text-base transition focus:ring-2 focus:outline-none overflow-y-auto',
+		'border-input h-8 bg-input focus:ring-primary/40 rounded-lg border px-2 font-sans text-base transition focus:ring-2 focus:outline-none overflow-y-auto',
 	)}
 	{...rest}
 >
