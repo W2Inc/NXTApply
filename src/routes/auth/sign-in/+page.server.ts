@@ -3,7 +3,7 @@
 // See README in the root project for more information.
 // ============================================================================
 
-import type { Actions } from './$types';
+import type { Actions, PageServerLoad } from './$types';
 import { redirect } from '@sveltejs/kit';
 import { dev } from '$app/environment';
 import { Formy } from '$lib/index.svelte';
@@ -12,12 +12,20 @@ import type { User } from '@prisma/client';
 
 // ============================================================================
 
+export const load: PageServerLoad = async ({ locals }) => {
+	console.log("Loading sign-in page...", locals.session);
+	if (locals.session) {
+		redirect(302, '/');
+	}
+};
+
+// ============================================================================
+
+export type FormOutput = Formy.Output<typeof schema>;
 const schema = z.object({
 	email: z.email(),
 	password: z.string().min(4).max(256),
 });
-
-export type FormOutput = Formy.Output<typeof schema>;
 
 // ============================================================================
 

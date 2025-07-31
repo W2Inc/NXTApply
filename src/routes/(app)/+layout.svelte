@@ -36,7 +36,7 @@
 
 <div class="bg-background flex min-h-screen flex-col">
 	<!-- Top Header Bar -->
-	<header class="bg-card border border-b shadow-sm">
+	<header class="bg-card border-b shadow-sm">
 		<div class="container mx-auto flex h-16 items-center justify-between px-4">
 			<!-- Logo and App Name -->
 			<div class="flex items-center space-x-3">

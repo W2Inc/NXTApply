@@ -116,7 +116,7 @@ export const actions: Actions = {
 		}
 
 		const token = Auth.generateToken();
-		await Auth.createSession(locals, token, userId);
+		await Auth.createSession(locals, token, userId, request.headers.get('user-agent'));
 		Auth.setCookie(cookies, token);
 		redirect(302, '/');
 	}

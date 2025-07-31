@@ -83,8 +83,10 @@ export namespace Auth {
 	export async function createSession(
 		locals: App.Locals,
 		token: string,
-		userId: string
+		userId: string,
+		userAgent: string | null = null
 	): Promise<Session> {
+		const hash = Bun.hash(userAgent ?? 'unknown').toString();
 		const hasher = new Bun.CryptoHasher('sha256');
 		const id = hasher.update(token).digest().toString('base64url');
 
@@ -92,13 +94,17 @@ export namespace Auth {
 			.query(`DELETE FROM session WHERE userId = ? AND expiresAt < ?`)
 			.run(userId, now(getLocalTimeZone()).toDate().getTime());
 
-		const session = locals.db
-			.query<
-				Session,
-				[string, string, number]
-			>(`INSERT INTO session (id, userId, expiresAt) VALUES (?, ?, ?) RETURNING *`)
-			.get(id, userId, SESSION_EXPIRES.toDate().getTime())!;
+		// let session = locals.db
+		// 	.query<Session, [string]>(`SELECT * FROM session WHERE hash = ?`)
+		// 	.get(hash);
 
+		// if (!session) {
+		// }
+		const session = locals.db
+			.query<Session, [string, string, number, string]>(`
+			INSERT INTO session (id, userId, expiresAt, hash) VALUES (?, ?, ?, ?) RETURNING *
+		`)
+			.get(id, userId, SESSION_EXPIRES.toDate().getTime(), hash)!;
 		return session;
 	}
 

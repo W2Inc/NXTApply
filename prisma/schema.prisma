@@ -48,6 +48,7 @@ model Session {
     id        String   @id
     userId    String
     expiresAt DateTime
+    hash     String
     user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@map("session")
@@ -81,7 +82,8 @@ model VerificationToken {
 model ApplicationEvent {
     id String @id
 
-    address String?
+    address  String?
+    maxUsers Int?
 
     eventTypeId String
     eventType   EventType @relation(fields: [eventTypeId], references: [id], onDelete: Cascade)
@@ -92,12 +94,12 @@ model ApplicationEvent {
     // Event dependencies: This event requires completion of an event of a specific type before subscribing
     requiredEventTypes EventTypeDependency[]
 
-    startsAt  DateTime
+    startsAt      DateTime
     registerUntil DateTime? // At what time should we not allow registrations anymore.
-    createdAt DateTime @default(now())
-    updatedAt DateTime @default(now()) @updatedAt
+    createdAt     DateTime  @default(now())
+    updatedAt     DateTime  @default(now()) @updatedAt
 
-    userEvents UserEvent[] // Relation to UserEvent
+    userEvents UserEvent[] @relation("EventToUserEvent") // Relation to UserEvent
 
     @@map("event")
 }
@@ -135,7 +137,7 @@ model UserEvent {
     eventId String
 
     user  User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-    event ApplicationEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+    event ApplicationEvent @relation(name: "EventToUserEvent", fields: [eventId], references: [id], onDelete: Cascade)
 
     completedAt DateTime? // Nullable, set when user attended
 

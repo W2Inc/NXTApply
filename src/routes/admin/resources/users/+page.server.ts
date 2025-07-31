@@ -1,78 +1,81 @@
-// ============================================================================
-// W2Inc, Amsterdam 2023, All Rights Reserved.
-// See README in the root project for more information.
-// ============================================================================
-
-import type { User } from '@prisma/client';
-import type { Actions, PageServerLoad } from './$types';
-import { z } from 'zod/v4';
-import { Formy, UserFlag } from '$lib/index.svelte';
-import { paginate } from '$lib/server/paginate.svelte';
+import type { ApplicationEvent, EventTypeDependency, User, UserEvent } from "@prisma/client";
+import type { PageServerLoad, Actions } from "./$types";
+import { paginate, type PaginatedResult } from "$lib/server/paginate.svelte";
+import z from "zod/v4";
+import { Formy, PageSize, UserFlag } from "$lib/index.svelte";
+import { get } from "svelte/store";
 
 // ============================================================================
 
-export type FormUserAction = Formy.Output<typeof actionSchema>;
-const actionSchema = z.object({
-	id: z.base64url()
-});
-
+function getStats(locals: App.Locals) {
+	return locals.db
+		.query<{
+			averageAge: number,
+			userCount: number,
+			activeUsers: number,
+			thirdParty: number,
+		}, [number]>(`
+			SELECT
+				AVG((julianday('now') - julianday(dob / 1000, 'unixepoch')) / 365.25) AS averageAge,
+				COUNT(*) AS userCount,
+				(
+					SELECT COUNT(DISTINCT userId)
+					FROM session
+					WHERE expiresAt > strftime('%s','now')
+				) AS activeUsers,
+				(
+					SELECT COUNT(*)
+					FROM user
+					WHERE flags & ?1 != 0
+				) AS thirdParty
+			FROM user
+			WHERE dob IS NOT NULL AND flags & ?1 != 0
+		`)
+		.get(UserFlag.IsAdmin);
+}
 
 // ============================================================================
 
-export type FormUserExport = Formy.Output<typeof exportSchema>;
-const exportSchema = z.object({
-	page: z.number().min(0)
-});
 
+export type UserResult = {
+} & User;
 
-// ============================================================================
+export const load: PageServerLoad = ({ locals, url, params }) => {
+	const page = url.searchParams.get('page') ?? '1';
 
-export const load: PageServerLoad = async ({ locals, depends, url }) => {
+	console.log(getStats(locals));
+
 	return {
-		users: paginate<User>(locals, url, {
-			table: 'user',
-		})
+		stats: getStats(locals),
+		users: paginate<UserResult>(`
+			SELECT * FROM user WHERE flags & ? != 0
+			ORDER BY createdAt DESC
+		`, locals, page, UserFlag.IsAdmin)
 	}
-
-	// depends('admin:users');
-	// const query = url.searchParams.get('q')?.trim() || '';
-
-	// let users: User[] = [];
-
-	// if (query) {
-	// 	users = locals.db
-	// 		.query<User, [string, string, string]>(
-	// 			`SELECT * FROM user
-	// 		 WHERE
-	// 			email LIKE '%' || ? || '%'
-	// 			OR firstName LIKE '%' || ? || '%'
-	// 			OR lastName LIKE '%' || ? || '%'
-	// 		 LIMIT 25`
-	// 		)
-	// 		.all(query, query, query);
-	// } else {
-	// 	users = locals.db.query<User, []>('SELECT * FROM user ORDER BY createdAt DESC LIMIT 25').all();
-	// }
-
-	// return { users };
 };
 
+// ============================================================================
+
+export type FormOutput = Formy.Output<typeof actionSchema>;
+const actionSchema = z.object({
+	id: z.string()
+});
+
+
 export const actions: Actions = {
-	remove: async ({ locals, request }) => {
-		const result = await Formy.parse(request, actionSchema);
+	remove: async ({ request, locals }) => {
+		const result = await Formy.parse(request, actionSchema, locals.locale);
 		if (result.error) {
 			return Formy.fail(400, result);
 		}
 
-		const { id } = result.data;
-		if (!locals.user || (locals.user.flags & UserFlag.IsAdmin) === 0) {
-			return Formy.fail(403, Formy.Issues.UnknownError);
-		}
-		if (id === locals.user.id) {
-			return Formy.fail(400, Formy.Issues.UnknownError);
-		}
+		const deleteAll = locals.db.transaction((eventId: string) => {
+			locals.db.query<UserEvent, [string]>("DELETE FROM user_event WHERE eventId = ?").run(eventId);
+			locals.db.query<EventTypeDependency, [string]>("DELETE FROM event_type_dependency WHERE eventId = ?").run(eventId);
+			locals.db.query<ApplicationEvent, [string]>("DELETE FROM event WHERE id = ?").run(eventId);
+		});
 
-		locals.db.query('DELETE FROM user WHERE id = ?').run(id);
-		return Formy.success('Deleted');
-	}
+		deleteAll(result.data.id);
+		return Formy.success("Event and all dependencies deleted successfully.");
+	},
 };

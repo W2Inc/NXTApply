@@ -7,7 +7,20 @@
 	import { goto, invalidateAll } from '$app/navigation';
 	import { page } from '$app/state';
 
+	let search = $state('');
 	const { children }: LayoutProps = $props();
+
+	const url = $derived.by(() => {
+		const params = new URLSearchParams(page.url.search);
+		if (search) {
+			params.set('q', search);
+		} else {
+			params.delete('q');
+		}
+		return `${page.url.pathname}?${params.toString()}`;
+	});
+
+	const navigate = () => goto(url, { invalidateAll: true });
 </script>
 
 <div class="container mx-auto max-w-[80rem]">

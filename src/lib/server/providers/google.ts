@@ -117,7 +117,7 @@ export async function callback(event: RequestEvent) {
 
 	// Set up authentication and redirect
 	const token = Auth.generateToken();
-	await Auth.createSession(event.locals, token, userId);
+	await Auth.createSession(event.locals, token, userId, event.request.headers.get('user-agent'));
 	Auth.setCookie(event.cookies, token);
 	redirect(302, `/`);
 }

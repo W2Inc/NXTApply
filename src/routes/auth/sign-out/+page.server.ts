@@ -6,7 +6,7 @@ export const actions: Actions = {
 	default: async ({ locals, cookies }) => {
 		const session = locals.session;
 		if (session) {
-			locals.db.query('DELETE FROM session WHERE id = ?').get(session.id);
+			Auth.invalidateSession(locals, session.id);
 			cookies.delete(Auth.SESSION_COOKIE, { path: '/' });
 		}
 		redirect(303, '/auth/sign-in');

@@ -6,6 +6,7 @@
 	import type { FormOutput } from './+page.server';
 	import Form from '$lib/ui/form/form.svelte';
 	import Entry from '$lib/ui/form/entry.svelte';
+	import Alert from '$lib/ui/alert.svelte';
 
 	const { data }: PageProps = $props();
 
@@ -74,18 +75,12 @@
 				</Button>
 			</div>
 
-			<div class="mt-6 rounded-md border border-amber-200 bg-amber-50 p-4">
-				<div class="flex items-start gap-3">
-					<ShieldCheck class="mt-0.5 h-5 w-5 text-amber-600" />
-					<div>
-						<h4 class="font-medium text-amber-800">2FA is mandatory</h4>
-						<p class="text-sm text-amber-700">
-							Two-factor authentication is required for your account security. You must complete
-							this step to continue.
-						</p>
-					</div>
-				</div>
-			</div>
+			<Alert
+				variant="warning"
+				title="2FA is mandatory"
+				description="Two-factor authentication is required for your account security. You must complete this step to continue."
+			/>
+
 		{/snippet}
 	</Form>
 </div>

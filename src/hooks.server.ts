@@ -62,6 +62,7 @@ const analytics: Handle = async ({ event, resolve }) => {
 
 const authenticate: Handle = async ({ event, resolve }) => {
 	const token = event.cookies.get(Auth.SESSION_COOKIE);
+	console.log(`Authenticating session with token: ${token}`);
 	const redirectToLogin = () => {
 		if (!event.route.id?.startsWith('/auth/')) redirect(302, '/auth/sign-in');
 		return resolve(event);
