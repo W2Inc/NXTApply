@@ -9,7 +9,7 @@
 	import Form from '$lib/ui/form/form.svelte';
 	import Button from '$lib/ui/button.svelte';
 	import { goto, invalidateAll } from '$app/navigation';
-	import type { FormOutput, EditableEvent } from './+page.server';
+	import type { FormOutput } from './+page.server';
 	import Fieldset from '$lib/ui/track/fieldset.svelte';
 	import FormEntry from '$lib/ui/form/form-entry.svelte';
 	import { fromDateToInput } from '$lib/index.svelte';

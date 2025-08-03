@@ -3,12 +3,14 @@
 	import type { PageProps } from './$types';
 
 	import { page } from '$app/state';
-	import { Pen, Plus, RefreshCcw, Save, Trash } from '@lucide/svelte';
+	import { Pen, Plus, RefreshCcw, Save, Trash, Type } from '@lucide/svelte';
 	import Table from '$lib/ui/table';
 	import Form from '$lib/ui/form/form.svelte';
 	import Button from '$lib/ui/button.svelte';
 	import { goto, invalidateAll } from '$app/navigation';
 	import type { EventResult } from './+page.server';
+	import Documentation from '$lib/ui/track/documentation.svelte';
+	import Card from '$lib/ui/card.svelte';
 
 	const { data }: PageProps = $props();
 	const eventColumns: ColumnDef<EventResult>[] = [
@@ -30,17 +32,33 @@
 	}
 </script>
 
-<h3 class="text-md mb-2 font-semibold">Events</h3>
-<div class="mb-2 flex items-center gap-1">
+
+<h3 class="text-md font-semibold">Events</h3>
+<Documentation>
+	<Card>
+		<p>
+			Events are time-bound activities that can be created and managed within the system.
+			They can be associated with different types, such as workshops, meetings, or conferences.
+		</p>
+		<p>
+			You can create different types of events and manage them through the admin panel. Each event can have
+			multiple users associated with it.
+		</p>
+	</Card>
+</Documentation>
+<div class="mb-2 flex items-center gap-1 pt-2">
 	<Button class="gap-2" variant="outline" href="events/edit">
 		<Plus size={16} />
 		Create
 	</Button>
-	<Button class="gap-2" onclick={() => setQuery('page', Math.random())} variant="outline">
-		<Plus size={16} />
-		Test
+	<Button class="gap-2" href="events/types" variant="outline">
+		<Type size={16} />
+		Manage Types
 	</Button>
+	<hr class="flex-1 border" />
 </div>
+
+
 
 <Table
 	data={data.events}

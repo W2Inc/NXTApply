@@ -3,8 +3,9 @@
 // See README in the root project for more information.
 // ============================================================================
 
-import { PageSize } from "$lib/index.svelte";
 import type { SQLQueryBindings } from "bun:sqlite";
+
+export const PageSize = 10;
 
 // ============================================================================
 
@@ -12,11 +13,6 @@ export interface PaginatedResult<T> {
 	items: T[];
 	page: number;
 	next: boolean;
-}
-
-export interface PaginationParams {
-	page?: number | string;
-	pageSize?: number;
 }
 
 // ============================================================================
@@ -52,9 +48,12 @@ export function paginate<T>(
 		.query<T, SQLQueryBindings[]>(`${sql} LIMIT ? OFFSET ?`)
 		.all(...inputs, PageSize + 1, offset);
 
+	const next = items.length > PageSize;
+	const paginated = next ? items.slice(0, PageSize) : items;
+
 	return {
-		items,
+		items: paginated,
 		page: sPage,
-		next: items.length > PageSize
+		next
 	};
 }

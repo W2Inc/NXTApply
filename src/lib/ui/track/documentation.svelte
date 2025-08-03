@@ -9,7 +9,7 @@
 
 <details data-docs class="cursor-help" {...rest}>
 	<summary
-		class="text-primary flex items-center gap-1 underline focus:ring-primary/30 rounded font-semibold hover:underline focus:ring-2 focus:outline-none"
+		class="text-primary flex items-center gap-1 underline rounded font-semibold hover:underline select-none"
 	>
 		<HelpCircle size={14}/> Read More
 	</summary>

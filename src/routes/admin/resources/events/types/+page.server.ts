@@ -3,7 +3,7 @@
 // See README in the root project for more information.
 // ============================================================================
 
-import type { ApplicationEvent, EventTypeDependency, UserEvent } from "@prisma/client";
+import type { ApplicationEvent, EventType, EventTypeDependency, UserEvent } from "@prisma/client";
 import type { PageServerLoad, Actions } from "./$types";
 import { paginate } from "$lib/server/paginate.svelte";
 import z from "zod/v4";
@@ -11,15 +11,26 @@ import { Formy } from "$lib/index.svelte";
 
 // ============================================================================
 
+export type EventTypeResult = {
+	usageCount: number;
+} & EventType;
+
 export const load: PageServerLoad = ({ locals, url }) => {
+	const page = url.searchParams.get('page') ?? '1';
+
 	return {
-		events: paginate<ApplicationEvent>(locals, url, {
-			table: 'event',
-			orderBy: 'startsAt',
-			pageParam: 'p1',
-		})
+		eventTypes: paginate<EventTypeResult>(`
+			SELECT
+				et.*,
+				COUNT(e.id) AS usageCount
+			FROM event_type et
+			LEFT JOIN event e ON e.eventTypeId = et.id
+			GROUP BY et.id
+			ORDER BY et.createdAt DESC
+		`, locals, page)
 	};
 };
+
 
 const actionSchema = z.object({
 	id: z.string()

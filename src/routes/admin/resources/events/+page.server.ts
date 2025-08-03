@@ -2,7 +2,7 @@ import type { ApplicationEvent, EventTypeDependency, UserEvent } from "@prisma/c
 import type { PageServerLoad, Actions } from "./$types";
 import { paginate, type PaginatedResult } from "$lib/server/paginate.svelte";
 import z from "zod/v4";
-import { Formy, PageSize } from "$lib/index.svelte";
+import { Formy } from "$lib/index.svelte";
 
 
 // ============================================================================

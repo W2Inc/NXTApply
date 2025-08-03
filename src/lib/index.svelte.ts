@@ -16,8 +16,6 @@ import { fromDate } from '@internationalized/date';
 
 // ============================================================================
 
-export const PageSize = 10;
-
 export const dateFormatOptions: Intl.DateTimeFormatOptions = {
 	year: 'numeric',
 	month: 'long',

@@ -4,7 +4,7 @@
 	import type { ApplicationEvent } from '@prisma/client';
 
 	import { page } from '$app/state';
-	import { Badge, BadgeCent, Pen, PlaneLanding, Plus, RefreshCcw, Save, Trash } from '@lucide/svelte';
+	import { Badge, BadgeCent, Pen, Plane, PlaneLanding, Plus, RefreshCcw, Save, Trash } from '@lucide/svelte';
 	import Table from '$lib/ui/table';
 	import Form from '$lib/ui/form/form.svelte';
 	import Button from '$lib/ui/button.svelte';
@@ -61,8 +61,8 @@
 
 <div class="mb-2 flex items-center gap-1">
 	<Button class="gap-2" variant="outline" href="users/boarding">
-		<Plus size={16} />
-		Create
+		<Plane size={16} />
+		Onboard User
 	</Button>
 </div>
 

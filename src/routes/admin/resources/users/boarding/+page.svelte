@@ -161,7 +161,7 @@
 						<hr class="flex-1 border" />
 						<Button type="button" variant="outline" onclick={() => history.back()}>Cancel</Button>
 						<Button type="submit" class="gap-1">
-							<span>Save</span>
+							<span>Create</span>
 							<Save size={18} />
 						</Button>
 					</div>
