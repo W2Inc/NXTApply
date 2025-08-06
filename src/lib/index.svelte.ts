@@ -129,23 +129,6 @@ export class Switchboard {
 			href: null
 		};
 
-		// TODO: Indicates that the user hasn't even started yet. Redirect to /
-		// const userTrack = this.getUserTrack(locals, user.id);
-		// if (!userTrack && url.pathname !== '/') redirect(303, '/');
-
-		// const steps = this.getSteps(locals, userTrack.id, userTrack.trackId);
-
-		// if (!steps.length) error(404);
-
-		// // Find the current step index (first not completed)
-		// const currentIndex = steps.findIndex((step) => !step.completedAt);
-
-		// // If all steps are completed, set currentIndex to last
-		// const currentStepIndex = currentIndex === -1 ? steps.length - 1 : currentIndex;
-
-		// const currentStep = steps[currentStepIndex];
-
-		// const baseUrl = `/${user.id}`;
 		// const specialSteps: Record<number, string> = {
 		// 	[ApplicationStepType.Boarding]: `${baseUrl}/boarding`,
 		// 	[ApplicationStepType.Intermission]: `${baseUrl}/break`
@@ -250,8 +233,8 @@ export namespace Formy {
 	 * @param schema - A Zod schema used to validate and parse the form data.
 	 * @returns A promise that resolves to the result of `schema.safeParseAsync`, containing either the parsed data or validation errors.
 	 */
-	export async function parse<T>(request: Request, schema: z.ZodType<T>, locale: string = 'en') {
-		const rawForm = await request.formData();
+	export async function parse<T>(request: Request | FormData, schema: z.ZodType<T>, locale: string = 'en') {
+		const rawForm = request instanceof Request ? await request.formData() : request;
 
 		/** @ts-ignore We know, no worries if it isn't there we just go back to english*/
 		const zodLocale = zLocales[locale] ?? zLocales['en'];

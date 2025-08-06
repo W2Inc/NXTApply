@@ -26,8 +26,8 @@ const db: Database = new Database(DATABASE_URL, { strict: true });
 
 // NOTE(w2wizard): https://bun.sh/docs/api/sqlite#wal-mode
 export const init: ServerInit = async () => {
-	db.run(/** @wc-ignore */ 'PRAGMA journal_mode = WAL');
-	logger.info(/** @wc-ignore */ 'Starting...');
+	db.run('PRAGMA journal_mode = WAL');
+	logger.info('Starting...');
 	Jobs.create('session-cleanup');
 
 	if (!dev) {
@@ -62,7 +62,6 @@ const analytics: Handle = async ({ event, resolve }) => {
 
 const authenticate: Handle = async ({ event, resolve }) => {
 	const token = event.cookies.get(Auth.SESSION_COOKIE);
-	console.log(`Authenticating session with token: ${token}`);
 	const redirectToLogin = () => {
 		if (!event.route.id?.startsWith('/auth/')) redirect(302, '/auth/sign-in');
 		return resolve(event);
@@ -72,31 +71,32 @@ const authenticate: Handle = async ({ event, resolve }) => {
 		return redirectToLogin();
 	}
 
-	event.locals.session = await Auth.validateSessionToken(event.locals, token);
-	if (!event.locals.session) {
+	const session = await Auth.validateSessionToken(event.locals, token);
+	if (!session) {
 		return redirectToLogin();
 	}
 
+	event.locals.session = session;
 	return resolve(event);
 };
 
 // ============================================================================
 
 const authorize: Handle = async ({ event, resolve }) => {
-	if (event.locals.session?.userId) {
-		const user = event.locals.db
-			.query<User, string>(/** @wc-ignore */ 'SELECT * FROM user WHERE id = ?')
-			.get(event.locals.session.userId);
+	// if (event.locals.session?.userId) {
+	// 	const user = event.locals.db
+	// 		.query<User, string>(/** @wc-ignore */ 'SELECT * FROM user WHERE id = ?')
+	// 		.get(event.locals.session.userId);
 
-		event.locals.user = user;
-	}
+	// 	event.locals.user = user;
+	// }
 
-	const user = event.locals.user;
-	if (user && event.route.id?.startsWith('/admin')) {
-		if ((user.flags & UserFlag.IsAdmin) !== UserFlag.IsAdmin) {
-			return new Response(null, { status: 404 });
-		}
-	}
+	// const user = event.locals.user;
+	// if (user && event.route.id?.startsWith('/admin')) {
+	// 	if ((user.flags & UserFlag.IsAdmin) !== UserFlag.IsAdmin) {
+	// 		return new Response(null, { status: 404 });
+	// 	}
+	// }
 
 	return resolve(event);
 };

@@ -3,17 +3,61 @@
 // See README in the root project for more information.
 // ============================================================================
 
-import type { SQLQueryBindings } from "bun:sqlite";
+import type { SQLQueryBindings } from 'bun:sqlite';
+import z from 'zod/v4';
 
-export const PageSize = 10;
+export namespace Pagination {
+	export const C_PSIZE = 10;
+
+	export interface PaginatedResult<T> {
+		items: T[];
+		page: number;
+		next: boolean;
+	}
+
+	export type PaginatedQuery = z.infer<typeof schema>;
+	export const schema = z.object({
+		size: z.number().min(0).max(100).optional(),
+		page: z.number().min(0).max(Number.MAX_SAFE_INTEGER).optional()
+	});
+
+	export const value: PaginatedQuery = {
+		size: 10,
+		page: 1
+	};
+
+	export function paginate<T>(
+		sql: string,
+		locals: App.Locals,
+		pagination: PaginatedQuery = value,
+		...inputs: SQLQueryBindings[]
+	) {
+		const { page, size } = pagination;
+		const offset = (page - 1) * size;
+		const items = locals.db
+			.query<T, SQLQueryBindings[]>(`${sql} LIMIT ? OFFSET ?`)
+			.all(...inputs, size + 1, offset);
+
+		const next = items.length > size;
+		const paginated = next ? items.slice(0, size) : items;
+
+		return {
+			items: paginated,
+			page,
+			next
+		};
+	}
+}
 
 // ============================================================================
 
-export interface PaginatedResult<T> {
-	items: T[];
-	page: number;
-	next: boolean;
-}
+export const PageSize = 10;
+
+	export interface PaginatedResult<T> {
+		items: T[];
+		page: number;
+		next: boolean;
+	}
 
 // ============================================================================
 
@@ -35,7 +79,6 @@ export function paginate<T>(
 	page: number | string = 1,
 	...inputs: SQLQueryBindings[]
 ): PaginatedResult<T> {
-
 	// Sanitize the garbage into something usable.
 	let sPage = Number(page);
 	sPage = !Number.isNaN(sPage) && sPage > 0 ? Math.floor(sPage) : 1;

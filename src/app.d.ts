@@ -7,8 +7,8 @@ declare global {
 			locale: string;
 			tz: string;
 			db: import('bun:sqlite').Database;
-			session: import('@prisma/client').Session | null;
-			user: import('@prisma/client').User | null;
+			session: import('@prisma/client').Session;
+			// user: import('@prisma/client').User | null;
 		}
 		interface PageData {
 			locale: string;

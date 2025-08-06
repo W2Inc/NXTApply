@@ -1,16 +1,7 @@
 <script lang="ts">
 	import {
-		User,
 		LogOut,
 		ChevronDown,
-		FileText,
-		GraduationCap,
-		Home,
-		BookOpen,
-		CheckCircle,
-		CreditCard,
-		Menu,
-		Settings,
 		CircleQuestionMark,
 		ShieldUser
 	} from '@lucide/svelte';
