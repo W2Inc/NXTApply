@@ -1,0 +1,254 @@
+// ============================================================================
+// W2Inc, Amsterdam 2024, All Rights Reserved.
+// See README in the root project for more information.
+// ============================================================================
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "sqlite"
+    url      = env("DATABASE_URL_PRISMA")
+}
+
+// General Purpose Models
+// ============================================================================
+
+model User {
+    id                String                @id @default(uuid())
+    email             String
+    verified          Boolean               @default(false)
+    hash              String?
+    tfa               String?
+    dob               DateTime?
+    gender            Int?
+    country           String?
+    flags             Int                   @default(0)
+    firstName         String?
+    lastName          String?
+    phone             String?
+    providerId        String?
+    provider          String?
+    createdAt         DateTime              @default(now())
+    updatedAt         DateTime              @default(now()) @updatedAt
+    sessions          Session[]
+    resetTokens       ResetToken[]
+    verificationToken VerificationToken?
+    trackCompletion   ApplicationUserTrack?
+    UserEvent         UserEvent[]
+
+    @@map("user")
+}
+
+// Auth
+// ============================================================================
+
+model Session {
+    id        String   @id
+    userId    String
+    expiresAt DateTime
+    hash     String
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map("session")
+}
+
+model ResetToken {
+    id        String   @id
+    userId    String
+    expiresAt DateTime
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map("reset_token")
+}
+
+model VerificationToken {
+    id        Int      @id @default(autoincrement())
+    code      String // Secure
+    email     String
+    userId    String   @unique
+    expiresAt DateTime
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map("verification_token")
+}
+
+// Events
+//
+// Events are what employ tracks
+// ============================================================================
+
+model ApplicationEvent {
+    id String @id
+
+    address  String?
+    maxUsers Int?
+    autoComplete Boolean @default(false) // Once the startsAt is reached, it auto-completes it for all user_events
+
+    eventTypeId String
+    eventType   EventType @relation(fields: [eventTypeId], references: [id], onDelete: Cascade)
+
+    trackId String?
+    track   ApplicationTrack? @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+    // Event dependencies: This event requires completion of an event of a specific type before subscribing
+    requiredEventTypes EventTypeDependency[]
+
+    startsAt      DateTime
+    registerUntil DateTime? // At what time should we not allow registrations anymore.
+    createdAt     DateTime  @default(now())
+    updatedAt     DateTime  @default(now()) @updatedAt
+
+    userEvents UserEvent[] @relation("EventToUserEvent") // Relation to UserEvent
+
+    @@map("event")
+}
+
+// Join table for event type dependencies (many-to-many)
+model EventTypeDependency {
+    eventId        String
+    requiredTypeId String
+
+    event        ApplicationEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+    requiredType EventType        @relation(fields: [requiredTypeId], references: [id], onDelete: Cascade)
+
+    @@id([eventId, requiredTypeId])
+    @@map("event_type_dependency")
+}
+
+model EventType {
+    id          String  @id
+    name        String
+    description String?
+
+    events       ApplicationEvent[]
+    dependencies EventTypeDependency[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt
+
+    @@map("event_type")
+}
+
+// Track which events a user is/was active on or attended
+model UserEvent {
+    id      String @id @default(uuid())
+    userId  String
+    eventId String
+
+    user  User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+    event ApplicationEvent @relation(name: "EventToUserEvent", fields: [eventId], references: [id], onDelete: Cascade)
+
+    completedAt DateTime? // Nullable, set when user attended
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt
+
+    @@unique([userId, eventId])
+    @@map("user_event")
+}
+
+// Tracks
+// ============================================================================
+
+// Track to define the steps to take
+model ApplicationTrack {
+    id          String                 @id
+    name        String
+    description String?
+    isActive    Boolean                @default(true)
+    steps       ApplicationStep[]
+    completions ApplicationUserTrack[]
+    events      ApplicationEvent[]
+    createdAt   DateTime               @default(now())
+    updatedAt   DateTime               @default(now()) @updatedAt
+
+    @@map("application_track")
+}
+
+// A step in application process
+model ApplicationStep {
+    id           String                @id
+    trackId      String
+    track        ApplicationTrack      @relation(fields: [trackId], references: [id], onDelete: Cascade)
+    type         Int // 0=BOARDING, 1=INTERMISSION, 2=CHALLENGE, 3=WAITING, 4=RESULT
+    order        Int
+    content      String? // HTML content for challenges (iframe and spec compliant)
+    conditionals Json? // JSON object to store conditional logic and parameters
+    completions  ApplicationUserStep[] // Relation to track which users completed this step
+    createdAt    DateTime              @default(now())
+    updatedAt    DateTime              @default(now()) @updatedAt
+
+    @@index([trackId, order])
+    @@map("application_step")
+}
+
+// Track individual user completions of a track
+model ApplicationUserTrack {
+    id String @id
+
+    userId String @unique
+    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    trackId String
+    track   ApplicationTrack @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+    completedAt DateTime? // Nullable to allow for in-progress states
+    createdAt   DateTime  @default(now())
+
+    steps ApplicationUserStep[] // Relation to completed steps
+
+    @@index([userId, trackId])
+    @@index([completedAt])
+    @@map("application_user_track")
+}
+
+// Track completion of individual steps by users
+model ApplicationUserStep {
+    id          String @id @default(uuid())
+    userTrackId String
+
+    userTrack ApplicationUserTrack @relation(fields: [userTrackId], references: [id], onDelete: Cascade)
+    stepId    String
+
+    step        ApplicationStep @relation(fields: [stepId], references: [id], onDelete: Cascade)
+    createdAt   DateTime        @default(now())
+    completedAt DateTime?
+
+    @@unique([userTrackId, stepId])
+    @@map("application_user_step")
+}
+
+// ============================================================================
+
+// Monthly user metrics
+model UserMetrics {
+    year            Int
+    month           Int
+    userCount       Int
+    completedTracks Int
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt
+
+    @@id([year, month])
+    @@map("user_metrics")
+}
+
+// // Monthly track completion metrics
+// model TrackCompletionMetrics {
+//     id               String           @id @default(uuid())
+//     year             Int
+//     month            Int
+//     trackId          String
+//     track            ApplicationTrack @relation(fields: [trackId], references: [id], onDelete: Cascade)
+//     completionCount  Int
+//     prevMonthCount   Int?
+//     percentageChange Float? // Can be calculated on query or stored
+//     createdAt        DateTime         @default(now())
+//     updatedAt        DateTime         @default(now()) @updatedAt
+
+//     @@unique([year, month, trackId])
+//     @@map("track_completion_metrics")
+// }

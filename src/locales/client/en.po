@@ -1,0 +1,1110 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-06T13:00:23.249Z\n"
+"PO-Revision-Date: 2025-08-08T19:44:26.015Z\n"
+"Last-Translator: \n"
+"Language: English\n"
+"Language-Team: \n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"MIME-Version: 1.0\n"
+
+#: src/routes/+page.svelte
+msgid "Welcome to SvelteKit"
+msgstr "Welcome to SvelteKit"
+
+#: src/routes/+page.svelte
+msgid "Visit <0>svelte.dev/docs/kit</0> to read the documentation"
+msgstr "Visit <0>svelte.dev/docs/kit</0> to read the documentation"
+
+#~ msgid "Hello"
+#~ msgstr "Hello"
+
+#: src/routes/auth/+layout.svelte
+#: src/routes/auth/+layout.svelte
+msgid "NXTApply"
+msgstr "NXTApply"
+
+#~ msgid "© {0} NXTApply. All rights reserved."
+#~ msgstr "© {0} NXTApply. All rights reserved."
+
+#: src/routes/auth/+layout.svelte
+msgid "Start your journey with NXTApply"
+msgstr "Start your journey with NXTApply"
+
+#: src/routes/auth/+layout.svelte
+msgid "Streamline your application process and discover opportunities tailored for you."
+msgstr "Streamline your application process and discover opportunities tailored for you."
+
+#~ msgid "Value"
+#~ msgstr "Value"
+
+#~ msgid "Compact"
+#~ msgstr "Compact"
+
+#~ msgid "Item 1"
+#~ msgstr "Item 1"
+
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Login"
+msgstr "Login"
+
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Enter your email to sign in to your account"
+msgstr "Enter your email to sign in to your account"
+
+#: src/routes/auth/reset/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Email"
+msgstr "Email"
+
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Please give a valid Email"
+msgstr "Please give a valid Email"
+
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Password"
+msgstr "Password"
+
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Please give a valid Password"
+msgstr "Please give a valid Password"
+
+#: src/routes/auth/reset/+page.svelte
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Reset Password"
+msgstr "Reset Password"
+
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Sign In"
+msgstr "Sign In"
+
+#: src/routes/auth/sign-in/+page.svelte
+msgid "Don't have an account? <0>Sign up</0>"
+msgstr "Don't have an account? <0>Sign up</0>"
+
+#: src/routes/auth/oauth.svelte
+msgid "or"
+msgstr "or"
+
+#: src/routes/auth/oauth.svelte
+msgid "Sign in with <0/>"
+msgstr "Sign in with <0/>"
+
+#: src/routes/auth/+layout.svelte
+msgid "© {0} {1}. All rights reserved."
+msgstr "© {0} {1}. All rights reserved."
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Sign Up"
+msgstr "Sign Up"
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Enter your information to create an account"
+msgstr "Enter your information to create an account"
+
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "First Name"
+msgstr "First Name"
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Max"
+msgstr "Max"
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Please enter your first name"
+msgstr "Please enter your first name"
+
+#: src/routes/auth/sign-up/+page.svelte
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Last Name"
+msgstr "Last Name"
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Robinson"
+msgstr "Robinson"
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Please enter your last name"
+msgstr "Please enter your last name"
+
+#: src/routes/auth/reset/+page.svelte
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Please confirm your password"
+msgstr "Please confirm your password"
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Apply Now"
+msgstr "Apply Now"
+
+#: src/routes/auth/sign-up/+page.svelte
+msgid "Already have an account? <0>Sign in</0>"
+msgstr "Already have an account? <0>Sign in</0>"
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Set New Password"
+msgstr "Set New Password"
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Enter your new password to complete the reset process"
+msgstr "Enter your new password to complete the reset process"
+
+#: src/routes/auth/reset/+page.svelte
+msgid "New Password"
+msgstr "New Password"
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Please enter your new password"
+msgstr "Please enter your new password"
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Please confirm your new password"
+msgstr "Please confirm your new password"
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Set Password"
+msgstr "Set Password"
+
+#: src/routes/auth/reset/+page.svelte
+#: src/routes/auth/reset/+page.svelte
+msgid "Remember your password? <0>Sign in</0>"
+msgstr "Remember your password? <0>Sign in</0>"
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Enter your email address and we'll send you a reset link"
+msgstr "Enter your email address and we'll send you a reset link"
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Please enter your email address"
+msgstr "Please enter your email address"
+
+#: src/routes/auth/reset/+page.svelte
+msgid "Send Reset Link"
+msgstr "Send Reset Link"
+
+#: src/routes/auth/2fa/+page.svelte
+msgid "Authentication code"
+msgstr "Authentication code"
+
+#: src/routes/auth/2fa/+page.svelte
+msgid "XXXXXX"
+msgstr "XXXXXX"
+
+#: src/routes/auth/2fa/+page.svelte
+msgid "Verify"
+msgstr "Verify"
+
+#: src/routes/auth/2fa/+page.svelte
+msgid ""
+"Open your two-factor authenticator (TOTP) app or browser extension to view your authentication\n"
+"\t\t\tcode."
+msgstr ""
+"Open your two-factor authenticator (TOTP) app or browser extension to view your authentication\n"
+"\t\t\tcode."
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "Two-Factor Authentication"
+msgstr "Two-Factor Authentication"
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "Scan the QR code with your authenticator app to set up 2FA"
+msgstr "Scan the QR code with your authenticator app to set up 2FA"
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "View secret key instead"
+msgstr "View secret key instead"
+
+#~ msgid ""
+#~ "Open your two-factor authenticator (TOTP) app or browser extension to scan the QR code or\n"
+#~ "\t\t\t\tenter the secret key manually."
+#~ msgstr ""
+#~ "Open your two-factor authenticator (TOTP) app or browser extension to scan the QR code or\n"
+#~ "\t\t\t\tenter the secret key manually."
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "Verification Code"
+msgstr "Verification Code"
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "Enter 6-digit code"
+msgstr "Enter 6-digit code"
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid "Verify and Enable 2FA"
+msgstr "Verify and Enable 2FA"
+
+#~ msgid "Two-factor authentication is required for your account security. You must complete this step to continue."
+#~ msgstr "Two-factor authentication is required for your account security. You must complete this step to continue."
+
+#: src/routes/+error.svelte
+msgid "Houston, we have a problem"
+msgstr "Houston, we have a problem"
+
+#: src/routes/+error.svelte
+msgid "<0>Silly cats!</0> Rest assured this issue has been logged & reported."
+msgstr "<0>Silly cats!</0> Rest assured this issue has been logged & reported."
+
+#: src/routes/+error.svelte
+msgid "Oops! Something wasn't quite right with that request."
+msgstr "Oops! Something wasn't quite right with that request."
+
+#: src/routes/+error.svelte
+msgid "<0/> Back to safety"
+msgstr "<0/> Back to safety"
+
+#~ msgid "Unable to process your payment."
+#~ msgstr "Unable to process your payment."
+
+#~ msgid "Please verify your billing information and try again."
+#~ msgstr "Please verify your billing information and try again."
+
+#~ msgid "Check your card details"
+#~ msgstr "Check your card details"
+
+#~ msgid "Ensure sufficient funds"
+#~ msgstr "Ensure sufficient funds"
+
+#~ msgid "Verify billing address"
+#~ msgstr "Verify billing address"
+
+#: src/routes/auth/2fa/setup/+page.svelte
+msgid ""
+"Open your two-factor authenticator (TOTP) app or browser extension to scan the QR code or\n"
+"\t\t\tenter the secret key manually."
+msgstr ""
+"Open your two-factor authenticator (TOTP) app or browser extension to scan the QR code or\n"
+"\t\t\tenter the secret key manually."
+
+#~ msgid "Hi"
+#~ msgstr "Hi"
+
+#: src/routes/(app)/+layout.svelte
+msgid "Logo"
+msgstr "Logo"
+
+#~ msgid "Open"
+#~ msgstr "Open"
+
+#: src/routes/(app)/+layout.svelte
+msgid "My Account"
+msgstr "My Account"
+
+#~ msgid "Profile"
+#~ msgstr "Profile"
+
+#~ msgid "Billing"
+#~ msgstr "Billing"
+
+#~ msgid "Team"
+#~ msgstr "Team"
+
+#~ msgid "Subscription"
+#~ msgstr "Subscription"
+
+#~ msgid "Account"
+#~ msgstr "Account"
+
+#~ msgid "View Actions"
+#~ msgstr "View Actions"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Account"
+msgstr "<0/> Account"
+
+#: src/routes/(app)/+layout.svelte
+msgid "Logout"
+msgstr "Logout"
+
+#~ msgid "<0/> Logout"
+#~ msgstr "<0/> Logout"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> GDPR"
+msgstr "<0/> GDPR"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Assistance"
+msgstr "<0/> Assistance"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "<0/> GDPR & Data Privacy"
+msgstr "<0/> GDPR & Data Privacy"
+
+#~ msgid ""
+#~ "We take your privacy seriously. All personal data is handled in accordance with the General\n"
+#~ "\t\t\tData Protection Regulation (GDPR)."
+#~ msgstr ""
+#~ "We take your privacy seriously. All personal data is handled in accordance with the General\n"
+#~ "\t\t\tData Protection Regulation (GDPR)."
+
+#~ msgid "What data do we collect?"
+#~ msgstr "What data do we collect?"
+
+#~ msgid "Address"
+#~ msgstr "Address"
+
+#~ msgid "Phone number and email"
+#~ msgstr "Phone number and email"
+
+#~ msgid "First and last name"
+#~ msgstr "First and last name"
+
+#~ msgid "Age"
+#~ msgstr "Age"
+
+#~ msgid "Events you participated in and when"
+#~ msgstr "Events you participated in and when"
+
+#~ msgid "Analytics"
+#~ msgstr "Analytics"
+
+#~ msgid "We use <0>Plausible Analytics</0> to understand how our site is used. Plausible is a privacy-focused analytics tool that does <1>not</1> collect any personal or identifiable information about you."
+#~ msgstr "We use <0>Plausible Analytics</0> to understand how our site is used. Plausible is a privacy-focused analytics tool that does <1>not</1> collect any personal or identifiable information about you."
+
+#~ msgid "Your Rights"
+#~ msgstr "Your Rights"
+
+#~ msgid ""
+#~ "You have the right to request all data we hold about you, or to request deletion of your\n"
+#~ "\t\t\taccount and all related data."
+#~ msgstr ""
+#~ "You have the right to request all data we hold about you, or to request deletion of your\n"
+#~ "\t\t\taccount and all related data."
+
+#~ msgid "Email address associated with your account <0/>"
+#~ msgstr "Email address associated with your account <0/>"
+
+#~ msgid "<0/> Request my data"
+#~ msgstr "<0/> Request my data"
+
+#~ msgid "<0/> Delete my account & data"
+#~ msgstr "<0/> Delete my account & data"
+
+#~ msgid "Request"
+#~ msgstr "Request"
+
+#~ msgid "Your privacy is our priority. We're committed to transparency and giving you full control over your personal data in accordance with GDPR regulations."
+#~ msgstr "Your privacy is our priority. We're committed to transparency and giving you full control over your personal data in accordance with GDPR regulations."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "What Data We Collect"
+msgstr "What Data We Collect"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "We only collect data that's necessary to provide our services and enhance your experience:"
+msgstr "We only collect data that's necessary to provide our services and enhance your experience:"
+
+#~ msgid "<0/> <1>Contact Information:</1> Email address, phone number"
+#~ msgstr "<0/> <1>Contact Information:</1> Email address, phone number"
+
+#~ msgid "<0/> <1>Personal Details:</1> First name, last name, age"
+#~ msgstr "<0/> <1>Personal Details:</1> First name, last name, age"
+
+#~ msgid "<0/> <1>Address Information:</1> Mailing and billing addresses"
+#~ msgstr "<0/> <1>Address Information:</1> Mailing and billing addresses"
+
+#~ msgid "<0/> <1>Activity Data:</1> Events participated in, dates, and preferences"
+#~ msgstr "<0/> <1>Activity Data:</1> Events participated in, dates, and preferences"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Privacy-First Analytics"
+msgstr "Privacy-First Analytics"
+
+#~ msgid "We use <0>Plausible Analytics</0> to understand how our site is used and improve your experience."
+#~ msgstr "We use <0>Plausible Analytics</0> to understand how our site is used and improve your experience."
+
+#~ msgid ""
+#~ "<0>Privacy guarantee:</0> Plausible <1>does not</1> collect cookies,\n"
+#~ "\t\t\t\t\tpersonal data, or any information that could identify you. It's 100% GDPR compliant."
+#~ msgstr ""
+#~ "<0>Privacy guarantee:</0> Plausible <1>does not</1> collect cookies,\n"
+#~ "\t\t\t\t\tpersonal data, or any information that could identify you. It's 100% GDPR compliant."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Your Rights Under GDPR"
+msgstr "Your Rights Under GDPR"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Right to Access"
+msgstr "Right to Access"
+
+#~ msgid "You can request a complete copy of all personal data we hold about you, including how it's used and who it's shared with."
+#~ msgstr "You can request a complete copy of all personal data we hold about you, including how it's used and who it's shared with."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Right to Deletion"
+msgstr "Right to Deletion"
+
+#~ msgid "You can request complete deletion of your account and all associated personal data from our systems."
+#~ msgstr "You can request complete deletion of your account and all associated personal data from our systems."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Right to Rectification"
+msgstr "Right to Rectification"
+
+#~ msgid "You can request corrections to any inaccurate or incomplete personal data we hold about you."
+#~ msgstr "You can request corrections to any inaccurate or incomplete personal data we hold about you."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Right to Portability"
+msgstr "Right to Portability"
+
+#~ msgid "You can request your data in a structured, machine-readable format to transfer to another service."
+#~ msgstr "You can request your data in a structured, machine-readable format to transfer to another service."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Exercise Your Data Rights"
+msgstr "Exercise Your Data Rights"
+
+#~ msgid "Enter your email address below to make a data request. We'll process your request within 30 days and send the results to your registered email address."
+#~ msgstr "Enter your email address below to make a data request. We'll process your request within 30 days and send the results to your registered email address."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "<0/> Request My Data"
+msgstr "<0/> Request My Data"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "<0/> Delete My Account"
+msgstr "<0/> Delete My Account"
+
+#~ msgid ""
+#~ "For questions about data processing or to exercise additional rights,\n"
+#~ "\t\t\t\tcontact us at <0>privacy@example.com</0>"
+#~ msgstr ""
+#~ "For questions about data processing or to exercise additional rights,\n"
+#~ "\t\t\t\tcontact us at <0>privacy@example.com</0>"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Contact Information:"
+msgstr "Contact Information:"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Email address, phone number"
+msgstr "Email address, phone number"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Personal Details:"
+msgstr "Personal Details:"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "First name, last name, age"
+msgstr "First name, last name, age"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Address Information:"
+msgstr "Address Information:"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Mailing and billing addresses"
+msgstr "Mailing and billing addresses"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Activity Data:"
+msgstr "Activity Data:"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Events participated in, dates, and preferences"
+msgstr "Events participated in, dates, and preferences"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"Your privacy is our priority. We're committed to transparency and giving you full control over\n"
+"\t\t\tyour personal data in accordance with GDPR regulations."
+msgstr ""
+"Your privacy is our priority. We're committed to transparency and giving you full control over\n"
+"\t\t\tyour personal data in accordance with GDPR regulations."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"We use <0>Plausible Analytics</0> to understand how our site is used and improve your experience. <1>Privacy guarantee:</1> Plausible <2>does not</2> collect cookies, personal\n"
+"\t\t\t\tdata, or any information that could identify you. It's 100% GDPR compliant."
+msgstr ""
+"We use <0>Plausible Analytics</0> to understand how our site is used and improve your experience. <1>Privacy guarantee:</1> Plausible <2>does not</2> collect cookies, personal\n"
+"\t\t\t\tdata, or any information that could identify you. It's 100% GDPR compliant."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"You can request a complete copy of all personal data we hold about you, including how it's\n"
+"\t\t\t\t\tused and who it's shared with."
+msgstr ""
+"You can request a complete copy of all personal data we hold about you, including how it's\n"
+"\t\t\t\t\tused and who it's shared with."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"You can request complete deletion of your account and all associated personal data from\n"
+"\t\t\t\t\tour systems."
+msgstr ""
+"You can request complete deletion of your account and all associated personal data from\n"
+"\t\t\t\t\tour systems."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"You can request corrections to any inaccurate or incomplete personal data we hold about\n"
+"\t\t\t\t\tyou."
+msgstr ""
+"You can request corrections to any inaccurate or incomplete personal data we hold about\n"
+"\t\t\t\t\tyou."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"You can request your data in a structured, machine-readable format to transfer to another\n"
+"\t\t\t\t\tservice."
+msgstr ""
+"You can request your data in a structured, machine-readable format to transfer to another\n"
+"\t\t\t\t\tservice."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"Enter your email address below to make a data request. We'll process your request within 30\n"
+"\t\t\tdays and send the results to your registered email address."
+msgstr ""
+"Enter your email address below to make a data request. We'll process your request within 30\n"
+"\t\t\tdays and send the results to your registered email address."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "For questions about data processing or to exercise additional rights, contact us at <0>privacy@example.com</0>"
+msgstr "For questions about data processing or to exercise additional rights, contact us at <0>privacy@example.com</0>"
+
+#~ msgid "GDPR"
+#~ msgstr "GDPR"
+
+#: src/routes/(app)/help/+page.svelte
+msgid "<0/> Help & Support"
+msgstr "<0/> Help & Support"
+
+#~ msgid "Find answers to common questions and get the support you need. If you can't find what you're looking for, reach out to us directly."
+#~ msgstr "Find answers to common questions and get the support you need. If you can't find what you're looking for, reach out to us directly."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "<0/> Getting Started <1/>"
+msgstr "<0/> Getting Started <1/>"
+
+#: src/routes/(app)/help/+page.svelte
+msgid "How do I create an account?"
+msgstr "How do I create an account?"
+
+#~ msgid "Click the \"Sign Up\" button in the top right corner and fill out the registration form with your details."
+#~ msgstr "Click the \"Sign Up\" button in the top right corner and fill out the registration form with your details."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "How do I reset my password?"
+msgstr "How do I reset my password?"
+
+#~ msgid "On the login page, click \"Forgot Password\" and enter your email address. We'll send you a reset link."
+#~ msgstr "On the login page, click \"Forgot Password\" and enter your email address. We'll send you a reset link."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "Can I change my email address?"
+msgstr "Can I change my email address?"
+
+#~ msgid "Yes, you can update your email address in your account settings under the \"Profile\" section."
+#~ msgstr "Yes, you can update your email address in your account settings under the \"Profile\" section."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "<0/> Events & Bookings <1/>"
+msgstr "<0/> Events & Bookings <1/>"
+
+#: src/routes/(app)/help/+page.svelte
+msgid "How do I book an event?"
+msgstr "How do I book an event?"
+
+#~ msgid "Browse available events, select your preferred date and time, then follow the booking process to secure your spot."
+#~ msgstr "Browse available events, select your preferred date and time, then follow the booking process to secure your spot."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "Can I cancel my booking?"
+msgstr "Can I cancel my booking?"
+
+#~ msgid "Yes, you can cancel bookings up to 24 hours before the event start time through your account dashboard."
+#~ msgstr "Yes, you can cancel bookings up to 24 hours before the event start time through your account dashboard."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "What happens if an event is cancelled?"
+msgstr "What happens if an event is cancelled?"
+
+#~ msgid "We'll notify you immediately via email and offer a full refund or credit for future events."
+#~ msgstr "We'll notify you immediately via email and offer a full refund or credit for future events."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "<0/> Payments & Billing <1/>"
+msgstr "<0/> Payments & Billing <1/>"
+
+#: src/routes/(app)/help/+page.svelte
+msgid "What payment methods do you accept?"
+msgstr "What payment methods do you accept?"
+
+#~ msgid "We accept all major credit cards, debit cards, and digital payment methods including PayPal and Apple Pay."
+#~ msgstr "We accept all major credit cards, debit cards, and digital payment methods including PayPal and Apple Pay."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "How do refunds work?"
+msgstr "How do refunds work?"
+
+#~ msgid "Refunds are processed within 5-7 business days to your original payment method, depending on your bank."
+#~ msgstr "Refunds are processed within 5-7 business days to your original payment method, depending on your bank."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "Can I get an invoice for my purchase?"
+msgstr "Can I get an invoice for my purchase?"
+
+#~ msgid "Yes, invoices are automatically generated and sent to your email after each purchase. You can also download them from your account."
+#~ msgstr "Yes, invoices are automatically generated and sent to your email after each purchase. You can also download them from your account."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "<0/> Account Settings <1/>"
+msgstr "<0/> Account Settings <1/>"
+
+#: src/routes/(app)/help/+page.svelte
+msgid "How do I update my profile information?"
+msgstr "How do I update my profile information?"
+
+#~ msgid "Go to your account settings and click on \"Edit Profile\" to update your personal information, contact details, and preferences."
+#~ msgstr "Go to your account settings and click on \"Edit Profile\" to update your personal information, contact details, and preferences."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "How do I manage my notification preferences?"
+msgstr "How do I manage my notification preferences?"
+
+#~ msgid "In your account settings, navigate to \"Notifications\" to customize which emails and alerts you receive."
+#~ msgstr "In your account settings, navigate to \"Notifications\" to customize which emails and alerts you receive."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "How do I delete my account?"
+msgstr "How do I delete my account?"
+
+#~ msgid "Contact our support team or visit the GDPR page to request account deletion. This action is permanent and cannot be undone."
+#~ msgstr "Contact our support team or visit the GDPR page to request account deletion. This action is permanent and cannot be undone."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "<0/> Privacy & Security <1/>"
+msgstr "<0/> Privacy & Security <1/>"
+
+#: src/routes/(app)/help/+page.svelte
+msgid "Is my personal data secure?"
+msgstr "Is my personal data secure?"
+
+#~ msgid "Yes, we use industry-standard encryption and security measures to protect your data. Visit our GDPR page for more details."
+#~ msgstr "Yes, we use industry-standard encryption and security measures to protect your data. Visit our GDPR page for more details."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "Do you share my data with third parties?"
+msgstr "Do you share my data with third parties?"
+
+#~ msgid "We only share data when necessary to provide our services and never sell your personal information. See our privacy policy for details."
+#~ msgstr "We only share data when necessary to provide our services and never sell your personal information. See our privacy policy for details."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "How can I exercise my GDPR rights?"
+msgstr "How can I exercise my GDPR rights?"
+
+#~ msgid "Visit our GDPR page to request your data, make corrections, or delete your account in compliance with data protection regulations."
+#~ msgstr "Visit our GDPR page to request your data, make corrections, or delete your account in compliance with data protection regulations."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "Still Need Help?"
+msgstr "Still Need Help?"
+
+#~ msgid "Can't find the answer you're looking for? Send us a message and we'll get back to you as soon as possible."
+#~ msgstr "Can't find the answer you're looking for? Send us a message and we'll get back to you as soon as possible."
+
+#~ msgid "Name"
+#~ msgstr "Name"
+
+#~ msgid "Your full name"
+#~ msgstr "Your full name"
+
+#: src/routes/(app)/help/+page.svelte
+msgid "Subject"
+msgstr "Subject"
+
+#: src/routes/(app)/help/+page.svelte
+msgid "What's this about?"
+msgstr "What's this about?"
+
+#: src/routes/(app)/help/+page.svelte
+msgid "Message"
+msgstr "Message"
+
+#: src/routes/(app)/help/+page.svelte
+msgid "Please describe your question or issue in detail..."
+msgstr "Please describe your question or issue in detail..."
+
+#: src/routes/(app)/help/+page.svelte
+msgid "<0/> Send Message"
+msgstr "<0/> Send Message"
+
+#: src/routes/(app)/help/+page.svelte
+msgid "You can also reach us directly at <0>support@example.com</0>"
+msgstr "You can also reach us directly at <0>support@example.com</0>"
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Find answers to common questions and get the support you need. If you can't find what you're\n"
+"\t\t\tlooking for, reach out to us directly."
+msgstr ""
+"Find answers to common questions and get the support you need. If you can't find what you're\n"
+"\t\t\tlooking for, reach out to us directly."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Click the \"Sign Up\" button in the top right corner and fill out the registration form\n"
+"\t\t\t\t\t\t\twith your details."
+msgstr ""
+"Click the \"Sign Up\" button in the top right corner and fill out the registration form\n"
+"\t\t\t\t\t\t\twith your details."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"On the login page, click \"Forgot Password\" and enter your email address. We'll send\n"
+"\t\t\t\t\t\t\tyou a reset link."
+msgstr ""
+"On the login page, click \"Forgot Password\" and enter your email address. We'll send\n"
+"\t\t\t\t\t\t\tyou a reset link."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Yes, you can update your email address in your account settings under the \"Profile\"\n"
+"\t\t\t\t\t\t\tsection."
+msgstr ""
+"Yes, you can update your email address in your account settings under the \"Profile\"\n"
+"\t\t\t\t\t\t\tsection."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Browse available events, select your preferred date and time, then follow the booking\n"
+"\t\t\t\t\t\t\tprocess to secure your spot."
+msgstr ""
+"Browse available events, select your preferred date and time, then follow the booking\n"
+"\t\t\t\t\t\t\tprocess to secure your spot."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Yes, you can cancel bookings up to 24 hours before the event start time through your\n"
+"\t\t\t\t\t\t\taccount dashboard."
+msgstr ""
+"Yes, you can cancel bookings up to 24 hours before the event start time through your\n"
+"\t\t\t\t\t\t\taccount dashboard."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"We'll notify you immediately via email and offer a full refund or credit for future\n"
+"\t\t\t\t\t\t\tevents."
+msgstr ""
+"We'll notify you immediately via email and offer a full refund or credit for future\n"
+"\t\t\t\t\t\t\tevents."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"We accept all major credit cards, debit cards, and digital payment methods including\n"
+"\t\t\t\t\t\t\tPayPal and Apple Pay."
+msgstr ""
+"We accept all major credit cards, debit cards, and digital payment methods including\n"
+"\t\t\t\t\t\t\tPayPal and Apple Pay."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Refunds are processed within 5-7 business days to your original payment method,\n"
+"\t\t\t\t\t\t\tdepending on your bank."
+msgstr ""
+"Refunds are processed within 5-7 business days to your original payment method,\n"
+"\t\t\t\t\t\t\tdepending on your bank."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Yes, invoices are automatically generated and sent to your email after each purchase.\n"
+"\t\t\t\t\t\t\tYou can also download them from your account."
+msgstr ""
+"Yes, invoices are automatically generated and sent to your email after each purchase.\n"
+"\t\t\t\t\t\t\tYou can also download them from your account."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Go to your account settings and click on \"Edit Profile\" to update your personal\n"
+"\t\t\t\t\t\t\tinformation, contact details, and preferences."
+msgstr ""
+"Go to your account settings and click on \"Edit Profile\" to update your personal\n"
+"\t\t\t\t\t\t\tinformation, contact details, and preferences."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"In your account settings, navigate to \"Notifications\" to customize which emails and\n"
+"\t\t\t\t\t\t\talerts you receive."
+msgstr ""
+"In your account settings, navigate to \"Notifications\" to customize which emails and\n"
+"\t\t\t\t\t\t\talerts you receive."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Contact our support team or visit the GDPR page to request account deletion. This\n"
+"\t\t\t\t\t\t\taction is permanent and cannot be undone."
+msgstr ""
+"Contact our support team or visit the GDPR page to request account deletion. This\n"
+"\t\t\t\t\t\t\taction is permanent and cannot be undone."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Yes, we use industry-standard encryption and security measures to protect your data.\n"
+"\t\t\t\t\t\t\tVisit our GDPR page for more details."
+msgstr ""
+"Yes, we use industry-standard encryption and security measures to protect your data.\n"
+"\t\t\t\t\t\t\tVisit our GDPR page for more details."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"We only share data when necessary to provide our services and never sell your personal\n"
+"\t\t\t\t\t\t\tinformation. See our privacy policy for details."
+msgstr ""
+"We only share data when necessary to provide our services and never sell your personal\n"
+"\t\t\t\t\t\t\tinformation. See our privacy policy for details."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Visit our GDPR page to request your data, make corrections, or delete your account in\n"
+"\t\t\t\t\t\t\tcompliance with data protection regulations."
+msgstr ""
+"Visit our GDPR page to request your data, make corrections, or delete your account in\n"
+"\t\t\t\t\t\t\tcompliance with data protection regulations."
+
+#: src/routes/(app)/help/+page.svelte
+msgid ""
+"Can't find the answer you're looking for? Send us a message and we'll get back to you as\n"
+"\t\t\t\tsoon as possible."
+msgstr ""
+"Can't find the answer you're looking for? Send us a message and we'll get back to you as\n"
+"\t\t\t\tsoon as possible."
+
+#: src/routes/(app)/+page.svelte
+msgid "Welcome to NXTApply!"
+msgstr "Welcome to NXTApply!"
+
+#: src/routes/(app)/+page.svelte
+msgid "Your student application journey starts here.<0/> <1>Follow the steps below to complete your application.</1>"
+msgstr "Your student application journey starts here.<0/> <1>Follow the steps below to complete your application.</1>"
+
+#: src/routes/(app)/+page.svelte
+msgid "Upcoming Events"
+msgstr "Upcoming Events"
+
+#: src/routes/(app)/+page.svelte
+msgid "No upcoming events."
+msgstr "No upcoming events."
+
+#: src/routes/(app)/event.svelte
+msgid "Save to calendar"
+msgstr "Save to calendar"
+
+#: src/routes/(app)/event.svelte
+msgid "<0/> You must have completed the following events first: <1/>"
+msgstr "<0/> You must have completed the following events first: <1/>"
+
+#: src/routes/(app)/event.svelte
+msgid "Resume"
+msgstr "Resume"
+
+#~ msgid "Join"
+#~ msgstr "Join"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Welcome Aboard!"
+msgstr "Welcome Aboard!"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Please fill in your personal information to get started."
+msgstr "Please fill in your personal information to get started."
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Enter your first name"
+msgstr "Enter your first name"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Enter your last name"
+msgstr "Enter your last name"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Gender"
+msgstr "Gender"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Male"
+msgstr "Male"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Female"
+msgstr "Female"
+
+#~ msgid "Other"
+#~ msgstr "Other"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Date of Birth"
+msgstr "Date of Birth"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Phone Number"
+msgstr "Phone Number"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Enter your phone number"
+msgstr "Enter your phone number"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Continue"
+msgstr "Continue"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Data Privacy"
+msgstr "Data Privacy"
+
+#~ msgid ""
+#~ "Your personal information is securely stored and handled in accordance with our privacy policy.\n"
+#~ "\t\t\tYou can read more about it <0>here</0>."
+#~ msgstr ""
+#~ "Your personal information is securely stored and handled in accordance with our privacy policy.\n"
+#~ "\t\t\tYou can read more about it <0>here</0>."
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Successfully published!"
+msgstr "Successfully published!"
+
+#~ msgid "Default"
+#~ msgstr "Default"
+
+#~ msgid "Comfortable"
+#~ msgstr "Comfortable"
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid ""
+"Your personal information is securely stored and handled in accordance with our privacy\n"
+"\t\t\tpolicy. You can read more about it <0>here</0>."
+msgstr ""
+"Your personal information is securely stored and handled in accordance with our privacy\n"
+"\t\t\tpolicy. You can read more about it <0>here</0>."
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Rather Not Say"
+msgstr "Rather Not Say"
+
+#~ msgid "Are you sure ?"
+#~ msgstr "Are you sure ?"
+
+#~ msgid "Are you sure you want to leave this page?"
+#~ msgstr "Are you sure you want to leave this page?"
+
+#~ msgid "View"
+#~ msgstr "View"
+
+#~ msgid "Event: {0}"
+#~ msgstr "Event: {0}"
+
+#~ msgid "Date: {0}"
+#~ msgstr "Date: {0}"
+
+#~ msgid "Location: {0}"
+#~ msgstr "Location: {0}"
+
+#~ msgid "Map"
+#~ msgstr "Map"
+
+#~ msgid "View Larger Map"
+#~ msgstr "View Larger Map"
+
+#~ msgid "Date:"
+#~ msgstr "Date:"
+
+#~ msgid "Location:"
+#~ msgstr "Location:"
+
+#~ msgid "Organizer:"
+#~ msgstr "Organizer:"
+
+#~ msgid "Category:"
+#~ msgstr "Category:"
+
+#~ msgid "Open Day"
+#~ msgstr "Open Day"
+
+#~ msgid "Test"
+#~ msgstr "Test"
+
+#~ msgid "<0>Date:</0> Now"
+#~ msgstr "<0>Date:</0> Now"
+
+#~ msgid "<0>Location:</0> Here"
+#~ msgstr "<0>Location:</0> Here"
+
+#~ msgid "<0>Organizer:</0> Us"
+#~ msgstr "<0>Organizer:</0> Us"
+
+#~ msgid "<0>Category:</0> Lol"
+#~ msgstr "<0>Category:</0> Lol"
+
+#~ msgid "<0/> Open Day"
+#~ msgstr "<0/> Open Day"
+
+#~ msgid "Join us for an exciting Open Day event. Learn, connect, and discover new opportunities."
+#~ msgstr "Join us for an exciting Open Day event. Learn, connect, and discover new opportunities."
+
+#~ msgid "Event Details"
+#~ msgstr "Event Details"
+
+#~ msgid "Date & Time"
+#~ msgstr "Date & Time"
+
+#~ msgid "Now"
+#~ msgstr "Now"
+
+#~ msgid "Location"
+#~ msgstr "Location"
+
+#~ msgid "Here"
+#~ msgstr "Here"
+
+#~ msgid "Organizer"
+#~ msgstr "Organizer"
+
+#~ msgid "Us"
+#~ msgstr "Us"
+
+#~ msgid "Category"
+#~ msgstr "Category"
+
+#~ msgid "Lol"
+#~ msgstr "Lol"
+
+#~ msgid "<0/> Verified"
+#~ msgstr "<0/> Verified"
+
+#: src/routes/(app)/event.svelte
+msgid "<0/> Completed"
+msgstr "<0/> Completed"
+
+#: src/routes/(app)/event.svelte
+msgid "<0/> Not Completed"
+msgstr "<0/> Not Completed"
+
+#: src/routes/(app)/event.svelte
+msgid "Register"
+msgstr "Register"
+
+#~ msgid "POST"
+#~ msgstr "POST"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "DELETE"
+msgstr "DELETE"
+
+#~ msgid "GET"
+#~ msgstr "GET"
