@@ -13,6 +13,8 @@ import { db } from '$lib/server/db';
 import { runWithLocale } from 'wuchale/run-server';
 import { Auth } from '$lib/auth.svelte';
 import { logger } from '$lib/server/log';
+import type { User } from '@prisma/client';
+import { UserFlag } from '$lib';
 
 // ============================================================================
 
@@ -87,6 +89,14 @@ const authenticate: Handle = async ({ event, resolve }) => {
 // ============================================================================
 
 const authorize: Handle = async ({ event, resolve }) => {
+	if (event.url.pathname.startsWith('/admin/')) {
+		const user = db.query<User, [string]>('SELECT flags FROM user WHERE id = ?')
+			.get(event.locals.session.userId);
+
+		if (!user || !(user.flags & UserFlag.IsAdmin)) {
+			return Response.redirect('/', 303);
+		}
+	}
 	return resolve(event);
 };
 

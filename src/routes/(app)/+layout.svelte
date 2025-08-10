@@ -1,19 +1,44 @@
 <script lang="ts">
-	import {
-		UserCircle,
-		ShieldCheck,
-		HelpingHand
-	} from '@lucide/svelte';
+	import { UserCircle, ShieldCheck, HelpingHand, ShieldUser, Menu, Users, ChartArea, PartyPopper } from '@lucide/svelte';
 	import type { LayoutProps } from './$types';
 	import Theme from '$lib/components/theme.svelte';
 	import Language from '$lib/components/language.svelte';
 	import { PUBLIC_APP_NAME } from '$env/static/public';
-	import * as DropdownMenu from '$lib/components/ui/dropdown-menu/index.js';
+	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import Button from '$lib/components/ui/button/button.svelte';
+	import { UserFlag } from '$lib';
+	import Separator from '$lib/components/ui/separator/separator.svelte';
 	import { signout } from '../auth/auth.remote';
+	import * as Sheet from '$lib/components/ui/sheet';
+	import { Input } from '$lib/components/ui/input';
+	import { Label } from '$lib/components/ui/label';
+	import { afterNavigate } from '$app/navigation';
+	import { page } from '$app/state';
 
 	const { children, data }: LayoutProps = $props();
+	const adminMenu = [
+		{
+			href: '/admin/analytics',
+			icon: ChartArea,
+			label: 'Analytics'
+		},
+		{
+			href: '/admin/resources/users',
+			icon: Users,
+			label: 'Profile'
+		},
+		{
+			href: '/admin/resources/events',
+			icon: PartyPopper,
+			label: 'Events'
+		}
+	];
+
+	let open = $state(false);
+	afterNavigate(() => {
+		open = false;
+	});
 </script>
 
 <div class="flex min-h-screen flex-col bg-background">
@@ -34,9 +59,7 @@
 					</DropdownMenu.Trigger>
 					<DropdownMenu.Content>
 						<DropdownMenu.Group>
-							<DropdownMenu.Label>
-								{data.user.firstName ?? 'My Account'}
-							</DropdownMenu.Label>
+							<DropdownMenu.Label>My Account</DropdownMenu.Label>
 							<DropdownMenu.Separator />
 							<DropdownMenu.Item>
 								{#snippet child({ props })}
@@ -67,6 +90,36 @@
 						</DropdownMenu.Group>
 					</DropdownMenu.Content>
 				</DropdownMenu.Root>
+				{#if (data.user.flags & UserFlag.IsAdmin) === UserFlag.IsAdmin}
+					<Separator orientation="vertical" class="min-h-6" />
+					<Button href="/admin" variant="outline">
+						<ShieldUser />
+						Admin
+					</Button>
+					<!-- <Separator orientation="vertical" class="min-h-6" /> -->
+					<Sheet.Root bind:open>
+						<Sheet.Trigger class={buttonVariants({ size: 'icon', variant: 'outline' })}>
+							<Menu />
+						</Sheet.Trigger>
+						<Sheet.Content side="right" class="gap-0">
+							<Sheet.Header>
+								<Sheet.Title>Admin Navigation</Sheet.Title>
+								<Sheet.Description>
+									Navigate here to the different admin dashboards.
+								</Sheet.Description>
+							</Sheet.Header>
+							<div class="grid flex-1 auto-rows-min gap-2 border-t px-1 py-2">
+								{#each adminMenu as nav}
+									{@const IconComponent = nav.icon}
+									<Button variant="ghost" class="justify-start" href={nav.href}>
+										<IconComponent size={48} />
+										{nav.label}
+									</Button>
+								{/each}
+							</div>
+						</Sheet.Content>
+					</Sheet.Root>
+				{/if}
 			</div>
 		</div>
 		<div id="subheader"></div>
@@ -74,8 +127,6 @@
 
 	<!-- Main Content -->
 	<main class="flex-1">
-		<div class="container mx-auto max-w-3xl">
 			{@render children?.()}
-		</div>
 	</main>
 </div>

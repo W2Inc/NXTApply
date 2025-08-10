@@ -5,6 +5,9 @@
 
 import { getLocalTimeZone } from "@internationalized/date";
 import type { LayoutServerLoad } from "./$types";
+import { db } from "$lib/server/db";
+import type { User } from "@prisma/client";
+import { error } from "@sveltejs/kit";
 
 // ============================================================================
 

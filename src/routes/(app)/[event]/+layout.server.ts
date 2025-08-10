@@ -3,7 +3,7 @@
 // See README in the root project for more information.
 // ============================================================================
 
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { LayoutServerLoad } from './$types';
 import type {
 	ApplicationEvent,
@@ -17,10 +17,8 @@ import { db } from '$lib/server/db';
 
 
 export const load: LayoutServerLoad = async ({ locals, params, url }) => {
-	console.log("Yeah")
-	const ev = getUserEvent(locals.session.userId, params.event);
-	if (!ev || ev.completedAt) {
-		console.log(params, ev);
+	const ev = getUserEvent(locals.session.userId, params.event) ?? error(404);
+	if (ev.completedAt) {
 		redirect(303, '/');
 	}
 
@@ -36,7 +34,6 @@ export const load: LayoutServerLoad = async ({ locals, params, url }) => {
 		const currentStep = steps.find((step) => step.completedAt === null);
 		if (currentStep) {
 			const to = `/${ev.eventId}/${currentStep.id}`;
-			console.log(to)
 			if (url.pathname !== to) redirect(303, to);
 
 			// We are now definitely at the /[event]/[step] page

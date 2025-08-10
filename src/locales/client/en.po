@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-06T13:00:23.249Z\n"
-"PO-Revision-Date: 2025-08-08T19:44:26.015Z\n"
+"PO-Revision-Date: 2025-08-10T20:40:19.808Z\n"
 "Last-Translator: \n"
 "Language: English\n"
 "Language-Team: \n"
@@ -1108,3 +1108,73 @@ msgstr "DELETE"
 
 #~ msgid "GET"
 #~ msgstr "GET"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Admin"
+msgstr "<0/> Admin"
+
+#: src/routes/admin/+page.svelte
+#: src/routes/(app)/admin/+page.svelte
+msgid "Admin"
+msgstr "Admin"
+
+#~ msgid "Edit profile"
+#~ msgstr "Edit profile"
+
+#~ msgid "Make changes to your profile here. Click save when you're done."
+#~ msgstr "Make changes to your profile here. Click save when you're done."
+
+#~ msgid "Pedro Duarte"
+#~ msgstr "Pedro Duarte"
+
+#~ msgid "Username"
+#~ msgstr "Username"
+
+#~ msgid "Save changes"
+#~ msgstr "Save changes"
+
+#~ msgid "Navigation Menu"
+#~ msgstr "Navigation Menu"
+
+#~ msgid "Wtf"
+#~ msgstr "Wtf"
+
+#~ msgid "Admin Panel"
+#~ msgstr "Admin Panel"
+
+#: src/routes/admin/+layout.svelte
+#: src/routes/(app)/admin/+layout@.svelte
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: src/routes/admin/+layout.svelte
+#: src/routes/(app)/admin/+layout@.svelte
+#: src/routes/(app)/admin/users/+page.svelte
+#: src/routes/(app)/admin/resources/users/+page.svelte
+msgid "Users"
+msgstr "Users"
+
+#: src/routes/admin/+layout.svelte
+#: src/routes/(app)/admin/+layout@.svelte
+msgid "Settings"
+msgstr "Settings"
+
+#~ msgid "wtf"
+#~ msgstr "wtf"
+
+#~ msgid "<0/> Profile"
+#~ msgstr "<0/> Profile"
+
+#: src/routes/(app)/+layout.svelte
+msgid "Admin Navigation"
+msgstr "Admin Navigation"
+
+#: src/routes/(app)/+layout.svelte
+msgid "Navigate here to the different admin dashboards."
+msgstr "Navigate here to the different admin dashboards."
+
+#~ msgid "Stats powered by <0>Plausible Analytics</0>"
+#~ msgstr "Stats powered by <0>Plausible Analytics</0>"
+
+#~ msgid "Plausible Analytics Dashboard"
+#~ msgstr "Plausible Analytics Dashboard"

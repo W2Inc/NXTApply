@@ -1,0 +1,1 @@
+<iframe plausible-embed src="https://apply.analytics.hamette.net/share/nxtapply?auth=aU-iuXBZJidKcoPKgWGuF&embed=true&theme=system" scrolling="no" frameborder="0" loading="lazy" style="width: 1px; min-width: 100%; height: 155dvh;"></iframe>
