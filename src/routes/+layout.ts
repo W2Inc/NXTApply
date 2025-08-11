@@ -12,6 +12,8 @@ import { error } from '@sveltejs/kit';
 
 export const load: LayoutLoad = async ({ data }) => {
 	return {
+		locale: data.locale,
+		tz: data.tz,
 		catalogs: await loadCatalogs(data.locale, loadIDs, loadCatalog)
 	};
 };

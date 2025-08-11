@@ -58,14 +58,15 @@ export const load: LayoutServerLoad = async ({ locals, params, url }) => {
 // ============================================================================
 
 function completeEvent(userEventId: string) {
-	db.run('UPDATE user_event SET completedAt = COALESCE(completedAt, unixepoch()) WHERE id = ?', [
-		userEventId
-	]);
+	db.run(
+		'UPDATE user_event SET completedAt = COALESCE(completedAt, CURRENT_TIMESTAMP) WHERE id = ?',
+		[userEventId]
+	);
 }
 
 function completeUserTrack(userTrackId: string) {
 	db.run(
-		'UPDATE application_user_track SET completedAt = COALESCE(completedAt, unixepoch()) WHERE id = ?',
+		'UPDATE application_user_track SET completedAt = COALESCE(completedAt, CURRENT_TIMESTAMP) WHERE id = ?',
 		[userTrackId]
 	);
 }

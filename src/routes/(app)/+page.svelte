@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { Calendar, CircleAlert, ExternalLink, Map, MapPin, PartyPopper } from '@lucide/svelte';
 	import type { PageProps } from './$types';
-	import { page } from '$app/state';
-	import { DateFormatter, fromDate, getLocalTimeZone, now } from '@internationalized/date';
 	import Event from './event.svelte';
 
 	const { data }: PageProps = $props();
@@ -54,9 +52,9 @@
 				<h2 class="text-xl font-semibold tracking-tight">Upcoming Events</h2>
 			</div>
 			<ul class="divide-y divide-border">
-				{#each data.events as event, i}
+				<!-- {#each data.events as event, i}
 					<Event {event} />
-				{/each}
+				{/each} -->
 				{#if !data.events?.length}
 					<li class="py-8 text-center text-base text-muted-foreground">No upcoming events.</li>
 				{/if}

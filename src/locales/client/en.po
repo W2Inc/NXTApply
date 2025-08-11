@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-06T13:00:23.249Z\n"
-"PO-Revision-Date: 2025-08-10T20:40:19.808Z\n"
+"PO-Revision-Date: 2025-08-11T11:39:15.027Z\n"
 "Last-Translator: \n"
 "Language: English\n"
 "Language-Team: \n"
@@ -59,6 +59,7 @@ msgstr "Enter your email to sign in to your account"
 #: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/sign-up/+page.svelte
 #: src/routes/auth/sign-in/+page.svelte
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
 msgid "Email"
 msgstr "Email"
 
@@ -112,6 +113,7 @@ msgstr "Enter your information to create an account"
 
 #: src/routes/auth/sign-up/+page.svelte
 #: src/routes/(app)/[event]/[step]/boarding.svelte
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
 msgid "First Name"
 msgstr "First Name"
 
@@ -125,6 +127,7 @@ msgstr "Please enter your first name"
 
 #: src/routes/auth/sign-up/+page.svelte
 #: src/routes/(app)/[event]/[step]/boarding.svelte
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
 msgid "Last Name"
 msgstr "Last Name"
 
@@ -301,8 +304,9 @@ msgstr "Logo"
 msgid "My Account"
 msgstr "My Account"
 
-#~ msgid "Profile"
-#~ msgstr "Profile"
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Profile"
+msgstr "Profile"
 
 #~ msgid "Billing"
 #~ msgstr "Billing"
@@ -313,8 +317,9 @@ msgstr "My Account"
 #~ msgid "Subscription"
 #~ msgstr "Subscription"
 
-#~ msgid "Account"
-#~ msgstr "Account"
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Account"
+msgstr "Account"
 
 #~ msgid "View Actions"
 #~ msgstr "View Actions"
@@ -934,14 +939,17 @@ msgid "Enter your last name"
 msgstr "Enter your last name"
 
 #: src/routes/(app)/[event]/[step]/boarding.svelte
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
 msgid "Gender"
 msgstr "Gender"
 
 #: src/routes/(app)/[event]/[step]/boarding.svelte
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
 msgid "Male"
 msgstr "Male"
 
 #: src/routes/(app)/[event]/[step]/boarding.svelte
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
 msgid "Female"
 msgstr "Female"
 
@@ -949,6 +957,7 @@ msgstr "Female"
 #~ msgstr "Other"
 
 #: src/routes/(app)/[event]/[step]/boarding.svelte
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
 msgid "Date of Birth"
 msgstr "Date of Birth"
 
@@ -994,6 +1003,7 @@ msgstr ""
 "\t\t\tpolicy. You can read more about it <0>here</0>."
 
 #: src/routes/(app)/[event]/[step]/boarding.svelte
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
 msgid "Rather Not Say"
 msgstr "Rather Not Say"
 
@@ -1150,7 +1160,6 @@ msgstr "Dashboard"
 #: src/routes/admin/+layout.svelte
 #: src/routes/(app)/admin/+layout@.svelte
 #: src/routes/(app)/admin/users/+page.svelte
-#: src/routes/(app)/admin/resources/users/+page.svelte
 msgid "Users"
 msgstr "Users"
 
@@ -1178,3 +1187,187 @@ msgstr "Navigate here to the different admin dashboards."
 
 #~ msgid "Plausible Analytics Dashboard"
 #~ msgstr "Plausible Analytics Dashboard"
+
+#~ msgid "Admin Dashboard"
+#~ msgstr "Admin Dashboard"
+
+#~ msgid "Tracks"
+#~ msgstr "Tracks"
+
+#~ msgid "Events"
+#~ msgstr "Events"
+
+#~ msgid "Metrics"
+#~ msgstr "Metrics"
+
+#~ msgid "Monthly Metrics"
+#~ msgstr "Monthly Metrics"
+
+#~ msgid "Year"
+#~ msgstr "Year"
+
+#~ msgid "Month"
+#~ msgstr "Month"
+
+#~ msgid "User Count"
+#~ msgstr "User Count"
+
+#~ msgid "Completed Tracks"
+#~ msgstr "Completed Tracks"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Verified"
+#~ msgstr "Verified"
+
+#~ msgid "Created At"
+#~ msgstr "Created At"
+
+#~ msgid "Application Tracks"
+#~ msgstr "Application Tracks"
+
+#~ msgid "Active: {0}"
+#~ msgstr "Active: {0}"
+
+#~ msgid "Created: {0}"
+#~ msgstr "Created: {0}"
+
+#~ msgid "Type"
+#~ msgstr "Type"
+
+#~ msgid "Starts At"
+#~ msgstr "Starts At"
+
+#~ msgid "Attendees"
+#~ msgstr "Attendees"
+
+#~ msgid "John"
+#~ msgstr "John"
+
+#~ msgid "Doe"
+#~ msgstr "Doe"
+
+#~ msgid "Jane"
+#~ msgstr "Jane"
+
+#~ msgid "Smith"
+#~ msgstr "Smith"
+
+#~ msgid "Onboarding Track"
+#~ msgstr "Onboarding Track"
+
+#~ msgid "Basic onboarding"
+#~ msgstr "Basic onboarding"
+
+#~ msgid "Workshop"
+#~ msgstr "Workshop"
+
+#: src/routes/(app)/admin/resources/users/+page.svelte
+msgid "Total Users"
+msgstr "Total Users"
+
+#: src/routes/(app)/admin/resources/users/+page.svelte
+msgid "Active Users"
+msgstr "Active Users"
+
+#: src/routes/(app)/admin/resources/users/+page.svelte
+msgid "Average Age"
+msgstr "Average Age"
+
+#: src/routes/(app)/admin/resources/users/+page.svelte
+msgid "<0/> Onboard User"
+msgstr "<0/> Onboard User"
+
+#~ msgid "Are you sure you?"
+#~ msgstr "Are you sure you?"
+
+#: src/routes/(app)/admin/resources/users/+page.svelte
+msgid "Edit"
+msgstr "Edit"
+
+#~ msgid "Delete"
+#~ msgstr "Delete"
+
+#~ msgid "Manage User"
+#~ msgstr "Manage User"
+
+#~ msgid "Update user information below."
+#~ msgstr "Update user information below."
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Enter email"
+msgstr "Enter email"
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Country"
+msgstr "Country"
+
+#~ msgid "Flags"
+#~ msgstr "Flags"
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "First name"
+msgstr "First name"
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Last name"
+msgstr "Last name"
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Phone"
+msgstr "Phone"
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Phone number"
+msgstr "Phone number"
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Save"
+msgstr "Save"
+
+#~ msgid "Successfully updated!"
+#~ msgstr "Successfully updated!"
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "User details"
+msgstr "User details"
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Basic account and profile information."
+msgstr "Basic account and profile information."
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Successfully updated"
+msgstr "Successfully updated"
+
+#~ msgid "Mark as verified"
+#~ msgstr "Mark as verified"
+
+#~ msgid ""
+#~ "Your personal information is securely stored and handled in accordance with our privacy\n"
+#~ "\t\t\t\tpolicy. You can read more about it <0>here</0>."
+#~ msgstr ""
+#~ "Your personal information is securely stored and handled in accordance with our privacy\n"
+#~ "\t\t\t\tpolicy. You can read more about it <0>here</0>."
+
+#~ msgid "Attributes associated with the user"
+#~ msgstr "Attributes associated with the user"
+
+#~ msgid "Is Admin"
+#~ msgstr "Is Admin"
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Attributes"
+msgstr "Attributes"
+
+#~ msgid "HERE: {0} <0>MaleFemaleRather Not Say</0>"
+#~ msgstr "HERE: {0} <0>MaleFemaleRather Not Say</0>"
+
+#: src/routes/(app)/admin/resources/users/manage/[[id]]/+page.svelte
+msgid "Value: {0}"
+msgstr "Value: {0}"
+
+#~ msgid "OkGarmin"
+#~ msgstr "OkGarmin"

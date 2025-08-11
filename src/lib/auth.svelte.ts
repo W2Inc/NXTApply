@@ -5,16 +5,11 @@
 
 import { dev } from '$app/environment';
 import type { Cookies } from '@sveltejs/kit';
-import {
-	getLocalTimeZone,
-	now as dateNow,
-	fromDate,
-	type DateValue,
-	now
-} from '@internationalized/date';
 import type { Session } from '@prisma/client';
 import { Database } from 'bun:sqlite';
 import { db } from './server/db';
+import { SQLDates } from '$lib';
+import { getLocalTimeZone, now } from '@internationalized/date';
 
 // ============================================================================
 
@@ -34,7 +29,7 @@ export namespace Auth {
 	 * Sessions automatically expire after 14 days from creation,
 	 * balancing security concerns with user convenience.
 	 */
-	export const SESSION_EXPIRES = dateNow(getLocalTimeZone()).add({ days: 2 });
+	export const SESSION_EXPIRES = now(getLocalTimeZone()).add({ days: 2 });
 	/**
 	 * The name of the cookie used to store the session token in the browser.
 	 * This cookie is sent with every request to authenticate the user.
@@ -93,7 +88,7 @@ export namespace Auth {
 
 		db.query(`DELETE FROM session WHERE userId = ? AND expiresAt < ?`).run(
 			userId,
-			now(getLocalTimeZone()).toDate().getTime()
+			now(locals.tz).toAbsoluteString()
 		);
 
 		// let session = locals.db
@@ -103,12 +98,11 @@ export namespace Auth {
 		// if (!session) {
 		// }
 		const session = db
-			.query<Session, [string, string, number, string]>(
-				`
-			INSERT INTO session (id, userId, expiresAt, hash) VALUES (?, ?, ?, ?) RETURNING *
-		`
-			)
-			.get(id, userId, SESSION_EXPIRES.toDate().getTime(), hash)!;
+			.query<
+				Session,
+				[string, string, string, string]
+			>('INSERT INTO session (id, userId, expiresAt, hash) VALUES (?, ?, ?, ?) RETURNING *')
+			.get(id, userId, SESSION_EXPIRES.toAbsoluteString(), hash)!;
 		return session;
 	}
 
@@ -130,20 +124,23 @@ export namespace Auth {
 		if (!session) return null;
 
 		// Now let's check expiration
-		const now = dateNow(getLocalTimeZone());
-		const expirationDate = fromDate(new Date(session.expiresAt), getLocalTimeZone());
-		if (now.compare(expirationDate) >= 0) {
-			locals.db.query(`DELETE FROM session WHERE id = ?`).run(session.id);
+		const atm = Dates.now(locals.tz);
+		const expiresAt = SQLDates.from(session.expiresAt, locals.tz);
+		if (atm.compare(expiresAt) >= 0) {
+			db.query(`DELETE FROM session WHERE id = ?`).run(session.id);
 			return null;
 		}
 
 		// Automatic session renewal: if the session is within 1 days of expiration,
 		// extend it for another 1 days from the current time
-		const oneDayBeforeExpiry = expirationDate.subtract({ days: 1 });
-		if (now.compare(oneDayBeforeExpiry) >= 0) {
-			const expiry = now.add({ days: 1 }).toDate();
-			session.expiresAt = expiry;
-			db.query(`UPDATE session SET expiresAt = ? WHERE id = ?`).run(expiry.getTime(), session.id);
+		const oneDayBeforeExpiry = expiresAt.subtract({ days: 1 });
+		if (atm.compare(oneDayBeforeExpiry) >= 0) {
+			const expiry = atm.add({ days: 1 });
+			session.expiresAt = expiry.toAbsoluteString();
+			db.query(`UPDATE session SET expiresAt = ? WHERE id = ?`).run(
+				expiry.toAbsoluteString(),
+				session.id
+			);
 		}
 
 		return session;
@@ -180,7 +177,7 @@ export namespace Auth {
 	 */
 	export async function createResetToken(locals: App.Locals, userId: string) {
 		const tokenId = generateToken(RESET_TOKEN_LENGTH);
-		const expiresAt = dateNow(getLocalTimeZone()).add({ minutes: 30 }).toDate();
+		const expiresAt = Dates.now(Dates.getLocalTimeZone()).add({ minutes: 30 }).toDate();
 
 		db.transaction(() => {
 			db.query(`DELETE FROM reset_token WHERE userId = ?`).run(userId);
@@ -204,7 +201,7 @@ export namespace Auth {
 	 */
 	export async function createVerificationCode(db: Database, userId: string, email: string) {
 		const code = generateCode(VERIFICATION_CODE_LENGTH);
-		const expiresAt = dateNow(getLocalTimeZone()).add({ minutes: 5 }).toDate().getTime();
+		const expiresAt = Dates.now(Dates.getLocalTimeZone()).add({ minutes: 5 }).toDate().getTime();
 
 		db.transaction(() => {
 			db.query(`DELETE FROM verification_token WHERE userId = ?`).run(userId);

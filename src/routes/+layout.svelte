@@ -1,6 +1,6 @@
 <script lang="ts">
-	import type { LayoutProps } from './$types';
 	import '../app.css';
+	import type { LayoutProps } from './$types';
 	import favicon from '$lib/assets/favicon.svg';
 	import { ModeWatcher } from 'mode-watcher';
 	import { Toaster } from '$lib/components/ui/sonner';

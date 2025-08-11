@@ -7,10 +7,10 @@ export type AvailableUserEvent = {
 	address: string;
 	description: string | null;
 	trackId: string | null;
-	startsAt: Date;
+	startsAt: string;
 	maxUsers?: number;
-	registerUntil: Date | null;
-	completedAt: Date | null;
+	registerUntil: string | null;
+	completedAt: string | null;
 	requires: string | null;
 	userEventId: string | null;
 };
@@ -55,7 +55,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 			LEFT JOIN user_event ue ON e.id = ue.eventId AND ue.userId = ?1
 			LEFT JOIN event_requires er ON e.id = er.eventId
 			WHERE
-				e.startsAt >= 1000 * unixepoch('now', '-7 days')
+				e.startsAt >= datetime('now', '-7 days')
 				AND (
 					ue.userId = ?1
 					OR e.eventTypeId NOT IN (SELECT eventTypeId FROM user_event_types)

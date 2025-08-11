@@ -19,16 +19,16 @@ using db: Database = new Database(Bun.env.DATABASE_URL, {
 self.postMessage({ message: 'Worker Job Started' });
 
 const result = db.run(`
-		UPDATE user_event
-		SET completedAt = unixepoch()
-		WHERE completedAt IS NULL
-		  AND eventId IN (
-			  SELECT id
-			  FROM event
-			  WHERE autoComplete = 1
-			    AND unixepoch(startsAt) <= unixepoch()
-		  )
-	`);
+	UPDATE user_event
+	SET completedAt = datetime('now')
+	WHERE completedAt IS NULL
+		AND eventId IN (
+			SELECT id
+			FROM event
+			WHERE autoComplete = 1
+			AND unixepoch(startsAt) <= unixepoch()
+		)
+`);
 self.postMessage({
 	message: `Modified: ${result.changes} rows`
 });

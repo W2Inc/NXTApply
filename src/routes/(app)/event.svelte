@@ -65,7 +65,7 @@
 					class="text-xs underline hover:text-primary"
 					title="Save to calendar"
 				>
-					{formatter.format(starts)}
+					<!-- {formatter.format(starts)} -->
 				</a>
 			</span>
 			{#if event.address}
