@@ -16,13 +16,7 @@ import { UserFlag } from '$lib';
 type UserUpdateOuput = FormKit.FormResult<typeof userUpdateSchema>;
 const userUpdateSchema = v.object({
 	id: v.string(),
-	email: v.nullable(v.pipe(v.string(), v.email())),
-	dob: v.nullable(
-		v.pipe(
-			v.string(),
-			v.isoTimestamp()
-		)
-	),
+	dob: v.pipe(v.string(), v.isoDateTime()),
 	// gender: v.nullable(v.pipe(v.number(), v.minValue(0), v.maxValue(2))),
 	// country: v.nullable(v.string()),
 	// flags: v.nullable(v.number()),
@@ -38,7 +32,6 @@ const qUpdateUser = db.prepare<
 	User,
 	[
 		string | null, // email
-		boolean | null, // verified
 		string | null, // dob
 		number | null, // gender
 		string | null, // country
@@ -51,7 +44,6 @@ const qUpdateUser = db.prepare<
 >(
 	`UPDATE user SET
 		email = COALESCE(?, email),
-		verified = COALESCE(?, verified),
 		dob = COALESCE(?, dob),
 		gender = COALESCE(?, gender),
 		country = COALESCE(?, country),
@@ -71,22 +63,22 @@ export const updateUser = form<UserUpdateOuput>(async (data) => {
 		'SELECT * FROM user WHERE id = ? AND (flags & ?) != 0'
 	).get(locals.session.userId, UserFlag.IsAdmin) ?? error(401);
 
-
 	const form = await FormKit.parse(data, userUpdateSchema);
 	if (!form.success) return FormKit.invalid(form);
 
-	qUpdateUser.run(
-		form.output.email,
-		form.output.verified,
-		form.output.dob,
-		form.output.gender,
-		form.output.country,
-		form.output.flags,
-		form.output.firstName,
-		form.output.lastName,
-		form.output.phone,
-		form.output.id
-	);
+	// console.log('Updating user:', form.output);
+
+	// qUpdateUser.run(
+	// 	form.output.email,
+	// 	form.output.dob,
+	// 	form.output.gender,
+	// 	form.output.country,
+	// 	form.output.flags,
+	// 	form.output.firstName,
+	// 	form.output.lastName,
+	// 	form.output.phone,
+	// 	form.output.id
+	// );
 
 	FormKit.success()
 });

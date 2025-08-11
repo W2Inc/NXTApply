@@ -12,7 +12,7 @@
 	import { updateUser } from '../../users.remote';
 	import Checkbox from '$lib/components/ui/checkbox/checkbox.svelte';
 	import { page } from '$app/state';
-	import { UserFlag } from '$lib';
+	import { UserFlag, UTC } from '$lib';
 	import type { PageProps } from './$types';
 	import { dev } from '$app/environment';
 
@@ -135,7 +135,6 @@
 						{#snippet child()}
 							<DatePicker
 								name="dob"
-								value={fromDate(new Date(data.user?.dob), getLocalTimeZone())}
 								minValue={new CalendarDate(1900, 1, 1)}
 								maxValue={today(getLocalTimeZone())}
 							/>

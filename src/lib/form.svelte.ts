@@ -76,7 +76,7 @@ export namespace FormKit {
 					if (fn.result?.errors) {
 						return toast.warning('Invalid form!');
 					}
-					// toast.success('Successfully published!');
+					toast.success('Success!');
 				} catch (error) {
 					if (isHttpError(error)) {
 						const e = error as HttpError;

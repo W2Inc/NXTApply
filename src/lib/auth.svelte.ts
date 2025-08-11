@@ -8,7 +8,7 @@ import type { Cookies } from '@sveltejs/kit';
 import type { Session } from '@prisma/client';
 import { Database } from 'bun:sqlite';
 import { db } from './server/db';
-import { SQLDates } from '$lib';
+import { UTC } from '$lib';
 import { getLocalTimeZone, now } from '@internationalized/date';
 
 // ============================================================================
@@ -25,19 +25,13 @@ export namespace Auth {
 	 */
 	export const VERIFICATION_CODE_LENGTH = 8;
 	/**
-	 * The default expiration time for a user session.
-	 * Sessions automatically expire after 14 days from creation,
-	 * balancing security concerns with user convenience.
-	 */
-	export const SESSION_EXPIRES = now(getLocalTimeZone()).add({ days: 2 });
-	/**
 	 * The name of the cookie used to store the session token in the browser.
 	 * This cookie is sent with every request to authenticate the user.
 	 */
 	export const SESSION_COOKIE = 'session';
-
 	export const IDENTITY_COOKIE = 'identity';
 	export const OTP_KEY_COOKIE = 'secrecy';
+
 	export const OTP_KEY_LENGTH = 20;
 	export const OTP_DIGIT_LENGTH = 6;
 	export const OTP_INTERVAL_SECONDS = 30;
@@ -86,23 +80,19 @@ export namespace Auth {
 		const hasher = new Bun.CryptoHasher('sha256');
 		const id = hasher.update(token).digest().toString('base64url');
 
-		db.query(`DELETE FROM session WHERE userId = ? AND expiresAt < ?`).run(
-			userId,
-			now(locals.tz).toAbsoluteString()
-		);
+		// Invalidate stale sessions for this user
+		invalidateSessions(userId, true);
 
-		// let session = locals.db
-		// 	.query<Session, [string]>(`SELECT * FROM session WHERE hash = ?`)
-		// 	.get(hash);
-
-		// if (!session) {
-		// }
 		const session = db
 			.query<
 				Session,
-				[string, string, string, string]
-			>('INSERT INTO session (id, userId, expiresAt, hash) VALUES (?, ?, ?, ?) RETURNING *')
-			.get(id, userId, SESSION_EXPIRES.toAbsoluteString(), hash)!;
+				[string, string, string]
+			>(
+				`INSERT INTO session (id, userId, expiresAt, hash)
+				 VALUES (?, ?, datetime('now', '+2 days'), ?)
+				 RETURNING *`
+			)
+			.get(id, userId, hash)!;
 		return session;
 	}
 
@@ -124,8 +114,8 @@ export namespace Auth {
 		if (!session) return null;
 
 		// Now let's check expiration
-		const atm = Dates.now(locals.tz);
-		const expiresAt = SQLDates.from(session.expiresAt, locals.tz);
+		const atm = now(locals.tz);
+		const expiresAt = UTC.parse(session.expiresAt, locals.tz);
 		if (atm.compare(expiresAt) >= 0) {
 			db.query(`DELETE FROM session WHERE id = ?`).run(session.id);
 			return null;
@@ -135,10 +125,10 @@ export namespace Auth {
 		// extend it for another 1 days from the current time
 		const oneDayBeforeExpiry = expiresAt.subtract({ days: 1 });
 		if (atm.compare(oneDayBeforeExpiry) >= 0) {
-			const expiry = atm.add({ days: 1 });
-			session.expiresAt = expiry.toAbsoluteString();
+			const expiry = UTC.toSQLite(atm.add({ days: 1 }));
+			session.expiresAt = new Date(expiry);
 			db.query(`UPDATE session SET expiresAt = ? WHERE id = ?`).run(
-				expiry.toAbsoluteString(),
+				expiry,
 				session.id
 			);
 		}
@@ -164,7 +154,11 @@ export namespace Auth {
 	 * @param userId - The unique identifier of the user whose sessions should be invalidated.
 	 * @returns A Promise that resolves when all sessions have been deleted.
 	 */
-	export function invalidateSessions(locals: App.Locals, userId: string) {
+	export function invalidateSessions(userId: string, stale = false) {
+		if (stale) {
+			db.query(`DELETE FROM session WHERE userId = ? AND expiresAt < datetime()`).run(userId);
+			return;
+		}
 		db.query<Session, string>(`DELETE FROM session WHERE userId = ?`).run(userId);
 	}
 
@@ -177,14 +171,14 @@ export namespace Auth {
 	 */
 	export async function createResetToken(locals: App.Locals, userId: string) {
 		const tokenId = generateToken(RESET_TOKEN_LENGTH);
-		const expiresAt = Dates.now(Dates.getLocalTimeZone()).add({ minutes: 30 }).toDate();
+		const expiresAt = now(locals.tz).add({ minutes: 30 });
 
 		db.transaction(() => {
 			db.query(`DELETE FROM reset_token WHERE userId = ?`).run(userId);
 			db.query(`INSERT INTO reset_token (id, userId, expiresAt) VALUES (?, ?, ?)`).run(
 				tokenId,
 				userId,
-				expiresAt.getTime()
+				UTC.toSQLite(expiresAt)
 			);
 		})();
 
@@ -201,13 +195,13 @@ export namespace Auth {
 	 */
 	export async function createVerificationCode(db: Database, userId: string, email: string) {
 		const code = generateCode(VERIFICATION_CODE_LENGTH);
-		const expiresAt = Dates.now(Dates.getLocalTimeZone()).add({ minutes: 5 }).toDate().getTime();
+		const expiresAt = now(getLocalTimeZone()).add({ minutes: 5 });
 
 		db.transaction(() => {
 			db.query(`DELETE FROM verification_token WHERE userId = ?`).run(userId);
 			db.query(
 				`INSERT INTO verification_token (userId, email, code, expiresAt) VALUES (?, ?, ?, ?)`
-			).run(userId, email, code, expiresAt);
+			).run(userId, email, code, UTC.toSQLite(expiresAt));
 		})();
 
 		return code;
@@ -224,7 +218,7 @@ export namespace Auth {
 	export function setCookie(
 		cookies: Cookies,
 		token: string,
-		expiresAt: Date = SESSION_EXPIRES.toDate(),
+		expiresAt: Date = new Date(Date.now() + 1000 * 60 * 60 * 24 * 2),
 		domain?: string
 	) {
 		cookies.set(SESSION_COOKIE, token, {
