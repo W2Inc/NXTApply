@@ -1,0 +1,22 @@
+import { error } from '@sveltejs/kit';
+import * as github from '$lib/server/providers/github';
+import google from '$lib/server/providers/google';
+
+import type { RequestEvent } from '@sveltejs/kit';
+import Logger from '$lib/logger';
+
+export async function GET(event: RequestEvent) {
+	const provider = event.params.provider;
+
+		Logger.dbg('Hello')
+
+	if (!provider) return error(404);
+	switch (provider) {
+		case 'github':
+			return github.generate(event);
+		case 'google':
+			return google.init(event);
+		default:
+			return error(404);
+	}
+}

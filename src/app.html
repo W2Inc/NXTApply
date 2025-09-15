@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	%sveltekit.head%
+	<style>
+		.noscript-container {
+			display: flex;
+			min-height: 100vh;
+			align-items: center;
+			justify-content: center;
+			padding: 1rem;
+		}
+
+		.noscript-card {
+			width: 100%;
+			max-width: 28rem;
+			overflow: hidden;
+			border-radius: 0.75rem;
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+			background-color: rgba(255, 255, 255, 0.9);
+			backdrop-filter: blur(8px);
+		}
+
+		.noscript-content {
+			padding: 1.5rem;
+		}
+
+		.noscript-button {
+			display: inline-flex;
+			padding: 0.5rem 1rem;
+			border-radius: 0.375rem;
+			background-color: #1f2937;
+			color: white;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body data-sveltekit-preload-data="hover">
+	<noscript>
+		<div class="noscript-container">
+			<div class="noscript-card">
+				<div>
+					<img style="width: 100%" src="https://http.cat/417" alt="error" />
+				</div>
+				<div class="noscript-content">
+					<div>
+						<h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 0.5rem;">Javascript is disabled.</h2>
+						<p style="color: #6b7280; margin-bottom: 1.5rem;">
+							We use JavaScript to ensure the application, UI, and state management function properly, and never to
+							perform invasive data tracking.
+						</p>
+					</div>
+					<div>
+						<a class="noscript-button" href="">Refresh</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</noscript>
+	<div style="display: contents">%sveltekit.body%</div>
+</body>
+
+</html>
