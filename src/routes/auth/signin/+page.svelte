@@ -5,18 +5,20 @@
 	import FormEntry from '$lib/components/form-entry.svelte';
 	import { Input } from '$lib/components/ui/input';
 	import { signin } from '@/remotes/auth/signin.remote';
+	import FormMessage from '$lib/components/form-message.svelte';
 
 	const form = FormKit.remote(signin);
 </script>
 
 <div class="space-y-6 p-8">
+	<FormMessage {form} />
 	<div class="space-y-2">
 		<h2 class="text-2xl font-semibold tracking-tight">Login</h2>
 		<p class="text-sm text-muted-foreground">Enter your email to sign in to your account</p>
 	</div>
 
 	<div class="space-y-2">
-		<form {...signin}>
+		<form {...form.remote}>
 			<FormEntry label="Email" errors={form.errors.email}>
 				{#snippet child(id)}
 					<Input

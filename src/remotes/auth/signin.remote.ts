@@ -6,6 +6,7 @@
 import { dev } from '$app/environment';
 import { getRequestEvent } from '$app/server';
 import { FormKit } from '$lib/form.svelte';
+import Logger from '$lib/logger';
 import { randomWait } from '$lib/utils';
 import { Auth } from '@/server/auth';
 import { sqlite } from '@/server/db';
@@ -20,17 +21,20 @@ const schema = z.object({
 	password: z.string().min(4).max(256)
 });
 
+// ============================================================================
+
 export const signin = FormKit.declare(schema, async (data) => {
 	await randomWait();
 
 	const { cookies } = getRequestEvent();
 	const [user] = await sqlite<User[]>`SELECT * FROM user WHERE email = ${data.email}`;
 	if (!user || !user.hash) {
-		error(422);
+		error(422, 'User not found or password does not match');
 	}
 
 	if (!(await Bun.password.verify(data.password, user.hash))) {
-		error(422);
+		Logger.dbg('2')
+		error(422, 'User not found or password does not match');
 	}
 
 	cookies.set(Auth.IDENTITY_COOKIE, user.id, {

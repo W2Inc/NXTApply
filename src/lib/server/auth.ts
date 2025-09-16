@@ -11,6 +11,7 @@ import { sqlite } from './db';
 import { getUser } from '@/remotes/user/get.remote';
 import { sql } from 'bun';
 import { UTC, type ISO } from '$lib/utils';
+import Logger from '$lib/logger';
 
 // ============================================================================
 
@@ -68,6 +69,7 @@ export namespace Auth {
 		if (!isRemoteRequest || !isDataRequest || !isSubRequest)
 			throw new Error(`Inproper usage of fn: 'user'`);
 
+		Logger.dbg('Requesting user');
 		const user = (await getUser(locals.session.userId)) ?? error(401);
 		if (flags && (user.flags & flags) !== flags) error(403);
 		return user;

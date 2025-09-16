@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T09:10:19.414Z\n"
-"PO-Revision-Date: 2025-09-15T15:08:56.271Z\n"
+"PO-Revision-Date: 2025-09-16T07:45:18.610Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -26,20 +26,17 @@ msgstr "Visitas des linkes"
 #~ msgid "Hello World"
 #~ msgstr ""
 
-#: src/routes/(app)/+page.svelte
-msgid "YUP"
-msgstr ""
+#~ msgid "YUP"
+#~ msgstr ""
 
-#: src/routes/(app)/+page.svelte
-msgid "Hello World2"
-msgstr ""
+#~ msgid "Hello World2"
+#~ msgstr ""
 
 #~ msgid "Yup Name has errors!"
 #~ msgstr ""
 
-#: src/routes/(app)/+page.svelte
-msgid "<0>Welcome to SvelteKit</0> <1>Visit <0>svelte.dev/docs/kit</0> to read the documentation</1> // What the enhance does is to basically handle onsubmits clearing the errors <2><0/> <1/> <2/> <3>Submit</3></2>"
-msgstr ""
+#~ msgid "<0>Welcome to SvelteKit</0> <1>Visit <0>svelte.dev/docs/kit</0> to read the documentation</1> // What the enhance does is to basically handle onsubmits clearing the errors <2><0/> <1/> <2/> <3>Submit</3></2>"
+#~ msgstr ""
 
 #: src/routes/auth/+layout.svelte
 #: src/routes/auth/+layout.svelte
@@ -264,4 +261,96 @@ msgstr ""
 
 #: src/routes/admin/+page.svelte
 msgid "Secret page!"
+msgstr ""
+
+#: src/routes/(app)/+layout.svelte
+msgid "Logo"
+msgstr ""
+
+#: src/routes/(app)/+layout.svelte
+msgid "Account"
+msgstr ""
+
+#: src/routes/(app)/+layout.svelte
+msgid "My Account"
+msgstr ""
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> GDPR"
+msgstr ""
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Assistance"
+msgstr ""
+
+#: src/routes/(app)/+layout.svelte
+msgid "Logout"
+msgstr ""
+
+#: src/routes/(app)/+layout.svelte
+msgid "Admin"
+msgstr ""
+
+#: src/routes/(app)/+layout.svelte
+msgid "Admin Navigation"
+msgstr ""
+
+#: src/routes/(app)/+layout.svelte
+msgid "Navigate here to the different admin dashboards."
+msgstr ""
+
+#: src/lib/components/theme.svelte
+msgid "Light"
+msgstr ""
+
+#: src/lib/components/theme.svelte
+msgid "Dark"
+msgstr ""
+
+#: src/lib/components/theme.svelte
+msgid "System"
+msgstr ""
+
+#: src/lib/components/ui/sheet/sheet-content.svelte
+msgid "Close"
+msgstr ""
+
+#: src/routes/(app)/+page.svelte
+msgid "Welcome to NXTApply!"
+msgstr ""
+
+#: src/routes/(app)/+page.svelte
+msgid "Your student application journey starts here.<0/> <1>Follow the steps below to complete your application.</1>"
+msgstr ""
+
+#: src/routes/(app)/+page.svelte
+msgid "Upcoming Events"
+msgstr ""
+
+#: src/routes/(app)/+page.svelte
+msgid "No upcoming events."
+msgstr ""
+
+#: src/routes/(app)/event.svelte
+msgid "<0/> Completed"
+msgstr ""
+
+#: src/routes/(app)/event.svelte
+msgid "<0/> Not Completed"
+msgstr ""
+
+#: src/routes/(app)/event.svelte
+msgid "Save to calendar"
+msgstr ""
+
+#: src/routes/(app)/event.svelte
+msgid "<0/> You must have completed the following events first: <1/>"
+msgstr ""
+
+#: src/routes/(app)/event.svelte
+msgid "Resume"
+msgstr ""
+
+#: src/routes/(app)/event.svelte
+msgid "Register"
 msgstr ""

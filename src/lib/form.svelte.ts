@@ -102,7 +102,7 @@ export namespace FormKit {
 	};
 
 	export const Input = {
-		// Checkbox: (): void => (z)
+		Checkbox: () => z.union([z.undefined(), z.literal('on')]).transform(val => val === 'on')
 	};
 
 	async function validate<Schema extends StandardSchemaV1>(

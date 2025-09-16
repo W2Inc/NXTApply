@@ -12,6 +12,7 @@ import { verifyTOTPWithGracePeriod } from '@oslojs/otp';
 import { sqlite } from '$lib/server/db';
 import type { User } from '@prisma/client';
 import { dev } from '$app/environment';
+import Logger from '$lib/logger';
 
 // ============================================================================
 
@@ -36,13 +37,14 @@ function verifyOtpCode(key: string, otp: string): boolean {
 
 // ============================================================================
 
-export const setOTP = FormKit.declare(schema, async data => {
+export const setOTP = FormKit.declare(schema, async (data) => {
 	const { cookies, request } = getRequestEvent();
 	const key = cookies.get(Auth.OTP_KEY_COOKIE);
 	const userId = cookies.get(Auth.IDENTITY_COOKIE);
 
 	if (!key || !userId) {
 		deleteCookies(cookies);
+		Logger.dbg('Nope');
 		error(401);
 	}
 
@@ -58,7 +60,10 @@ export const setOTP = FormKit.declare(schema, async data => {
 		RETURNING *
 	`;
 
-	if (!user || user.id !== userId) error(401);
+	if (!user || user.id !== userId) {
+		Logger.dbg('Nope!!!1');
+		error(401);
+	}
 	const agent = request.headers.get('user-agent');
 	const session = await Auth.session(userId, agent);
 	cookies.set(Auth.SESSION_COOKIE, session.id, {
@@ -73,19 +78,22 @@ export const verifyOTP = FormKit.declare(schema, async (data) => {
 	const { cookies, request } = getRequestEvent();
 	const userId = cookies.get(Auth.IDENTITY_COOKIE);
 
-	if (!userId) error(401);
+	if (!userId) {
+		Logger.dbg('Nope!!!13');
+		error(401);
+	}
 
 	const [user] = await sqlite<User[]>`SELECT * FROM user WHERE id = ${userId}`;
 	if (!user || user.id !== userId) {
 		cookies.delete(Auth.IDENTITY_COOKIE, { path: '/' });
+		Logger.dbg('Nope!!!1344');
 		error(401);
 	}
 
 	if (!user.tfa) redirect(307, `/auth/2fa/setup`);
 
 	cookies.delete(Auth.IDENTITY_COOKIE, { path: '/' });
-	if (!verifyOtpCode(user.tfa, data.otp))
-		error(400);
+	if (!verifyOtpCode(user.tfa, data.otp)) error(400);
 
 	const agent = request.headers.get('user-agent');
 	const session = await Auth.session(userId, agent);

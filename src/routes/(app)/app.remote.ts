@@ -3,7 +3,7 @@ import z from "zod";
 import { FormKit } from "$lib/form.svelte";
 
 const schema = z.object({
-	name: z.string()
+	name: FormKit.Input.Checkbox()
 })
 
 export const demo = FormKit.declare(schema, (data) => {

@@ -6,11 +6,13 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { Auth } from '$lib/server/auth';
+import Logger from '$lib/logger';
 
 // ============================================================================
 
 export const load: PageServerLoad = async ({ locals, cookies }) => {
 	if (!cookies.get(Auth.IDENTITY_COOKIE)) {
+		Logger.dbg('Nope!!!')
 		return error(401, 'Unauthorized');
 	}
 };

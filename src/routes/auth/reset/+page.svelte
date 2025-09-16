@@ -9,6 +9,7 @@
 	import { forgot } from '@/remotes/auth/forgot.remote';
 	import { reset } from '@/remotes/auth/reset.remote';
 	import * as Alert from '$lib/components/ui/alert/index.js';
+	import FormMessage from '$lib/components/form-message.svelte';
 
 	const { data }: PageProps = $props();
 	const request = FormKit.remote(forgot);
@@ -100,10 +101,6 @@
 		</div>
 	{/if}
 
-	{#if request.message}
-		<Alert.Root>
-			<CircleCheck />
-			<Alert.Title>{request.message}</Alert.Title>
-		</Alert.Root>
-	{/if}
+	<FormMessage form={request} />
+	<FormMessage form={update} />
 </div>

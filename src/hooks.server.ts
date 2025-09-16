@@ -52,18 +52,26 @@ export const init: ServerInit = async () => {
 const authenticate: Handle = async ({ event, resolve }) => {
 	const token = event.cookies.get(Auth.SESSION_COOKIE);
 	const valid = token && (await Auth.validate(event.locals, token));
-	const path = event.url.pathname;
-	const isAuthPage = path.startsWith('/auth/');
-	const isMainAuth = path === '/auth/signin' || path === '/auth/signup';
-	const referer = event.request.headers.get('referer')?.startsWith(event.url.origin + '/auth/');
+	const isAuthPage = event.url.pathname.startsWith('/auth/');
+	const isMainAuth = ['/auth/signin', '/auth/signup'].includes(event.url.pathname);
+
+	const referer = event.request.headers.get('referer');
+	const isRemoteFromAuth =
+		event.isRemoteRequest && referer?.startsWith(event.url.origin + '/auth/');
+
+	if (!valid && event.isRemoteRequest) {
+		return new Response(null, { status: 401 });
+	}
+	if (!valid && !isAuthPage && !isRemoteFromAuth) {
+		return Response.redirect('/auth/signin', 303);
+	}
+	if (valid && isMainAuth) {
+		return Response.redirect('/', 303);
+	}
 
 	if (valid) {
 		event.locals.session = valid;
-		if (isMainAuth) return Response.redirect('/', 307);
-	} else if (!isAuthPage && !(event.isRemoteRequest && referer)) {
-		return Response.redirect('/auth/signin', 307);
 	}
-
 	return resolve(event);
 };
 
@@ -73,7 +81,7 @@ const authorize: Handle = async ({ event, resolve }) => {
 		const user = await getUser(event.locals.session.userId);
 		const userFlags = user?.flags ?? 0;
 		if ((userFlags & UserFlag.IsAdmin) !== UserFlag.IsAdmin) {
-			return new Response(null, { status: 404})
+			return new Response(null, { status: 404 });
 		}
 	}
 	return resolve(event);

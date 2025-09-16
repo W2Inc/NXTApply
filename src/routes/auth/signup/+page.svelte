@@ -4,24 +4,15 @@
 	import FormEntry from '$lib/components/form-entry.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Oauth from '../oauth.svelte';
-	import * as Alert from '$lib/components/ui/alert/index.js';
-	import { CircleCheck } from '@lucide/svelte';
 	import { signup } from '@/remotes/auth/signup.remote';
-	import { blur, fade, scale } from 'svelte/transition';
+	import FormMessage from '$lib/components/form-message.svelte';
 
 	const form = FormKit.remote(signup);
 </script>
 
 
 <div class="space-y-6 p-8">
-	{#if form.message}
-		<div transition:blur>
-			<Alert.Root variant={form.status < 400 ? 'default' : 'destructive'}>
-				<CircleCheck />
-				<Alert.Title>{form.message}</Alert.Title>
-			</Alert.Root>
-		</div>
-	{/if}
+	<FormMessage {form} />
 
 	<div class="space-y-2">
 		<h2 class="text-2xl font-semibold tracking-tight">Sign Up</h2>
