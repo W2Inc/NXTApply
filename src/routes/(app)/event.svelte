@@ -1,23 +1,35 @@
 <script lang="ts">
-	import { DateFormatter, fromDate, now } from '@internationalized/date';
+	import { DateFormatter } from '@internationalized/date';
 	import { page } from '$app/state';
 	import {
 		BadgeCheck,
 		BadgeX,
+		Bookmark,
 		Calendar,
-		CheckCircle,
-		CircleAlert,
+		Check,
 		ExternalLink,
-		MapPin
+		Flag,
+		LoaderCircle,
+		LogOut,
+		MapPin,
+		SquareCheck,
+		StepForward,
+		Users,
+		X
 	} from '@lucide/svelte';
-	import { cn } from '$lib/utils';
-	import { Button } from '$lib/components/ui/button';
+	import { cn, UTC } from '$lib/utils';
+	import { buttonVariants } from '$lib/components/ui/button';
 	import type { AvailableUserEvent } from './+page.server';
 	import { Badge } from '$lib/components/ui/badge';
-	import { FormKit } from '$lib/form.svelte';
 	import { join } from '@/remotes/event/join.remote';
+	import Separator from '$lib/components/ui/separator/separator.svelte';
+	import * as Tooltip from '$lib/components/ui/tooltip';
+	import { FormKit } from '$lib/form.svelte';
+	import { userCount } from '@/remotes/event/count.remote';
+	import Button from '$lib/components/ui/button/button.svelte';
 
-	const { event }: { event: AvailableUserEvent } = $props();
+	const { event, remote }: { event: AvailableUserEvent; remote: ReturnType<typeof join.for> } =
+		$props();
 	const formatter = new DateFormatter(page.data.locale, {
 		year: 'numeric',
 		month: 'long',
@@ -27,93 +39,163 @@
 		hour12: false
 	});
 
-	const form = FormKit.remote(join);
-	const starts = $derived(new Date(event.startsAt));
-	const registerUntil = $derived(event.registerUntil ? new Date(event.registerUntil) : null);
-	const completedAt = $derived(event.completedAt ? new Date(event.completedAt) : null);
-	const expired = $derived(now(page.data.tz).compare(fromDate(starts, page.data.tz)) > 0);
-	const isCutoff = $derived(
-		registerUntil ? now(page.data.tz).compare(fromDate(registerUntil, page.data.tz)) > 0 : false
-	);
-	const disabled = $derived(expired || !!completedAt || isCutoff || !!event.requires);
+	const startsAt = $derived(UTC.read(event.startsAt, page.data.tz));
+	const completedAt = $derived(UTC.read(event.completedAt, page.data.tz));
+	const registerUntil = $derived(UTC.read(event.registerUntil, page.data.tz));
+	const expired = $derived(UTC.now(page.data.tz).compare(startsAt) > 0);
+	const cutoff = $derived(registerUntil ? UTC.now(page.data.tz).compare(startsAt) > 0 : false);
+	const disabled = $derived(expired || !!completedAt || cutoff || !!event.requires);
 </script>
 
-<li class="flex flex-col gap-4 py-3 first:pt-0 last:pb-0 sm:flex-row sm:items-center">
-	<div class="flex-shrink-0 self-start">
-		<div
-			class="flex h-12 w-12 items-center justify-center rounded-lg border border-border bg-muted text-primary shadow-sm"
-		>
-			<CheckCircle size={22} />
-		</div>
-	</div>
-	<div class="min-w-0 flex-1">
-		<p class={cn('text-lg font-semibold text-foreground', expired && 'line-through opacity-50')}>
-			{event.name}
-			{#if event.userEventId}
-				{#if event?.completedAt}
-					<Badge variant="secondary" class="bg-green-500 text-[8px] text-white dark:bg-green-600">
-						<BadgeCheck />
-						Completed
-					</Badge>
-				{:else}
-					<Badge variant="secondary" class="bg-red-500 text-[8px] text-white dark:bg-red-600">
-						<BadgeX />
-						Not Completed
-					</Badge>
-				{/if}
-			{/if}
-		</p>
-		<!-- <p class="text-foreground text-xs">{event.description}</p> -->
-		<div class="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-			<span class={cn('inline-flex items-center gap-1', expired && 'line-through opacity-50')}>
+{#snippet when()}
+	<Tooltip.Root>
+		<Tooltip.Trigger>
+			<span id="event-when" class={cn('flex items-center gap-1', expired && 'line-through opacity-50')}>
 				<Calendar size={16} class="inline-block" />
 				<a
-					inert={expired}
 					href="#"
+					inert={expired}
 					download={`${event.name}.ics`}
 					class="text-xs underline hover:text-primary"
 					title="Save to calendar"
 				>
-					{formatter.format(starts)}
+					{formatter.format(startsAt.toDate())}
 				</a>
 			</span>
+		</Tooltip.Trigger>
+		<Tooltip.Content>Save date to Calendar</Tooltip.Content>
+	</Tooltip.Root>
+{/snippet}
+
+{#snippet where()}
+	<Tooltip.Root>
+		<Tooltip.Trigger>
+			<span id="event-where" class="flex items-center gap-1">
+				<MapPin size={15} class="inline-block" />
+				<a
+					href={`https://maps.apple.com/?q=${encodeURIComponent(event.address)}`}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-xs underline hover:text-primary"
+				>
+					{event.address}
+				</a>
+				<ExternalLink size={12} />
+			</span>
+		</Tooltip.Trigger>
+		<Tooltip.Content>View on Openstreet Map</Tooltip.Content>
+	</Tooltip.Root>
+{/snippet}
+
+{#snippet who()}
+	<svelte:boundary>
+		<span id="event-who" class="flex items-center gap-1 text-xs hover:text-primary">
+			<Users size={16} />
+			{await userCount(event.id)} / {event.maxUsers}
+		</span>
+		{#snippet pending()}
+			<LoaderCircle class="animate-spin" size={16} /> / {event.maxUsers}
+		{/snippet}
+	</svelte:boundary>
+{/snippet}
+
+{#snippet trigger()}
+	<form {...FormKit.toastify(remote)}>
+		<input type="hidden" name="id" value={event.id} />
+		<Tooltip.Root>
+			<Tooltip.Trigger>
+				{#snippet child({props})}
+					<Button
+						{...props}
+						size="icon"
+						id="event-action"
+						variant="outline"
+						{disabled}
+						loading={remote.pending > 0}
+						type="submit"
+						class="size-12"
+					>
+						{#if event.userEventId && event.completedAt}
+							<Check class="size-6" />
+						{:else if event.userEventId}
+							<LogOut class="size-6" />
+						{:else if disabled}
+							<X class="size-6" />
+						{:else if event.userEventId}
+							<Bookmark class="size-6" />
+						{:else}
+							<StepForward class="size-6" />
+						{/if}
+					</Button>
+				{/snippet}
+			</Tooltip.Trigger>
+			<Tooltip.Content>
+				{#if event.userEventId && event.completedAt}
+					Event is completed
+				{:else if event.userEventId}
+					Exit event
+				{:else if disabled}
+					Event is unavailable
+				{:else if event.userEventId}
+					<Bookmark class="size-6" />
+				{:else}
+					Click to start this event
+				{/if}
+			</Tooltip.Content>
+		</Tooltip.Root>
+	</form>
+{/snippet}
+
+<li class="flex gap-4 rounded">
+	{@render trigger()}
+	<div class="min-w-0 flex-1">
+		<!-- TOP -->
+		<div class="flex items-center gap-2">
+			<p class="text-lg font-semibold text-foreground">
+				{event.name}
+			</p>
+			<!-- USER STATUS -->
+			{#if event.requires}
+				<Badge
+					variant="outline"
+					class="flex items-center gap-1 bg-orange-400 px-2 text-[10px] text-white shadow"
+				>
+					<Flag fill-rule="inherit" size={12} />
+					Requires: {event.requires}
+				</Badge>
+			{/if}
+
+			{#if event.userEventId}
+				{#if event?.completedAt}
+					<Badge
+						variant="secondary"
+						class="flex items-center gap-1 bg-green-600 px-2 text-[10px] text-white shadow"
+					>
+						<BadgeCheck size={12} />
+						Completed
+					</Badge>
+				{:else}
+					<Badge
+						variant="secondary"
+						class="flex items-center gap-1 bg-destructive px-2 text-[10px] text-white shadow"
+					>
+						<BadgeX size={12} />
+						Not Completed
+					</Badge>
+				{/if}
+			{/if}
+
+			<Separator orientation="horizontal" class="flex-1" />
+		</div>
+		<!-- BOTTOM -->
+		<div class="flex gap-1 text-muted-foreground">
+			{@render who()}
+			<span aria-hidden="true">•</span>
+			{@render when()}
 			{#if event.address}
 				<span aria-hidden="true">•</span>
-				<span class="inline-flex items-center gap-1">
-					<MapPin size={15} class="inline-block" />
-					<a
-						href={`https://maps.apple.com/?q=${encodeURIComponent(event.address)}`}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="text-xs underline hover:text-primary"
-					>
-						{event.address}
-					</a>
-					<ExternalLink size={12} />
-				</span>
+				{@render where()}
 			{/if}
 		</div>
-		{#if event.requires && !expired}
-			<hr class="my-0.5" />
-			<p class="flex items-center gap-1 text-xs text-destructive">
-				<CircleAlert size={12} />
-				You must have completed the following events first:
-				<span class="capitalize">
-					{event.requires}
-				</span>
-			</p>
-		{/if}
 	</div>
-	{#if event.trackId || !event.userEventId}
-		<form class="mt-2 flex items-center gap-2 sm:mt-0" {...form.remote}>
-			<input type="hidden" name="id" value={event.id} />
-			<Button type="submit" {disabled}>
-				{#if event.userEventId && event.trackId}
-					Resume
-				{:else}
-					Register
-				{/if}
-			</Button>
-		</form>
-	{/if}
 </li>

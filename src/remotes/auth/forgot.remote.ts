@@ -57,14 +57,14 @@ const schema = z.object({
 
 // ============================================================================
 
-export const forgot = FormKit.declare(schema, async (data) => {
+export const forgot = form(schema, async (data) => {
 	await randomWait();
 
-	const response = FormKit.Reply.Ok({ message: 'Please check your email.'});
+	const response = FormKit.Reply.Message('Please Check your email!');
 	const [user] = await sqlite<User[]>`SELECT * FROM user WHERE email = ${data.email}`;
 	if (!user || !user.hash || !user.verified || user.provider) {
 		Logger.dbg('Unable to request password reset for:', user?.id);
-		return response;
+		return FormKit.Reply.NoContent();
 	}
 
 	const token = await Auth.reset(user.id);

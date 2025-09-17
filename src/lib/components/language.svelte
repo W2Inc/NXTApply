@@ -18,15 +18,15 @@
 		{/snippet}
 	</DropdownMenu.Trigger>
 	<DropdownMenu.Content align="start">
-		{#each Object.entries(locales) as [locale, name]}
+		{#each Object.entries(locales) as [_, name]}
 			<DropdownMenu.Item>
 				{#snippet child({ props })}
 					<Button
 						data-sveltekit-reload
 						{...props}
 						variant="ghost"
-						class="block justify-start font-normal"
-						href="?lang={locale}"
+						class="block justify-start font-normal capitalize"
+						href="?locale={name}"
 					>
 						{name}
 					</Button>

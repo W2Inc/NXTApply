@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
-	import { Home, LogIn, RefreshCw } from '@lucide/svelte';
+	import { House, RefreshCw } from '@lucide/svelte';
 </script>
 
 <div class="flex min-h-screen items-center justify-center p-4">
@@ -24,7 +24,7 @@
 
 			<div class="flex gap-3">
 				<Button variant="default" class="group flex-1" href="..">
-					<Home class="group-hover:shake mr-2 h-4 w-4 transition-transform" />
+					<House class="group-hover:shake mr-2 h-4 w-4 transition-transform" />
 					Back to safety
 				</Button>
 

@@ -5,7 +5,7 @@
 
 import z from 'zod';
 import { FormKit } from '$lib/form.svelte';
-import { getRequestEvent } from '$app/server';
+import { form, getRequestEvent } from '$app/server';
 import { Auth } from '$lib/server/auth';
 import { error, redirect, type Cookies } from '@sveltejs/kit';
 import { verifyTOTPWithGracePeriod } from '@oslojs/otp';
@@ -37,14 +37,13 @@ function verifyOtpCode(key: string, otp: string): boolean {
 
 // ============================================================================
 
-export const setOTP = FormKit.declare(schema, async (data) => {
+export const setOTP = form(schema, async (data) => {
 	const { cookies, request } = getRequestEvent();
 	const key = cookies.get(Auth.OTP_KEY_COOKIE);
 	const userId = cookies.get(Auth.IDENTITY_COOKIE);
 
 	if (!key || !userId) {
 		deleteCookies(cookies);
-		Logger.dbg('Nope');
 		error(401);
 	}
 
@@ -74,19 +73,17 @@ export const setOTP = FormKit.declare(schema, async (data) => {
 	redirect(302, '/');
 });
 
-export const verifyOTP = FormKit.declare(schema, async (data) => {
+export const verifyOTP = form(schema, async (data) => {
 	const { cookies, request } = getRequestEvent();
 	const userId = cookies.get(Auth.IDENTITY_COOKIE);
 
 	if (!userId) {
-		Logger.dbg('Nope!!!13');
 		error(401);
 	}
 
 	const [user] = await sqlite<User[]>`SELECT * FROM user WHERE id = ${userId}`;
 	if (!user || user.id !== userId) {
 		cookies.delete(Auth.IDENTITY_COOKIE, { path: '/' });
-		Logger.dbg('Nope!!!1344');
 		error(401);
 	}
 

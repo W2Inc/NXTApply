@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T09:10:19.414Z\n"
-"PO-Revision-Date: 2025-09-16T07:45:18.610Z\n"
+"PO-Revision-Date: 2025-09-17T18:53:04.924Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -41,81 +41,80 @@ msgstr "Visitas des linkes"
 #: src/routes/auth/+layout.svelte
 #: src/routes/auth/+layout.svelte
 msgid "NXTApply"
-msgstr ""
+msgstr "NXTApply"
 
 #: src/routes/auth/+layout.svelte
 msgid "© {0} {1}. All rights reserved."
-msgstr ""
+msgstr "© {0} {1}. Todos los derechos reservados."
 
 #: src/routes/auth/+layout.svelte
 msgid "Start your journey with NXTApply"
-msgstr ""
+msgstr "Comienza tu viaje con NXTApply"
 
 #: src/routes/auth/+layout.svelte
 msgid "Streamline your application process and discover opportunities tailored for you."
-msgstr ""
+msgstr "Agiliza tu proceso de solicitud y descubre oportunidades diseñadas para ti.```"
 
 #: src/routes/auth/signin/+page.svelte
 msgid "Login"
-msgstr ""
+msgstr "Iniciar sesión"
 
 #: src/routes/auth/signin/+page.svelte
 msgid "Enter your email to sign in to your account"
-msgstr ""
+msgstr "Introduce tu correo electrónico para iniciar sesión en tu cuenta"
 
-#: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/signin/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/signup/+page.svelte
 msgid "Email"
-msgstr ""
+msgstr "Correo electrónico"
 
 #: src/routes/auth/signin/+page.svelte
 #: src/routes/auth/signup/+page.svelte
 msgid "Please give a valid Email"
-msgstr ""
+msgstr "Por favor, introduce un correo electrónico válido"
 
 #: src/routes/auth/signin/+page.svelte
 #: src/routes/auth/signup/+page.svelte
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #: src/routes/auth/signin/+page.svelte
 #: src/routes/auth/signup/+page.svelte
 msgid "Please give a valid Password"
-msgstr ""
+msgstr "Por favor, introduce una contraseña válida"
 
-#: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/signin/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Reset Password"
-msgstr ""
+msgstr "Restablecer la contraseña"
 
 #: src/routes/auth/signin/+page.svelte
 msgid "Sign In"
-msgstr ""
+msgstr "Iniciar sesión"
 
 #: src/routes/auth/signin/+page.svelte
 msgid "Don't have an account? <0>Sign up</0>"
-msgstr ""
+msgstr "¿No tienes una cuenta? <0>Regístrate</0>```"
 
 #: src/routes/auth/oauth.svelte
 msgid "or"
-msgstr ""
+msgstr "o"
 
 #: src/routes/auth/oauth.svelte
 msgid "Sign in with <0/>"
-msgstr ""
+msgstr "Acceder con <0/>"
 
-#: src/lib/components/form-entry.svelte
-msgid "Unknown Issue"
-msgstr ""
+#~ msgid "Unknown Issue"
+#~ msgstr ""
 
 #: src/routes/auth/signup/+page.svelte
 msgid "Sign Up"
-msgstr ""
+msgstr "Registrarse"
 
 #: src/routes/auth/signup/+page.svelte
 msgid "Enter your information to create an account"
-msgstr ""
+msgstr "Ingrese su información para crear una cuenta"
 
 #~ msgid "First Name"
 #~ msgstr ""
@@ -138,219 +137,438 @@ msgstr ""
 #: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/signup/+page.svelte
 msgid "Confirm Password"
-msgstr ""
+msgstr "Confirmar contraseña"
 
 #: src/routes/auth/signup/+page.svelte
 msgid "Please confirm your password"
-msgstr ""
+msgstr "Por favor, confirme su contraseña"
 
 #: src/routes/auth/signup/+page.svelte
 msgid "Apply Now"
-msgstr ""
+msgstr "Aplicar ahora"
 
 #: src/routes/auth/signup/+page.svelte
 msgid "Already have an account? <0>Sign in</0>"
-msgstr ""
+msgstr "¿Ya tienes una cuenta? <0>Inicia sesión</0>"
 
 #: src/routes/auth/reset/+page.svelte
 msgid "Set New Password"
-msgstr ""
+msgstr "Establecer nueva contraseña"
 
 #: src/routes/auth/reset/+page.svelte
 msgid "Enter your new password to complete the reset process"
-msgstr ""
+msgstr "Introduce tu nueva contraseña para completar el proceso de restablecimiento"
 
 #: src/routes/auth/reset/+page.svelte
 msgid "New Password"
-msgstr ""
+msgstr "Nueva contraseña"
 
 #: src/routes/auth/reset/+page.svelte
 msgid "Please enter your new password"
-msgstr ""
+msgstr "Por favor, introduce tu nueva contraseña"
 
 #: src/routes/auth/reset/+page.svelte
 msgid "Please confirm your new password"
-msgstr ""
+msgstr "Por favor, confirma tu nueva contraseña"
 
 #: src/routes/auth/reset/+page.svelte
 msgid "Set Password"
-msgstr ""
+msgstr "Establecer contraseña"
 
 #: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/reset/+page.svelte
 msgid "Remember your password? <0>Sign in</0>"
-msgstr ""
+msgstr "¿Recuerdas tu contraseña? <0>Iniciar sesión</0>```"
 
 #: src/routes/auth/reset/+page.svelte
 msgid "Enter your email address and we'll send you a reset link"
-msgstr ""
+msgstr "Introduce tu dirección de correo electrónico y te enviaremos un enlace de restablecimiento"
 
 #: src/routes/auth/reset/+page.svelte
 msgid "Please enter your email address"
-msgstr ""
+msgstr "Por favor, introduce tu dirección de correo electrónico"
 
 #: src/routes/auth/reset/+page.svelte
 msgid "Send Reset Link"
-msgstr ""
+msgstr "Enviar enlace de restablecimiento"
 
 #~ msgid "Houston, we have a problem"
 #~ msgstr ""
 
 #: src/routes/+error.svelte
 msgid "<0>Silly cats!</0> Rest assured this issue has been logged & reported."
-msgstr ""
+msgstr "<0>¡Gatos tontos!</0> Ten la seguridad de que este problema ha sido registrado e informado."
 
 #: src/routes/+error.svelte
 msgid "Oops! Something wasn't quite right with that request."
-msgstr ""
+msgstr "¡Ups! Algo no salió del todo bien con esa solicitud."
 
 #: src/routes/+error.svelte
 msgid "<0/> Back to safety"
-msgstr ""
+msgstr "<0/> Volver a la seguridad"
 
 #: src/routes/+error.svelte
 msgid "Well, that's bad."
-msgstr ""
+msgstr "Vaya, eso no es bueno."
 
 #: src/routes/auth/2fa/setup/+page.svelte
 msgid "Two-Factor Authentication"
-msgstr ""
+msgstr "Autenticación de dos factores"
 
 #: src/routes/auth/2fa/setup/+page.svelte
 msgid "Scan the QR code with your authenticator app to set up 2FA"
-msgstr ""
+msgstr "Escanee el código QR con su aplicación de autenticación para configurar 2FA"
 
 #: src/routes/auth/2fa/setup/+page.svelte
 msgid "View secret key instead"
-msgstr ""
+msgstr "Ver la clave secreta en su lugar"
 
 #: src/routes/auth/2fa/setup/+page.svelte
 msgid ""
 "Open your two-factor authenticator (TOTP) app or browser extension to scan the QR code or\n"
 "enter the secret key manually."
-msgstr ""
+msgstr "Abra su aplicación de autenticación de dos factores (TOTP) o la extensión del navegador para escanear el código QR o ingresar la clave secreta manualmente."
 
 #: src/routes/auth/2fa/setup/+page.svelte
 msgid "Verification Code"
-msgstr ""
+msgstr "Código de verificación"
 
 #: src/routes/auth/2fa/setup/+page.svelte
 msgid "Enter 6-digit code"
-msgstr ""
+msgstr "Ingrese el código de 6 dígitos"
 
 #: src/routes/auth/2fa/setup/+page.svelte
 msgid "Verify and Enable 2FA"
-msgstr ""
+msgstr "Verificar y habilitar 2FA"
 
 #: src/routes/auth/2fa/+page.svelte
 #: src/routes/auth/2fa/+page.svelte
 msgid "Authentication Code"
-msgstr ""
+msgstr "Código de autenticación"
 
-#: src/routes/auth/2fa/+page.svelte
-msgid "Open your two-factor authenticator (TOTP) app or browser extension to view your authentication code."
-msgstr ""
+#~ msgid "Open your two-factor authenticator (TOTP) app or browser extension to view your authentication code."
+#~ msgstr ""
 
 #: src/routes/auth/2fa/+page.svelte
 msgid "XXXXXX"
-msgstr ""
+msgstr "XXXXXX"
 
 #: src/routes/auth/2fa/+page.svelte
 msgid "Verify"
-msgstr ""
+msgstr "Verificar"
 
 #: src/routes/admin/+page.svelte
 msgid "Secret page!"
-msgstr ""
+msgstr "¡Página secreta!```"
 
 #: src/routes/(app)/+layout.svelte
 msgid "Logo"
-msgstr ""
+msgstr "Logo"
 
 #: src/routes/(app)/+layout.svelte
 msgid "Account"
-msgstr ""
+msgstr "Cuenta"
 
 #: src/routes/(app)/+layout.svelte
 msgid "My Account"
-msgstr ""
+msgstr "Mi Cuenta"
 
 #: src/routes/(app)/+layout.svelte
 msgid "<0/> GDPR"
-msgstr ""
+msgstr "<0/> RGPD"
 
 #: src/routes/(app)/+layout.svelte
 msgid "<0/> Assistance"
-msgstr ""
+msgstr "<0/> Asistencia"
 
 #: src/routes/(app)/+layout.svelte
 msgid "Logout"
-msgstr ""
+msgstr "Cerrar sesión"
 
 #: src/routes/(app)/+layout.svelte
 msgid "Admin"
-msgstr ""
+msgstr "Administración"
 
 #: src/routes/(app)/+layout.svelte
 msgid "Admin Navigation"
-msgstr ""
+msgstr "Navegación de Administrador"
 
 #: src/routes/(app)/+layout.svelte
 msgid "Navigate here to the different admin dashboards."
-msgstr ""
+msgstr "Navegue aquí a los diferentes paneles de administración.```"
 
 #: src/lib/components/theme.svelte
 msgid "Light"
-msgstr ""
+msgstr "Claro"
 
 #: src/lib/components/theme.svelte
 msgid "Dark"
-msgstr ""
+msgstr "Oscuro"
 
 #: src/lib/components/theme.svelte
 msgid "System"
-msgstr ""
+msgstr "Sistema"
 
 #: src/lib/components/ui/sheet/sheet-content.svelte
 msgid "Close"
-msgstr ""
+msgstr "Cerrar"
 
-#: src/routes/(app)/+page.svelte
-msgid "Welcome to NXTApply!"
-msgstr ""
+#~ msgid "Welcome to NXTApply!"
+#~ msgstr ""
 
-#: src/routes/(app)/+page.svelte
-msgid "Your student application journey starts here.<0/> <1>Follow the steps below to complete your application.</1>"
-msgstr ""
+#~ msgid "Your student application journey starts here.<0/> <1>Follow the steps below to complete your application.</1>"
+#~ msgstr ""
 
 #: src/routes/(app)/+page.svelte
 msgid "Upcoming Events"
-msgstr ""
+msgstr "Próximos Eventos"
 
 #: src/routes/(app)/+page.svelte
 msgid "No upcoming events."
-msgstr ""
+msgstr "No hay próximos eventos."
 
 #: src/routes/(app)/event.svelte
 msgid "<0/> Completed"
-msgstr ""
+msgstr "<0/> Completado"
 
 #: src/routes/(app)/event.svelte
 msgid "<0/> Not Completed"
-msgstr ""
+msgstr "<0/> No completado```"
 
 #: src/routes/(app)/event.svelte
 msgid "Save to calendar"
-msgstr ""
+msgstr "Guardar en el calendario"
+
+#~ msgid "<0/> You must have completed the following events first: <1/>"
+#~ msgstr ""
+
+#~ msgid "Resume"
+#~ msgstr ""
+
+#~ msgid "Register"
+#~ msgstr ""
+
+#~ msgid "Loading"
+#~ msgstr ""
+
+#: src/routes/(app)/+page.svelte
+msgid "Loading upcoming events..."
+msgstr "Cargando próximos eventos..."
+
+#~ msgid "Your student application journey starts here. <0>Follow the steps below to complete your application.</0>"
+#~ msgstr ""
+
+#: src/routes/(app)/+page.svelte
+msgid "Your student application journey starts here."
+msgstr "Tu proceso de solicitud de estudiante comienza aquí."
+
+#: src/routes/(app)/+page.svelte
+msgid "Follow the steps below to complete your application."
+msgstr "Sigue los pasos a continuación para completar tu solicitud."
+
+#~ msgid "Welcome back {0} {1} to {2}"
+#~ msgstr ""
+
+#~ msgid "Loading..."
+#~ msgstr ""
+
+#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/+page.svelte
+msgid "Welcome to {0}!"
+msgstr "¡Bienvenido a {0}!"
+
+#~ msgid "Unknown issue"
+#~ msgstr ""
+
+#: src/routes/auth/2fa/+page.svelte
+msgid ""
+"Open your two-factor authenticator (TOTP) app or browser extension to view your authentication\n"
+"code."
+msgstr "Abra su aplicación de autenticación de dos factores (TOTP) o la extensión del navegador para ver su código de autenticación."
+
+#~ msgid "{0} w"
+#~ msgstr ""
+
+#~ msgid "kek"
+#~ msgstr ""
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/track/+page.svelte
+#: src/routes/(app)/admin/resources/event-type/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/event-type/+page.svelte
+#: src/routes/(app)/admin/resources/track/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/user/+page.svelte
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/event/+page.svelte
+msgid "Hello"
+msgstr "Hola```"
+
+#~ msgid "Hello: {0}"
+#~ msgstr ""
+
+#~ msgid "loading..."
+#~ msgstr ""
+
+#~ msgid "Jel"
+#~ msgstr ""
+
+#~ msgid "Register for event"
+#~ msgstr ""
+
+#~ msgid "Resume event"
+#~ msgstr ""
+
+#~ msgid "Registered"
+#~ msgstr ""
+
+#~ msgid "hello <0/>"
+#~ msgstr ""
+
+#~ msgid "Start this event"
+#~ msgstr ""
 
 #: src/routes/(app)/event.svelte
-msgid "<0/> You must have completed the following events first: <1/>"
-msgstr ""
+msgid "Event is completed"
+msgstr "Evento completado"
 
 #: src/routes/(app)/event.svelte
-msgid "Resume"
-msgstr ""
+msgid "Exit event"
+msgstr "Salir del evento"
 
 #: src/routes/(app)/event.svelte
-msgid "Register"
-msgstr ""
+msgid "Event is unavailable"
+msgstr "Evento no disponible"
+
+#: src/routes/(app)/event.svelte
+msgid "Click to start this event"
+msgstr "Click para comenzar este evento"
+
+#~ msgid "Hea"
+#~ msgstr ""
+
+#: src/routes/(app)/event.svelte
+msgid "View on Openstreet Map"
+msgstr "Ver en Openstreet Map"
+
+#: src/routes/(app)/event.svelte
+msgid "Save date to Calendar"
+msgstr "Guardar fecha en el calendario"
+
+#: src/routes/(app)/event.svelte
+msgid "<0/> Requires: {0}"
+msgstr "<0/> Requiere: {0}"
+
+#~ msgid "Timezone: {0}"
+#~ msgstr "Zona horaria: {0}"
+
+#: src/routes/(app)/+page.svelte
+msgid "Timezone: <0/>"
+msgstr "Zona horaria: <0/>"
+
+#: src/routes/(app)/+page.svelte
+msgid "All events take place in the following timezone."
+msgstr "Todos los eventos tienen lugar en la siguiente zona horaria."
+
+#: src/routes/(app)/+page.svelte
+msgid "Lost? Click here to get some help."
+msgstr "¿Perdido? Haga clic aquí para obtener ayuda."
+
+#: src/routes/(app)/+page.svelte
+msgid "In this tutorial, we will walk you through the event application process."
+msgstr "En este tutorial, le guiaremos a través del proceso de solicitud de evento."
+
+#: src/routes/(app)/+page.svelte
+msgid "Join an Event"
+msgstr "Únete a un evento"
+
+#: src/routes/(app)/+page.svelte
+msgid "Click here to join the first available event and start your application journey."
+msgstr "Haz clic aquí para unirte al primer evento disponible y comenzar tu proceso de solicitud."
+
+#: src/routes/(app)/+page.svelte
+msgid "Who's Registered?"
+msgstr "¿Quién se ha registrado?"
+
+#: src/routes/(app)/+page.svelte
+msgid "See how many people have already registered for this event."
+msgstr "Mira cuántas personas ya se han registrado para este evento."
+
+#: src/routes/(app)/+page.svelte
+msgid "Event Date & Time"
+msgstr "Fecha y hora del evento"
+
+#: src/routes/(app)/+page.svelte
+msgid "Check the scheduled date and time for this event. Make sure to mark your calendar!"
+msgstr "Consulta la fecha y hora programadas para este evento. ¡Asegúrate de marcar tu calendario!"
+
+#: src/routes/(app)/+page.svelte
+msgid "Event Location"
+msgstr "Ubicación del evento"
+
+#: src/routes/(app)/+page.svelte
+msgid "If the event is in-person, click here to view the location on the map. For digital events, this section may not appear."
+msgstr "Si el evento es presencial, haz clic aquí para ver la ubicación en el mapa. Para eventos digitales, es posible que esta sección no aparezca."
+
+#: src/routes/(app)/+page.svelte
+msgid "All Set!"
+msgstr "¡Todo listo!"
+
+#: src/routes/(app)/+page.svelte
+msgid "You're ready to get started. Good luck with your application!"
+msgstr "Estás listo para comenzar. ¡Buena suerte con tu solicitud!```"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Admin Dashboard"
+msgstr "Panel de control de administrador"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Manage your events and users"
+msgstr "Administra tus eventos y usuarios"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Quick Access"
+msgstr "Acceso rápido"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Create Event"
+msgstr "Crear evento"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Schedule and manage new events"
+msgstr "Programa y administra nuevos eventos"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Onboard User"
+msgstr "Incorporar usuario"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Manage user onboarding process"
+msgstr "Gestionar el proceso de incorporación de usuarios"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Analytics"
+msgstr "Analítica"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "View detailed user and event statistics"
+msgstr "Ver estadísticas detalladas de usuarios y eventos"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Overview"
+msgstr "Visión general"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Active Users"
+msgstr "Usuarios activos"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Currently active users"
+msgstr "Usuarios actualmente activos"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Registered Users"
+msgstr "Usuarios registrados"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Total registered users"
+msgstr "Total de usuarios registrados```"

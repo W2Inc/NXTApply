@@ -4,9 +4,8 @@
 // ============================================================================
 
 import { dev } from '$app/environment';
-import { getRequestEvent } from '$app/server';
+import { form, getRequestEvent } from '$app/server';
 import { FormKit } from '$lib/form.svelte';
-import Logger from '$lib/logger';
 import { randomWait } from '$lib/utils';
 import { Auth } from '@/server/auth';
 import { sqlite } from '@/server/db';
@@ -18,12 +17,12 @@ import { z } from 'zod/v4';
 
 const schema = z.object({
 	email: z.email(),
-	password: z.string().min(4).max(256)
+	_password: z.string().min(4).max(256)
 });
 
 // ============================================================================
 
-export const signin = FormKit.declare(schema, async (data) => {
+export const signin = form(schema, async data => {
 	await randomWait();
 
 	const { cookies } = getRequestEvent();
@@ -32,8 +31,7 @@ export const signin = FormKit.declare(schema, async (data) => {
 		error(422, 'User not found or password does not match');
 	}
 
-	if (!(await Bun.password.verify(data.password, user.hash))) {
-		Logger.dbg('2')
+	if (!(await Bun.password.verify(data._password, user.hash))) {
 		error(422, 'User not found or password does not match');
 	}
 

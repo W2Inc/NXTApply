@@ -4,6 +4,8 @@
 // ============================================================================
 
 import { sqlite } from '$lib/server/db';
+import { randomWait } from '$lib/utils';
+import { getUser } from '@/remotes/user/get.remote';
 import type { PageServerLoad } from './$types';
 
 // ============================================================================
@@ -22,10 +24,13 @@ export type AvailableUserEvent = {
 	userEventId: string | null;
 };
 
+// ============================================================================
+
 export const load: PageServerLoad = async ({ locals }) => {
 	const userId = locals.session.userId;
 	return {
-		events: await sqlite<AvailableUserEvent[]>`
+		user: getUser(userId),
+		events: sqlite<AvailableUserEvent[]>`
 			WITH user_completed_event_types AS (
 				SELECT DISTINCT e2.eventTypeId
 				FROM user_event ue2
@@ -46,23 +51,23 @@ export const load: PageServerLoad = async ({ locals }) => {
 				GROUP BY ed.eventId
 			)
 			SELECT
-			e.id,
-			et.name AS name,
-			et.description AS description,
-			e.startsAt,
-			e.address,
-			e.maxUsers,
-			e.trackId,
-			e.registerUntil,
-			ue.completedAt,
-			er.requires,
-			ue.id as userEventId
+				e.id,
+				et.name AS name,
+				et.description AS description,
+				e.startsAt,
+				e.address,
+				e.maxUsers,
+				e.trackId,
+				e.registerUntil,
+				ue.completedAt,
+				er.requires,
+				ue.id as userEventId
 			FROM event e
 			JOIN event_type et ON e.eventTypeId = et.id
 			LEFT JOIN user_event ue ON e.id = ue.eventId AND ue.userId = ${userId}
 			LEFT JOIN event_requires er ON e.id = er.eventId
 			WHERE
-			e.startsAt > datetime('now', '-7 days')
+			e.startsAt >= datetime('now', '-7 days')
 			AND (
 				ue.userId = ${userId}
 				OR e.eventTypeId NOT IN (SELECT eventTypeId FROM user_event_types)

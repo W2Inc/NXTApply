@@ -4,7 +4,7 @@
 // ============================================================================
 
 import { dev } from '$app/environment';
-import { getRequestEvent } from '$app/server';
+import { form, getRequestEvent } from '$app/server';
 import { FormKit } from '$lib/form.svelte';
 import { randomWait } from '$lib/utils';
 import { Auth } from '@/server/auth';
@@ -18,18 +18,18 @@ import { z } from 'zod/v4';
 
 const schema = z.object({
 	email: z.email(),
-	password: z.string().min(4).max(256),
-	confirm: z.string().min(4).max(256)
+	_confirm: z.string().min(4).max(256),
+	_password: z.string().min(4).max(256),
 });
 
 // ============================================================================
 
-export const signup = FormKit.declare(schema, async (data) => {
+export const signup = form(schema, async (data) => {
 	await randomWait();
 
 	// Confirm Passwords
 	const { cookies } = getRequestEvent();
-	const password = await Bun.password.hash(data.password, 'argon2id');
+	const password = await Bun.password.hash(data._password, 'argon2id');
 	if (!(await Bun.password.verify(data.confirm, password))) {
 		error(422, 'Passwords do not match');
 	}

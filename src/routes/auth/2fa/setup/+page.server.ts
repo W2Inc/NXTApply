@@ -11,24 +11,19 @@ import { createTOTPKeyURI } from '@oslojs/otp';
 import * as QR from 'uqr';
 import { sqlite } from '$lib/server/db';
 import { Auth } from '$lib/server/auth';
-import Logger from '$lib/logger';
 
 // ============================================================================
 
 export const load: PageServerLoad = async ({ locals, cookies }) => {
 	const userId = cookies.get(Auth.IDENTITY_COOKIE);
 	if (!userId) {
-		Logger.dbg('Nope2');
 		error(403);
 	}
-
-		Logger.dbg('Nope!!!13443335', userId);
 
 	const [user] = await sqlite`SELECT * FROM user WHERE id = ${userId}`;
 	if (!user || user.id !== userId) {
 		cookies.delete(Auth.IDENTITY_COOKIE, { path: '/' });
 		cookies.delete(Auth.OTP_KEY_COOKIE, { path: '/' });
-		Logger.dbg('Nope!!!1344333', user, userId);
 
 		error(401);
 	}

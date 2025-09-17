@@ -4,6 +4,7 @@
 // ============================================================================
 
 import { dev } from '$app/environment';
+import { form } from '$app/server';
 import { RESEND_EMAIL } from '$env/static/private';
 import { PUBLIC_APP_NAME, PUBLIC_APP_URL } from '$env/static/public';
 import { FormKit } from '$lib/form.svelte';
@@ -52,13 +53,13 @@ import { z } from 'zod/v4';
 
 const schema = z.object({
 	token: z.base64url(),
-	password: z.string().min(4).max(256),
-	confirm: z.string().min(4).max(256)
+	_password: z.string().min(4).max(256),
+	_confirm: z.string().min(4).max(256)
 });
 
 // ============================================================================
 
-export const reset = FormKit.declare(schema, async (data) => {
+export const reset = form(schema, async (data) => {
 	await randomWait();
 
 	// const [user] = await sqlite<User[]>`SELECT * FROM user WHERE email = ${data.email}`;

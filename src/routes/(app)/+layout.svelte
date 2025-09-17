@@ -17,14 +17,11 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import { UserFlag } from '$lib';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
 	import * as Sheet from '$lib/components/ui/sheet';
-	import { Input } from '$lib/components/ui/input';
-	import { Label } from '$lib/components/ui/label';
 	import { afterNavigate } from '$app/navigation';
-	import { page } from '$app/state';
 	import { signout } from '@/remotes/auth/signout.remote';
+	import { UserFlag } from '$lib';
 
 	const { children, data }: LayoutProps = $props();
 	const adminMenu = [
@@ -98,7 +95,7 @@
 						</DropdownMenu.Group>
 					</DropdownMenu.Content>
 				</DropdownMenu.Root>
-				{#if true}
+				{#if (data.user.flags & UserFlag.IsAdmin) === UserFlag.IsAdmin}
 					<Separator orientation="vertical" class="min-h-6" />
 					<Button href="/admin" variant="outline">
 						<ShieldUser />

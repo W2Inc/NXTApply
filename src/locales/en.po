@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T09:10:19.412Z\n"
-"PO-Revision-Date: 2025-09-16T07:45:18.608Z\n"
+"PO-Revision-Date: 2025-09-17T18:53:02.347Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -63,8 +63,8 @@ msgstr "Login"
 msgid "Enter your email to sign in to your account"
 msgstr "Enter your email to sign in to your account"
 
-#: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/signin/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/signup/+page.svelte
 msgid "Email"
 msgstr "Email"
@@ -84,8 +84,8 @@ msgstr "Password"
 msgid "Please give a valid Password"
 msgstr "Please give a valid Password"
 
-#: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/signin/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Reset Password"
 msgstr "Reset Password"
 
@@ -105,9 +105,8 @@ msgstr "or"
 msgid "Sign in with <0/>"
 msgstr "Sign in with <0/>"
 
-#: src/lib/components/form-entry.svelte
-msgid "Unknown Issue"
-msgstr "Unknown Issue"
+#~ msgid "Unknown Issue"
+#~ msgstr "Unknown Issue"
 
 #: src/routes/auth/signup/+page.svelte
 msgid "Sign Up"
@@ -249,9 +248,8 @@ msgstr "Verify and Enable 2FA"
 msgid "Authentication Code"
 msgstr "Authentication Code"
 
-#: src/routes/auth/2fa/+page.svelte
-msgid "Open your two-factor authenticator (TOTP) app or browser extension to view your authentication code."
-msgstr "Open your two-factor authenticator (TOTP) app or browser extension to view your authentication code."
+#~ msgid "Open your two-factor authenticator (TOTP) app or browser extension to view your authentication code."
+#~ msgstr "Open your two-factor authenticator (TOTP) app or browser extension to view your authentication code."
 
 #: src/routes/auth/2fa/+page.svelte
 msgid "XXXXXX"
@@ -317,13 +315,11 @@ msgstr "System"
 msgid "Close"
 msgstr "Close"
 
-#: src/routes/(app)/+page.svelte
-msgid "Welcome to NXTApply!"
-msgstr "Welcome to NXTApply!"
+#~ msgid "Welcome to NXTApply!"
+#~ msgstr "Welcome to NXTApply!"
 
-#: src/routes/(app)/+page.svelte
-msgid "Your student application journey starts here.<0/> <1>Follow the steps below to complete your application.</1>"
-msgstr "Your student application journey starts here.<0/> <1>Follow the steps below to complete your application.</1>"
+#~ msgid "Your student application journey starts here.<0/> <1>Follow the steps below to complete your application.</1>"
+#~ msgstr "Your student application journey starts here.<0/> <1>Follow the steps below to complete your application.</1>"
 
 #: src/routes/(app)/+page.svelte
 msgid "Upcoming Events"
@@ -345,14 +341,238 @@ msgstr "<0/> Not Completed"
 msgid "Save to calendar"
 msgstr "Save to calendar"
 
-#: src/routes/(app)/event.svelte
-msgid "<0/> You must have completed the following events first: <1/>"
-msgstr "<0/> You must have completed the following events first: <1/>"
+#~ msgid "<0/> You must have completed the following events first: <1/>"
+#~ msgstr "<0/> You must have completed the following events first: <1/>"
+
+#~ msgid "Resume"
+#~ msgstr "Resume"
+
+#~ msgid "Register"
+#~ msgstr "Register"
+
+#~ msgid "Loading"
+#~ msgstr "Loading"
+
+#: src/routes/(app)/+page.svelte
+msgid "Loading upcoming events..."
+msgstr "Loading upcoming events..."
+
+#~ msgid "Your student application journey starts here. <0>Follow the steps below to complete your application.</0>"
+#~ msgstr "Your student application journey starts here. <0>Follow the steps below to complete your application.</0>"
+
+#: src/routes/(app)/+page.svelte
+msgid "Your student application journey starts here."
+msgstr "Your student application journey starts here."
+
+#: src/routes/(app)/+page.svelte
+msgid "Follow the steps below to complete your application."
+msgstr "Follow the steps below to complete your application."
+
+#~ msgid "Welcome back {0} {1} to {2}"
+#~ msgstr "Welcome back {0} {1} to {2}"
+
+#~ msgid "Loading..."
+#~ msgstr "Loading..."
+
+#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/+page.svelte
+msgid "Welcome to {0}!"
+msgstr "Welcome to {0}!"
+
+#~ msgid "Unknown issue"
+#~ msgstr "Unknown issue"
+
+#: src/routes/auth/2fa/+page.svelte
+msgid ""
+"Open your two-factor authenticator (TOTP) app or browser extension to view your authentication\n"
+"code."
+msgstr ""
+"Open your two-factor authenticator (TOTP) app or browser extension to view your authentication\n"
+"code."
+
+#~ msgid "{0} w"
+#~ msgstr "{0} w"
+
+#~ msgid "kek"
+#~ msgstr "kek"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/track/+page.svelte
+#: src/routes/(app)/admin/resources/event-type/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/event-type/+page.svelte
+#: src/routes/(app)/admin/resources/track/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/user/+page.svelte
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/event/+page.svelte
+msgid "Hello"
+msgstr "Hello"
+
+#~ msgid "Hello: {0}"
+#~ msgstr "Hello: {0}"
+
+#~ msgid "loading..."
+#~ msgstr "loading..."
+
+#~ msgid "Jel"
+#~ msgstr "Jel"
+
+#~ msgid "Register for event"
+#~ msgstr "Register for event"
+
+#~ msgid "Resume event"
+#~ msgstr "Resume event"
+
+#~ msgid "Registered"
+#~ msgstr "Registered"
+
+#~ msgid "hello <0/>"
+#~ msgstr "hello <0/>"
+
+#~ msgid "Start this event"
+#~ msgstr "Start this event"
 
 #: src/routes/(app)/event.svelte
-msgid "Resume"
-msgstr "Resume"
+msgid "Event is completed"
+msgstr "Event is completed"
 
 #: src/routes/(app)/event.svelte
-msgid "Register"
-msgstr "Register"
+msgid "Exit event"
+msgstr "Exit event"
+
+#: src/routes/(app)/event.svelte
+msgid "Event is unavailable"
+msgstr "Event is unavailable"
+
+#: src/routes/(app)/event.svelte
+msgid "Click to start this event"
+msgstr "Click to start this event"
+
+#~ msgid "Hea"
+#~ msgstr "Hea"
+
+#: src/routes/(app)/event.svelte
+msgid "View on Openstreet Map"
+msgstr "View on Openstreet Map"
+
+#: src/routes/(app)/event.svelte
+msgid "Save date to Calendar"
+msgstr "Save date to Calendar"
+
+#: src/routes/(app)/event.svelte
+msgid "<0/> Requires: {0}"
+msgstr "<0/> Requires: {0}"
+
+#~ msgid "Timezone: {0}"
+#~ msgstr "Timezone: {0}"
+
+#: src/routes/(app)/+page.svelte
+msgid "Timezone: <0/>"
+msgstr "Timezone: <0/>"
+
+#: src/routes/(app)/+page.svelte
+msgid "All events take place in the following timezone."
+msgstr "All events take place in the following timezone."
+
+#: src/routes/(app)/+page.svelte
+msgid "Lost? Click here to get some help."
+msgstr "Lost? Click here to get some help."
+
+#: src/routes/(app)/+page.svelte
+msgid "In this tutorial, we will walk you through the event application process."
+msgstr "In this tutorial, we will walk you through the event application process."
+
+#: src/routes/(app)/+page.svelte
+msgid "Join an Event"
+msgstr "Join an Event"
+
+#: src/routes/(app)/+page.svelte
+msgid "Click here to join the first available event and start your application journey."
+msgstr "Click here to join the first available event and start your application journey."
+
+#: src/routes/(app)/+page.svelte
+msgid "Who's Registered?"
+msgstr "Who's Registered?"
+
+#: src/routes/(app)/+page.svelte
+msgid "See how many people have already registered for this event."
+msgstr "See how many people have already registered for this event."
+
+#: src/routes/(app)/+page.svelte
+msgid "Event Date & Time"
+msgstr "Event Date & Time"
+
+#: src/routes/(app)/+page.svelte
+msgid "Check the scheduled date and time for this event. Make sure to mark your calendar!"
+msgstr "Check the scheduled date and time for this event. Make sure to mark your calendar!"
+
+#: src/routes/(app)/+page.svelte
+msgid "Event Location"
+msgstr "Event Location"
+
+#: src/routes/(app)/+page.svelte
+msgid "If the event is in-person, click here to view the location on the map. For digital events, this section may not appear."
+msgstr "If the event is in-person, click here to view the location on the map. For digital events, this section may not appear."
+
+#: src/routes/(app)/+page.svelte
+msgid "All Set!"
+msgstr "All Set!"
+
+#: src/routes/(app)/+page.svelte
+msgid "You're ready to get started. Good luck with your application!"
+msgstr "You're ready to get started. Good luck with your application!"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Admin Dashboard"
+msgstr "Admin Dashboard"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Manage your events and users"
+msgstr "Manage your events and users"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Quick Access"
+msgstr "Quick Access"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Create Event"
+msgstr "Create Event"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Schedule and manage new events"
+msgstr "Schedule and manage new events"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Onboard User"
+msgstr "Onboard User"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Manage user onboarding process"
+msgstr "Manage user onboarding process"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Analytics"
+msgstr "Analytics"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "View detailed user and event statistics"
+msgstr "View detailed user and event statistics"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Overview"
+msgstr "Overview"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Active Users"
+msgstr "Active Users"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Currently active users"
+msgstr "Currently active users"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Registered Users"
+msgstr "Registered Users"
+
+#: src/routes/(app)/admin/+page.svelte
+msgid "Total registered users"
+msgstr "Total registered users"

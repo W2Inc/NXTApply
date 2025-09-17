@@ -3,14 +3,14 @@
 // See README in the root project for more information.
 // ============================================================================
 
+import Jobs from './jobs/index.js';
 import type { Handle, ServerInit } from '@sveltejs/kit';
 import { locales } from 'virtual:wuchale/locales';
 import { loadCatalog, loadIDs, key } from './locales/loader.svelte.js';
 import { runWithLocale, loadLocales } from 'wuchale/load-utils/server';
 import { sqlite } from '$lib/server/db.js';
-import Jobs from './jobs/index.js';
 import { env as pubenv } from '$env/dynamic/public';
-import { dev } from '$app/environment';
+import { building, dev } from '$app/environment';
 import { sequence } from '@sveltejs/kit/hooks';
 import { getUser } from './remotes/user/get.remote.js';
 import Logger from '$lib/logger.js';
@@ -31,9 +31,10 @@ export const init: ServerInit = async () => {
 	await sqlite`PRAGMA mmap_size = 134217728`; // 128MB
 	await sqlite`PRAGMA cache_size = 2000`;
 	await sqlite`PRAGMA busy_timeout = 5000`;
-	Jobs.create('session-cleanup');
 
-	if (!dev) {
+	if (!dev && !building) {
+		Jobs.create('session-cleanup');
+
 		const current = [
 			Jobs.schedule('0 0 1,15 * *', ['metric']), // Every half a month (1st and 15th)
 			Jobs.schedule('*/15 * * * *', ['session-cleanup']), // Every 15 minutes
@@ -59,16 +60,12 @@ const authenticate: Handle = async ({ event, resolve }) => {
 	const isRemoteFromAuth =
 		event.isRemoteRequest && referer?.startsWith(event.url.origin + '/auth/');
 
-	if (!valid && event.isRemoteRequest) {
-		return new Response(null, { status: 401 });
-	}
 	if (!valid && !isAuthPage && !isRemoteFromAuth) {
 		return Response.redirect('/auth/signin', 303);
 	}
 	if (valid && isMainAuth) {
 		return Response.redirect('/', 303);
 	}
-
 	if (valid) {
 		event.locals.session = valid;
 	}
@@ -106,7 +103,7 @@ const analytics: Handle = async ({ event, resolve }) => {
 };
 
 const locale: Handle = async ({ event, resolve }) => {
-	const locale = event.url.searchParams.get('locale') ?? 'en';
+	const locale = event.locals.locale = event.url.searchParams.get('locale') ?? 'en';
 	return await runWithLocale(locale, () => resolve(event));
 };
 

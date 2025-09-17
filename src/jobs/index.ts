@@ -4,8 +4,8 @@
 // ============================================================================
 
 import { CronJob } from 'cron';
-import { DATABASE_URL } from '$env/static/private';
 import Logger from '$lib/logger';
+import { DATABASE_URL } from '$env/static/private';
 
 // ============================================================================
 

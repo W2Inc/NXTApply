@@ -9,11 +9,9 @@
 	import { forgot } from '@/remotes/auth/forgot.remote';
 	import { reset } from '@/remotes/auth/reset.remote';
 	import * as Alert from '$lib/components/ui/alert/index.js';
-	import FormMessage from '$lib/components/form-message.svelte';
+	import * as Form from '$lib/components/form';
 
 	const { data }: PageProps = $props();
-	const request = FormKit.remote(forgot);
-	const update = FormKit.remote(reset);
 </script>
 
 <div class="space-y-6 p-8">
@@ -27,38 +25,34 @@
 		</div>
 
 		<div class="space-y-2">
-			<form {...update.remote}>
-				<input name="token" type="hidden" value={data.token} />
-				<FormEntry label="New Password" errors={update.errors.password}>
-					{#snippet child(id)}
-						<Input
-							{id}
-							name="password"
-							type="password"
-							required
-							placeholder="••••••••"
-							title="Please enter your new password"
-						/>
-					{/snippet}
-				</FormEntry>
+			<Form.Root {...FormKit.toastify(reset)}>
+				<input name={reset.field('token')} type="hidden" value={data.token} />
+				<Form.Field id="field:pw" label="New Password" errors={reset.issues?._password}>
+					<Input
+						id="field:pw"
+						name={reset.field('_password')}
+						type="password"
+						required
+						placeholder="••••••••"
+						title="Please enter your new password"
+					/>
+				</Form.Field>
 
-				<FormEntry label="Confirm Password" errors={update.errors.confirm}>
-					{#snippet child(id)}
-						<Input
-							{id}
-							name="confirm"
-							type="password"
-							required
-							placeholder="••••••••"
-							title="Please confirm your new password"
-						/>
-					{/snippet}
-				</FormEntry>
+				<Form.Field id="field:confirm" label="Confirm Password" errors={reset.issues?.confirm}>
+					<Input
+						id="field:confirm"
+						name={reset.field('_confirm')}
+						type="password"
+						required
+						placeholder="••••••••"
+						title="Please confirm your new password"
+					/>
+				</Form.Field>
 
 				<div class="space-y-3">
 					<Button type="submit" class="btn btn-outline w-full">Set Password</Button>
 				</div>
-			</form>
+			</Form.Root>
 
 			<p class="text-center text-xs text-muted-foreground">
 				Remember your password?
@@ -75,24 +69,24 @@
 		</div>
 
 		<div class="space-y-2">
-			<form {...request.remote}>
-				<FormEntry label="Email" errors={request.errors.email}>
-					{#snippet child(id)}
-						<Input
-							{id}
-							name="email"
-							type="email"
-							required
-							placeholder="user@example.com"
-							title="Please enter your email address"
-						/>
-					{/snippet}
-				</FormEntry>
+			<Form.Root {...FormKit.toastify(forgot)}>
+				<Form.Field id="field:email" label="Email" errors={forgot.issues?.email}>
+					<Input
+						id="field:email"
+						name="email"
+						type="email"
+						required
+						placeholder="user@example.com"
+						title="Please enter your email address"
+					/>
+				</Form.Field>
 
 				<div class="space-y-3">
-					<Button loading={request.pending > 0} type="submit" class="btn btn-outline w-full">Send Reset Link</Button>
+					<Button loading={forgot.pending > 0} type="submit" class="btn btn-outline w-full">
+						Send Reset Link
+					</Button>
 				</div>
-			</form>
+			</Form.Root>
 
 			<p class="text-center text-xs text-muted-foreground">
 				Remember your password?
@@ -100,7 +94,4 @@
 			</p>
 		</div>
 	{/if}
-
-	<FormMessage form={request} />
-	<FormMessage form={update} />
 </div>

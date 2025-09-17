@@ -62,8 +62,8 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export namespace UTC {
-	export function now(): Adobe.ZonedDateTime {
-		return Adobe.now('UTC');
+	export function now(timeZone: string = 'UTC'): Adobe.ZonedDateTime {
+		return Adobe.now(timeZone);
 	}
 
 	export function write(date: Adobe.ZonedDateTime): string {
@@ -77,12 +77,17 @@ export namespace UTC {
 		return `${year}-${month}-${day} ${hour}:${minute}:${second}`;
 	}
 
-	export function read(input: string | Date, timeZone: string = 'UTC'): Adobe.ZonedDateTime {
+	export function read<T extends string | Date | null | undefined>(
+		input: T,
+		timeZone: string = 'UTC'
+	): T extends null ? Adobe.ZonedDateTime | null : Adobe.ZonedDateTime {
+		if (!input) return null as any;
+
 		if (typeof input === 'string') {
 			const dateTime = Adobe.parseDateTime(input.replace(' ', 'T'));
-			return Adobe.toZoned(dateTime, timeZone);
+			return Adobe.toZoned(dateTime, timeZone) as any;
 		} else {
-			return Adobe.fromDate(input, timeZone);
+			return Adobe.fromDate(input as Date, timeZone) as any;
 		}
 	}
 }

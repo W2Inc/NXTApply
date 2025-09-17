@@ -14,7 +14,7 @@ const config = {
 		alias: {
 			"@/remotes/*": "./src/remotes/*",
 			"@/server/*": "./src/lib/server/*",
-		}
+		},
 	},
 	compilerOptions: {
 		experimental: {
