@@ -5,14 +5,13 @@
 
 import { dev } from '$app/environment';
 import { form, getRequestEvent } from '$app/server';
-import { FormKit } from '$lib/form.svelte';
 import { randomWait } from '$lib/utils';
 import { Auth } from '@/server/auth';
 import { sqlite } from '@/server/db';
 import type { User } from '@prisma/client';
 import { error, redirect } from '@sveltejs/kit';
 import { sql } from 'bun';
-import { z } from 'zod/v4';
+import { z } from 'zod';
 
 // ============================================================================
 
@@ -30,7 +29,7 @@ export const signup = form(schema, async (data) => {
 	// Confirm Passwords
 	const { cookies } = getRequestEvent();
 	const password = await Bun.password.hash(data._password, 'argon2id');
-	if (!(await Bun.password.verify(data.confirm, password))) {
+	if (!(await Bun.password.verify(data._confirm, password))) {
 		error(422, 'Passwords do not match');
 	}
 

@@ -7,10 +7,8 @@ import z from 'zod';
 import { SQL } from 'bun';
 import { DATABASE_URL } from '$env/static/private';
 import Logger from '$lib/logger';
-import { building } from '$app/environment';
 
 // ============================================================================
-
 
 export const sqlite = new SQL({
 	adapter: 'sqlite',

@@ -8,7 +8,6 @@ import type { Session, User, VerificationToken } from '@prisma/client';
 import { error } from '@sveltejs/kit';
 import { now } from '@internationalized/date';
 import { sqlite } from './db';
-import { getUser } from '@/remotes/user/get.remote';
 import { sql } from 'bun';
 import { UTC, type ISO } from '$lib/utils';
 import Logger from '$lib/logger';
@@ -70,8 +69,12 @@ export namespace Auth {
 			throw new Error(`Inproper usage of fn: 'user'`);
 
 		Logger.dbg('Requesting user');
-		const user = (await getUser(locals.session.userId)) ?? error(401);
-		if (flags && (user.flags & flags) !== flags) error(403);
+		const id = locals.session.userId;
+		const [user] = await sqlite<ISO<User[]>>`SELECT * FROM user WHERE id = ${id}`;
+		if (!user)
+			error(401);
+		else if (flags && (user.flags & flags) !== flags)
+			error(403);
 		return user;
 	}
 

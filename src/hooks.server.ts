@@ -103,6 +103,14 @@ const analytics: Handle = async ({ event, resolve }) => {
 };
 
 const locale: Handle = async ({ event, resolve }) => {
+	const isHttps =
+		event.url.protocol === 'https:' ||
+		event.request.headers.get('x-forwarded-proto') === 'https';
+
+	if (!isHttps) {
+		Logger.err('Non-HTTPS request detected. Cookies may not be set, which could cause unexpected behavior.');
+	}
+
 	const locale = event.locals.locale = event.url.searchParams.get('locale') ?? 'en';
 	return await runWithLocale(locale, () => resolve(event));
 };

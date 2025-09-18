@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { FormKit } from '$lib/form.svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
-	import FormEntry from '$lib/components/form-entry.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Oauth from '../oauth.svelte';
 	import { signup } from '@/remotes/auth/signup.remote';

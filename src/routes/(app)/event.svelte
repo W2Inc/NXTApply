@@ -51,12 +51,12 @@
 	<Tooltip.Root>
 		<Tooltip.Trigger>
 			<span id="event-when" class={cn('flex items-center gap-1', expired && 'line-through opacity-50')}>
-				<Calendar size={16} class="inline-block" />
+				<Calendar size={16} class="shrink-0" />
 				<a
 					href="#"
 					inert={expired}
 					download={`${event.name}.ics`}
-					class="text-xs underline hover:text-primary"
+					class="text-xs underline hover:text-primary truncate"
 					title="Save to calendar"
 				>
 					{formatter.format(startsAt.toDate())}
@@ -71,16 +71,16 @@
 	<Tooltip.Root>
 		<Tooltip.Trigger>
 			<span id="event-where" class="flex items-center gap-1">
-				<MapPin size={15} class="inline-block" />
+				<MapPin size={15} class="shrink-0" />
 				<a
 					href={`https://maps.apple.com/?q=${encodeURIComponent(event.address)}`}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="text-xs underline hover:text-primary"
+					class="text-xs underline hover:text-primary truncate"
 				>
 					{event.address}
 				</a>
-				<ExternalLink size={12} />
+				<ExternalLink size={12} class="shrink-0" />
 			</span>
 		</Tooltip.Trigger>
 		<Tooltip.Content>View on Openstreet Map</Tooltip.Content>
@@ -90,11 +90,11 @@
 {#snippet who()}
 	<svelte:boundary>
 		<span id="event-who" class="flex items-center gap-1 text-xs hover:text-primary">
-			<Users size={16} />
+			<Users size={16} class="shrink-0" />
 			{await userCount(event.id)} / {event.maxUsers}
 		</span>
 		{#snippet pending()}
-			<LoaderCircle class="animate-spin" size={16} /> / {event.maxUsers}
+			<LoaderCircle class="animate-spin shrink-0" size={16} /> / {event.maxUsers}
 		{/snippet}
 	</svelte:boundary>
 {/snippet}
@@ -113,7 +113,7 @@
 						{disabled}
 						loading={remote.pending > 0}
 						type="submit"
-						class="size-12"
+						class="size-12 shrink-0"
 					>
 						{#if event.userEventId && event.completedAt}
 							<Check class="size-6" />
@@ -151,14 +151,14 @@
 	<div class="min-w-0 flex-1">
 		<!-- TOP -->
 		<div class="flex items-center gap-2">
-			<p class="text-lg font-semibold text-foreground">
+			<p class="text-lg font-semibold text-foreground truncate">
 				{event.name}
 			</p>
 			<!-- USER STATUS -->
 			{#if event.requires}
 				<Badge
 					variant="outline"
-					class="flex items-center gap-1 bg-orange-400 px-2 text-[10px] text-white shadow"
+					class="flex items-center gap-1 bg-orange-400 px-2 text-[10px] text-white shadow shrink-0"
 				>
 					<Flag fill-rule="inherit" size={12} />
 					Requires: {event.requires}
@@ -169,7 +169,7 @@
 				{#if event?.completedAt}
 					<Badge
 						variant="secondary"
-						class="flex items-center gap-1 bg-green-600 px-2 text-[10px] text-white shadow"
+						class="flex items-center gap-1 bg-green-600 px-2 text-[10px] text-white shadow shrink-0"
 					>
 						<BadgeCheck size={12} />
 						Completed
@@ -177,7 +177,7 @@
 				{:else}
 					<Badge
 						variant="secondary"
-						class="flex items-center gap-1 bg-destructive px-2 text-[10px] text-white shadow"
+						class="flex items-center gap-1 bg-destructive px-2 text-[10px] text-white shadow shrink-0"
 					>
 						<BadgeX size={12} />
 						Not Completed
@@ -188,13 +188,13 @@
 			<Separator orientation="horizontal" class="flex-1" />
 		</div>
 		<!-- BOTTOM -->
-		<div class="flex gap-1 text-muted-foreground">
-			{@render who()}
-			<span aria-hidden="true">•</span>
-			{@render when()}
+		<div class="flex flex-col gap-1 sm:flex-row sm:items-center text-muted-foreground">
+			<div class="min-w-0">{@render who()}</div>
+			<span aria-hidden="true" class="hidden sm:inline">•</span>
+			<div class="min-w-0">{@render when()}</div>
 			{#if event.address}
-				<span aria-hidden="true">•</span>
-				{@render where()}
+				<span aria-hidden="true" class="hidden sm:inline">•</span>
+				<div class="min-w-0">{@render where()}</div>
 			{/if}
 		</div>
 	</div>

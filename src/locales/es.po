@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T09:10:19.414Z\n"
-"PO-Revision-Date: 2025-09-17T18:53:04.924Z\n"
+"PO-Revision-Date: 2025-09-18T06:48:17.572Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -373,7 +373,7 @@ msgstr "Sigue los pasos a continuación para completar tu solicitud."
 #~ msgstr ""
 
 #: src/routes/(app)/+page.svelte
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "Welcome to {0}!"
 msgstr "¡Bienvenido a {0}!"
 
@@ -393,11 +393,11 @@ msgstr "Abra su aplicación de autenticación de dos factores (TOTP) o la extens
 #~ msgstr ""
 
 #: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
-#: src/routes/(app)/admin/resources/track/+page.svelte
-#: src/routes/(app)/admin/resources/event-type/manage/[[id]]/+page.svelte
-#: src/routes/(app)/admin/resources/event-type/+page.svelte
-#: src/routes/(app)/admin/resources/track/manage/[[id]]/+page.svelte
 #: src/routes/(app)/admin/resources/user/+page.svelte
+#: src/routes/(app)/admin/resources/track/+page.svelte
+#: src/routes/(app)/admin/resources/event-type/+page.svelte
+#: src/routes/(app)/admin/resources/event-type/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/track/manage/[[id]]/+page.svelte
 #: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
 #: src/routes/(app)/admin/resources/event/+page.svelte
 msgid "Hello"
@@ -461,9 +461,8 @@ msgstr "<0/> Requiere: {0}"
 #~ msgid "Timezone: {0}"
 #~ msgstr "Zona horaria: {0}"
 
-#: src/routes/(app)/+page.svelte
-msgid "Timezone: <0/>"
-msgstr "Zona horaria: <0/>"
+#~ msgid "Timezone: <0/>"
+#~ msgstr "Zona horaria: <0/>"
 
 #: src/routes/(app)/+page.svelte
 msgid "All events take place in the following timezone."
@@ -473,47 +472,47 @@ msgstr "Todos los eventos tienen lugar en la siguiente zona horaria."
 msgid "Lost? Click here to get some help."
 msgstr "¿Perdido? Haga clic aquí para obtener ayuda."
 
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "In this tutorial, we will walk you through the event application process."
 msgstr "En este tutorial, le guiaremos a través del proceso de solicitud de evento."
 
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "Join an Event"
 msgstr "Únete a un evento"
 
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "Click here to join the first available event and start your application journey."
 msgstr "Haz clic aquí para unirte al primer evento disponible y comenzar tu proceso de solicitud."
 
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "Who's Registered?"
 msgstr "¿Quién se ha registrado?"
 
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "See how many people have already registered for this event."
 msgstr "Mira cuántas personas ya se han registrado para este evento."
 
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "Event Date & Time"
 msgstr "Fecha y hora del evento"
 
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "Check the scheduled date and time for this event. Make sure to mark your calendar!"
 msgstr "Consulta la fecha y hora programadas para este evento. ¡Asegúrate de marcar tu calendario!"
 
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "Event Location"
 msgstr "Ubicación del evento"
 
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "If the event is in-person, click here to view the location on the map. For digital events, this section may not appear."
 msgstr "Si el evento es presencial, haz clic aquí para ver la ubicación en el mapa. Para eventos digitales, es posible que esta sección no aparezca."
 
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "All Set!"
 msgstr "¡Todo listo!"
 
-#: src/routes/(app)/+page.svelte
+#: src/routes/(app)/tutorial.svelte.ts
 msgid "You're ready to get started. Good luck with your application!"
 msgstr "Estás listo para comenzar. ¡Buena suerte con tu solicitud!```"
 
@@ -572,3 +571,15 @@ msgstr "Usuarios registrados"
 #: src/routes/(app)/admin/+page.svelte
 msgid "Total registered users"
 msgstr "Total de usuarios registrados```"
+
+#: src/routes/(app)/+page.svelte
+msgid "Timezone:"
+msgstr "Zona horaria:"
+
+#: src/routes/(app)/tutorial.svelte.ts
+msgid "No Events!"
+msgstr "¡No hay eventos!"
+
+#: src/routes/(app)/tutorial.svelte.ts
+msgid "Currently there are no events taking place that you can join. Please wait for a while and refresh this page, perhaps something may show up"
+msgstr "Actualmente no hay eventos a los que puedas unirte. Por favor, espera un momento y actualiza esta página, quizás aparezca algo."
