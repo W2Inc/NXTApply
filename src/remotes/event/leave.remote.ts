@@ -7,9 +7,9 @@ import z from 'zod';
 import { FormKit } from '$lib/form.svelte';
 import { sqlite } from '@/server/db';
 import type { ApplicationEvent } from '@prisma/client';
-import { error, redirect } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import { form, getRequestEvent } from '$app/server';
-import { sql } from 'bun';
+import { userCount } from './count.remote';
 
 // ============================================================================
 
@@ -17,7 +17,9 @@ const schema = z.object({
 	id: z.string()
 });
 
-export const join = form(schema, async ({ id }) => {
+// ============================================================================
+
+export const leave = form(schema, async ({ id }) => {
 	const [event] = await sqlite<ApplicationEvent[]>`
 		SELECT * FROM event WHERE id = ${id}
 	`;
@@ -30,16 +32,10 @@ export const join = form(schema, async ({ id }) => {
 		SELECT * FROM user_event WHERE eventId = ${event.id} AND userId = ${userId}
 	`;
 
-	if (userEvent && event.trackId) redirect(303, `/${event.id}`);
+	if (!userEvent)
+		error(400, 'You are not registered for this event.');
 
-	const uuid = Bun.randomUUIDv7('base64url');
-	await sqlite`INSERT INTO user_event ${sql({
-		id: uuid,
-		userId,
-		eventId: event.id
-	})}`;
-
-	if (event.trackId)
-		redirect(303, `/${event.id}`);
+	await sqlite`DELETE FROM user_event WHERE id = ${userEvent.id}`;
+	await userCount(event.id).refresh();
 	return FormKit.Reply.NoContent();
 });

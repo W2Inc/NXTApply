@@ -29,7 +29,6 @@ export type AvailableUserEvent = {
 export const load: PageServerLoad = async ({ locals }) => {
 	const userId = locals.session.userId;
 	return {
-		user: getUser(userId),
 		events: sqlite<AvailableUserEvent[]>`
 			WITH user_completed_event_types AS (
 				SELECT DISTINCT e2.eventTypeId

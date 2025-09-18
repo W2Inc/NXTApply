@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T09:10:19.412Z\n"
-"PO-Revision-Date: 2025-09-18T06:48:16.252Z\n"
+"PO-Revision-Date: 2025-09-18T17:59:53.958Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -374,8 +374,8 @@ msgstr "Follow the steps below to complete your application."
 #~ msgid "Loading..."
 #~ msgstr "Loading..."
 
-#: src/routes/(app)/+page.svelte
 #: src/routes/(app)/tutorial.svelte.ts
+#: src/routes/(app)/+page.svelte
 msgid "Welcome to {0}!"
 msgstr "Welcome to {0}!"
 
@@ -431,21 +431,18 @@ msgstr "Hello"
 #~ msgid "Start this event"
 #~ msgstr "Start this event"
 
-#: src/routes/(app)/event.svelte
-msgid "Event is completed"
-msgstr "Event is completed"
+#~ msgid "Event is completed"
+#~ msgstr "Event is completed"
 
-#: src/routes/(app)/event.svelte
-msgid "Exit event"
-msgstr "Exit event"
+#~ msgid "Exit event"
+#~ msgstr "Exit event"
 
 #: src/routes/(app)/event.svelte
 msgid "Event is unavailable"
 msgstr "Event is unavailable"
 
-#: src/routes/(app)/event.svelte
-msgid "Click to start this event"
-msgstr "Click to start this event"
+#~ msgid "Click to start this event"
+#~ msgstr "Click to start this event"
 
 #~ msgid "Hea"
 #~ msgstr "Hea"
@@ -587,3 +584,190 @@ msgstr "No Events!"
 #: src/routes/(app)/tutorial.svelte.ts
 msgid "Currently there are no events taking place that you can join. Please wait for a while and refresh this page, perhaps something may show up"
 msgstr "Currently there are no events taking place that you can join. Please wait for a while and refresh this page, perhaps something may show up"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "<0/> GDPR & Data Privacy"
+msgstr "<0/> GDPR & Data Privacy"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"Your privacy is our priority. We're committed to transparency and giving you full control\n"
+"over your personal data in accordance with GDPR regulations."
+msgstr ""
+"Your privacy is our priority. We're committed to transparency and giving you full control\n"
+"over your personal data in accordance with GDPR regulations."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "What Data We Collect"
+msgstr "What Data We Collect"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"We only collect data that's necessary to provide our services and enhance your\n"
+"experience:"
+msgstr ""
+"We only collect data that's necessary to provide our services and enhance your\n"
+"experience:"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Contact Information:"
+msgstr "Contact Information:"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Email address, phone number"
+msgstr "Email address, phone number"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Personal Details:"
+msgstr "Personal Details:"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "First name, last name, age"
+msgstr "First name, last name, age"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Address Information:"
+msgstr "Address Information:"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Mailing and billing addresses"
+msgstr "Mailing and billing addresses"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Activity Data:"
+msgstr "Activity Data:"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Events participated in, dates, and preferences"
+msgstr "Events participated in, dates, and preferences"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Privacy-First Analytics"
+msgstr "Privacy-First Analytics"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"We use <0>Plausible Analytics</0> to understand how our site is used and improve your experience. <1>Privacy guarantee:</1> Plausible <2>does not</2> collect cookies, personal\n"
+"data, or any information that could identify you. It's 100% GDPR compliant."
+msgstr ""
+"We use <0>Plausible Analytics</0> to understand how our site is used and improve your experience. <1>Privacy guarantee:</1> Plausible <2>does not</2> collect cookies, personal\n"
+"data, or any information that could identify you. It's 100% GDPR compliant."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Your Rights Under GDPR"
+msgstr "Your Rights Under GDPR"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Right to Access"
+msgstr "Right to Access"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"You can request a complete copy of all personal data we hold about you, including how\n"
+"it's used and who it's shared with."
+msgstr ""
+"You can request a complete copy of all personal data we hold about you, including how\n"
+"it's used and who it's shared with."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Right to Deletion"
+msgstr "Right to Deletion"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"You can request complete deletion of your account and all associated personal data from\n"
+"our systems."
+msgstr ""
+"You can request complete deletion of your account and all associated personal data from\n"
+"our systems."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Right to Rectification"
+msgstr "Right to Rectification"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"You can request corrections to any inaccurate or incomplete personal data we hold about\n"
+"you."
+msgstr ""
+"You can request corrections to any inaccurate or incomplete personal data we hold about\n"
+"you."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Right to Portability"
+msgstr "Right to Portability"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"You can request your data in a structured, machine-readable format to transfer to\n"
+"another service."
+msgstr ""
+"You can request your data in a structured, machine-readable format to transfer to\n"
+"another service."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "Exercise Your Data Rights"
+msgstr "Exercise Your Data Rights"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid ""
+"Enter your email address below to make a data request. We'll process your request within 30\n"
+"days and send the results to your registered email address."
+msgstr ""
+"Enter your email address below to make a data request. We'll process your request within 30\n"
+"days and send the results to your registered email address."
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "<0/> Request My Data"
+msgstr "<0/> Request My Data"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "DELETE"
+msgstr "DELETE"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "<0/> Delete My Account"
+msgstr "<0/> Delete My Account"
+
+#: src/routes/(app)/gdpr/+page.svelte
+msgid "For questions about data processing or to exercise additional rights, contact us at <0>privacy@example.com</0>"
+msgstr "For questions about data processing or to exercise additional rights, contact us at <0>privacy@example.com</0>"
+
+#~ msgid "Open Dialog"
+#~ msgstr "Open Dialog"
+
+#~ msgid "Are you absolutely sure?"
+#~ msgstr "Are you absolutely sure?"
+
+#~ msgid ""
+#~ "This action cannot be undone. This will permanently delete your account and remove your data\n"
+#~ "from our servers."
+#~ msgstr ""
+#~ "This action cannot be undone. This will permanently delete your account and remove your data\n"
+#~ "from our servers."
+
+#: src/lib/components/modal-provider.svelte
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/lib/components/modal-provider.svelte
+msgid "Continue"
+msgstr "Continue"
+
+#~ msgid "Are you sure?"
+#~ msgstr "Are you sure?"
+
+#~ msgid "This action cannot be undone."
+#~ msgstr "This action cannot be undone."
+
+#: src/lib/components/modal-provider.svelte
+msgid "OK"
+msgstr "OK"
+
+#: src/routes/(app)/event.svelte
+msgid "Continue to event track"
+msgstr "Continue to event track"
+
+#: src/routes/(app)/event.svelte
+msgid "Click to join this event"
+msgstr "Click to join this event"

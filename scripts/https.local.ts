@@ -11,7 +11,7 @@ import { $ } from "bun";
 
 $`rm -rf .cert`
 $`mkdir -p .cert`
-$`penssl req -x509 -newkey rsa:2048 -keyout .cert/key.pem -out .cert/cert.pem -days 365 -nodes -subj "/CN=localhost"`
+$`openssl req -x509 -newkey rsa:2048 -keyout .cert/key.pem -out .cert/cert.pem -days 365 -nodes -subj "/CN=localhost"`
 console.log(`
 Please add the following lines to your vite.config.ts:
 ---

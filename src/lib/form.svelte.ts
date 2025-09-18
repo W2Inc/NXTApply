@@ -6,7 +6,7 @@
 import { z } from 'zod/v4';
 import { ensure } from './utils';
 import { toast } from 'svelte-sonner';
-import { isHttpError, type ActionResult, type RemoteForm } from '@sveltejs/kit';
+import { isHttpError, type ActionResult, type RemoteForm, type RemoteQuery, type RemoteQueryOverride } from '@sveltejs/kit';
 
 // ============================================================================
 
@@ -24,12 +24,12 @@ export namespace FormKit {
 		Message: (data: string): Message => ({ type: 'message', status: 200, data })
 	};
 
-	export function toastify(rm: RemoteForm<any, Result<any>> | Omit<RemoteForm<any, Result<any>>, 'for'>) {
+	export function toastify(rm: RemoteForm<any, Result<any>> | Omit<RemoteForm<any, Result<any>>, 'for'>, ...queries: Array<RemoteQuery<any> | RemoteQueryOverride>) {
 		return rm.enhance(async ({ submit, form }) => {
 			form.inert = true;
 
 			// Check if we Sveltekit's 'error' was used.
-			const [_, err] = await ensure(submit());
+			const [_, err] = await ensure(submit().updates(...queries));
 			if (isHttpError(err)) {
 				toast.error(err.body.message);
 			} else if (rm.result?.type === 'message') {

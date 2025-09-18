@@ -22,6 +22,7 @@
 	import { driver } from 'driver.js';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { tutorial } from './tutorial.svelte';
+	import { leave } from '@/remotes/event/leave.remote';
 
 	const { data }: PageProps = $props();
 </script>
@@ -73,7 +74,9 @@
 				</li>
 			{:then events}
 				{#each events as event}
-					<Event {event} remote={join.for(event.id)} />
+					{@const joinForm = join.for(event.id)}
+					{@const leaveForm = leave.for(event.id)}
+					<Event {event} join={joinForm} leave={leaveForm} />
 				{/each}
 				{#if !events?.length}
 					<li class="py-8 text-center text-base text-muted-foreground">No upcoming events.</li>

@@ -12,6 +12,24 @@ import type { ISO } from '$lib/utils';
 // ============================================================================
 
 export const getUser = query(z.base64url(), async (id) => {
-	const [user] = await sqlite<ISO<User[]>>`SELECT * FROM user WHERE id = ${id}`;
+	const [user] = await sqlite<ISO<Omit<User, 'hash' | 'tfa' >[]>>`
+		SELECT
+			id,
+			email,
+			verified,
+			dob,
+			gender,
+			country,
+			flags,
+			firstName,
+			lastName,
+			phone,
+			providerId,
+			provider,
+			createdAt,
+			updatedAt
+		FROM user WHERE id = ${id}
+	`;
+
 	return user;
 });

@@ -10,6 +10,7 @@ import type { ApplicationEvent } from '@prisma/client';
 import { error, redirect } from '@sveltejs/kit';
 import { form, getRequestEvent } from '$app/server';
 import { sql } from 'bun';
+import { userCount } from './count.remote';
 
 // ============================================================================
 
@@ -30,6 +31,7 @@ export const join = form(schema, async ({ id }) => {
 		SELECT * FROM user_event WHERE eventId = ${event.id} AND userId = ${userId}
 	`;
 
+
 	if (userEvent && event.trackId) redirect(303, `/${event.id}`);
 
 	const uuid = Bun.randomUUIDv7('base64url');
@@ -39,7 +41,9 @@ export const join = form(schema, async ({ id }) => {
 		eventId: event.id
 	})}`;
 
+
 	if (event.trackId)
 		redirect(303, `/${event.id}`);
 	return FormKit.Reply.NoContent();
 });
+
