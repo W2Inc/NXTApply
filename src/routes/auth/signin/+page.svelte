@@ -15,8 +15,9 @@
 
 	<div class="space-y-2">
 		<Form.Root {...FormKit.toastify(signin)}>
-			<Form.Field label="Email" errors={signin.issues?.email}>
+			<Form.Field id="email" label="Email" errors={signin.issues?.email}>
 				<Input
+					id="email"
 					name={signin.field('email')}
 					type="email"
 					required
@@ -26,8 +27,9 @@
 			</Form.Field>
 
 			<div class="tracking-tight">
-				<Form.Field label="Password" errors={signin.issues?._password}>
+				<Form.Field id="password" label="Password" errors={signin.issues?._password}>
 					<Input
+						id="password"
 						name={signin.field('_password')}
 						type="password"
 						required

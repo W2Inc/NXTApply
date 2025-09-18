@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T09:10:19.414Z\n"
-"PO-Revision-Date: 2025-09-18T15:01:47.388Z\n"
+"PO-Revision-Date: 2025-09-18T19:33:05.371Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -319,23 +319,21 @@ msgstr "Cerrar"
 #~ msgid "Your student application journey starts here.<0/> <1>Follow the steps below to complete your application.</1>"
 #~ msgstr ""
 
-#: src/routes/(app)/+page.svelte
-msgid "Upcoming Events"
-msgstr "Próximos Eventos"
+#~ msgid "Upcoming Events"
+#~ msgstr "Próximos Eventos"
 
-#: src/routes/(app)/+page.svelte
-msgid "No upcoming events."
-msgstr "No hay próximos eventos."
+#~ msgid "No upcoming events."
+#~ msgstr "No hay próximos eventos."
 
-#: src/routes/(app)/event.svelte
+#: src/routes/(app)/_event.svelte
 msgid "<0/> Completed"
 msgstr "<0/> Completado"
 
-#: src/routes/(app)/event.svelte
+#: src/routes/(app)/_event.svelte
 msgid "<0/> Not Completed"
 msgstr "<0/> No completado```"
 
-#: src/routes/(app)/event.svelte
+#: src/routes/(app)/_event.svelte
 msgid "Save to calendar"
 msgstr "Guardar en el calendario"
 
@@ -358,13 +356,11 @@ msgstr "Cargando próximos eventos..."
 #~ msgid "Your student application journey starts here. <0>Follow the steps below to complete your application.</0>"
 #~ msgstr ""
 
-#: src/routes/(app)/+page.svelte
-msgid "Your student application journey starts here."
-msgstr "Tu proceso de solicitud de estudiante comienza aquí."
+#~ msgid "Your student application journey starts here."
+#~ msgstr "Tu proceso de solicitud de estudiante comienza aquí."
 
-#: src/routes/(app)/+page.svelte
-msgid "Follow the steps below to complete your application."
-msgstr "Sigue los pasos a continuación para completar tu solicitud."
+#~ msgid "Follow the steps below to complete your application."
+#~ msgstr "Sigue los pasos a continuación para completar tu solicitud."
 
 #~ msgid "Welcome back {0} {1} to {2}"
 #~ msgstr ""
@@ -372,7 +368,6 @@ msgstr "Sigue los pasos a continuación para completar tu solicitud."
 #~ msgid "Loading..."
 #~ msgstr ""
 
-#: src/routes/(app)/+page.svelte
 #: src/routes/(app)/tutorial.svelte.ts
 msgid "Welcome to {0}!"
 msgstr "¡Bienvenido a {0}!"
@@ -427,15 +422,13 @@ msgstr "Hola```"
 #~ msgid "Start this event"
 #~ msgstr ""
 
-#: src/routes/(app)/event.svelte
-msgid "Event is completed"
-msgstr "Evento completado"
+#~ msgid "Event is completed"
+#~ msgstr "Evento completado"
 
-#: src/routes/(app)/event.svelte
-msgid "Exit event"
-msgstr "Salir del evento"
+#~ msgid "Exit event"
+#~ msgstr "Salir del evento"
 
-#: src/routes/(app)/event.svelte
+#: src/routes/(app)/_event.svelte
 msgid "Event is unavailable"
 msgstr "Evento no disponible"
 
@@ -445,15 +438,15 @@ msgstr "Evento no disponible"
 #~ msgid "Hea"
 #~ msgstr ""
 
-#: src/routes/(app)/event.svelte
+#: src/routes/(app)/_event.svelte
 msgid "View on Openstreet Map"
 msgstr "Ver en Openstreet Map"
 
-#: src/routes/(app)/event.svelte
+#: src/routes/(app)/_event.svelte
 msgid "Save date to Calendar"
 msgstr "Guardar fecha en el calendario"
 
-#: src/routes/(app)/event.svelte
+#: src/routes/(app)/_event.svelte
 msgid "<0/> Requires: {0}"
 msgstr "<0/> Requiere: {0}"
 
@@ -463,13 +456,11 @@ msgstr "<0/> Requiere: {0}"
 #~ msgid "Timezone: <0/>"
 #~ msgstr "Zona horaria: <0/>"
 
-#: src/routes/(app)/+page.svelte
-msgid "All events take place in the following timezone."
-msgstr "Todos los eventos tienen lugar en la siguiente zona horaria."
+#~ msgid "All events take place in the following timezone."
+#~ msgstr "Todos los eventos tienen lugar en la siguiente zona horaria."
 
-#: src/routes/(app)/+page.svelte
-msgid "Lost? Click here to get some help."
-msgstr "¿Perdido? Haga clic aquí para obtener ayuda."
+#~ msgid "Lost? Click here to get some help."
+#~ msgstr "¿Perdido? Haga clic aquí para obtener ayuda."
 
 #: src/routes/(app)/tutorial.svelte.ts
 msgid "In this tutorial, we will walk you through the event application process."
@@ -571,9 +562,8 @@ msgstr "Usuarios registrados"
 msgid "Total registered users"
 msgstr "Total de usuarios registrados```"
 
-#: src/routes/(app)/+page.svelte
-msgid "Timezone:"
-msgstr "Zona horaria:"
+#~ msgid "Timezone:"
+#~ msgstr "Zona horaria:"
 
 #: src/routes/(app)/tutorial.svelte.ts
 msgid "No Events!"
@@ -744,10 +734,56 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: src/routes/(app)/event.svelte
+#: src/routes/(app)/_event.svelte
 msgid "Continue to event track"
 msgstr ""
 
-#: src/routes/(app)/event.svelte
+#: src/routes/(app)/_event.svelte
 msgid "Click to join this event"
 msgstr ""
+
+#~ msgid "Fetching timezone..."
+#~ msgstr ""
+
+#~ msgid "Your Application Dashboard"
+#~ msgstr ""
+
+#~ msgid "Select events and track your progress as you move through your application journey."
+#~ msgstr ""
+
+#~ msgid "Stay on top of upcoming events and see how far you've come."
+#~ msgstr ""
+
+#: src/routes/(app)/+page.svelte
+msgid "Below you can see your progress and active events."
+msgstr ""
+
+#~ msgid "Upcoming Events <0><0>Timezone:</0> <1/></0>"
+#~ msgstr ""
+
+#~ msgid "Click here to get some help on how to start."
+#~ msgstr ""
+
+#~ msgid "Failed to load events. Please try again."
+#~ msgstr ""
+
+#: src/routes/(app)/+page.svelte
+msgid "<0/> Failed to load events. Please try again."
+msgstr ""
+
+#: src/routes/(app)/+page.svelte
+msgid "Unknown"
+msgstr ""
+
+#~ msgid "Upcoming Events <0><0><0>Timezone:</0> <1/></0> <1><0/> <1>Click here to get some help on how to start.</1></1></0>"
+#~ msgstr ""
+
+#: src/routes/(app)/+page.svelte
+msgid "Upcoming Events <0><0><0>Timezone:</0> <1/></0></0>"
+msgstr ""
+
+#~ msgid "Join"
+#~ msgstr ""
+
+#~ msgid "<0/> test"
+#~ msgstr ""

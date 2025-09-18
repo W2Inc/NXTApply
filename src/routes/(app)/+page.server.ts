@@ -7,6 +7,7 @@ import { sqlite } from '$lib/server/db';
 import { randomWait } from '$lib/utils';
 import { getUser } from '@/remotes/user/get.remote';
 import type { PageServerLoad } from './$types';
+import type { Actions } from '@sveltejs/kit';
 
 // ============================================================================
 

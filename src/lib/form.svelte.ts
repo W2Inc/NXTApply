@@ -24,12 +24,12 @@ export namespace FormKit {
 		Message: (data: string): Message => ({ type: 'message', status: 200, data })
 	};
 
-	export function toastify(rm: RemoteForm<any, Result<any>> | Omit<RemoteForm<any, Result<any>>, 'for'>, ...queries: Array<RemoteQuery<any> | RemoteQueryOverride>) {
+	export function toastify(rm: RemoteForm<any, Result<any>> | Omit<RemoteForm<any, Result<any>>, 'for'>) {
 		return rm.enhance(async ({ submit, form }) => {
 			form.inert = true;
 
 			// Check if we Sveltekit's 'error' was used.
-			const [_, err] = await ensure(submit().updates(...queries));
+			const [_, err] = await ensure(submit());
 			if (isHttpError(err)) {
 				toast.error(err.body.message);
 			} else if (rm.result?.type === 'message') {

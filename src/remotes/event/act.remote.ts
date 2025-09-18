@@ -7,19 +7,19 @@ import z from 'zod';
 import { FormKit } from '$lib/form.svelte';
 import { sqlite } from '@/server/db';
 import type { ApplicationEvent } from '@prisma/client';
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import { form, getRequestEvent } from '$app/server';
+import { sql } from 'bun';
 import { userCount } from './count.remote';
 
 // ============================================================================
 
 const schema = z.object({
-	id: z.string()
+	id: z.string(),
+	action: z.enum(['join', 'leave'])
 });
 
-// ============================================================================
-
-export const leave = form(schema, async ({ id }) => {
+export const eventAction = form(schema, async ({ id, action }) => {
 	const [event] = await sqlite<ApplicationEvent[]>`
 		SELECT * FROM event WHERE id = ${id}
 	`;
@@ -32,10 +32,24 @@ export const leave = form(schema, async ({ id }) => {
 		SELECT * FROM user_event WHERE eventId = ${event.id} AND userId = ${userId}
 	`;
 
-	if (!userEvent)
-		error(400, 'You are not registered for this event.');
+	if (action === 'join') {
+		if (userEvent && event.trackId) redirect(303, `/${event.id}`);
+		else if (userEvent) return error(400, 'You are already registered for this event.');
 
-	await sqlite`DELETE FROM user_event WHERE id = ${userEvent.id}`;
-	await userCount(event.id).refresh();
+		const uuid = Bun.randomUUIDv7('base64url');
+		await sqlite`INSERT INTO user_event ${sql({
+			id: uuid,
+			userId,
+			eventId: event.id
+		})}`;
+	} else if (action === 'leave') {
+		if (!userEvent) return error(400, 'You are not registered for this event.');
+
+		await sqlite`DELETE FROM user_event WHERE eventId = ${event.id} AND userId = ${userId}`;
+	}
+
+	if (event.trackId && action === 'join')
+		redirect(303, `/${event.id}`);
 	return FormKit.Reply.NoContent();
 });
+
