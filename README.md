@@ -1,38 +1,83 @@
-# sv
+# NXTApply 🚀
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+**NXTApply** is a modern, multi-language student application management platform that simplifies the application for students. Built with SvelteKit and designed for scalability, it provides a complete solution for managing application events, tracks, and user onboarding.
 
-## Creating a project
+<img width="1495" height="841" alt="image" src="https://github.com/user-attachments/assets/2af8c55a-c8c1-4468-b71b-1da0bb0cba07" />
 
-If you're seeing this, you've probably already done this step. Congrats!
+## 🚦 Getting Started
 
-```bash
-# create a new project in the current directory
-npx sv create
+### Prerequisites
+- Bun ^1.2.23
 
-# create a new project in my-app
-npx sv create my-app
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/W2Inc/NXTApply.git
+   cd NXTApply
+   ```
+
+2. **Install dependencies**
+   ```bash
+   bun install
+   ```
+
+3. **Set up environment variables**
+   Configure the following variables:
+   ```env
+   # Database
+   DATABASE_NAME="dev.db"
+   DATABASE_URL="file:./prisma/${DATABASE_NAME}"
+   DATABASE_URL_PRISMA="file:./${DATABASE_NAME}"
+
+   # OAuth Providers
+   GOOGLE_CLIENT_ID="your-google-client-id"
+   GOOGLE_CLIENT_SECRET="your-google-client-secret"
+   
+   # App Configuration
+   PUBLIC_APP_URL="http://localhost:5173"
+   PUBLIC_APP_NAME="NXTApply"
+
+   GEMINI_API_KEY="your-gemini-key" # Used for localization if you need it
+   ```
+
+4. **Set up the database**
+   ```bash
+   bunx prisma migrate dev
+   ```
+
+5. **Start the development server**
+   ```bash
+   bun --bun dev
+   ```
+
+## 📁 Project Structure
+
+```
+src/
+├── lib/
+│   ├── components/     # Reusable UI components
+│   ├── server/         # Server-side utilities and providers
+│   ├── ui/            # shadcn/ui components
+│   └── utils.ts       # Utility functions
+├── locales/           # Internationalization files
+├── routes/
+│   ├── (app)/         # Main application routes
+│   └── auth/          # Authentication routes
+└── jobs/              # Background job definitions
 ```
 
-## Developing
+## 🔐 Authentication
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+The platform supports OAuth authentication with:
+- Google OAuth 2.0
+- Extensible provider system for additional OAuth providers
 
-```bash
-npm run dev
+Authentication is handled by the Arctic library for secure, standards-compliant OAuth flows.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+## 📄 License
+> License is not yet configured thus please contact before usage
+This project is proprietary software owned by **W2Inc, Amsterdam**.  
+© 2023-2025 W2Inc. All Rights Reserved.
 
-## Building
 
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
