@@ -2,7 +2,7 @@
 
 **NXTApply** is a modern, multi-language student application management platform that simplifies the application for students. Built with SvelteKit and designed for scalability, it provides a complete solution for managing application events, tracks, and user onboarding.
 
-<img width="1495" height="841" alt="image" src="https://github.com/user-attachments/assets/2af8c55a-c8c1-4468-b71b-1da0bb0cba07" />
+<img width="1494" height="844" alt="image" src="https://github.com/user-attachments/assets/88c16deb-0849-426e-a2d9-4c09990b6c91" />
 
 ## 🚦 Getting Started
 
