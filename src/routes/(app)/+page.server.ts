@@ -4,33 +4,15 @@
 // ============================================================================
 
 import { sqlite } from '$lib/server/db';
-import { randomWait } from '$lib/utils';
-import { getUser } from '@/remotes/user/get.remote';
 import type { PageServerLoad } from './$types';
-import type { Actions } from '@sveltejs/kit';
-
-// ============================================================================
-
-export type AvailableUserEvent = {
-	id: string;
-	name: string;
-	address: string;
-	description: string | null;
-	trackId: string | null;
-	startsAt: string;
-	maxUsers?: number;
-	registerUntil: string | null;
-	completedAt: string | null;
-	requires: string | null;
-	userEventId: string | null;
-};
+import type { ListedUserEvent } from '$lib/components/event/index.svelte';
 
 // ============================================================================
 
 export const load: PageServerLoad = async ({ locals }) => {
 	const userId = locals.session.userId;
 	return {
-		events: sqlite<AvailableUserEvent[]>`
+		events: sqlite<ListedUserEvent[]>`
 			WITH user_completed_event_types AS (
 				SELECT DISTINCT e2.eventTypeId
 				FROM user_event ue2
@@ -51,14 +33,9 @@ export const load: PageServerLoad = async ({ locals }) => {
 				GROUP BY ed.eventId
 			)
 			SELECT
-				e.id,
+				e.*,
 				et.name AS name,
 				et.description AS description,
-				e.startsAt,
-				e.address,
-				e.maxUsers,
-				e.trackId,
-				e.registerUntil,
 				ue.completedAt,
 				er.requires,
 				ue.id as userEventId

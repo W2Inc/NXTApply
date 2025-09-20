@@ -8,7 +8,8 @@
 		Users,
 		ChartArea,
 		PartyPopper,
-		CircleUser
+		CircleUser,
+		CircuitBoard
 	} from '@lucide/svelte';
 	import type { LayoutProps } from './$types';
 	import Theme from '$lib/components/theme.svelte';
@@ -22,6 +23,7 @@
 	import { afterNavigate } from '$app/navigation';
 	import { signout } from '@/remotes/auth/signout.remote';
 	import { UserFlag } from '$lib';
+	import { cn } from '$lib/utils';
 
 	const { children, data }: LayoutProps = $props();
 	const adminMenu = [
@@ -31,18 +33,19 @@
 			label: 'Analytics'
 		},
 		{
-			href: '/admin/resources/users',
+			href: '/admin/resources/user',
 			icon: Users,
 			label: 'Users'
 		},
 		{
-			href: '/admin/resources/events',
+			href: '/admin/resources/event',
 			icon: PartyPopper,
 			label: 'Events'
 		}
 	];
 
 	let open = $state(false);
+	const isAdmin = $derived((data.user.flags & UserFlag.IsAdmin) !== 0);
 	afterNavigate(() => (open = false));
 </script>
 
@@ -63,8 +66,51 @@
 						<span class="hidden md:inline">Account</span>
 					</DropdownMenu.Trigger>
 					<DropdownMenu.Content>
+						{#if isAdmin}
+							<DropdownMenu.Group>
+								<DropdownMenu.Label>Administrator</DropdownMenu.Label>
+								<DropdownMenu.Separator />
+								<DropdownMenu.Item>
+									{#snippet child({ props })}
+										<Sheet.Root {...props} bind:open>
+											<!-- NOTE: A bit hacky but still fine. -->
+											<Sheet.Trigger class={cn(props.class as string, 'w-full hover:bg-muted')}>
+												<Menu />
+												Navigation
+											</Sheet.Trigger>
+											<Sheet.Content side="right" class="gap-0">
+												<Sheet.Header>
+													<Sheet.Title>Admin Navigation</Sheet.Title>
+													<Sheet.Description>
+														Navigate here to the different admin dashboards.
+													</Sheet.Description>
+												</Sheet.Header>
+												<div class="grid flex-1 auto-rows-min gap-2 border-t px-1 py-2">
+													{#each adminMenu as nav}
+														{@const IconComponent = nav.icon}
+														<Button variant="ghost" class="justify-start" href={nav.href}>
+															<IconComponent size={48} />
+															{nav.label}
+														</Button>
+													{/each}
+												</div>
+											</Sheet.Content>
+										</Sheet.Root>
+										<DropdownMenu.Item>
+											{#snippet child({ props })}
+												<a href="/admin" {...props}>
+													<CircuitBoard />
+													Dashboard
+												</a>
+											{/snippet}
+										</DropdownMenu.Item>
+									{/snippet}
+								</DropdownMenu.Item>
+							</DropdownMenu.Group>
+							<DropdownMenu.Separator />
+						{/if}
 						<DropdownMenu.Group>
-							<DropdownMenu.Label>My Account</DropdownMenu.Label>
+							<DropdownMenu.Label>Account</DropdownMenu.Label>
 							<DropdownMenu.Separator />
 							<DropdownMenu.Item>
 								{#snippet child({ props })}
@@ -95,13 +141,11 @@
 						</DropdownMenu.Group>
 					</DropdownMenu.Content>
 				</DropdownMenu.Root>
-				{#if (data.user.flags & UserFlag.IsAdmin) === UserFlag.IsAdmin}
-					<Separator orientation="vertical" class="min-h-6" />
+				<!-- <Separator orientation="vertical" class="min-h-6" />
 					<Button href="/admin" variant="outline">
 						<ShieldUser />
 						<span class="hidden md:inline">Admin</span>
 					</Button>
-					<!-- <Separator orientation="vertical" class="min-h-6" /> -->
 					<Sheet.Root bind:open>
 						<Sheet.Trigger class={buttonVariants({ size: 'icon', variant: 'outline' })}>
 							<Menu />
@@ -123,8 +167,7 @@
 								{/each}
 							</div>
 						</Sheet.Content>
-					</Sheet.Root>
-				{/if}
+					</Sheet.Root> -->
 			</div>
 		</div>
 		<div id="subheader"></div>

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T09:10:19.412Z\n"
-"PO-Revision-Date: 2025-09-18T19:33:05.370Z\n"
+"PO-Revision-Date: 2025-09-19T13:44:45.973Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -64,23 +64,24 @@ msgid "Enter your email to sign in to your account"
 msgstr "Enter your email to sign in to your account"
 
 #: src/routes/auth/reset/+page.svelte
-#: src/routes/auth/signin/+page.svelte
 #: src/routes/auth/signup/+page.svelte
+#: src/routes/auth/signin/+page.svelte
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
 msgid "Email"
 msgstr "Email"
 
-#: src/routes/auth/signin/+page.svelte
 #: src/routes/auth/signup/+page.svelte
+#: src/routes/auth/signin/+page.svelte
 msgid "Please give a valid Email"
 msgstr "Please give a valid Email"
 
-#: src/routes/auth/signin/+page.svelte
 #: src/routes/auth/signup/+page.svelte
+#: src/routes/auth/signin/+page.svelte
 msgid "Password"
 msgstr "Password"
 
-#: src/routes/auth/signin/+page.svelte
 #: src/routes/auth/signup/+page.svelte
+#: src/routes/auth/signin/+page.svelte
 msgid "Please give a valid Password"
 msgstr "Please give a valid Password"
 
@@ -116,8 +117,10 @@ msgstr "Sign Up"
 msgid "Enter your information to create an account"
 msgstr "Enter your information to create an account"
 
-#~ msgid "First Name"
-#~ msgstr "First Name"
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "First Name"
+msgstr "First Name"
 
 #~ msgid "Max"
 #~ msgstr "Max"
@@ -125,8 +128,10 @@ msgstr "Enter your information to create an account"
 #~ msgid "Please enter your first name"
 #~ msgstr "Please enter your first name"
 
-#~ msgid "Last Name"
-#~ msgstr "Last Name"
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Last Name"
+msgstr "Last Name"
 
 #~ msgid "Robinson"
 #~ msgstr "Robinson"
@@ -268,12 +273,12 @@ msgid "Logo"
 msgstr "Logo"
 
 #: src/routes/(app)/+layout.svelte
+#: src/routes/(app)/+layout.svelte
 msgid "Account"
 msgstr "Account"
 
-#: src/routes/(app)/+layout.svelte
-msgid "My Account"
-msgstr "My Account"
+#~ msgid "My Account"
+#~ msgstr "My Account"
 
 #: src/routes/(app)/+layout.svelte
 msgid "<0/> GDPR"
@@ -287,9 +292,8 @@ msgstr "<0/> Assistance"
 msgid "Logout"
 msgstr "Logout"
 
-#: src/routes/(app)/+layout.svelte
-msgid "Admin"
-msgstr "Admin"
+#~ msgid "Admin"
+#~ msgstr "Admin"
 
 #: src/routes/(app)/+layout.svelte
 msgid "Admin Navigation"
@@ -328,14 +332,18 @@ msgstr "Close"
 #~ msgstr "No upcoming events."
 
 #: src/routes/(app)/_event.svelte
+#: src/lib/components/event/event-status.svelte
 msgid "<0/> Completed"
 msgstr "<0/> Completed"
 
 #: src/routes/(app)/_event.svelte
+#: src/lib/components/event/event-status.svelte
 msgid "<0/> Not Completed"
 msgstr "<0/> Not Completed"
 
 #: src/routes/(app)/_event.svelte
+#: src/routes/(app)/event.svelte
+#: src/lib/components/event/event-details.svelte
 msgid "Save to calendar"
 msgstr "Save to calendar"
 
@@ -371,6 +379,7 @@ msgstr "Loading upcoming events..."
 #~ msgstr "Loading..."
 
 #: src/routes/(app)/tutorial.svelte.ts
+#: src/lib/components/event/index.svelte.ts
 msgid "Welcome to {0}!"
 msgstr "Welcome to {0}!"
 
@@ -392,13 +401,11 @@ msgstr ""
 #~ msgstr "kek"
 
 #: src/routes/(app)/admin/resources/track/manage/[[id]]/+page.svelte
-#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
-#: src/routes/(app)/admin/resources/event/+page.svelte
-#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
-#: src/routes/(app)/admin/resources/user/+page.svelte
-#: src/routes/(app)/admin/resources/track/+page.svelte
 #: src/routes/(app)/admin/resources/event-type/+page.svelte
 #: src/routes/(app)/admin/resources/event-type/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/event/+page.svelte
+#: src/routes/(app)/admin/resources/track/+page.svelte
 msgid "Hello"
 msgstr "Hello"
 
@@ -510,13 +517,11 @@ msgstr "All Set!"
 msgid "You're ready to get started. Good luck with your application!"
 msgstr "You're ready to get started. Good luck with your application!"
 
-#: src/routes/(app)/admin/+page.svelte
-msgid "Admin Dashboard"
-msgstr "Admin Dashboard"
+#~ msgid "Admin Dashboard"
+#~ msgstr "Admin Dashboard"
 
-#: src/routes/(app)/admin/+page.svelte
-msgid "Manage your events and users"
-msgstr "Manage your events and users"
+#~ msgid "Manage your events and users"
+#~ msgstr "Manage your events and users"
 
 #: src/routes/(app)/admin/+page.svelte
 msgid "Quick Access"
@@ -570,10 +575,12 @@ msgstr "Total registered users"
 #~ msgstr "Timezone:"
 
 #: src/routes/(app)/tutorial.svelte.ts
+#: src/lib/components/event/index.svelte.ts
 msgid "No Events!"
 msgstr "No Events!"
 
 #: src/routes/(app)/tutorial.svelte.ts
+#: src/lib/components/event/index.svelte.ts
 msgid "Currently there are no events taking place that you can join. Please wait for a while and refresh this page, perhaps something may show up"
 msgstr "Currently there are no events taking place that you can join. Please wait for a while and refresh this page, perhaps something may show up"
 
@@ -738,6 +745,7 @@ msgstr "For questions about data processing or to exercise additional rights, co
 #~ "This action cannot be undone. This will permanently delete your account and remove your data\n"
 #~ "from our servers."
 
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
 #: src/lib/components/modal-provider.svelte
 msgid "Cancel"
 msgstr "Cancel"
@@ -809,3 +817,260 @@ msgstr "Upcoming Events <0><0><0>Timezone:</0> <1/></0></0>"
 
 #~ msgid "<0/> test"
 #~ msgstr "<0/> test"
+
+#: src/lib/components/event/event.svelte
+msgid "Success!"
+msgstr "Success!"
+
+#~ msgid "Hover"
+#~ msgstr "Hover"
+
+#~ msgid "Add to library"
+#~ msgstr "Add to library"
+
+#: src/routes/(app)/event.svelte
+#: src/lib/components/event/event.svelte
+msgid "Join this event"
+msgstr "Join this event"
+
+#: src/routes/(app)/event.svelte
+#: src/lib/components/event/event.svelte
+msgid "Leave this event"
+msgstr "Leave this event"
+
+#~ msgid "Required: {0}"
+#~ msgstr "Required: {0}"
+
+#: src/routes/(app)/event.svelte
+#: src/lib/components/event/event-requires.svelte
+msgid "Requires: {0}"
+msgstr "Requires: {0}"
+
+#~ msgid "<0/> Admin"
+#~ msgstr "<0/> Admin"
+
+#~ msgid "<0/> Staff Actions"
+#~ msgstr "<0/> Staff Actions"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Navigation"
+msgstr "<0/> Navigation"
+
+#~ msgid "<0/> Navigation Menu"
+#~ msgstr "<0/> Navigation Menu"
+
+#: src/routes/(app)/+layout.svelte
+msgid "<0/> Dashboard"
+msgstr "<0/> Dashboard"
+
+#~ msgid "<0/> Staff Navigation"
+#~ msgstr "<0/> Staff Navigation"
+
+#: src/routes/(app)/+layout.svelte
+msgid "Administrator"
+msgstr "Administrator"
+
+#~ msgid "Are you sure you want to {0} {1}"
+#~ msgstr "Are you sure you want to {0} {1}"
+
+#~ msgid "Sure!"
+#~ msgstr "Sure!"
+
+#~ msgid "Are you sure you want to {0} '{1}''"
+#~ msgstr "Are you sure you want to {0} '{1}''"
+
+#: src/lib/components/event/event.svelte
+msgid "Are you sure you want to {0} '{1}'"
+msgstr "Are you sure you want to {0} '{1}'"
+
+#~ msgid "You may leave the event at any time and join another but if you have any progress"
+#~ msgstr "You may leave the event at any time and join another but if you have any progress"
+
+#: src/lib/components/event/event.svelte
+msgid "Once you start this event you are unable to leave it. You have to complete it."
+msgstr "Once you start this event you are unable to leave it. You have to complete it."
+
+#: src/lib/components/event/event.svelte
+msgid "You can leave the event at any point in time later before it starts."
+msgstr "You can leave the event at any point in time later before it starts."
+
+#: src/lib/components/event/event.svelte
+msgid "You may join this event again before it starts"
+msgstr "You may join this event again before it starts"
+
+#: src/lib/components/event/event-details.svelte
+msgid "Online"
+msgstr "Online"
+
+#~ msgid "You need to complete these following event(s) first before you can particpate in this event"
+#~ msgstr "You need to complete these following event(s) first before you can particpate in this event"
+
+#: src/lib/components/event/event-requires.svelte
+msgid "You need to complete these following event(s) first."
+msgstr "You need to complete these following event(s) first."
+
+#~ msgid "I am lost!"
+#~ msgstr "I am lost!"
+
+#~ msgid "I need help!"
+#~ msgstr "I need help!"
+
+#~ msgid "I feel lost!"
+#~ msgstr "I feel lost!"
+
+#: src/routes/(app)/+page.svelte
+msgid "Click here to get a small explanation"
+msgstr "Click here to get a small explanation"
+
+#~ msgid "Let’s guide you through joining an event."
+#~ msgstr "Let’s guide you through joining an event."
+
+#: src/lib/components/event/index.svelte.ts
+msgid "Join Event"
+msgstr "Join Event"
+
+#: src/lib/components/event/index.svelte.ts
+msgid "Click here to join your first event."
+msgstr "Click here to join your first event."
+
+#: src/lib/components/event/index.svelte.ts
+msgid "Date & Time"
+msgstr "Date & Time"
+
+#~ msgid "See when the event happens."
+#~ msgstr "See when the event happens."
+
+#: src/lib/components/event/index.svelte.ts
+msgid "Location"
+msgstr "Location"
+
+#~ msgid "View where the event takes place."
+#~ msgstr "View where the event takes place."
+
+#~ msgid "Youre Ready!"
+#~ msgstr "Youre Ready!"
+
+#: src/lib/components/event/index.svelte.ts
+msgid "Good luck!"
+msgstr "Good luck!"
+
+#: src/lib/components/event/index.svelte.ts
+msgid "You're Ready!"
+msgstr "You're Ready!"
+
+#: src/lib/components/event/index.svelte.ts
+msgid "Let's guide you through joining an event."
+msgstr "Let's guide you through joining an event."
+
+#: src/lib/components/event/index.svelte.ts
+msgid "See when the event happens. Click it to save it to your calendar."
+msgstr "See when the event happens. Click it to save it to your calendar."
+
+#: src/lib/components/event/index.svelte.ts
+msgid "View where the event takes place. Click it to view it on a map."
+msgstr "View where the event takes place. Click it to view it on a map."
+
+#: src/routes/(app)/admin/resources/user/+page.svelte
+msgid "<0/> Onboard User"
+msgstr "<0/> Onboard User"
+
+#: src/routes/(app)/admin/resources/user/+page.svelte
+msgid "Edit"
+msgstr "Edit"
+
+#: src/lib/components/table/table.svelte
+msgid "Actions"
+msgstr "Actions"
+
+#: src/lib/components/table/table.svelte
+msgid "Prev"
+msgstr "Prev"
+
+#: src/lib/components/table/table.svelte
+msgid "Next"
+msgstr "Next"
+
+#: src/lib/components/table/table.svelte
+msgid "Page {0}"
+msgstr "Page {0}"
+
+#: src/lib/components/table/table.svelte
+msgid "Yes"
+msgstr "Yes"
+
+#: src/lib/components/table/table.svelte
+msgid "No"
+msgstr "No"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Edit User Profile"
+msgstr "Edit User Profile"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Update user information"
+msgstr "Update user information"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Phone Number"
+msgstr "Phone Number"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Date of Birth"
+msgstr "Date of Birth"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Gender"
+msgstr "Gender"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Select Gender"
+msgstr "Select Gender"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Male"
+msgstr "Male"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Female"
+msgstr "Female"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Other"
+msgstr "Other"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Prefer not to say"
+msgstr "Prefer not to say"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Country"
+msgstr "Country"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "OAuth Provider"
+msgstr "OAuth Provider"
+
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+msgid "Save Changes"
+msgstr "Save Changes"
+
+#: src/lib/components/datepicker.svelte
+msgid "Pick a date"
+msgstr "Pick a date"
+
+#: src/lib/components/datepicker.svelte
+msgid "Hour"
+msgstr "Hour"
+
+#: src/lib/components/datepicker.svelte
+msgid "Minute"
+msgstr "Minute"
+
+#: src/lib/components/datepicker.svelte
+msgid "AM"
+msgstr "AM"
+
+#: src/lib/components/datepicker.svelte
+msgid "PM"
+msgstr "PM"

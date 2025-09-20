@@ -37,27 +37,23 @@ export namespace Pagination {
 		next: boolean;
 	}
 
-	export type Query = z.infer<typeof schema>;
+	export type Query = z.input<typeof schema>;
 	export const schema = z.object({
 		size: z
-			.preprocess(
-				(val) => (typeof val === 'string' ? Number(val) : val),
-				z.number().min(10).max(100)
-			)
-			.optional()
-			.default(10),
+			.string()
+			.transform((val) => (typeof val === 'string' ? Number(val) : val))
+			.default(10)
+			.pipe(z.number().min(1).max(100)),
 		page: z
-			.preprocess(
-				(val) => (typeof val === 'string' ? Number(val) : val),
-				z.number().min(0).max(Number.MAX_SAFE_INTEGER)
-			)
-			.optional()
+			.string()
+			.transform((val) => (typeof val === 'string' ? Number(val) : val))
 			.default(1)
+			.pipe(z.number().min(1).max(Number.MAX_SAFE_INTEGER))
 	});
 
 	export async function query<T>(sql: string, pagination: Query) {
 		const result = z.safeParse(schema, pagination);
-		const { page, size } = result.data as Query;
+		const { page, size } = result.data as z.output<typeof schema>;
 		const offset = (page - 1) * size;
 		const items = await sqlite.unsafe<T[]>(`${sql} LIMIT $1 OFFSET $2`, [size + 1, offset]);
 		const next = items.length > size;

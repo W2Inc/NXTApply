@@ -6,7 +6,14 @@
 import { z } from 'zod/v4';
 import { ensure } from './utils';
 import { toast } from 'svelte-sonner';
-import { isHttpError, type ActionResult, type RemoteForm, type RemoteQuery, type RemoteQueryOverride } from '@sveltejs/kit';
+import {
+	isHttpError,
+	type ActionResult,
+	type RemoteForm,
+	type RemoteQuery,
+	type RemoteQueryOverride
+} from '@sveltejs/kit';
+import { Modal } from './modal.svelte';
 
 // ============================================================================
 
@@ -24,7 +31,9 @@ export namespace FormKit {
 		Message: (data: string): Message => ({ type: 'message', status: 200, data })
 	};
 
-	export function toastify(rm: RemoteForm<any, Result<any>> | Omit<RemoteForm<any, Result<any>>, 'for'>) {
+	export function toastify(
+		rm: RemoteForm<any, Result<any>> | Omit<RemoteForm<any, Result<any>>, 'for'>
+	) {
 		return rm.enhance(async ({ submit, form }) => {
 			form.inert = true;
 

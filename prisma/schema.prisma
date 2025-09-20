@@ -48,7 +48,7 @@ model Session {
     id        String   @id
     userId    String
     expiresAt DateTime
-    hash     String
+    hash      String
     user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@map("session")
@@ -82,9 +82,13 @@ model VerificationToken {
 model ApplicationEvent {
     id String @id
 
-    address  String?
-    maxUsers Int?
-    autoComplete Boolean @default(false) // Once the startsAt is reached, it auto-completes it for all user_events
+    address      String?
+    maxUsers     Int?
+    // Once the startsAt is reached, it auto-completes it for all user_events
+    autoComplete Boolean @default(false)
+    // Users that are registered to this event may only have a single chance
+    // to complete the event. If they fail or timeout or etc then they cannot repeat it.
+    unique Boolean @default(false)
 
     eventTypeId String
     eventType   EventType @relation(fields: [eventTypeId], references: [id], onDelete: Cascade)

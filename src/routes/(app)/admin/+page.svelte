@@ -14,11 +14,6 @@
 </script>
 
 <div class="container py-8 mx-auto">
-	<header class="mb-8">
-		<h1 class="text-3xl font-bold">Admin Dashboard</h1>
-		<p class="text-muted-foreground">Manage your events and users</p>
-	</header>
-
 	<section class="mb-10">
 		<h2 class="text-xl font-semibold mb-4">Quick Access</h2>
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-4">

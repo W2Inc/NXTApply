@@ -1,6 +1,15 @@
+import { driver, type DriveStep } from 'driver.js';
+
 export const UserFlag = {
 	IsAdmin: 1 << 2
 } as const;
+
+export const tutorial = (steps: DriveStep[]) =>
+	driver({
+		showProgress: true,
+		animate: true,
+		steps
+	});
 
 export function ICSCalendar() {
 	// function toICS(startsAt: Date, name: string, description: string | null, address: string | null) {
@@ -24,7 +33,6 @@ export function ICSCalendar() {
 	// 		END:VEVENT
 	// 		END:VCALENDAR
 	// 	`.trim();
-
 	// 	return `data:text/calendar;charset=utf8,${encodeURIComponent(ics)}`;
 	// }
 }
