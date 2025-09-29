@@ -5,17 +5,18 @@
 	import Fieldset from '../fieldset.svelte';
 	import { TRACK_KEY, type CombinedTrack } from './state.svelte';
 	import { StepType, type ApplicationStep } from '@prisma/client';
+	import { fade } from 'svelte/transition';
 	import { getContext, type Component } from 'svelte';
-	import TrackBoarding from './track-boarding.svelte';
-	import { ClipboardList, GripVertical, PlusCircle, Save, Trash, X } from '@lucide/svelte';
+	import { CirclePlus, ClipboardList, GripVertical, PlusCircle, Save, Trash, X } from '@lucide/svelte';
 	import Button from '../ui/button/button.svelte';
 	import Separator from '../ui/separator/separator.svelte';
 	import * as Select from '../ui/select';
 	import { set } from '@/remotes/track/set.remote';
+	import TrackBoarding from './track-boarding.svelte';
+	import TrackIntermission from './track-intermission.svelte';
 	import TrackChallenge from './track-challenge.svelte';
 	import TrackWaiting from './track-waiting.svelte';
 	import TrackResult from './track-result.svelte';
-	import TrackIntermission from './track-intermission.svelte';
 
 	interface Props {
 		class?: string;
@@ -43,10 +44,28 @@
 
 	function addStep() {
 		const date = UTC.write(UTC.now());
+		let nextType: StepType;
+		const boardingIndex = types.findIndex(type => type === 'BOARDING');
+		if (boardingIndex !== -1) {
+			nextType = 'BOARDING';
+		}
+		else {
+			const resultIndex = types.findIndex(type => type === 'RESULT');
+			if (resultIndex !== -1) {
+				nextType = 'RESULT';
+			}
+			else if (types.length > 0) {
+				nextType = types[0];
+			}
+			else {
+				nextType = 'INTERMISSION';
+			}
+		}
+
 		dnd.items.push({
 			id: 'n/a',
 			trackId: 'n/a',
-			type: 'BOARDING',
+			type: nextType,
 			order: dnd.items.length + 1,
 			content: null,
 			conditionals: null,
@@ -60,7 +79,7 @@
 	{#if dnd.items.length}
 		<div class="flex items-center gap-2">
 			<Button variant="outline" onclick={addStep}>
-				<PlusCircle />
+				<CirclePlus />
 				Add Step
 			</Button>
 			<Button type="submit" variant="outline">
@@ -83,8 +102,9 @@
 		<ul>
 			{#each dnd.items as step, index (index)}
 				<li
-					{...dnd.draggable(index)}
 					animate:flip={{ duration: 200 }}
+					transition:fade={{ duration: 200 }}
+					{...dnd.draggable(index)}
 					class="border bg-card p-4 transition-all not-first:border-t-0 first:rounded-t-md"
 				>
 					<input hidden type="number" name={set.field(`steps[${index}].order`)} />
@@ -157,6 +177,9 @@
 
 <style>
 	:global(.over) {
-		border-style: dashed;
+		outline: 2px dashed var(--ring);
+		border-top: 1px solid transparent !important;
+		transition-delay: 100ms;
+		transition-duration: 20ms;
 	}
 </style>

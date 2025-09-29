@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T09:10:19.414Z\n"
-"PO-Revision-Date: 2025-09-29T14:49:10.373Z\n"
+"PO-Revision-Date: 2025-09-29T19:39:21.818Z\n"
 "Last-Translator: \n"
 "Language: es\n"
 "Language-Team: \n"
@@ -119,6 +119,7 @@ msgstr "Ingrese su información para crear una cuenta"
 
 #: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
 #: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/[event]/[step]/boarding.svelte
 msgid "First Name"
 msgstr "Nombre"
 
@@ -130,6 +131,7 @@ msgstr "Nombre"
 
 #: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
 #: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/[event]/[step]/boarding.svelte
 msgid "Last Name"
 msgstr "Apellido"
 
@@ -738,6 +740,7 @@ msgstr "Cancelar"
 
 #: src/lib/components/modal-provider.svelte
 #: src/lib/components/modal.svelte
+#: src/routes/(app)/[event]/[step]/boarding.svelte
 msgid "Continue"
 msgstr "Continuar"
 
@@ -956,9 +959,9 @@ msgstr "Mira dónde tiene lugar el evento. Haz clic para verlo en un mapa."
 msgid "<0/> Onboard User"
 msgstr "<0/> Incorporar Usuario"
 
-#: src/routes/(app)/admin/resources/track/+page.svelte
-#: src/routes/(app)/admin/resources/user/+page.svelte
 #: src/routes/(app)/admin/resources/event/+page.svelte
+#: src/routes/(app)/admin/resources/user/+page.svelte
+#: src/routes/(app)/admin/resources/track/+page.svelte
 msgid "Edit"
 msgstr "Editar"
 
@@ -995,14 +998,17 @@ msgid "Update user information"
 msgstr "Actualizar información del usuario"
 
 #: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/[event]/[step]/boarding.svelte
 msgid "Phone Number"
 msgstr "Número de Teléfono"
 
 #: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/[event]/[step]/boarding.svelte
 msgid "Date of Birth"
 msgstr "Fecha de Nacimiento"
 
 #: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/[event]/[step]/boarding.svelte
 msgid "Gender"
 msgstr "Género"
 
@@ -1011,10 +1017,12 @@ msgid "Select Gender"
 msgstr "Seleccionar Género"
 
 #: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/[event]/[step]/boarding.svelte
 msgid "Male"
 msgstr "Masculino"
 
 #: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/routes/(app)/[event]/[step]/boarding.svelte
 msgid "Female"
 msgstr "Femenino"
 
@@ -1109,6 +1117,7 @@ msgstr "Ajustes```"
 #~ msgstr "Agregar Paso"
 
 #: src/lib/components/track/track.svelte
+#: src/lib/components/track/track.svelte
 msgid "BOARDING"
 msgstr "EMBARQUE"
 
@@ -1137,8 +1146,10 @@ msgstr "No hay pasos en este track"
 msgid "<0/> Add Step"
 msgstr "<0/> Añadir Paso"
 
-#~ msgid "RESULT"
-#~ msgstr "RESULTADO"
+#: src/lib/components/track/track.svelte
+#: src/lib/components/track/track.svelte
+msgid "RESULT"
+msgstr "RESULTADO"
 
 #~ msgid "WHATEVER"
 #~ msgstr "LO QUE SEA"
@@ -1149,8 +1160,8 @@ msgstr "<0/> Añadir Paso"
 #~ msgid "X"
 #~ msgstr "X"
 
-#: src/lib/components/track/track.svelte
 #: src/lib/components/track/track-waiting.svelte
+#: src/lib/components/track/track.svelte
 msgid "Step Types"
 msgstr "Tipos de Paso"
 
@@ -1186,8 +1197,8 @@ msgstr ""
 msgid "HTML file only"
 msgstr ""
 
-#: src/lib/components/track/track-result.svelte
 #: src/lib/components/track/track-intermission.svelte
+#: src/lib/components/track/track-result.svelte
 msgid ""
 "A intermission step is basically giving the applicant a break / allows them to pause the process\n"
 "before they continue to the next step. For example after a lengthy challenge they might choose to\n"
@@ -1365,4 +1376,42 @@ msgstr ""
 
 #: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
 msgid "Track ID"
+msgstr ""
+
+#: src/lib/components/track/track.svelte
+msgid "INTERMISSION"
+msgstr ""
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Welcome Aboard!"
+msgstr ""
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Please fill in your personal information to get started."
+msgstr ""
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Enter your first name"
+msgstr ""
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Enter your last name"
+msgstr ""
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Rather Not Say"
+msgstr ""
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Enter your phone number"
+msgstr ""
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid "Data Privacy"
+msgstr ""
+
+#: src/routes/(app)/[event]/[step]/boarding.svelte
+msgid ""
+"Your personal information is securely stored and handled in accordance with our privacy\n"
+"policy. You can read more about it <0>here</0>."
 msgstr ""

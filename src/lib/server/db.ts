@@ -4,7 +4,7 @@
 // ============================================================================
 
 import z from 'zod';
-import { redis, SQL } from 'bun';
+import { redis, RedisClient, SQL } from 'bun';
 import { DATABASE_URL } from '$env/static/private';
 import Logger from '$lib/logger';
 import type { ISO } from '$lib/utils';
