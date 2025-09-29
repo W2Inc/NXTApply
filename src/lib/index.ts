@@ -1,7 +1,7 @@
 import { driver, type DriveStep } from 'driver.js';
 
 export const UserFlag = {
-	IsAdmin: 1 << 2
+	IsAdmin: 1 << 2,
 } as const;
 
 export const tutorial = (steps: DriveStep[]) =>

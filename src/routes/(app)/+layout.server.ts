@@ -11,6 +11,7 @@ import { error } from "@sveltejs/kit";
 
 export const load: LayoutServerLoad = async ({ locals }) => {
 	return {
+		tz: locals.tz,
 		user: await getUser(locals.session.userId) ?? error(401)
 	}
 };

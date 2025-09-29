@@ -1,9 +1,11 @@
-import { browser } from "$app/environment";
+// ============================================================================
+// W2Inc, Amsterdam 2025, All Rights Reserved.
+// See README in the root project for more information.
+// ============================================================================
 
 let current: Modal.Options | null = $state(null);
-export namespace Modal {
 
-	// ============================================================================
+export namespace Modal {
 
 	export interface Base {
 		title: string;
@@ -44,6 +46,6 @@ export namespace Modal {
 			clear: () => {
 				current = null;
 			}
-		}
+		};
 	}
 }

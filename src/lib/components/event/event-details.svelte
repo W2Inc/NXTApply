@@ -10,7 +10,6 @@
 	import { page } from '$app/state';
 	import { DateFormatter, ZonedDateTime } from '@internationalized/date';
 	import { cn } from '$lib/utils';
-	import { Button } from '../ui/button';
 
 	interface Props {
 		event: ListedUserEvent;

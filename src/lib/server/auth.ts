@@ -7,7 +7,7 @@ import { getRequestEvent } from '$app/server';
 import type { Session, User, VerificationToken } from '@prisma/client';
 import { error } from '@sveltejs/kit';
 import { now } from '@internationalized/date';
-import { sqlite } from './db';
+import { sqlite, TTLCache } from './db';
 import { sql } from 'bun';
 import { UTC, type ISO } from '$lib/utils';
 import Logger from '$lib/logger';
@@ -26,9 +26,7 @@ export namespace Auth {
 	export const SESSION_DAYS_VALID = 2;
 	export const RESET_HOURS_VALID = 4;
 
-	// Using Bun SQL tagged template literals for queries
-	// const getUser = (id: string) => sqlite<User[]>`SELECT * FROM user WHERE id = ${id}`;
-	// const getSession = (id: string) => sqlite<Session[]>`SELECT * FROM session WHERE id = ${id}`;
+	export type UserType = Omit<User, 'hash' | 'tfa'>
 
 	/**
 	 * Generate a general purpose token.
@@ -40,7 +38,6 @@ export namespace Auth {
 		crypto.getRandomValues(bytes);
 		return Buffer.from(bytes).toString('base64url');
 	}
-
 
 	/**
 	 * Retrieve the authenticated user associated with the current request event.
@@ -65,12 +62,28 @@ export namespace Auth {
 	 */
 	export async function user(flags?: number) {
 		const { locals, isRemoteRequest, isDataRequest, isSubRequest } = getRequestEvent();
-		if (!isRemoteRequest || !isDataRequest || !isSubRequest)
-			throw new Error(`Inproper usage of fn: 'user'`);
+		if (!isRemoteRequest && !isDataRequest && !isSubRequest)
+			throw new Error(`Improper usage of fn: 'user'`);
 
-		Logger.dbg('Requesting user');
 		const id = locals.session.userId;
-		const [user] = await sqlite<ISO<User[]>>`SELECT * FROM user WHERE id = ${id}`;
+		Logger.dbg('Requesting user:', id);
+		const [ user ] = await TTLCache.key<UserType[]>(`user:${id}`, 30).query(sqlite`
+			SELECT
+			  email,
+				verified,
+				dob,
+				gender,
+				country,
+				flags,
+				firstName,
+				lastName,
+				phone,
+				providerId,
+				provider,
+				createdAt,
+				updatedAt
+			FROM user WHERE id = ${id}
+		`);
 		if (!user)
 			error(401);
 		else if (flags && (user.flags & flags) !== flags)

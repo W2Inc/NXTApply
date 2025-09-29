@@ -156,6 +156,14 @@ model UserEvent {
 // Tracks
 // ============================================================================
 
+enum StepType {
+    BOARDING
+    INTERMISSION
+    CHALLENGE
+    WAITING
+    RESULT
+}
+
 // Track to define the steps to take
 model ApplicationTrack {
     id          String                 @id
@@ -176,7 +184,7 @@ model ApplicationStep {
     id           String                @id
     trackId      String
     track        ApplicationTrack      @relation(fields: [trackId], references: [id], onDelete: Cascade)
-    type         Int // 0=BOARDING, 1=INTERMISSION, 2=CHALLENGE, 3=WAITING, 4=RESULT
+    type         StepType // 0=BOARDING, 1=INTERMISSION, 2=CHALLENGE, 3=WAITING, 4=RESULT
     order        Int
     content      String? // HTML content for challenges (iframe and spec compliant)
     conditionals Json? // JSON object to store conditional logic and parameters

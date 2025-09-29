@@ -6,8 +6,10 @@
 	import { set } from '@/remotes/user/set.remote';
 	import type { PageProps } from './$types';
 	import Datepicker from '$lib/components/datepicker.svelte';
+	import { FormKit } from "$lib/runes/form.svelte";
 
 	const { data }: PageProps = $props();
+	const form = FormKit.handle(set);
 
 	function goBack() {
 		history.back();

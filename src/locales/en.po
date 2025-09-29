@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-27T09:10:19.412Z\n"
-"PO-Revision-Date: 2025-09-19T13:44:45.973Z\n"
+"PO-Revision-Date: 2025-09-29T14:49:10.369Z\n"
 "Last-Translator: \n"
 "Language: en\n"
 "Language-Team: \n"
@@ -63,8 +63,8 @@ msgstr "Login"
 msgid "Enter your email to sign in to your account"
 msgstr "Enter your email to sign in to your account"
 
-#: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/signup/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/signin/+page.svelte
 #: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
 msgid "Email"
@@ -139,8 +139,8 @@ msgstr "Last Name"
 #~ msgid "Please enter your last name"
 #~ msgstr "Please enter your last name"
 
-#: src/routes/auth/reset/+page.svelte
 #: src/routes/auth/signup/+page.svelte
+#: src/routes/auth/reset/+page.svelte
 msgid "Confirm Password"
 msgstr "Confirm Password"
 
@@ -204,17 +204,14 @@ msgstr "Send Reset Link"
 msgid "<0>Silly cats!</0> Rest assured this issue has been logged & reported."
 msgstr "<0>Silly cats!</0> Rest assured this issue has been logged & reported."
 
-#: src/routes/+error.svelte
-msgid "Oops! Something wasn't quite right with that request."
-msgstr "Oops! Something wasn't quite right with that request."
+#~ msgid "Oops! Something wasn't quite right with that request."
+#~ msgstr "Oops! Something wasn't quite right with that request."
 
-#: src/routes/+error.svelte
-msgid "<0/> Back to safety"
-msgstr "<0/> Back to safety"
+#~ msgid "<0/> Back to safety"
+#~ msgstr "<0/> Back to safety"
 
-#: src/routes/+error.svelte
-msgid "Well, that's bad."
-msgstr "Well, that's bad."
+#~ msgid "Well, that's bad."
+#~ msgstr "Well, that's bad."
 
 #: src/routes/auth/2fa/setup/+page.svelte
 msgid "Two-Factor Authentication"
@@ -295,13 +292,11 @@ msgstr "Logout"
 #~ msgid "Admin"
 #~ msgstr "Admin"
 
-#: src/routes/(app)/+layout.svelte
-msgid "Admin Navigation"
-msgstr "Admin Navigation"
+#~ msgid "Admin Navigation"
+#~ msgstr "Admin Navigation"
 
-#: src/routes/(app)/+layout.svelte
-msgid "Navigate here to the different admin dashboards."
-msgstr "Navigate here to the different admin dashboards."
+#~ msgid "Navigate here to the different admin dashboards."
+#~ msgstr "Navigate here to the different admin dashboards."
 
 #: src/lib/components/theme.svelte
 msgid "Light"
@@ -400,12 +395,8 @@ msgstr ""
 #~ msgid "kek"
 #~ msgstr "kek"
 
-#: src/routes/(app)/admin/resources/track/manage/[[id]]/+page.svelte
 #: src/routes/(app)/admin/resources/event-type/+page.svelte
 #: src/routes/(app)/admin/resources/event-type/manage/[[id]]/+page.svelte
-#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
-#: src/routes/(app)/admin/resources/event/+page.svelte
-#: src/routes/(app)/admin/resources/track/+page.svelte
 msgid "Hello"
 msgstr "Hello"
 
@@ -745,12 +736,14 @@ msgstr "For questions about data processing or to exercise additional rights, co
 #~ "This action cannot be undone. This will permanently delete your account and remove your data\n"
 #~ "from our servers."
 
-#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
 #: src/lib/components/modal-provider.svelte
+#: src/routes/(app)/admin/resources/user/manage/[[id]]/+page.svelte
+#: src/lib/components/modal.svelte
 msgid "Cancel"
 msgstr "Cancel"
 
 #: src/lib/components/modal-provider.svelte
+#: src/lib/components/modal.svelte
 msgid "Continue"
 msgstr "Continue"
 
@@ -761,6 +754,7 @@ msgstr "Continue"
 #~ msgstr "This action cannot be undone."
 
 #: src/lib/components/modal-provider.svelte
+#: src/lib/components/modal.svelte
 msgid "OK"
 msgstr "OK"
 
@@ -818,9 +812,8 @@ msgstr "Upcoming Events <0><0><0>Timezone:</0> <1/></0></0>"
 #~ msgid "<0/> test"
 #~ msgstr "<0/> test"
 
-#: src/lib/components/event/event.svelte
-msgid "Success!"
-msgstr "Success!"
+#~ msgid "Success!"
+#~ msgstr "Success!"
 
 #~ msgid "Hover"
 #~ msgstr "Hover"
@@ -852,9 +845,8 @@ msgstr "Requires: {0}"
 #~ msgid "<0/> Staff Actions"
 #~ msgstr "<0/> Staff Actions"
 
-#: src/routes/(app)/+layout.svelte
-msgid "<0/> Navigation"
-msgstr "<0/> Navigation"
+#~ msgid "<0/> Navigation"
+#~ msgstr "<0/> Navigation"
 
 #~ msgid "<0/> Navigation Menu"
 #~ msgstr "<0/> Navigation Menu"
@@ -879,24 +871,20 @@ msgstr "Administrator"
 #~ msgid "Are you sure you want to {0} '{1}''"
 #~ msgstr "Are you sure you want to {0} '{1}''"
 
-#: src/lib/components/event/event.svelte
-msgid "Are you sure you want to {0} '{1}'"
-msgstr "Are you sure you want to {0} '{1}'"
+#~ msgid "Are you sure you want to {0} '{1}'"
+#~ msgstr "Are you sure you want to {0} '{1}'"
 
 #~ msgid "You may leave the event at any time and join another but if you have any progress"
 #~ msgstr "You may leave the event at any time and join another but if you have any progress"
 
-#: src/lib/components/event/event.svelte
-msgid "Once you start this event you are unable to leave it. You have to complete it."
-msgstr "Once you start this event you are unable to leave it. You have to complete it."
+#~ msgid "Once you start this event you are unable to leave it. You have to complete it."
+#~ msgstr "Once you start this event you are unable to leave it. You have to complete it."
 
-#: src/lib/components/event/event.svelte
-msgid "You can leave the event at any point in time later before it starts."
-msgstr "You can leave the event at any point in time later before it starts."
+#~ msgid "You can leave the event at any point in time later before it starts."
+#~ msgstr "You can leave the event at any point in time later before it starts."
 
-#: src/lib/components/event/event.svelte
-msgid "You may join this event again before it starts"
-msgstr "You may join this event again before it starts"
+#~ msgid "You may join this event again before it starts"
+#~ msgstr "You may join this event again before it starts"
 
 #: src/lib/components/event/event-details.svelte
 msgid "Online"
@@ -974,7 +962,9 @@ msgstr "View where the event takes place. Click it to view it on a map."
 msgid "<0/> Onboard User"
 msgstr "<0/> Onboard User"
 
+#: src/routes/(app)/admin/resources/track/+page.svelte
 #: src/routes/(app)/admin/resources/user/+page.svelte
+#: src/routes/(app)/admin/resources/event/+page.svelte
 msgid "Edit"
 msgstr "Edit"
 
@@ -1074,3 +1064,327 @@ msgstr "AM"
 #: src/lib/components/datepicker.svelte
 msgid "PM"
 msgstr "PM"
+
+#~ msgid "Nope"
+#~ msgstr "Nope"
+
+#~ msgid "NADA"
+#~ msgstr "NADA"
+
+#~ msgid "OGGA {0}"
+#~ msgstr "OGGA {0}"
+
+#~ msgid "Name of the Track"
+#~ msgstr "Name of the Track"
+
+#~ msgid "Save"
+#~ msgstr "Save"
+
+#~ msgid "Name & Description"
+#~ msgstr "Name & Description"
+
+#~ msgid "Optional description of the track"
+#~ msgstr "Optional description of the track"
+
+#~ msgid "<0/> OGGA {0}"
+#~ msgstr "<0/> OGGA {0}"
+
+#: src/lib/components/track/track.svelte
+msgid "Track"
+msgstr "Track"
+
+#~ msgid "TODO"
+#~ msgstr "TODO"
+
+#: src/routes/(app)/admin/resources/track/manage/[[id]]/+page.svelte
+msgid "Description"
+msgstr "Description"
+
+#: src/routes/(app)/admin/resources/track/manage/[[id]]/+page.svelte
+msgid "Name"
+msgstr "Name"
+
+#: src/routes/(app)/admin/resources/track/manage/[[id]]/+page.svelte
+msgid "Settings"
+msgstr "Settings"
+
+#~ msgid "Balls"
+#~ msgstr "Balls"
+
+#~ msgid "Add Step"
+#~ msgstr "Add Step"
+
+#: src/lib/components/track/track.svelte
+msgid "BOARDING"
+msgstr "BOARDING"
+
+#~ msgid "Whatever content here"
+#~ msgstr "Whatever content here"
+
+#~ msgid "WTF <0/>"
+#~ msgstr "WTF <0/>"
+
+#~ msgid "Hello Event"
+#~ msgstr "Hello Event"
+
+#: src/lib/components/track/track.svelte
+msgid "Unknown step type: {0}"
+msgstr "Unknown step type: {0}"
+
+#~ msgid "Mhm Empty"
+#~ msgstr "Mhm Empty"
+
+#: src/lib/components/track/track.svelte
+msgid "No steps in this track"
+msgstr "No steps in this track"
+
+#: src/lib/components/track/track.svelte
+#: src/lib/components/track/track.svelte
+msgid "<0/> Add Step"
+msgstr "<0/> Add Step"
+
+#~ msgid "RESULT"
+#~ msgstr "RESULT"
+
+#~ msgid "WHATEVER"
+#~ msgstr "WHATEVER"
+
+#~ msgid "Fruits"
+#~ msgstr "Fruits"
+
+#~ msgid "X"
+#~ msgstr "X"
+
+#: src/lib/components/track/track.svelte
+#: src/lib/components/track/track-waiting.svelte
+msgid "Step Types"
+msgstr "Step Types"
+
+#: src/lib/components/track/track.svelte
+msgid "Remove step"
+msgstr "Remove step"
+
+#: src/lib/components/track/track.svelte
+msgid "<0/> Save"
+msgstr "<0/> Save"
+
+#: src/lib/components/track/track.svelte
+msgid "<0/> Delete"
+msgstr "<0/> Delete"
+
+#: src/lib/components/track/track-boarding.svelte
+msgid ""
+"A boarding step requires the user to input necessary informatin about themselves before they may\n"
+"continue."
+msgstr ""
+"A boarding step requires the user to input necessary informatin about themselves before they may\n"
+"continue."
+
+#: src/lib/components/track/track-challenge.svelte
+msgid ""
+"A challenge is a requirement step for the applicant. You provide a a single HTML file that is then\n"
+"displayed to the user. They then complete the challenge and their entry is recorded."
+msgstr ""
+"A challenge is a requirement step for the applicant. You provide a a single HTML file that is then\n"
+"displayed to the user. They then complete the challenge and their entry is recorded."
+
+#: src/lib/components/track/track-challenge.svelte
+msgid "Click to upload or drag and drop"
+msgstr "Click to upload or drag and drop"
+
+#: src/lib/components/track/track-challenge.svelte
+msgid "HTML file only"
+msgstr "HTML file only"
+
+#: src/lib/components/track/track-result.svelte
+#: src/lib/components/track/track-intermission.svelte
+msgid ""
+"A intermission step is basically giving the applicant a break / allows them to pause the process\n"
+"before they continue to the next step. For example after a lengthy challenge they might choose to\n"
+"either continue or give up."
+msgstr ""
+"A intermission step is basically giving the applicant a break / allows them to pause the process\n"
+"before they continue to the next step. For example after a lengthy challenge they might choose to\n"
+"either continue or give up."
+
+#: src/lib/components/track/track-waiting.svelte
+msgid ""
+"Unlike intermission, this enforces a period of waiting. For example after completing everything\n"
+"you may want the applicant to wait for 1hour before getting the results or continue on to the next\n"
+"challenge."
+msgstr ""
+"Unlike intermission, this enforces a period of waiting. For example after completing everything\n"
+"you may want the applicant to wait for 1hour before getting the results or continue on to the next\n"
+"challenge."
+
+#: src/routes/(app)/admin/resources/track/+page.svelte
+msgid "<0/> Create Track"
+msgstr "<0/> Create Track"
+
+#: src/routes/(app)/+page.svelte
+msgid "Currently there are no events!"
+msgstr "Currently there are no events!"
+
+#~ msgid "Currently there are no events!<0/> If you wait a bit, new ones might pop up soon.<1/> Follow us on <2>Twitter</2>, <3>Discord</3>, or <4>Telegram</4> for updates."
+#~ msgstr "Currently there are no events!<0/> If you wait a bit, new ones might pop up soon.<1/> Follow us on <2>Twitter</2>, <3>Discord</3>, or <4>Telegram</4> for updates."
+
+#~ msgid "Notify me when something new comes up"
+#~ msgstr "Notify me when something new comes up"
+
+#~ msgid "Currently there are no events!<0/> If you wait a bit, new ones might pop up soon."
+#~ msgstr "Currently there are no events!<0/> If you wait a bit, new ones might pop up soon."
+
+#~ msgid ""
+#~ "Currently there are no events!\n"
+#~ "If you wait a bit, new ones might pop up soon."
+#~ msgstr ""
+#~ "Currently there are no events!\n"
+#~ "If you wait a bit, new ones might pop up soon."
+
+#~ msgid "<0>Currently there are no events!</0> If you wait a bit, new ones might pop up soon."
+#~ msgstr "<0>Currently there are no events!</0> If you wait a bit, new ones might pop up soon."
+
+#~ msgid "If you wait a bit, new ones might pop up soon."
+#~ msgstr "If you wait a bit, new ones might pop up soon."
+
+#: src/routes/(app)/+page.svelte
+msgid "If you wait a bit, new ones might available."
+msgstr "If you wait a bit, new ones might available."
+
+#~ msgid "<0/> Closed"
+#~ msgstr "<0/> Closed"
+
+#~ msgid "<0/> Subscriptions Closed"
+#~ msgstr "<0/> Subscriptions Closed"
+
+#~ msgid "<0/> Unavailable"
+#~ msgstr "<0/> Unavailable"
+
+#~ msgid "<0/> Registrations Closed"
+#~ msgstr "<0/> Registrations Closed"
+
+#: src/lib/components/event/event-status.svelte
+msgid "<0/> Registration Closed"
+msgstr "<0/> Registration Closed"
+
+#~ msgid ""
+#~ "You can no longer register for this event. If you are already registered you may unregister but\n"
+#~ "may no longer register again afterwards."
+#~ msgstr ""
+#~ "You can no longer register for this event. If you are already registered you may unregister but\n"
+#~ "may no longer register again afterwards."
+
+#~ msgid ""
+#~ "You can no longer register for this event. If you are already registered you may unregister\n"
+#~ "but may no longer register again afterwards."
+#~ msgstr ""
+#~ "You can no longer register for this event. If you are already registered you may unregister\n"
+#~ "but may no longer register again afterwards."
+
+#~ msgid "Registration is closed. You may unregister, but cannot re-register."
+#~ msgstr "Registration is closed. You may unregister, but cannot re-register."
+
+#~ msgid "You may unregister, but cannot re-register."
+#~ msgstr "You may unregister, but cannot re-register."
+
+#~ msgid "Registration is closed. <0/>"
+#~ msgstr "Registration is closed. <0/>"
+
+#: src/lib/components/event/event-status.svelte
+msgid "You may unregister, but cannot re-register"
+msgstr "You may unregister, but cannot re-register"
+
+#~ msgid "Registration is closed <0/>"
+#~ msgstr "Registration is closed <0/>"
+
+#~ msgid "Registration is closed, no one may register after: {0}"
+#~ msgstr "Registration is closed, no one may register after: {0}"
+
+#~ msgid "Registration closed on {0} <0/>"
+#~ msgstr "Registration closed on {0} <0/>"
+
+#~ msgid "Registration closed on {0}"
+#~ msgstr "Registration closed on {0}"
+
+#: src/lib/components/event/event-status.svelte
+msgid "since {0}"
+msgstr "since {0}"
+
+#: src/lib/components/event/event-status.svelte
+msgid "Registrations are closed <0/>"
+msgstr "Registrations are closed <0/>"
+
+#: src/routes/+error.svelte
+msgid "<0/> Back"
+msgstr "<0/> Back"
+
+#: src/routes/(app)/admin/resources/event/+page.svelte
+msgid "<0/> Create Event"
+msgstr "<0/> Create Event"
+
+#: src/routes/(app)/admin/resources/event/+page.svelte
+msgid "<0/> Create Event Type"
+msgstr "<0/> Create Event Type"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Event Details"
+msgstr "Event Details"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Address"
+msgstr "Address"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Maximum Users"
+msgstr "Maximum Users"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Auto Complete"
+msgstr "Auto Complete"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Unique Attempt"
+msgstr "Unique Attempt"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Scheduling"
+msgstr "Scheduling"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Starts At"
+msgstr "Starts At"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Register Until"
+msgstr "Register Until"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Relationships"
+msgstr "Relationships"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Event Type"
+msgstr "Event Type"
+
+#~ msgid "Track ID (Optional)"
+#~ msgstr "Track ID (Optional)"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Save Event"
+msgstr "Save Event"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Set maximum users limit"
+msgstr "Set maximum users limit"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Set registration deadline"
+msgstr "Set registration deadline"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Link to a track"
+msgstr "Link to a track"
+
+#: src/routes/(app)/admin/resources/event/manage/[[id]]/+page.svelte
+msgid "Track ID"
+msgstr "Track ID"

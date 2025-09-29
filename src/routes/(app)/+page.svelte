@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { MessageCircleQuestion, LoaderCircle, PartyPopper, TriangleAlert } from '@lucide/svelte';
+	import { MessageCircleQuestion, LoaderCircle, PartyPopper, TriangleAlert, X, CircleQuestionMark } from '@lucide/svelte';
 	import type { PageProps } from './$types';
 	import { PUBLIC_APP_NAME } from '$env/static/public';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
@@ -51,11 +51,9 @@
 							class: 'ml-auto size-6 text-foreground'
 						})}
 					>
-						<MessageCircleQuestion />
+						<CircleQuestionMark />
 					</Tooltip.Trigger>
-					<Tooltip.Content>
-						Click here to get a small explanation
-					</Tooltip.Content>
+					<Tooltip.Content>Click here to get a small explanation</Tooltip.Content>
 				</Tooltip.Root>
 			{/await}
 		</div>
@@ -78,13 +76,25 @@
 				</p>
 			{/snippet}
 
-			<ul>
-				{#each await data.events as event}
-					<li class="not-last:pb-4">
-						<Event {event} />
-					</li>
-				{/each}
-			</ul>
+			{#await data.events then events}
+				{#if events.length}
+					<ul>
+						{#each await data.events as event, i (event.id)}
+							<li class="not-last:pb-4">
+								<Event {event} />
+							</li>
+						{/each}
+					</ul>
+				{:else}
+					<div class="flex flex-col items-center justify-center py-8 gap-3">
+						<X class="mb-2 text-primary" size={32} />
+						<span class="text-base text-muted-foreground text-center">
+							<p>Currently there are no events!</p>
+							<p>If you wait a bit, new ones might available.</p>
+						</span>
+					</div>
+				{/if}
+			{/await}
 		</svelte:boundary>
 	</div>
 </div>

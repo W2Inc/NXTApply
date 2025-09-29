@@ -1,15 +1,13 @@
 <script lang="ts">
 	import {
-		UserCircle,
 		ShieldCheck,
-		HelpingHand,
-		ShieldUser,
-		Menu,
 		Users,
 		ChartArea,
 		PartyPopper,
 		CircleUser,
-		CircuitBoard
+		CircuitBoard,
+		TrainTrack,
+		HandHelping
 	} from '@lucide/svelte';
 	import type { LayoutProps } from './$types';
 	import Theme from '$lib/components/theme.svelte';
@@ -18,12 +16,9 @@
 	import * as DropdownMenu from '$lib/components/ui/dropdown-menu';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import Button from '$lib/components/ui/button/button.svelte';
-	import Separator from '$lib/components/ui/separator/separator.svelte';
-	import * as Sheet from '$lib/components/ui/sheet';
 	import { afterNavigate } from '$app/navigation';
 	import { signout } from '@/remotes/auth/signout.remote';
 	import { UserFlag } from '$lib';
-	import { cn } from '$lib/utils';
 
 	const { children, data }: LayoutProps = $props();
 	const adminMenu = [
@@ -41,12 +36,15 @@
 			href: '/admin/resources/event',
 			icon: PartyPopper,
 			label: 'Events'
+		},
+		{
+			href: '/admin/resources/track',
+			icon: TrainTrack,
+			label: 'Tracks'
 		}
 	];
 
-	let open = $state(false);
 	const isAdmin = $derived((data.user.flags & UserFlag.IsAdmin) !== 0);
-	afterNavigate(() => (open = false));
 </script>
 
 <div class="flex min-h-screen flex-col bg-background">
@@ -72,102 +70,60 @@
 								<DropdownMenu.Separator />
 								<DropdownMenu.Item>
 									{#snippet child({ props })}
-										<Sheet.Root {...props} bind:open>
-											<!-- NOTE: A bit hacky but still fine. -->
-											<Sheet.Trigger class={cn(props.class as string, 'w-full hover:bg-muted')}>
-												<Menu />
-												Navigation
-											</Sheet.Trigger>
-											<Sheet.Content side="right" class="gap-0">
-												<Sheet.Header>
-													<Sheet.Title>Admin Navigation</Sheet.Title>
-													<Sheet.Description>
-														Navigate here to the different admin dashboards.
-													</Sheet.Description>
-												</Sheet.Header>
-												<div class="grid flex-1 auto-rows-min gap-2 border-t px-1 py-2">
-													{#each adminMenu as nav}
-														{@const IconComponent = nav.icon}
-														<Button variant="ghost" class="justify-start" href={nav.href}>
-															<IconComponent size={48} />
-															{nav.label}
-														</Button>
-													{/each}
-												</div>
-											</Sheet.Content>
-										</Sheet.Root>
-										<DropdownMenu.Item>
-											{#snippet child({ props })}
-												<a href="/admin" {...props}>
-													<CircuitBoard />
-													Dashboard
-												</a>
-											{/snippet}
-										</DropdownMenu.Item>
+										<a href="/admin" {...props}>
+											<CircuitBoard />
+											Dashboard
+										</a>
 									{/snippet}
 								</DropdownMenu.Item>
+								{#each adminMenu as nav (nav.label)}
+									<DropdownMenu.Item>
+										{#snippet child({ props })}
+											{@const IconComponent = nav.icon}
+											<a href={nav.href} {...props}>
+												<IconComponent />
+												{nav.label}
+											</a>
+										{/snippet}
+									</DropdownMenu.Item>
+								{/each}
 							</DropdownMenu.Group>
 							<DropdownMenu.Separator />
 						{/if}
 						<DropdownMenu.Group>
-							<DropdownMenu.Label>Account</DropdownMenu.Label>
-							<DropdownMenu.Separator />
-							<DropdownMenu.Item>
-								{#snippet child({ props })}
-									<a href="/gdpr" {...props}>
-										<ShieldCheck />
-										GDPR
-									</a>
-								{/snippet}
-							</DropdownMenu.Item>
-							<DropdownMenu.Item>
-								{#snippet child({ props })}
-									<a href="/help" {...props}>
-										<HelpingHand />
-										Assistance
-									</a>
-								{/snippet}
-							</DropdownMenu.Item>
-							<DropdownMenu.Separator />
+							{#if !isAdmin}
+								<DropdownMenu.Label>Account</DropdownMenu.Label>
+								<DropdownMenu.Separator />
+								<DropdownMenu.Item>
+									{#snippet child({ props })}
+										<a href="/gdpr" {...props}>
+											<ShieldCheck />
+											GDPR
+										</a>
+									{/snippet}
+								</DropdownMenu.Item>
+								<DropdownMenu.Item>
+									{#snippet child({ props })}
+										<a href="/help" {...props}>
+											<HandHelping />
+											Assistance
+										</a>
+									{/snippet}
+								</DropdownMenu.Item>
+								<DropdownMenu.Separator />
+							{/if}
 							<DropdownMenu.Item>
 								{#snippet child(props)}
 									<form {...signout}>
-										<Button type="submit" {...props} variant="destructive" class="w-full"
-											>Logout</Button
-										>
+										<Button type="submit" {...props} variant="destructive" class="w-full">
+											Logout
+										</Button>
 									</form>
 								{/snippet}
 							</DropdownMenu.Item>
 						</DropdownMenu.Group>
 					</DropdownMenu.Content>
 				</DropdownMenu.Root>
-				<!-- <Separator orientation="vertical" class="min-h-6" />
-					<Button href="/admin" variant="outline">
-						<ShieldUser />
-						<span class="hidden md:inline">Admin</span>
-					</Button>
-					<Sheet.Root bind:open>
-						<Sheet.Trigger class={buttonVariants({ size: 'icon', variant: 'outline' })}>
-							<Menu />
-						</Sheet.Trigger>
-						<Sheet.Content side="right" class="gap-0">
-							<Sheet.Header>
-								<Sheet.Title>Admin Navigation</Sheet.Title>
-								<Sheet.Description>
-									Navigate here to the different admin dashboards.
-								</Sheet.Description>
-							</Sheet.Header>
-							<div class="grid flex-1 auto-rows-min gap-2 border-t px-1 py-2">
-								{#each adminMenu as nav}
-									{@const IconComponent = nav.icon}
-									<Button variant="ghost" class="justify-start" href={nav.href}>
-										<IconComponent size={48} />
-										{nav.label}
-									</Button>
-								{/each}
-							</div>
-						</Sheet.Content>
-					</Sheet.Root> -->
 			</div>
 		</div>
 		<div id="subheader"></div>

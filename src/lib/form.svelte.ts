@@ -18,17 +18,17 @@ import { Modal } from './modal.svelte';
 // ============================================================================
 
 export namespace FormKit {
-	export type NoContent = { type: 'success'; status: 204 };
-	export type Ok<Output> = { type: 'success'; status: 200; data: Output };
-	export type Created<Output> = { type: 'success'; status: 201; data: Output };
-	export type Message = { type: 'message'; status: 200; data: string };
+	export type NoContent = { type: 'success' };
+	export type Ok<Output> = { type: 'success'; data: Output };
+	export type Created<Output> = { type: 'success'; data: Output };
+	export type Message = { type: 'message'; data: string };
 	export type Result<Output> = NoContent | Ok<Output> | Created<Output> | Message;
 
 	export const Reply = {
-		NoContent: (): NoContent => ({ type: 'success', status: 204 }),
-		Ok: <T>(data: T): Ok<T> => ({ type: 'success', status: 200, data }),
-		Created: <T>(data: T): Created<T> => ({ type: 'success', status: 201, data }),
-		Message: (data: string): Message => ({ type: 'message', status: 200, data })
+		NoContent: (): NoContent => ({ type: 'success' }),
+		Ok: <T>(data: T): Ok<T> => ({ type: 'success', data }),
+		Created: <T>(data: T): Created<T> => ({ type: 'success', data }),
+		Message: (data: string): Message => ({ type: 'message', data })
 	};
 
 	export function toastify(

@@ -5,7 +5,7 @@
 	import { ModeWatcher } from 'mode-watcher';
 	import { Toaster } from '$lib/components/ui/sonner';
 	import { TooltipProvider } from '$lib/components/ui/tooltip';
-	import ModalProvider from '$lib/components/modal-provider.svelte';
+	import Modal from '$lib/components/modal.svelte';
 
 	let { children } = $props();
 </script>
@@ -14,7 +14,7 @@
 	<!-- <link rel="icon" href={favicon} /> -->
 </svelte:head>
 
-<ModalProvider />
+<Modal />
 <TooltipProvider>
 	<Toaster richColors />
 	<ModeWatcher />

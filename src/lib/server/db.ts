@@ -4,9 +4,10 @@
 // ============================================================================
 
 import z from 'zod';
-import { SQL } from 'bun';
+import { redis, SQL } from 'bun';
 import { DATABASE_URL } from '$env/static/private';
 import Logger from '$lib/logger';
+import type { ISO } from '$lib/utils';
 
 // ============================================================================
 
@@ -25,6 +26,29 @@ export const sqlite = new SQL({
 		else Logger.dbg('[DB]: Disconnected');
 	}
 });
+
+// ============================================================================
+
+export namespace TTLCache {
+	export function key<T>(key: Bun.RedisClient.KeyLike, expire = 60) {
+		return {
+			query: async (query: SQL.Query<ISO<T>>): Promise<ISO<T>> => {
+				const cv = await redis.get(key);
+				if (cv) {
+					Logger.dbg("[CACHE - HIT]:", cv);
+					return JSON.parse(cv);
+				}
+
+				const result = await query;
+				if (result) {
+					Logger.dbg("[CACHE - MISS]");
+					await redis.set(key, JSON.stringify(result), 'EX', expire);
+				}
+				return result;
+			}
+		};
+	}
+}
 
 // ============================================================================
 

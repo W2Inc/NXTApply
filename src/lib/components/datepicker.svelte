@@ -77,7 +77,7 @@
 		<CalendarIcon />
 		{value ? formatter.format(value.toDate(page.data.tz)) : 'Pick a date'}
 	</Popover.Trigger>
-	<Popover.Content bind:ref={contentRef} class="flex w-auto self-start p-0">
+	<Popover.Content bind:ref={contentRef} class="flex w-auto self-start p-0" align="start">
 		<div class="flex">
 			<!-- Calendar Section: spans two rows in column 1 -->
 			<Calendar

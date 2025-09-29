@@ -23,17 +23,7 @@ export type WithElementRef<T, U extends HTMLElement = HTMLElement> = T & { ref?:
  * - Objects (including tuples) -> mapped recursively
  * - Functions and primitives are left intact
  */
-export type ISO<T> = T extends Date
-	? string
-	: T extends (...args: any[]) => any
-		? T
-		: T extends ReadonlyArray<infer U>
-			? ReadonlyArray<ISO<U>>
-			: T extends Array<infer U>
-				? ISO<U>[]
-				: T extends object
-					? { [K in keyof T]: ISO<T[K]> }
-					: T;
+export type ISO<T> = T extends Date ? string : T extends object ? { [K in keyof T]: ISO<T[K]> } : T;
 
 // ============================================================================
 

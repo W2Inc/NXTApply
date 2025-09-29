@@ -16,8 +16,11 @@ import { getUser } from './remotes/user/get.remote.js';
 import Logger from '$lib/logger.js';
 import { Auth } from '$lib/server/auth.js';
 import { UserFlag } from '$lib';
+import { getLocalTimeZone } from '@internationalized/date';
 
 // ============================================================================
+
+const TZ = getLocalTimeZone();
 
 export const init: ServerInit = async () => {
 	Logger.inf('Starting...');
@@ -111,9 +114,11 @@ const locale: Handle = async ({ event, resolve }) => {
 		Logger.err('Non-HTTPS request detected. Cookies may not be set, which could cause unexpected behavior.');
 	}
 
+	event.locals.tz = TZ;
 	const locale = event.locals.locale = event.url.searchParams.get('locale') ?? 'en';
 	return await runWithLocale(locale, () => resolve(event));
 };
+
 
 // ============================================================================
 
